@@ -1,0 +1,51 @@
+name: Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          script_stop: true
+          script: |
+            set -e
+
+            echo "📂 Go to project"
+            cd ~/apps/pixpassport
+
+            echo "📥 Pull latest code"
+            git fetch origin
+            git reset --hard origin/main
+
+            echo "📦 Install dependencies"
+            npm ci
+
+            echo "🏗️ Build Next.js"
+            npm run build
+
+            echo "✅ Verify production build"
+            test -f .next/BUILD_ID
+
+            echo "🔄 Restart PM2"
+            pm2 restart pixpassport --update-env
+            pm2 save
+
+            echo "🌐 Verify application"
+            sleep 5
+            curl --fail http://127.0.0.1:3000 > /dev/null
+
+            echo "✅ Deployment successful"

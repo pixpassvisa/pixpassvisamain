@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" fill="none">
+  <defs>
+    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#06B6D4" />
+    </linearGradient>
+  </defs>
+  <!-- Icon Emblem -->
+  <rect x="2" y="2" width="46" height="46" rx="12" fill="url(#brandGrad)" />
+  <rect x="4" y="4" width="42" height="42" rx="10" fill="#0F172A" />
+  
+  <!-- Frame corners -->
+  <path d="M12 18V14a2 2 0 012-2h4M32 12h4a2 2 0 012 2v4M38 32v4a2 2 0 01-2 2h-4M18 38H14a2 2 0 01-2-2v-4" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Silhouette -->
+  <circle cx="25" cy="22" r="5" stroke="#38BDF8" stroke-width="2" />
+  <path d="M16 35a9 9 0 0118 0" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+  
+  <!-- Checkmark Badge -->
+  <circle cx="36" cy="15" r="5" fill="#10B981" />
+  <path d="M33.5 15l2 2 3.5-3.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Text -->
+  <text x="60" y="34" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="26" fill="#0F172A">PixPass<tspan fill="url(#brandGrad)">Visa</tspan></text>
+</svg>

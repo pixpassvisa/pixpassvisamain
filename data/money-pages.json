@@ -1,0 +1,20 @@
+[
+
+  {
+    "slug": "digital-visa-photo-specs-2026",
+    "title": "Digital US Visa Photo Specs 2026: Official Upload Guide",
+    "metaDescription": "Get the exact digital specifications for US visa photo uploads in 2026. Pixel size, file weight, DPI, and JPEG requirements for DS-160 and NVC.",
+    "h1": "Digital Visa Photo Specs",
+    "h1Subtitle": "Technical DS-160 Guidelines",
+    "category": "Size & Specs",
+    "updatedAt": "January 25, 2026",
+    "content": "<h2>Decoding the CEAC Upload Requirements</h2><p>When you reach the photo upload page of the DS-160 or DS-260 application, you are interacting with the Consular Electronic Application Center (CEAC). This system has some of the most rigid technical barriers of any government portal. If your file is 1 pixel off or 1 KB too heavy, you will be blocked from proceeding. In this 2026 guide, we provide the ultimate technical cheat sheet for the **digital US visa photo specs**, ensuring your file enters the system flawlessly on the first attempt.</p><div class='my-8 p-6 bg-slate-900 text-white rounded-3xl shadow-xl'><h4 class='text-xl font-bold mb-6 text-center shadow-indigo-500'>The Technical Target</h4><div class='grid grid-cols-2 lg:grid-cols-4 gap-4 text-center'><div class='p-4 bg-white/10 rounded-xl'><div class='text-xs text-slate-400 mb-1'>File Format</div><div class='text-lg font-bold'>JPEG (.jpg)</div></div><div class='p-4 bg-white/10 rounded-xl'><div class='text-xs text-slate-400 mb-1'>Dimensions</div><div class='text-lg font-bold'>600x600 px</div></div><div class='p-4 bg-white/10 rounded-xl'><div class='text-xs text-slate-400 mb-1'>Max Size</div><div class='text-lg font-bold'>240 KB</div></div><div class='p-4 bg-white/10 rounded-xl'><div class='text-xs text-slate-400 mb-1'>Color Space</div><div class='text-lg font-bold'>24-bit sRGB</div></div></div></div><h3>The JPEG Compression Paradox</h3><p>The government requires a photo that is both large enough for clarity (at least 600x600px) and small enough for their aging servers (under 240KB). Most photo editing software sacrifices quality for size. To stay under the limit without triggering a 'Quality Alert' (which happens when an image is too blurry from compression), you must use 'Smart Compression' that prioritizes the biometric data in the center of the image. Our tool handles this automatically, delivering the perfect balance of size and sharp resolution.</p>",
+    "faqs": [
+      {
+        "q": "What is the minimum pixel size?",
+        "a": "The minimum allowed is 600 x 600 pixels, though you can upload up to 1200 x 1200 if the file size is under 240KB."
+      }
+    ],
+    "featuredImage": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1200"
+  }
+]

@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+Disallow: /dashboard/
+Disallow: /cloudinary-gallery/
+Disallow: /api/cloudinary-gallery/
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
+User-agent: Googlebot
+Allow: /
+Disallow: /dashboard/
+Disallow: /cloudinary-gallery/
+Disallow: /api/cloudinary-gallery/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /dashboard/
+Disallow: /cloudinary-gallery/
+Disallow: /api/cloudinary-gallery/
+
+User-agent: ChatGPT-User
+Allow: /
+
+Sitemap: https://www.pixpassvisa.com/sitemap.xml
