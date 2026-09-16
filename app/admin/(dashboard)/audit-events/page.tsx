@@ -371,11 +371,8 @@ export default async function AdminAuditEventsPage(props: Props) {
                         <AuditDetailModal
                           event={event}
                           email={email}
-                          conf={{
-                            badge: conf.badge,
-                            icon: Icon,
-                            label: conf.label,
-                          }}
+                          badgeClass={conf.badge}
+                          badgeLabel={conf.label}
                         />
                       </td>
                     </tr>

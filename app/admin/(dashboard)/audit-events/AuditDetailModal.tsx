@@ -1,20 +1,41 @@
 "use client";
 
 import { useState } from "react";
-import { Search, X, Check, Copy, LucideIcon } from "lucide-react";
+import {
+  Search,
+  X,
+  Check,
+  Copy,
+  Settings,
+  Mail,
+  Download,
+  CreditCard,
+  Scale,
+  ShieldCheck,
+} from "lucide-react";
+
+const eventIcons: Record<string, any> = {
+  processing: Settings,
+  email_sent: Mail,
+  download: Download,
+  refund: CreditCard,
+  dispute: Scale,
+};
 
 export default function AuditDetailModal({
   event,
   email,
-  conf,
+  badgeClass,
+  badgeLabel,
 }: {
   event: any;
   email: string | null;
-  conf: { badge: string; icon: LucideIcon; label: string };
+  badgeClass?: string;
+  badgeLabel?: string;
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [copied, setCopied] = useState(false);
-  const Icon = conf.icon;
+  const Icon = eventIcons[event.eventType] || ShieldCheck;
 
   const fullData = {
     _id: event._id,
@@ -63,12 +84,12 @@ export default function AuditDetailModal({
                 <div>
                   <h3 className="text-base font-black text-slate-900 leading-tight flex items-center gap-2">
                     <span>Audit Event:</span>
-                    <span className={`text-xs px-2.5 py-0.5 rounded-full border ${conf.badge}`}>
-                      {conf.label}
+                    <span className={`text-xs px-2.5 py-0.5 rounded-full border ${badgeClass || "bg-blue-50 text-blue-700 border-blue-200"}`}>
+                      {badgeLabel || event.eventType}
                     </span>
                   </h3>
                   <p className="text-xs text-slate-500 mt-0.5">
-                    Immutable event ID: <span className="font-mono">{event._id.toString()}</span>
+                    Immutable event ID: <span className="font-mono">{event._id?.toString()}</span>
                   </p>
                 </div>
               </div>
