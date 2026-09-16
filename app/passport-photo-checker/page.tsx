@@ -146,6 +146,36 @@ export default function PassportPhotoCheckerPage() {
         title="Passport Photo Checker"
         highlightTitle="Official Biometric Validator"
         subtitle="Validate any passport or visa photo online against official embassy & ICAO 9303 biometric specifications. Select your country to get an instant pass/fail compliance report."
+        directAnswer={{
+          question: "How does an online passport photo checker work?",
+          answer: "An online passport photo checker analyzes your digital photo against official biometric requirements established by international civil aviation (ICAO Doc 9303) and national governments. The tool uses computer vision to measure exact pixel dimensions, chin-to-crown head percentage (50–69% for US/2×2, 70–80% for UK/Schengen/India), horizontal eye level alignment, background color uniformity, lighting balance, and detects prohibited items such as eyeglasses, severe shadows, or smiling.",
+          keyPoints: [
+            "Analyzes 30+ biometric parameters including head proportion & eye level",
+            "Automatic checks for plain white or light grey background uniformity",
+            "Scans for prohibited items: eyeglasses, hats, shadows, open mouth",
+            "Supports 50+ official country specifications (US, UK, Canada, Schengen, India, Australia)",
+            "Instant pass/fail compliance scoring before submitting to official authorities",
+          ],
+          lastReviewed: "September 2026",
+          sourceAuthority: "ICAO Doc 9303 Biometric Specifications & National Consular Gazettes",
+        }}
+        officialSources={[
+          {
+            name: "ICAO Doc 9303 (Machine Readable Travel Documents Part 3)",
+            url: "https://www.icao.int/publications/doc-series/doc-9303",
+            authority: "International Civil Aviation Organization",
+          },
+          {
+            name: "ISO/IEC 19794-5 Biometric Data Interchange Standard",
+            url: "https://www.iso.org/standard/50864.html",
+            authority: "International Organization for Standardization",
+          },
+          {
+            name: "U.S. Department of State Passport Photograph Requirements",
+            url: "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+            authority: "Bureau of Consular Affairs",
+          },
+        ]}
         specs={[
           { label: "Global Standard", value: "ICAO Doc 9303 Compliant" },
           { label: "Country Coverage", value: "50+ Supported Countries" },
@@ -217,6 +247,12 @@ export default function PassportPhotoCheckerPage() {
             desc: "Validate any passport or visa photo across 50+ countries.",
             href: "/visa-photo-validator",
             icon: <CheckCircle2 className="w-4 h-4 text-blue-600" />,
+          },
+          {
+            title: "Global Photo Size Guide",
+            desc: "Compare official passport and visa photo sizes across 50+ countries.",
+            href: "/passport-photo-sizes",
+            icon: <Globe className="w-4 h-4 text-blue-600" />,
           },
           {
             title: "Passport Size Photo Maker",

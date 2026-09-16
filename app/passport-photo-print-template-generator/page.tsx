@@ -1,7 +1,9 @@
 import { Metadata } from "next";
 import PrintTemplateApp from "./PrintTemplateApp";
 import { Suspense } from "react";
-import { Printer, Scissors, Zap, Lock } from "lucide-react";
+import { Printer, Scissors, Zap, Lock, Ruler, Globe, FileCheck } from "lucide-react";
+import DirectAnswerBox from "../components/DirectAnswerBox";
+import OfficialSourceBadge from "../components/OfficialSourceBadge";
 
 export const metadata: Metadata = {
   "title": "Passport Photo Print Template – Print at Home",
@@ -146,27 +148,60 @@ export default function PrintTemplateGeneratorPage() {
           </div>
         </div>
 
-  <div className="grid sm:grid-cols-2 py-5 lg:grid-cols-3 gap-3 max-w-4xl mx-auto px-4">
-            {[
-              { href: "/icao-standard-photo", label: "ICAO Standard Photo Tool" },
-              { href: "/uk-passport-size-photo-maker", label: "UK Passport Size Photo Maker" },
-              { href: "/passport-size-photo-maker", label: "Passport Size Photo Maker" },
-              { href: "/us-passport-photo-editor", label: "US Passport Photo Editor" },
-              { href: "/us-visa-photo-editor", label: "US Visa Photo Editor" },
-            ].map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-              
-                className="flex items-center justify-between gap-3 bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 hover:border-blue-200 rounded-xl px-5 py-4 text-sm font-bold text-slate-700 hover:text-blue-700 transition-colors"
-              >
-                {label}
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
-                  <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
-                </svg>
-              </a>
-            ))}
-          </div>
+        {/* Direct Answer & Official Source Badge */}
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 pt-6 pb-2">
+          <DirectAnswerBox
+            question="How do I print passport photos on a 4×6 or A4 sheet at home?"
+            answer="To print passport photos at home, upload your formatted 2×2 inch or 35×45 mm photo to this generator. Select your paper size (4×6 inch fits up to 6 photos; A4 fits up to 20 photos). The tool automatically arranges the images with precise hairline crop cutting guides at 300 DPI resolution. Download the JPEG/PDF and print at 100% scale (disable 'fit to page') on glossy or matte photo paper."
+            keyPoints={[
+              "Standard 4×6 in (10×15 cm) paper fits up to 6 photos with cutting lines",
+              "Standard A4 or US Letter paper fits 8 to 20 passport/visa photos",
+              "High-resolution 300 DPI output prevents pixelation or rejection",
+              "Always print at 100% actual size without borderless zoom or scale distortion",
+              "Works for all global sizes: 2×2 in (US/India), 35×45 mm (UK/EU/Australia/Schengen), 50×70 mm (Canada)",
+            ]}
+            lastReviewed="September 2026"
+            sourceAuthority="ICAO Doc 9303 Print Quality Guidelines & ISO/IEC 19794-5"
+          />
+
+          <OfficialSourceBadge
+            lastReviewedDate="September 2026"
+            sources={[
+              {
+                name: "ICAO Doc 9303 Part 3 (Physical Quality & Paper Specifications)",
+                url: "https://www.icao.int/publications/doc-series/doc-9303",
+                authority: "International Civil Aviation Organization",
+              },
+              {
+                name: "U.S. Department of State Photo Printing Standards",
+                url: "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+                authority: "U.S. Department of State",
+              },
+            ]}
+          />
+        </div>
+
+        <div className="grid sm:grid-cols-2 py-5 lg:grid-cols-3 gap-3 max-w-4xl mx-auto px-4">
+          {[
+            { href: "/passport-photo-sizes", label: "Global Photo Size Chart (50+ Countries)" },
+            { href: "/passport-size-photo-maker", label: "Passport Size Photo Maker" },
+            { href: "/passport-photo-checker", label: "Biometric Passport Photo Checker" },
+            { href: "/uk-passport-size-photo-maker", label: "UK Passport Size Photo Maker" },
+            { href: "/us-passport-photo-editor", label: "US Passport Photo Editor" },
+            { href: "/editorial-methodology", label: "Editorial Methodology & Standards" },
+          ].map(({ href, label }) => (
+            <a
+              key={href}
+              href={href}
+              className="flex items-center justify-between gap-3 bg-slate-50 hover:bg-blue-50/70 border border-slate-200/80 hover:border-blue-200 rounded-xl px-5 py-4 text-sm font-bold text-slate-700 hover:text-blue-700 transition-colors"
+            >
+              {label}
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="shrink-0">
+                <line x1="7" y1="17" x2="17" y2="7" /><polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
+          ))}
+        </div>
         {/* Trust Badges */}
         <div className="bg-slate-50 border-b border-slate-200 py-6">
           <div className="max-w-4xl mx-auto px-4 sm:px-6">

@@ -85,6 +85,44 @@ export const metadata: Metadata = {
   },
 };
 
+const globalSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://www.pixpassvisa.com/#organization",
+      name: "PixPassVisa",
+      url: "https://www.pixpassvisa.com/",
+      logo: "https://www.pixpassvisa.com/logo.svg",
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "Customer Support",
+        email: "support@pixpassvisa.com",
+      },
+      description:
+        "AI-powered biometric passport and visa photo maker, resizer, and compliance checker for 50+ countries.",
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.pixpassvisa.com/#website",
+      url: "https://www.pixpassvisa.com/",
+      name: "PixPassVisa",
+      publisher: {
+        "@id": "https://www.pixpassvisa.com/#organization",
+      },
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate:
+            "https://www.pixpassvisa.com/passport-photo-sizes?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+  ],
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -96,6 +134,10 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(globalSchema) }}
+        />
       </head>
 
       <body

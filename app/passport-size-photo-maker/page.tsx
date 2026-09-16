@@ -2,6 +2,9 @@ import { Metadata } from "next";
 import PassportMakerApp from "./PassportMakerApp";
 import toolPages from "../../data/tool-seo-pages.json";
 import ToolPageRenderer from "../components/ToolPageRenderer";
+import DirectAnswerBox from "../components/DirectAnswerBox";
+import OfficialSourceBadge from "../components/OfficialSourceBadge";
+import { ShieldCheck, FileCheck, Zap, Sparkles, Ruler, Globe, CheckCircle2, Camera } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Free Passport Photo Maker Online | Official Passport Standards",
@@ -22,7 +25,73 @@ export const metadata: Metadata = {
   },
 };
 
-import { ShieldCheck, FileCheck, Zap, Sparkles } from "lucide-react";
+const schemas = [
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Passport Size Photo Maker Online",
+    url: "https://www.pixpassvisa.com/passport-size-photo-maker",
+    description:
+      "Free AI passport photo maker and resizer. Automatically removes background, crops to exact millimeter and pixel ratios, and formats compliant photos for 50+ countries.",
+    applicationCategory: "DesignApplication",
+    operatingSystem: "All",
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "USD",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "How to Create a Compliant Passport Photo Online",
+    description: "Step-by-step instructions to create, crop, and download an official biometric passport photo from home.",
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Select Destination Country & Document Type",
+        text: "Pick your country (e.g. US 2x2 in, UK/Schengen 35x45 mm, India 51x51 mm) to load the exact biometric template.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Upload Any Clear Portrait Photo",
+        text: "Upload a recent, forward-facing picture taken against a wall with good lighting.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Automatic AI Crop & Background Removal",
+        text: "The AI isolates the subject, replaces the background with pure white or light grey, and aligns head proportion (50–69% or 70–80%).",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Download Digital Photo or Printable Sheet",
+        text: "Export high-resolution 300 DPI single image or 4x6 / A4 printable template.",
+      },
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.pixpassvisa.com/",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Passport Size Photo Maker",
+        item: "https://www.pixpassvisa.com/passport-size-photo-maker",
+      },
+    ],
+  },
+];
 
 // ─── Trust badges ────────────────────────────────────────────────────────────
 const TRUST_ITEMS = [
@@ -303,14 +372,102 @@ export default function PassportSizePhotoMakerPage() {
         }
       `}</style>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
+      />
       <div className="bg-slate-50 min-h-screen">
-
         {/* ── Tool ── */}
         <PassportMakerApp title={toolPage?.h1} subtitle={toolPage?.metaDescription} img={(toolPage as any)?.img} />
 
-      
+        {/* ── Direct Answer & E-E-A-T Badges ── */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-6">
+          <DirectAnswerBox
+            question="How do I create a passport size photo online?"
+            answer="To create an official passport photo online, select your target country to load the exact millimeter dimensions and chin-to-crown ratio (such as 2×2 inches for the US or 35×45 mm for the UK/Schengen/India). Upload a well-lit, forward-facing picture. Our AI automatically crops the image to the exact biometric margin, replaces the background with uniform white or light grey, and produces a 300 DPI high-resolution JPEG and printable 4×6 / A4 sheet."
+            keyPoints={[
+              "Instant AI background removal & solid color replacement (White / Light Grey)",
+              "Automatic head alignment: 50–69% (US/2×2) or 70–80% (ICAO/35×45mm)",
+              "Export individual high-res 300 DPI photos or printable 4×6 / A4 multi-photo templates",
+              "100% ephemeral privacy: zero image storage on remote servers",
+              "Compliant with official specifications for 50+ countries worldwide",
+            ]}
+            lastReviewed="September 2026"
+            sourceAuthority="ICAO Doc 9303, ISO/IEC 19794-5 & National Consular Authorities"
+          />
 
-       
+          <OfficialSourceBadge
+            lastReviewedDate="September 2026"
+            sources={[
+              {
+                name: "ICAO Doc 9303 Biometric Specifications",
+                url: "https://www.icao.int/publications/doc-series/doc-9303",
+                authority: "International Civil Aviation Organization",
+              },
+              {
+                name: "U.S. State Dept Passport Photo Guidance",
+                url: "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+                authority: "U.S. Bureau of Consular Affairs",
+              },
+              {
+                name: "UK HMPO Photo Rules & Sizing",
+                url: "https://www.gov.uk/photos-for-passports",
+                authority: "HM Passport Office",
+              },
+            ]}
+          />
+        </div>
+
+        {/* ── Interconnected Tool Cards ── */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            {[
+              {
+                title: "Global Size Chart Hub",
+                desc: "50+ country photo size comparison table in mm, in, & px.",
+                href: "/passport-photo-sizes",
+                icon: <Ruler className="w-4 h-4 text-blue-600" />,
+              },
+              {
+                title: "Passport Photo Checker",
+                desc: "30+ point automated biometric compliance test.",
+                href: "/passport-photo-checker",
+                icon: <Globe className="w-4 h-4 text-blue-600" />,
+              },
+              {
+                title: "Print Template Generator",
+                desc: "Generate 4×6 / A4 printable sheets for home printing.",
+                href: "/passport-photo-print-template-generator",
+                icon: <Camera className="w-4 h-4 text-blue-600" />,
+              },
+              {
+                title: "Editorial Methodology",
+                desc: "Learn how we maintain up-to-date consular specifications.",
+                href: "/editorial-methodology",
+                icon: <FileCheck className="w-4 h-4 text-blue-600" />,
+              },
+            ].map((tool) => (
+              <a
+                key={tool.href}
+                href={tool.href}
+                className="group flex flex-col justify-between p-4 bg-white rounded-xl border border-slate-200/80 hover:border-blue-400 hover:shadow-md transition-all"
+              >
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    {tool.icon}
+                    <span className="font-bold text-slate-800 text-sm group-hover:text-blue-600 transition-colors">
+                      {tool.title}
+                    </span>
+                  </div>
+                  <p className="text-xs text-slate-500 leading-relaxed">{tool.desc}</p>
+                </div>
+                <div className="mt-3 text-xs font-semibold text-blue-600 flex items-center gap-1 group-hover:gap-1.5 transition-all">
+                  Open Tool &rarr;
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
 
         {/* ── SEO rich content ── */}
         <div className="bg-white border-t border-slate-200/80 py-12 sm:py-16 mt-6 sm:mt-8">
@@ -332,8 +489,6 @@ export default function PassportSizePhotoMakerPage() {
             <ToolPageRenderer html={toolPage?.content || ""} />
           </div>
         </div>
-
-      
 
       </div>
     </>

@@ -7,6 +7,8 @@ import { useFaceVerification } from "@/hooks/useFaceVerification";
 import ValidationReportView from "@/app/visa-photo-validator/components/ValidationReport";
 import { getFilteredDocumentTypes, SUPPORTED_COUNTRIES } from "@/lib/specs";
 import { countryMapping } from "@/lib/external-api";
+import DirectAnswerBox from "./DirectAnswerBox";
+import OfficialSourceBadge from "./OfficialSourceBadge";
 
 export interface SpecHighlight {
   label: string;
@@ -52,6 +54,18 @@ export interface PhotoCheckerToolProps {
   requirements?: RequirementItem[];
   faqs?: FAQItem[];
   relatedTools?: RelatedToolItem[];
+  directAnswer?: {
+    question: string;
+    answer: string;
+    keyPoints?: string[];
+    lastReviewed?: string;
+    sourceAuthority?: string;
+  };
+  officialSources?: {
+    name: string;
+    url: string;
+    authority: string;
+  }[];
 }
 
 // ─── Trust Badges ────────────────────────────────────────────────────────────
@@ -312,6 +326,8 @@ export default function PhotoCheckerTool({
   requirements = [],
   faqs = [],
   relatedTools = [],
+  directAnswer,
+  officialSources,
 }: PhotoCheckerToolProps) {
   const [selectedCountry, setSelectedCountry] = useState(initialCountry);
   const [selectedDocType, setSelectedDocType] = useState<"passport" | "visa">(initialDocType);
@@ -405,6 +421,17 @@ export default function PhotoCheckerTool({
           <p className="text-base sm:text-lg text-slate-500 font-normal leading-relaxed max-w-3xl mb-6">
             {subtitle}
           </p>
+
+          {/* Direct Answer Box for AI (GEO) & Search Featured Snippets */}
+          {directAnswer && (
+            <DirectAnswerBox
+              question={directAnswer.question}
+              answer={directAnswer.answer}
+              keyPoints={directAnswer.keyPoints}
+              lastReviewed={directAnswer.lastReviewed}
+              sourceAuthority={directAnswer.sourceAuthority}
+            />
+          )}
 
           {/* Trust Rating Strip (Matching Homepage) */}
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-2 border-t border-slate-100">
@@ -702,6 +729,14 @@ export default function PhotoCheckerTool({
             </div>
           ))}
         </div>
+      </section>
+
+      {/* ── OFFICIAL VERIFICATION LAYER & CITATIONS (E-E-A-T) ── */}
+      <section className="max-w-4xl mx-auto px-4 sm:px-6">
+        <OfficialSourceBadge
+          sources={officialSources}
+          documentType={`${countryName || "Passport"} Photo Requirements`}
+        />
       </section>
 
       {/* ── FAQ SECTION ── */}

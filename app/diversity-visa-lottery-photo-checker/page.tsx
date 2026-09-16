@@ -221,6 +221,37 @@ export default function DVLotteryPhotoCheckerPage() {
         title="DV Lottery Photo Checker"
         highlightTitle="Free Green Card Photo Validator"
         subtitle="One bad photo is enough to get a Diversity Visa entry thrown out with no warning. Upload yours here first and see exactly whether it meets the 600×600px square size, 50–69% head height, 240KB file cap, and every other rule the dvprogram.state.gov portal checks for."
+        directAnswer={{
+          question: "What are the exact photo requirements for the DV Lottery 2026/2027?",
+          answer: "The US Department of State requires an exact 600×600 pixel square image in JPEG format (maximum 240 KB, 24-bit color). Your head height (from the bottom of the chin to the top of the hair) must occupy between 50% and 69% (300 to 414 pixels) of the image height, and eye level must sit between 56% and 69% from the bottom edge. Eyeglasses are strictly forbidden, and the background must be plain white or off-white with no shadows.",
+          keyPoints: [
+            "Exact 600 × 600 pixels (1:1 square aspect ratio)",
+            "Head height: 50% to 69% (300 to 414 px)",
+            "File size: 240 KB maximum (JPEG format only)",
+            "Zero eyewear tolerance: Eyeglasses strictly forbidden since 2016",
+            "Plain white/off-white background with neutral facial expression",
+            "Photo must be taken within the last 6 months",
+          ],
+          lastReviewed: "September 2026",
+          sourceAuthority: "U.S. Department of State — DV Program Instructions",
+        }}
+        officialSources={[
+          {
+            name: "Official Diversity Visa Program Instructions (DV-2027)",
+            url: "https://travel.state.gov/content/travel/en/us-visas/immigrate/diversity-visa-program-entry/diversity-visa-instructions.html",
+            authority: "U.S. Department of State",
+          },
+          {
+            name: "Department of State Electronic Diversity Visa Entry Portal",
+            url: "https://dvprogram.state.gov/",
+            authority: "Consular Electronic Application Center",
+          },
+          {
+            name: "U.S. Visa & Passport Photograph Composition Guidelines",
+            url: "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html",
+            authority: "Bureau of Consular Affairs",
+          },
+        ]}
         specs={[
           { label: "Dimensions", value: "600 × 600 px (2×2 in / 51×51 mm)" },
           { label: "Aspect Ratio", value: "Square (1:1 Ratio)" },
@@ -302,6 +333,12 @@ export default function DVLotteryPhotoCheckerPage() {
             desc: "Format 600×600 px digital photos with pure white background for DS-160.",
             href: "/us-visa-photo-editor",
             icon: <FileCheck className="w-4 h-4 text-blue-600" />,
+          },
+          {
+            title: "Global Photo Size Guide",
+            desc: "Compare exact millimeter and pixel dimensions across 50+ countries.",
+            href: "/passport-photo-sizes",
+            icon: <Globe className="w-4 h-4 text-blue-600" />,
           },
           {
             title: "Visa Photo Validator",

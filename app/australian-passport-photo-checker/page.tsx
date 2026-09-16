@@ -234,6 +234,32 @@ export default function AustralianPassportPhotoCheckerPage() {
         title="Australian Passport Photo Checker"
         highlightTitle="Free DFAT & APO Compliance Test"
         subtitle="Post offices and ImmiAccount both apply the same strict rulebook, and a photo that misses it by even a millimetre gets sent back. Upload yours here first to confirm the 35×45mm size, 32–36mm face height, background, and expression all meet the Australian Passport Office standard before you pay for a printed submission or lodge it online."
+        directAnswer={{
+          question: "What are the official Australian passport photo requirements?",
+          answer: "Australian passport and visa photos must measure exactly 35mm wide by 45mm high (or minimum 413×531 pixels at 300 DPI). The head height from the bottom of the chin to the crown of the head must be strictly between 32mm and 36mm (71–80% of vertical frame height). Eyeglasses are strictly prohibited (since July 2018) without a medical certificate. The background must be plain white or light grey with uniform illumination and zero shadows.",
+          keyPoints: [
+            "Exact frame dimension: 35mm width × 45mm height (413×531 px at 300 DPI)",
+            "Mandatory face height: 32mm to 36mm chin-to-crown (APO strictly enforces this)",
+            "Eyeglasses strictly prohibited for SmartGate biometric compatibility",
+            "Uniform white or light grey background with no cast shadows",
+            "Neutral expression with closed mouth, both eyes open looking directly at lens",
+            "Complies with both Australian Passport Office (APO) and ImmiAccount visa lodgments",
+          ],
+          lastReviewed: "September 2026",
+          sourceAuthority: "Australian Passport Office (DFAT) & Department of Home Affairs",
+        }}
+        officialSources={[
+          {
+            name: "Australian Passport Office (DFAT) Photo Guidelines",
+            url: "https://www.passports.gov.au/getting-passport-how-it-works/photo-guidelines",
+            authority: "Department of Foreign Affairs and Trade (DFAT)",
+          },
+          {
+            name: "Department of Home Affairs Photo Requirements (ImmiAccount)",
+            url: "https://immi.homeaffairs.gov.au/help-support/applying-online-or-on-paper/online/photo-specifications",
+            authority: "Australian Department of Home Affairs",
+          },
+        ]}
         specs={[
           { label: "Dimensions", value: "35 × 45 mm" },
           { label: "Face Height", value: "32 – 36 mm (chin to crown)" },
@@ -287,6 +313,12 @@ export default function AustralianPassportPhotoCheckerPage() {
         faqs={faqs}
         relatedTools={[
           {
+            title: "Global Photo Size Guide",
+            desc: "Complete 50+ country size, mm, inch, and pixel reference table.",
+            href: "/passport-photo-sizes",
+            icon: <Ruler className="w-4 h-4 text-blue-600" />,
+          },
+          {
             title: "Passport Photo Checker",
             desc: "Universal biometric passport photo compliance validator for 50+ countries.",
             href: "/passport-photo-checker",
@@ -315,12 +347,6 @@ export default function AustralianPassportPhotoCheckerPage() {
             desc: "Official GOV.UK 35×45mm passport photo compliance checker.",
             href: "/uk-passport-photo-checker-online-free",
             icon: <FileCheck className="w-4 h-4 text-blue-600" />,
-          },
-          {
-            title: "Visa Photo Validator",
-            desc: "Comprehensive biometric photo checker for international visas and entry permits.",
-            href: "/visa-photo-validator",
-            icon: <CheckCircle2 className="w-4 h-4 text-blue-600" />,
           },
         ]}
       />

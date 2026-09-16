@@ -196,6 +196,36 @@ export default function OnlinePassportPhotoCheckerPage() {
         title="Online Passport Photo Checker"
         highlightTitle="Free, Instant, In-Browser Photo Test"
         subtitle="Before you print, upload, or hand a photo across the counter, run it through this checker. It's nothing more than your browser and your photo — pick your destination country, upload the image, and get a full pass/fail breakdown in a few seconds."
+        directAnswer={{
+          question: "How do I check my passport photo online for free?",
+          answer: "You can check your passport photo online instantly using our browser-based validator. Upload your photo from your phone or computer, and our computer vision algorithm will test your image across 30+ biometric standards—including exact dimensions (2×2 in / 35×45 mm), head proportion (50–69% or 70–80%), eye line alignment, background color uniformity, lighting balance, and prohibited items (glasses, hats, smiles). No download, app install, or email sign-up required.",
+          keyPoints: [
+            "Instant results in under 3 seconds directly in your web browser",
+            "Zero image retention: photos processed ephemerally in RAM and immediately discarded",
+            "Covers official rules for 50+ countries including US, UK, Canada, Schengen, and Australia",
+            "Tests background uniformity, face height, eye height, tilt, and glare",
+            "Includes actionable fix instructions for any flagged parameter",
+          ],
+          lastReviewed: "September 2026",
+          sourceAuthority: "ICAO Doc 9303, ISO/IEC 19794-5 & National Passport Issuing Authorities",
+        }}
+        officialSources={[
+          {
+            name: "ICAO Doc 9303 Machine Readable Travel Documents",
+            url: "https://www.icao.int/publications/doc-series/doc-9303",
+            authority: "International Civil Aviation Organization",
+          },
+          {
+            name: "U.S. Department of State Passport Photo Requirements",
+            url: "https://travel.state.gov/content/travel/en/passports/how-apply/photos.html",
+            authority: "U.S. Bureau of Consular Affairs",
+          },
+          {
+            name: "UK HMPO Passport Photo Standards",
+            url: "https://www.gov.uk/photos-for-passports",
+            authority: "HM Passport Office",
+          },
+        ]}
         specs={[
           { label: "Check Duration", value: "Under 3 Seconds" },
           { label: "Install Required", value: "None — Browser Only" },
@@ -249,6 +279,12 @@ export default function OnlinePassportPhotoCheckerPage() {
         faqs={faqs}
         relatedTools={[
           {
+            title: "Global Photo Size Guide",
+            desc: "Complete 50+ country size, mm, inch, and pixel reference table.",
+            href: "/passport-photo-sizes",
+            icon: <Ruler className="w-4 h-4 text-blue-600" />,
+          },
+          {
             title: "Passport Photo Checker",
             desc: "Universal compliance validator built around ICAO Doc 9303 standards.",
             href: "/passport-photo-checker",
@@ -271,12 +307,6 @@ export default function OnlinePassportPhotoCheckerPage() {
             desc: "Official GOV.UK 35×45mm passport photo compliance checker.",
             href: "/uk-passport-photo-checker-online-free",
             icon: <FileCheck className="w-4 h-4 text-blue-600" />,
-          },
-          {
-            title: "Free Photo Validator",
-            desc: "Comprehensive biometric photo checker for passports & visas.",
-            href: "/visa-photo-validator",
-            icon: <CheckCircle2 className="w-4 h-4 text-blue-600" />,
           },
           {
             title: "Passport Size Photo Maker",

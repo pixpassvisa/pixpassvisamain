@@ -35,6 +35,7 @@ export default function Footer() {
     {
       title: "Exam & Form Tools",
       items: [
+        { label: "Global Photo Size Chart (50+ Countries)", href: "/passport-photo-sizes" },
         { label: "Government Form Photo Resizer", href: "/passport-size-photo-maker" },
         { label: "Signature Resizer Online", href: "/passport-photo-online" },
         { label: "All Countries Photo Directory", href: "/passport-photos" },
@@ -47,6 +48,7 @@ export default function Footer() {
       title: "Company & Legal",
       items: [
         { label: "About PixPassVisa", href: "/about" },
+        { label: "Editorial Methodology", href: "/editorial-methodology" },
         { label: "Contact Us", href: "/contact" },
         { label: "FAQ", href: "/faq" },
         { label: "Data Security & GDPR", href: "/data-security" },

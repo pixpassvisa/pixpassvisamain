@@ -10,7 +10,7 @@ import Logo from "./Logo";
 const navLinks = [
   { href: "/passport-photo-online", label: "Create Photo" },
   { href: "/visa-photo-validator", label: "Free Validator" },
-  { href: "/passport-photos", label: "Passport Sizes" },
+  { href: "/passport-photo-sizes", label: "Passport Sizes" },
   { href: "/blog", label: "Blog & Guides" },
   { href: "/support", label: "Support" },
 ];
