@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Head from "next/head";
 import { Camera, Globe, Zap, FileCheck, Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {

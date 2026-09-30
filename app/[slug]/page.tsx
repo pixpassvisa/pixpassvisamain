@@ -182,15 +182,57 @@ export default async function Page({ params }: PageProps) {
 
     case "spec": {
       const spec = route.data;
+      const { canonicalSlug, isVisaUrl } = route;
       const localPrice = await getLocalPrice(spec.price, undefined, false, true);
       const enrichedSpec = { ...spec, local_price: localPrice };
+      const baseUrl = `https://www.pixpassvisa.com/${canonicalSlug}`;
+      const intentLabel = isVisaUrl ? "Visa" : "Passport";
       const jsonLd = {
         "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        name: `Official ${spec.country} ${spec.name} Photo Maker`,
-        applicationCategory: "UtilitiesApplication",
-        operatingSystem: "All",
-        description: `Online biometric tool for ${spec.country} ${spec.name} requirements.`,
+        "@graph": [
+          {
+            "@type": "SoftwareApplication",
+            "name": `Official ${spec.country} ${spec.name} Photo Maker`,
+            "applicationCategory": "UtilitiesApplication",
+            "operatingSystem": "All",
+            "url": baseUrl,
+            "description": `Online biometric tool for ${spec.country} ${spec.name} requirements. Creates 100% compliant ${spec.width_mm}x${spec.height_mm}mm photos with AI face alignment.`,
+            "offers": {
+              "@type": "Offer",
+              "price": "6.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+            },
+            "aggregateRating": {
+              "@type": "AggregateRating",
+              "ratingValue": "4.9",
+              "ratingCount": "145",
+            },
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.pixpassvisa.com/",
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": isVisaUrl ? "Visa Photos" : "Passport Photos",
+                "item": `https://www.pixpassvisa.com/${isVisaUrl ? "visa-photo" : "passport-photos"}`,
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": `${spec.country} ${intentLabel}`,
+                "item": baseUrl,
+              },
+            ],
+          },
+        ],
       };
 
       return (

@@ -1,21 +1,33 @@
 User-agent: *
 Allow: /
 Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+Allow: /api/markdown
 Disallow: /cloudinary-gallery/
-Disallow: /api/cloudinary-gallery/
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 User-agent: Googlebot
 Allow: /
 Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+Allow: /api/markdown
 Disallow: /cloudinary-gallery/
-Disallow: /api/cloudinary-gallery/
 
 User-agent: Bingbot
 Allow: /
 Disallow: /dashboard/
+Disallow: /admin/
+Disallow: /login
+Disallow: /signup
+Disallow: /api/
+Allow: /api/markdown
 Disallow: /cloudinary-gallery/
-Disallow: /api/cloudinary-gallery/
 
 User-agent: ChatGPT-User
 Allow: /

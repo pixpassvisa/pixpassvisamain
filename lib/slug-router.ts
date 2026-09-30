@@ -87,10 +87,21 @@ export function createMetadata({
   keywords,
   openGraph,
 }: MetadataOptions): Metadata {
+  const defaultImage = "https://www.pixpassvisa.com/og-image.jpg";
   return {
     title: { absolute: title },
     description,
     ...(keywords && { keywords }),
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
     alternates: {
       canonical,
       languages: {
@@ -104,7 +115,21 @@ export function createMetadata({
       url: canonical,
       siteName: "PixPassVisa",
       type: "website",
+      images: [
+        {
+          url: defaultImage,
+          width: 1200,
+          height: 630,
+          alt: `${title} - PixPassVisa`,
+        },
+      ],
       ...openGraph,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [defaultImage],
     },
   };
 }
