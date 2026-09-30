@@ -1,26 +1,35 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 50" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 50" fill="none">
   <defs>
-    <linearGradient id="brandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#2563EB" />
-      <stop offset="50%" stop-color="#4F46E5" />
-      <stop offset="100%" stop-color="#06B6D4" />
+    <linearGradient id="pvBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="60%" stop-color="#4338CA" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+    <linearGradient id="pvGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="pvCyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0EA5E9" />
     </linearGradient>
   </defs>
-  <!-- Icon Emblem -->
-  <rect x="2" y="2" width="46" height="46" rx="12" fill="url(#brandGrad)" />
-  <rect x="4" y="4" width="42" height="42" rx="10" fill="#0F172A" />
+
+  <!-- Emblem Icon -->
+  <rect x="2" y="2" width="46" height="46" rx="14" fill="url(#pvBrandGrad)" />
+  <rect x="4" y="4" width="42" height="42" rx="12" fill="#0B1120" />
   
   <!-- Frame corners -->
-  <path d="M12 18V14a2 2 0 012-2h4M32 12h4a2 2 0 012 2v4M38 32v4a2 2 0 01-2 2h-4M18 38H14a2 2 0 01-2-2v-4" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+  <path d="M12 18V14a2 2 0 012-2h4M32 12h4a2 2 0 012 2v4M38 32v4a2 2 0 01-2 2h-4M18 38H14a2 2 0 01-2-2v-4" stroke="url(#pvCyanGrad)" stroke-width="2" stroke-linecap="round" />
   
   <!-- Silhouette -->
-  <circle cx="25" cy="22" r="5" stroke="#38BDF8" stroke-width="2" />
-  <path d="M16 35a9 9 0 0118 0" stroke="#38BDF8" stroke-width="2" stroke-linecap="round" />
+  <circle cx="25" cy="22" r="5" fill="#38BDF8" />
+  <path d="M17 35c0-4.5 3.5-7.5 8-7.5s8 3 8 7.5" fill="#38BDF8" fill-opacity="0.85" />
   
   <!-- Checkmark Badge -->
-  <circle cx="36" cy="15" r="5" fill="#10B981" />
-  <path d="M33.5 15l2 2 3.5-3.5" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="36" cy="14" r="6" fill="url(#pvGoldGrad)" />
+  <path d="M33.5 14l2 2 3.5-3.5" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
 
-  <!-- Text -->
-  <text x="60" y="34" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="26" fill="#0F172A">PixPass<tspan fill="url(#brandGrad)">Visa</tspan></text>
+  <!-- Typography -->
+  <text x="58" y="33" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="25" fill="#0F172A" letter-spacing="-0.5">PixPass<tspan fill="url(#pvGoldGrad)">Visa</tspan></text>
 </svg>

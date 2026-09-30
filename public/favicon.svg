@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="pvGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4338CA" />
+      <stop offset="60%" stop-color="#312E81" />
+      <stop offset="100%" stop-color="#1E1B4B" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBBF24" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8" />
+      <stop offset="100%" stop-color="#0284C7" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background Base -->
+  <rect width="64" height="64" rx="16" fill="url(#pvGrad)" />
+  <rect x="1" y="1" width="62" height="62" rx="15" stroke="url(#goldGrad)" stroke-width="2" stroke-opacity="0.4" />
+
+  <!-- Passport/Visa Document Frame -->
+  <rect x="13" y="11" width="38" height="42" rx="6" fill="#0F172A" stroke="#4F46E5" stroke-width="1.5" />
+
+  <!-- Biometric Photo Frame Corners -->
+  <path d="M19 22v-4a2 2 0 012-2h4 M39 16h4a2 2 0 012 2v4 M45 36v4a2 2 0 01-2 2h-4 M25 42h-4a2 2 0 01-2-2v-4" stroke="url(#cyanGrad)" stroke-width="2" stroke-linecap="round" />
+
+  <!-- Stylized Biometric Silhouette -->
+  <circle cx="32" cy="25" r="5.5" fill="#38BDF8" />
+  <path d="M22 41c0-5.5 4.5-9 10-9s10 3.5 10 9" fill="#38BDF8" fill-opacity="0.8" />
+
+  <!-- Verified Stamp (Gold Star & Checkmark) -->
+  <circle cx="45" cy="18" r="8" fill="url(#goldGrad)" filter="drop-shadow(0 2px 4px rgba(0,0,0,0.4))" />
+  <path d="M41.5 18l2.5 2.5 5-5" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- Subtle 'V' Accent at Bottom -->
+  <path d="M28 47l4 4 4-4" stroke="url(#goldGrad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

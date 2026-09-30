@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { getAllSlugs } from "../../lib/slug-utils";
 import { getRouteBySlug, createMetadata } from "../../lib/slug-router";
 import ProgrammaticLandingPage from "../components/ProgrammaticLandingPage";
@@ -102,6 +102,11 @@ export default async function Page({ params }: PageProps) {
 
   if (!route) {
     notFound();
+  }
+
+  // Enforce canonical URL: permanently redirect non-canonical alias slugs to canonical slug
+  if (route.type === "spec" && slug !== route.canonicalSlug) {
+    permanentRedirect(`/${route.canonicalSlug}`);
   }
 
   switch (route.type) {

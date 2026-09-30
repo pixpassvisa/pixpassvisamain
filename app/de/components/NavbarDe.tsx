@@ -43,13 +43,13 @@ export default function NavbarDe() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-[60px] lg:h-[66px]">
             <Link href="/de" className="flex items-center gap-2.5 shrink-0 group">
-              <div className="w-8 h-8 lg:w-9 lg:h-9 bg-blue-600 rounded-xl flex items-center justify-center shadow-sm shadow-blue-500/20/30 group-hover:bg-blue-700 group-hover:shadow-blue-500/20/40 transition-all duration-200">
+              <div className="w-8 h-8 lg:w-9 lg:h-9 bg-gradient-to-br from-indigo-600 to-amber-500 rounded-xl flex items-center justify-center shadow-sm shadow-indigo-500/30 group-hover:scale-105 transition-all duration-200">
                 <svg className="w-4 h-4 lg:w-5 lg:h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.8}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
                 </svg>
               </div>
-              <span className="text-lg lg:text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-blue-700 transition-colors duration-200">
-                PixPassVisa
+              <span className="text-lg lg:text-xl font-extrabold text-slate-900 tracking-tight group-hover:text-indigo-700 transition-colors duration-200">
+                PixPass<span className="text-amber-500 ml-0.5">Visa</span>
               </span>
             </Link>
 

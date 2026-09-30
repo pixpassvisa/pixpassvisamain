@@ -59,6 +59,15 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: [
+      { url: "/favicon.svg" },
+    ],
+  },
   openGraph: {
     title: "PixPassVisa | Global AI Passport & Visa Photo Maker",
     description:

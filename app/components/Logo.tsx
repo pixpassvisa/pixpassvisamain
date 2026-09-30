@@ -23,7 +23,7 @@ export default function Logo({ className = "", size = "md", variant = "dark" }: 
     <div className={`flex items-center gap-2.5 shrink-0 select-none ${className}`}>
       {/* Biometric Scan Emblem */}
       <div
-        className={`${iconSizes[size]} relative rounded-xl bg-gradient-to-br from-blue-600 via-indigo-600 to-cyan-500 p-0.5 shadow-md shadow-blue-600/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-105`}
+        className={`${iconSizes[size]} relative rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-amber-500 p-0.5 shadow-md shadow-indigo-600/25 flex items-center justify-center transition-transform duration-200 group-hover:scale-105`}
       >
         <div className="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center p-1.5 overflow-hidden relative">
           {/* Subtle grid background */}
@@ -50,7 +50,7 @@ export default function Logo({ className = "", size = "md", variant = "dark" }: 
               d="M7.5 18a4.5 4.5 0 019 0"
             />
             {/* AI verification check badge */}
-            <circle cx="18" cy="7" r="2.5" fill="#10B981" stroke="#0F172A" strokeWidth="1" />
+            <circle cx="18" cy="7" r="2.5" fill="#F59E0B" stroke="#0F172A" strokeWidth="1" />
             <path
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -69,7 +69,7 @@ export default function Logo({ className = "", size = "md", variant = "dark" }: 
         }`}
       >
         <span>PixPass</span>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-500 font-extrabold ml-0.5">
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 font-extrabold ml-1">
           Visa
         </span>
       </span>

@@ -7,9 +7,9 @@ import { Target, Zap, Lock, CreditCard, Globe, Printer, ShieldCheck, FileCheck, 
    Metadata
 ───────────────────────────────────────────── */
 export const metadata: Metadata = {
-  title: "Passbild Online Erstellen 2026 | Biometrisches Passfoto 35x45 mm",
+  title: "Passfoto & Visumfoto Online Erstellen 2026 | Offiziell & Geprüft | PixPassVisa",
   description:
-    "Passbild Deutschland online erstellen: biometrisches Passfoto nach BMI-Vorgabe (35×45 mm), automatische KI-Prüfung, Hintergrund entfernt, in 30 Sekunden fertig. Passfoto Generator ab 6.99 €.",
+    "Erstellen Sie offizielle Passfotos, Visumbilder und Bewerbungsfotos online für über 50 Länder. Automatische KI-Freistellung, BMI- & ICAO-Prüfung in 30 Sekunden ab 6.99 €.",
 
   alternates: {
     canonical: "https://www.pixpassvisa.com/de",

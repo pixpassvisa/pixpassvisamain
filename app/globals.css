@@ -5,17 +5,17 @@
 :root {
   --background: #ffffff;
   --foreground: #0f172a;
-  --primary: #2563eb;
-  /* High-Authority Electric Blue */
-  --primary-hover: #1d4ed8;
-  --primary-light: #eff6ff;
-  --primary-dark: #1e40af;
-  --accent: #06b6d4;
-  /* Biometric Cyan Accent */
+  --primary: #4338ca;
+  /* Royal Consular Indigo */
+  --primary-hover: #3730a3;
+  --primary-light: #eef2ff;
+  --primary-dark: #312e81;
+  --accent: #0ea5e9;
+  /* Biometric Sky Accent */
   --accent-gold: #f59e0b;
-  /* Premium Amber */
-  --success: #10b981;
-  /* Compliance Emerald */
+  /* Diplomatic Amber Gold */
+  --success: #059669;
+  /* Verified Compliance Emerald */
   --error: #ef4444;
   --border: #e2e8f0;
   --text-secondary: #64748b;
