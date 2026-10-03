@@ -47,7 +47,7 @@ const getCategories = (price: string) => [
 ];
 
 export default async function FAQPage() {
-  const priceRes = await getLocalPrice(6.99, undefined, false, true);
+  const priceRes = await getLocalPrice(7.99, undefined, false, true);
   const categories = getCategories(priceRes.formatted);
 
   return (

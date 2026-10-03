@@ -15,27 +15,27 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Passport & Visa Photo Tool — Free Validator & Maker",
+    title: "Passport & Visa Photo Maker — Preview Before Purchase",
     description:
-      "Free official-standard passport & visa photo tool. Create compliant biometric photos for 50+ countries including US, UK, India, and Schengen.",
+      "Prepare passport and visa photos for 50+ countries. Preview your photo, then purchase your digital download and print sheet at a fixed one-time price.",
     url: "https://www.pixpassvisa.com/passport-photo-online",
     siteName: "PixPassVisa",
     type: "website",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "PixPassVisa - Free Global Passport & Visa Photo Tool",
+        alt: "PixPassVisa - Passport & Visa Photo Maker",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Passport & Visa Photo Tool — Free Validator & Maker",
+    title: "Passport & Visa Photo Maker — Preview Before Purchase",
     description:
-      "Free professional passport & visa photo tool for 50+ countries. Instant biometric compliance check.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+      "Prepare passport and visa photos online. Preview before purchasing your digital photo and print sheet with a one-time payment.",
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
   robots: {
     index: true,

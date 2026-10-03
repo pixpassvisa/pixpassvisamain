@@ -25,13 +25,13 @@ export const metadata: Metadata = {
     title: "Photo d'Identité Conforme | PixPassVisa",
     description: "Photo d'identité conforme pour CNI, permis et carte Vitale. Fond gris clair, vérification biométrique IA.",
     url: "https://www.pixpassvisa.com/fr/photo-identite", siteName: "PixPassVisa", locale: "fr_FR", type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Photo d'Identité Officielle" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Photo d'Identité Officielle" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Photo d'Identité Conforme | PixPassVisa",
     description: "Photo d'identité conforme pour CNI, permis et carte Vitale. Fond gris clair, vérification biométrique IA.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

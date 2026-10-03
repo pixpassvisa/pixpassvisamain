@@ -20,13 +20,13 @@ const STATS = [
   { value: "100+", label: "Countries" },
   { value: "30+", label: "Compliance checks" },
   { value: "< 2 min", label: "Processing time" },
-  { value: "100%", label: "Compliance rate" },
+  { value: "Free", label: "Photo preview" },
 ];
 
 // ─── Shared trust badges ──────────────────────────────────────────────────────
 const TRUST_ITEMS = [
-  { icon: <ShieldCheck className="w-5 h-5 text-blue-600" />, title: "Privacy first", desc: "Photos never stored on our servers" },
-  { icon: <FileCheck className="w-5 h-5 text-blue-600" />, title: "ISO compliant", desc: "Meets ICAO 9303 biometric standards" },
+  { icon: <ShieldCheck className="w-5 h-5 text-blue-600" />, title: "Privacy first", desc: "Read our storage and deletion policy" },
+  { icon: <FileCheck className="w-5 h-5 text-blue-600" />, title: "Document guidance", desc: "Review your authority's photo rules" },
   { icon: <Zap className="w-5 h-5 text-blue-600" />, title: "Instant result", desc: "AI processing in under 10 seconds" },
   { icon: <Sparkles className="w-5 h-5 text-blue-600" />, title: "Free preview", desc: "Check before you pay anything" },
 ];
@@ -77,7 +77,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
       const title = isVisaUrl
         ? `${spec.country} Visa Photo Online (2026) | ${spec.width_mm}x${spec.height_mm}mm`
-        : `${spec.country} Passport Photo Maker (2026) | 100% Approved`;
+        : `${spec.country} Passport Photo Maker (2026) | Size & Photo Guide`;
 
       const description = `Create your ${spec.country} ${intentLabel.toLowerCase()} photo online in 2 mins. ${spec.width_mm}x${spec.height_mm}mm with automatic cropping and background checks.`;
 
@@ -192,21 +192,16 @@ export default async function Page({ params }: PageProps) {
         "@graph": [
           {
             "@type": "SoftwareApplication",
-            "name": `Official ${spec.country} ${spec.name} Photo Maker`,
+            "name": `${spec.country} ${spec.name} Photo Maker`,
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "All",
             "url": baseUrl,
-            "description": `Online biometric tool for ${spec.country} ${spec.name} requirements. Creates 100% compliant ${spec.width_mm}x${spec.height_mm}mm photos with AI face alignment.`,
+            "description": `Online biometric tool for ${spec.country} ${spec.name} requirements. Prepares ${spec.width_mm}x${spec.height_mm}mm photos with AI face alignment.`,
             "offers": {
               "@type": "Offer",
-              "price": "6.99",
+              "price": "7.99",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
-            },
-            "aggregateRating": {
-              "@type": "AggregateRating",
-              "ratingValue": "4.9",
-              "ratingCount": "145",
             },
           },
           {

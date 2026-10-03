@@ -1,0 +1,8 @@
+export const homeFaqs = [
+  { q: "Can I check my passport photo for free?", a: "Yes. The automated photo checker is free to use. Creating a downloadable processed photo and print sheet is a separate paid service. Preview your result and review the price before paying." },
+  { q: "Which passport photo size should I choose?", a: "Choose the country and the exact document you are applying for. Printed dimensions, digital pixel dimensions, and upload file limits are different requirements. Check the authority's instructions for your application before choosing a format." },
+  { q: "Does passing the checker guarantee acceptance?", a: "No. Automated checks help identify common problems, but they cannot certify a photo or guarantee acceptance. The issuing authority makes the final decision. pixpassvisa.com is an independent service, not a government agency." },
+  { q: "Can I use an AI-generated or digitally retouched face?", a: "No. Use a recent, genuine photograph of yourself without face filters or retouching. Some authorities also prohibit background replacement or other software alterations. Review the original photo and your authority's editing rules before submitting." },
+  { q: "Do I need an app or a subscription?", a: "The tools run in your browser on a phone or computer. Paid photo downloads use a one-time payment. Review the selected document, output, and local price in the preview before checkout." },
+  { q: "How are uploaded photos handled?", a: "Photo processing can involve our servers and storage providers. Read the privacy policy and data security page for storage, retention, and deletion details. Contact support if you need help with a photo or deletion request." },
+];

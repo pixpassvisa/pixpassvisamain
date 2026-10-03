@@ -1,4 +1,5 @@
 "use client";
+import PhotoPolicyNote from "@/app/components/PhotoPolicyNote";
 
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -27,9 +28,9 @@ const TIPS = [
 ];
 
 const TRUST = [
-  { icon: Lock, text: "Deleted after 24h" },
+  { icon: Lock, text: "Privacy policy available" },
   { icon: CheckCircle2, text: "30+ checks" },
-  { icon: Globe, text: "100+ countries" },
+  { icon: Globe, text: "Country-specific formats" },
 ];
 
 /* ─── Sub-components ─── */
@@ -653,6 +654,7 @@ export default function PassportMakerApp({
         </div>
       </section>
 
+<div className="max-w-6xl mx-auto px-4"><PhotoPolicyNote /></div>
       {/* ── Below hero: split country support / upload ── */}
       <section
         ref={uploadSectionRef}

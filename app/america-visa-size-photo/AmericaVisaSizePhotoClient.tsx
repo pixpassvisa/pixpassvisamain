@@ -113,7 +113,15 @@ function ImagePlaceholder({
       {badge}
       {src ? (
         <>
-          <img src={src} alt={label} className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" />
+          <img
+            src={src}
+            alt={label}
+            onError={(event) => {
+              event.currentTarget.onerror = null;
+              event.currentTarget.src = "/images/example-portrait.webp";
+            }}
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80" />
           <div className="relative z-10 p-3 sm:p-4 text-left w-full">
             <p className="text-sm font-semibold text-white leading-tight mb-1">{label}</p>

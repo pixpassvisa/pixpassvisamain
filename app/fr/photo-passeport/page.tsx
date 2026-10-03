@@ -26,13 +26,13 @@ export const metadata: Metadata = {
     description: "Photo passeport conforme aux normes ANTS 2026 avec vérification biométrique IA. Fond gris clair, 35×45mm.",
     url: "https://www.pixpassvisa.com/fr/photo-passeport",
     siteName: "PixPassVisa", locale: "fr_FR", type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Photo Passeport en Ligne" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Photo Passeport en Ligne" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Photo Passeport en Ligne | PixPassVisa",
     description: "Photo passeport conforme aux normes ANTS 2026 avec vérification biométrique IA. Fond gris clair, 35×45mm.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

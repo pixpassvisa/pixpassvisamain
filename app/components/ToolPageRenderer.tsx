@@ -175,7 +175,7 @@ export default function ToolPageRenderer({ html }: { html: string }) {
               Avoid Passport & Visa Photo Rejections
             </h3>
             <p className="text-slate-300 mb-8 max-w-xl mx-auto text-sm sm:text-base leading-relaxed relative z-10 font-normal">
-              Our automatic AI tool fixes background shadows, crops to exact millimeter specs (2x2" or 35x45mm), and guarantees 100% biometric compliance.
+              Our automatic tool prepares common crops and formats (such as 2x2&quot; or 35x45mm) for review. Compare the result with your issuing authority&apos;s current rules before submitting.
             </p>
             <Link
               href="/passport-photo-online"

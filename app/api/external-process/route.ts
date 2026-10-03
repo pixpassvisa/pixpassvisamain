@@ -101,9 +101,16 @@ export async function POST(req: NextRequest) {
     });
   } catch (error: any) {
     console.error("External Processing Error:", error);
+    const message = typeof error?.message === "string" ? error.message : "Processing failed";
+    const configurationError = message.includes("PASSPORT_API_URL") || message.includes("PASSPORT_API_KEY");
     return NextResponse.json(
-      { error: "Processing failed", details: error.message },
-      { status: 500 }
+      {
+        error: configurationError
+          ? "Photo processing is temporarily unavailable because the processing API is not configured."
+          : "Processing failed",
+        details: message,
+      },
+      { status: configurationError ? 503 : 500 }
     );
   }
 }

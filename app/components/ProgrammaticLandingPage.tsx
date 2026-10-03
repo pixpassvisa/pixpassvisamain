@@ -51,7 +51,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
   }
 
   return (
-    <main className="min-h-screen bg-white hcr">
+    <div className="min-h-screen bg-white hcr">
         <div className="h-1 bg-blue-700 w-full" />
 
       <Breadcrumbs 
@@ -60,6 +60,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
           { label: spec.country, href: `/${slug}` }
         ]} 
       />
+      <p className="max-w-7xl mx-auto px-6 py-3 text-xs text-slate-600">Independent preparation tool. Automated checks do not guarantee acceptance. Follow your issuing authority’s rules on photo capture and editing. Images below are illustrative.</p>
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-10 pb-16 lg:pt-10 lg:pb-24 ">
         
@@ -88,7 +89,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-7 max-w-lg">
-                Create a 100% compliant {docName} photo in seconds. Our biometric checks ensure the correct {spec.width_mm}x{spec.height_mm}mm size, background color, and biometric alignment for {countryName}.
+                Prepare your {docName} photo and review the {spec.width_mm}x{spec.height_mm}mm size, background color, and biometric alignment for {countryName}.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
@@ -126,11 +127,12 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
             <div className="w-full lg:w-auto flex flex-col items-center gap-3">
           
               <Image
-                src={spec.hero_photo || "/us_non_imigrant.png"}
-                alt={`Official ${countryName} ${docName} photo compliance example`}
-                width={400}
-                height={400}
-                className="rounded-2xl w-full h-auto shadow-inner"
+                src="/images/example-portrait.webp"
+                alt="AI-generated illustrative portrait, not an accepted application photo"
+                width={640}
+                height={800}
+                sizes="(max-width: 768px) 90vw, 400px"
+                className="rounded-2xl w-full max-w-sm h-auto shadow-inner"
                 priority
               />
               <div className="absolute inset-0 border-2 border-white/60 rounded-3xl pointer-events-none mix-blend-overlay"></div>
@@ -244,6 +246,6 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
           </span>
         </Link>
       </div>
-    </main>
+    </div>
   );
 }

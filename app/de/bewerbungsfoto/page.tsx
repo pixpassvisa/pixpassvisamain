@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Bewerbungsfoto Online Erstellen - PixPassVisa",

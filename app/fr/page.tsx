@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "PixPassVisa — Photo passeport biométrique en ligne",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Photo Passeport, Visa & Carte d'Identité en Ligne | PixPassVisa",
     description:
       "Créez votre photo passeport, visa ou carte d'identité conforme en 30 secondes. Vérification biométrique IA.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 
@@ -167,7 +167,6 @@ const jsonLd = {
       operatingSystem: "All",
       inLanguage: "fr",
       offers: { "@type": "Offer", price: "6.99", priceCurrency: "EUR" },
-      aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", ratingCount: "170" },
     },
     {
       "@type": "FAQPage",

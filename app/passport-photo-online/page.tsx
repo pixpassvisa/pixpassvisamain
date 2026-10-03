@@ -1,4 +1,5 @@
 "use client";
+import PhotoPolicyNote from "@/app/components/PhotoPolicyNote";
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { Suspense, useState, useEffect, useCallback, useRef } from "react";
@@ -291,6 +292,7 @@ function ToolForm() {
             )}
           </div>
         
+<div className="max-w-6xl mx-auto px-4"><PhotoPolicyNote /></div>
           {/* Initial State: Upload Area */}
           {!selectedFile && (
             <UploadArea

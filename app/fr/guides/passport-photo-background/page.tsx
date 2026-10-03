@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fond Photo Passeport : Règles et Astuces | PixPassVisa",
     description: "Apprenez les règles d'arrière-plan pour les photos passeport.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

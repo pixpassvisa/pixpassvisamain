@@ -4,7 +4,7 @@ import Photo from "@/models/Photo";
 import PreviewClientDe from "./PreviewClientDe";
 import { getLocalPrice } from "@/lib/currency";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 
 export default async function DePreviewPage(props: { params: Promise<{ id: string }> }) {
   const params = await props.params;
@@ -27,8 +27,8 @@ export default async function DePreviewPage(props: { params: Promise<{ id: strin
     redirect("/dashboard");
   }
 
-  const localPrice = await getLocalPrice(6.99);
-  const expertPrice = await getLocalPrice(9.99, undefined, true);
+  const localPrice = await getLocalPrice(7.99);
+  const expertPrice = await getLocalPrice(13.99, undefined, true);
 
   return (
     <PreviewClientDe

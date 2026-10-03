@@ -42,13 +42,13 @@ export const metadata: Metadata = {
     url: "https://www.pixpassvisa.com/fr/guides/photo-identite-france-passeport-cni-ephoto-permis-visa",
     locale: "fr_FR",
     type: "article",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Photo d'Identité France 2026" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Photo d'Identité France 2026" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Photo d'Identité France 2026 | PixPassVisa",
     description: "Guide pour la photo passeport en ligne, la photo CNI en ligne et l'ePhoto ANTS en France.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

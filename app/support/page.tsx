@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     siteName: "PixPassVisa",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "PixPassVisa Support & Resource Center",

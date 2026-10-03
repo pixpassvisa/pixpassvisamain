@@ -25,13 +25,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Photo Carte d'Identité en Ligne | PixPassVisa", description: "Photo CNI conforme aux normes françaises.",
     url: "https://www.pixpassvisa.com/fr/photo-carte-identite", siteName: "PixPassVisa", locale: "fr_FR", type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Photo Carte d'Identité en Ligne" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Photo Carte d'Identité en Ligne" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Photo Carte d'Identité en Ligne | PixPassVisa",
     description: "Photo CNI conforme aux normes françaises. Vérification biométrique IA.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

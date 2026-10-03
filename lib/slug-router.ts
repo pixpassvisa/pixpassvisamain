@@ -87,7 +87,7 @@ export function createMetadata({
   keywords,
   openGraph,
 }: MetadataOptions): Metadata {
-  const defaultImage = "https://www.pixpassvisa.com/og-image.jpg";
+  const defaultImage = "https://www.pixpassvisa.com/opengraph-image";
   return {
     title: { absolute: title },
     description,

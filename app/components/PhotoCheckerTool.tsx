@@ -388,7 +388,7 @@ export default function PhotoCheckerTool({
   });
 
   const selectedDocId = matchedDoc?.id || (selectedCountry === "AU" ? "australia-passport" : selectedCountry === "GB" ? "uk-passport" : (selectedCountry === "CHE" || selectedCountry === "CH") ? "switzerland-passport" : (selectedCountry === "NI") ? "nigeria-passport" : "us-passport");
-  const selectedDocPrice = matchedDoc?.price || 6.99;
+  const selectedDocPrice = matchedDoc?.price || 7.99;
 
   return (
     <div className="bg-slate-50/50 min-h-screen">

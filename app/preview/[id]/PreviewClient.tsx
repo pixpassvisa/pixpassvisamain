@@ -361,7 +361,7 @@ function OrderPanel({
                     </div>
                     <div className="text-right">
                       <p className="text-2xl font-black text-slate-900">
-                        {expertPrice?.formatted || "₹599"}
+                        {expertPrice?.formatted || "₹699"}
                       </p>
                     </div>
                   </div>
@@ -850,7 +850,7 @@ const ExpertsFixModal = memo(function ExpertsFixModal({
                 Premium Pack
               </span>
               <span className="text-base sm:text-xl font-black text-slate-900 leading-tight">
-                {expertPrice || "₹599"}
+                {expertPrice || "₹699"}
               </span>
             </div>
 

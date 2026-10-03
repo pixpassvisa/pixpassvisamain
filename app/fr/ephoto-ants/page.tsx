@@ -56,14 +56,14 @@ export const metadata: Metadata = {
     siteName: "PixPassVisa",
     locale: "fr_FR",
     type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "ePhoto ANTS en Ligne" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "ePhoto ANTS en Ligne" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "ePhoto ANTS en Ligne | PixPassVisa",
     description:
       "Créez votre ePhoto ANTS conforme en 30s. Photo biométrique pour passeport, CNI et permis.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

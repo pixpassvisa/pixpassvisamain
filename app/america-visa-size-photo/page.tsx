@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "America Visa Size Photo Maker – Free 2x2 Online Tool",
+    title: "US Visa Photo 2x2 Online | PixPassVisa",
     description:
       "Create a compliant 2x2 inch America visa photo online. Perfect for DS-160, US visa, and passport applications.",
     type: "website",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/us-hero.webp",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "America Visa Size Photo Maker",
@@ -38,11 +38,11 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "America Visa Size Photo Maker – Free 2x2 Online Tool",
+    title: "US Visa Photo 2x2 Online | PixPassVisa",
     description:
       "Generate a compliant 2x2 inch America visa photo online in seconds.",
     images: [
-      "https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/us-hero.webp",
+      "https://www.pixpassvisa.com/opengraph-image",
     ],
   },
 };
@@ -60,7 +60,7 @@ export default function AmericaVisaSizePhotoPage() {
       operatingSystem: "All",
       offers: {
         "@type": "Offer",
-        price: "6.99",
+        price: "7.99",
         priceCurrency: "USD",
       },
     },

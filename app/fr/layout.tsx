@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     description: "Créez des photos biométriques conformes pour plus de 50 pays. Normes officielles pour la France, les États-Unis, le Royaume-Uni et plus.",
     url: "https://www.pixpassvisa.com/fr",
     siteName: "PixPassVisa",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "PixPassVisa - Photo Passeport en Ligne" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "PixPassVisa - Photo Passeport en Ligne" }],
     locale: "fr_FR",
     type: "website",
   },
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PixPassVisa | Photo Passeport & Visa en Ligne",
     description: "Photos passeport et visa professionnelles pour plus de 50 pays. Conformité biométrique garantie.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

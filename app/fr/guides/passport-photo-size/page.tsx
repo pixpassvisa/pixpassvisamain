@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Taille Photo Passeport — Dimensions par Pays | PixPassVisa",
     description: "Dimensions exactes pour les photos passeport dans chaque pays.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

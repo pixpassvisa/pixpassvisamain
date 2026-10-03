@@ -35,6 +35,7 @@ export default function MasterDirectory({ title, subtitle, specs, type }: Master
         <div className="mt-10 max-w-xl mx-auto relative">
           <input
             type="text"
+            aria-label="Search countries"
             placeholder="Search country (e.g. India, UK, USA)..."
             className="w-full px-6 py-4 rounded-2xl bg-white border border-slate-200 shadow-sm focus:ring-4 focus:ring-blue-100 focus:border-blue-500 outline-none transition-all pr-12 text-slate-900 font-medium"
             value={search}
@@ -51,7 +52,7 @@ export default function MasterDirectory({ title, subtitle, specs, type }: Master
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredSpecs.map((spec) => {
           // Dual-Coverage: Generate the slug based on the directory type (passport or visa)
-          const countryBase = spec.country.toLowerCase().replace(/\s+/g, "-");
+          const countryBase = spec.country.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
           const normalizedBase = getShortId(countryBase);
           
           const href = `/${normalizedBase}-${type}-photo-editor`;

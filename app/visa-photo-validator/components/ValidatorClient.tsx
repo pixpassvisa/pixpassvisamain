@@ -344,7 +344,7 @@ export default function ValidatorClient() {
                       const slug = d.id.replace(/-passport$/, "").replace(/-visa$/, "");
                       const code = countryMapping[slug] || slug.toUpperCase();
                       return code === selectedCountry;
-                    }))?.price || 6.99
+                    }))?.price || 7.99
                   }
                 />
               ) : (

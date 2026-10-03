@@ -1,0 +1,319 @@
+{
+  "period": [
+    "2026-09-11",
+    "2026-09-29"
+  ],
+  "clicks": 5.0,
+  "impressions": 798.0,
+  "ctr": 0.006265664160401002,
+  "approx_impression_weighted_position": 47.91190476190476,
+  "query_rows": 319,
+  "query_impressions": 514.0,
+  "page_rows": 56,
+  "pages_by_impressions": [
+    [
+      "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
+      0.0,
+      90.0,
+      0.0,
+      75.96
+    ],
+    [
+      "https://www.pixpassvisa.com/de/guides/biometrisches-passbild-alle-anforderungen",
+      1.0,
+      70.0,
+      0.0143,
+      50.19
+    ],
+    [
+      "https://www.pixpassvisa.com/de/guides/biometrisches-passfoto-anforderungen-deutschland",
+      0.0,
+      59.0,
+      0.0,
+      69.37
+    ],
+    [
+      "https://www.pixpassvisa.com/uk/photo-for-driving-license-uk",
+      0.0,
+      38.0,
+      0.0,
+      57.24
+    ],
+    [
+      "https://www.pixpassvisa.com/us-visa-photo-editor",
+      0.0,
+      37.0,
+      0.0,
+      59.14
+    ],
+    [
+      "https://www.pixpassvisa.com/de",
+      0.0,
+      32.0,
+      0.0,
+      84.53
+    ],
+    [
+      "https://www.pixpassvisa.com/icao-visa-photo-editor",
+      0.0,
+      31.0,
+      0.0,
+      18.45
+    ],
+    [
+      "https://www.pixpassvisa.com/de/guides",
+      0.0,
+      29.0,
+      0.0,
+      81.52
+    ],
+    [
+      "https://www.pixpassvisa.com/passport-photo-print-template-generator",
+      0.0,
+      28.0,
+      0.0,
+      51.79
+    ],
+    [
+      "https://www.pixpassvisa.com/de/fuehrerschein-foto",
+      0.0,
+      27.0,
+      0.0,
+      31.52
+    ],
+    [
+      "https://www.pixpassvisa.com/blog/uk-digital-passport-photo",
+      0.0,
+      26.0,
+      0.0,
+      71.96
+    ],
+    [
+      "https://www.pixpassvisa.com/blog/uk-visa-photo-requirements",
+      0.0,
+      23.0,
+      0.0,
+      8.3
+    ],
+    [
+      "https://www.pixpassvisa.com/diversity-visa-lottery-photo-checker",
+      0.0,
+      22.0,
+      0.0,
+      39.36
+    ],
+    [
+      "https://www.pixpassvisa.com/fr/guides/photo-identite-france-passeport-cni-ephoto-permis-visa",
+      0.0,
+      20.0,
+      0.0,
+      57.75
+    ],
+    [
+      "https://www.pixpassvisa.com/fr/photo-passeport-biometrique",
+      0.0,
+      18.0,
+      0.0,
+      18.44
+    ]
+  ],
+  "opportunity_queries": [
+    [
+      "icao standards photo",
+      0.0,
+      6.0,
+      0.0,
+      17.67
+    ],
+    [
+      "icao standards photo online free",
+      0.0,
+      5.0,
+      0.0,
+      6.6
+    ],
+    [
+      "biometrisches passbild führerschein",
+      0.0,
+      5.0,
+      0.0,
+      19.0
+    ],
+    [
+      "bno passport",
+      0.0,
+      4.0,
+      0.0,
+      15.75
+    ],
+    [
+      "taille passeport français cm",
+      0.0,
+      3.0,
+      0.0,
+      18.33
+    ],
+    [
+      "foto für führerschein",
+      0.0,
+      2.0,
+      0.0,
+      4.5
+    ],
+    [
+      "icao photo check",
+      0.0,
+      2.0,
+      0.0,
+      5.0
+    ],
+    [
+      "icao standards photo checker",
+      0.0,
+      2.0,
+      0.0,
+      6.0
+    ],
+    [
+      "uk driving license photo requirements",
+      0.0,
+      2.0,
+      0.0,
+      6.5
+    ],
+    [
+      "fond photo passeport francais",
+      0.0,
+      2.0,
+      0.0,
+      9.0
+    ],
+    [
+      "uk passport size photo",
+      0.0,
+      2.0,
+      0.0,
+      9.0
+    ],
+    [
+      "schengen visa photo size in cm",
+      0.0,
+      2.0,
+      0.0,
+      12.0
+    ],
+    [
+      "icao standard photo",
+      0.0,
+      2.0,
+      0.0,
+      20.0
+    ],
+    [
+      "schengen visa photo specification",
+      0.0,
+      1.0,
+      0.0,
+      5.0
+    ],
+    [
+      "uk drivers licence photo requirements",
+      0.0,
+      1.0,
+      0.0,
+      5.0
+    ],
+    [
+      "was sind die anforderungen für passfotos?",
+      0.0,
+      1.0,
+      0.0,
+      5.0
+    ],
+    [
+      "photo passeport biométrique",
+      0.0,
+      1.0,
+      0.0,
+      7.0
+    ],
+    [
+      "dimension passport",
+      0.0,
+      1.0,
+      0.0,
+      9.0
+    ],
+    [
+      "photo aux normes oaci",
+      0.0,
+      1.0,
+      0.0,
+      11.0
+    ],
+    [
+      "schülerausweis bild vorgaben",
+      0.0,
+      1.0,
+      0.0,
+      11.0
+    ],
+    [
+      "dv-2027",
+      0.0,
+      1.0,
+      0.0,
+      14.0
+    ],
+    [
+      "icao passport photo size",
+      0.0,
+      1.0,
+      0.0,
+      14.0
+    ],
+    [
+      "icao standard photograph",
+      0.0,
+      1.0,
+      0.0,
+      15.0
+    ],
+    [
+      "biometrisches bild führerschein",
+      0.0,
+      1.0,
+      0.0,
+      16.0
+    ]
+  ],
+  "devices": [
+    [
+      "Mobile",
+      3.0,
+      295.0,
+      0.0102,
+      40.5
+    ],
+    [
+      "Desktop",
+      2.0,
+      501.0,
+      0.004,
+      52.43
+    ],
+    [
+      "Tablet",
+      0.0,
+      2.0,
+      0.0,
+      8.0
+    ]
+  ],
+  "separate_csv": {
+    "rows": 12,
+    "impressions": 19,
+    "clicks": 1,
+    "note": "No date range or search engine field in supplied file; do not combine totals with the Search Console workbook."
+  }
+}

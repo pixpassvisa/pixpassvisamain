@@ -15,13 +15,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Créer votre Photo — PixPassVisa", description: "Outil de création de photos passeport et visa conformes.",
     url: "https://www.pixpassvisa.com/fr/passport-photo-online", siteName: "PixPassVisa", locale: "fr_FR", type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Créer votre Photo en Ligne" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Créer votre Photo en Ligne" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Créer votre Photo Passeport & Visa | PixPassVisa",
     description: "Outil de création de photos passeport et visa conformes en 30 secondes.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

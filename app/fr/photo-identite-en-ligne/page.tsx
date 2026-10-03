@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Photo d'Identité en Ligne",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     title: "Photo d'Identité en Ligne | PixPassVisa",
     description:
       "Faites votre photo d'identité en ligne : fond conforme, recadrage biométrique IA, formats adaptés à chaque pays.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

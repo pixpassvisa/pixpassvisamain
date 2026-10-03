@@ -81,7 +81,7 @@ export async function POST(req: Request) {
               guestEmail: userEmail || paymentEntity.email || "customer@pixpassvisa.com",
               documentType: photo.documentType,
               isExpert: Boolean(photo.isExpert),
-              amount: paymentEntity.amount ? paymentEntity.amount / 100 : (photo.isExpert ? 9.99 : 6.99),
+              amount: paymentEntity.amount ? paymentEntity.amount / 100 : (photo.isExpert ? 13.99 : 7.99),
               currency: paymentEntity.currency || "USD",
               status: "paid",
               photoId: photo._id,
@@ -302,7 +302,7 @@ export async function POST(req: Request) {
               guestEmail: customerEmail,
               documentType: "expert-photo-edit",
               isExpert: true,
-              amount: paymentEntity.amount ? paymentEntity.amount / 100 : 9.99,
+              amount: paymentEntity.amount ? paymentEntity.amount / 100 : 13.99,
               currency: paymentEntity.currency || "USD",
               status: "paid",
               metadata: {

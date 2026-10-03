@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "PixPassVisa — Passbild Online erstellen nach BMI-Vorgabe",
@@ -242,11 +242,6 @@ const jsonLd = {
         price: "6.99",
         priceCurrency: "EUR",
         priceValidUntil: "2027-12-31",
-      },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        ratingCount: "170",
       },
     },
     {

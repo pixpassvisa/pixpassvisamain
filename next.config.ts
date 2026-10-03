@@ -38,8 +38,8 @@ const nextConfig: NextConfig = {
         source: "/(.*)",
         headers: [
           {
-            key: "Vary",
-            value: "Accept",
+            key: "X-Content-Type-Options",
+            value: "nosniff",
           },
           {
             key: "Content-Signal",
@@ -60,6 +60,8 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/de/ratgeber", destination: "/de/guides", permanent: true },
+      { source: "/de/ratgeber/:slug", destination: "/de/guides/:slug", permanent: true },
       // Checker subpath redirects to canonical routes
       {
         source: "/visa-photo-validator/australian-passport-photo-checker",
@@ -129,7 +131,7 @@ const nextConfig: NextConfig = {
       // Legacy American photo pages -> /us-passport-photo-editor
       {
         source: "/photo-for-american-visa",
-        destination: "/us-passport-photo-editor",
+        destination: "/us-visa-photo-editor",
         permanent: true,
       },
       {

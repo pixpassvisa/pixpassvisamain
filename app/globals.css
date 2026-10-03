@@ -740,3 +740,10 @@ body {
   .rich-content th, .rich-content td { padding: 0.5rem 0.75rem; }
   .rich-content table { font-size: 0.8rem; }
 }
+/* Shared application palette; semantic warning and error colors remain distinct. */
+@theme {
+  --color-blue-50:#f1f6e9; --color-blue-100:#e2edcf; --color-blue-200:#cfddb5;
+  --color-blue-300:#acc68b; --color-blue-400:#88a760; --color-blue-500:#678841;
+  --color-blue-600:#466832; --color-blue-700:#355127; --color-blue-800:#29411f; --color-blue-900:#1e3019;
+  --color-indigo-50:#f1f6e9; --color-indigo-100:#e2edcf; --color-indigo-600:#355127; --color-indigo-700:#29411f;
+}

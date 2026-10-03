@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/mongodb";
 import Photo from "@/models/Photo";
 import Order from "@/models/Order";
@@ -131,7 +131,7 @@ export async function POST(req: Request) {
         guestEmail: userEmail || "customer@pixpassvisa.com",
         documentType: photo.documentType,
         isExpert: Boolean(photo.isExpert),
-        amount: photo.isExpert ? 9.99 : 6.99,
+        amount: photo.isExpert ? 13.99 : 7.99,
         currency: "USD",
         status: "paid",
         photoId: photo._id,

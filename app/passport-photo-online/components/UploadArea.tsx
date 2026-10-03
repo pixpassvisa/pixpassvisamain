@@ -16,21 +16,21 @@ const translations = {
     title: "Upload Photo for Validation",
     subtitle: "Drag and drop or click to browse files",
     buttonText: "Select Image",
-    privacy: "Privacy Secure: Images are processed locally and never stored.",
+    privacy: "Photo processing uses our servers. See the privacy policy for storage and deletion details.",
   },
   fr: {
     showGuide: "Voir des exemples de photos haute qualité",
     title: "Télécharger une photo pour validation",
     subtitle: "Glissez-déposez ou cliquez pour parcourir les fichiers",
     buttonText: "Sélectionner une image",
-    privacy: "Confidentialité sécurisée : les images sont traitées localement et ne sont jamais stockées.",
+    privacy: "Le traitement utilise nos serveurs. Consultez notre politique de confidentialité.",
   },
   de: {
     showGuide: "Hochwertige Beispielfotos anzeigen",
     title: "Foto zur Überprüfung hochladen",
     subtitle: "Ziehen und ablegen oder klicken, um Dateien zu durchsuchen",
     buttonText: "Bild auswählen",
-    privacy: "Datenschutz sicher: Bilder werden lokal verarbeitet und niemals gespeichert.",
+    privacy: "Die Verarbeitung nutzt unsere Server. Details finden Sie in der Datenschutzerklärung.",
   }
 };
 
@@ -75,6 +75,7 @@ const UploadArea: React.FC<UploadAreaProps> = ({
       <div className="relative flex flex-col items-center justify-center border-2 border-dashed border-slate-200 rounded-2xl bg-white/60 hover:bg-white hover:border-blue-400 transition-all duration-300 group cursor-pointer py-6">
         <input
           id="tool-photo-input"
+          aria-label={t.buttonText}
           type="file"
           accept="image/jpeg, image/png, image/heic"
           onChange={onFileChange}

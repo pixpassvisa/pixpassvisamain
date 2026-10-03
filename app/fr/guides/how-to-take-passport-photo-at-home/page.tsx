@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Comment Prendre une Photo Passeport à la Maison | PixPassVisa",
     description: "Guide étape par étape pour prendre une photo passeport avec votre téléphone.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 

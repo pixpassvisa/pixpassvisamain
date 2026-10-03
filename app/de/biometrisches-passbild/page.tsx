@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     locale: "de_DE",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Biometrisches Passbild online erstellen - PixPassVisa",

@@ -9,12 +9,13 @@ export default function BeforeAfter() {
 
   return (
     <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-      <div className="text-center mb-10">
+      <div className="text-center mb-8 max-w-2xl">
+        <p className="studio-eyebrow justify-center">BEFORE &amp; AFTER PREVIEW</p>
         <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          Studio Quality Results Instantly
+          See the crop before you download
         </h2>
-        <p className="mt-4 text-xl text-slate-500">
-          Our system transforms everyday photos into perfect, compliant passport photos.
+        <p className="mt-4 text-base sm:text-lg text-slate-500">
+          Inspect the framing, background, and head position with the slider. Use a genuine photo and confirm the final requirements with your application authority.
         </p>
       </div>
 
@@ -23,12 +24,12 @@ export default function BeforeAfter() {
         <div className="absolute inset-0">
           <Image
             src="/images/after-edit-600.png"
-            alt="Perfect passport photo with white background"
+            alt="Prepared passport photo preview on a plain background"
             fill
             className="object-contain bg-white"
           />
-          <div className="absolute bottom-4 right-4 bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(37,99,235,0.3)] z-0">
-            Compliant Photo Edit
+            <div className="absolute bottom-4 right-4 bg-emerald-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(4,120,87,0.3)] z-0">
+            Prepared Preview
           </div>
         </div>
 
@@ -43,8 +44,8 @@ export default function BeforeAfter() {
             fill
             className="object-cover filter blur-[2px] opacity-90 transition-all duration-300 group-hover:blur-none group-hover:opacity-100"
           />
-          <div className="absolute top-4 left-4 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(0,0,0,0.3)] z-0">
-            Original Selfie
+            <div className="absolute top-4 left-4 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(0,0,0,0.3)] z-0">
+            Original Photo
           </div>
         </div>
 

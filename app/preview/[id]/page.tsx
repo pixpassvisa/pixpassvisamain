@@ -4,7 +4,7 @@ import Photo from "@/models/Photo";
 import PreviewClient from "./PreviewClient";
 import { getLocalPrice } from "@/lib/currency";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 
 export default async function PreviewPage(props: { params: Promise<{ id: string }>, searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const params = await props.params;
@@ -25,8 +25,8 @@ export default async function PreviewPage(props: { params: Promise<{ id: string 
   const session = await getServerSession(authOptions);
   const isPaid = photoRecord.status === "paid";
 
-  const localPrice = await getLocalPrice(6.99);
-  const expertPrice = await getLocalPrice(9.99, undefined, true);
+  const localPrice = await getLocalPrice(7.99);
+  const expertPrice = await getLocalPrice(13.99, undefined, true);
   const downloadToken = photoRecord.downloadToken || (searchParams.token as string) || "";
 
   return (

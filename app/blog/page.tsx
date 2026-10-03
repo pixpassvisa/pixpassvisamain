@@ -1,42 +1,8 @@
+import { getBlogPosts } from "@/lib/blog-posts";
 import Link from 'next/link';
 import Image from 'next/image';
 import { Camera, CheckCircle2, FileCheck, Globe, Zap } from 'lucide-react';
-import connectToDatabase from '@/lib/mongodb';
-import BlogModel from '@/models/Blog';
-import fs from 'fs';
-import path from 'path';
-
-// Define the Blog Post type
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  content: string;
-  featuredImage?: string;
-}
-
-// Helper function to read the blog posts directly from DB with fallback to JSON
-export async function getBlogPosts(): Promise<BlogPost[]> {
-  try {
-    await connectToDatabase();
-    const posts = await BlogModel.find({ isPublished: true }).sort({ date: -1 }).lean() as BlogPost[];
-    if (posts && posts.length > 0) return JSON.parse(JSON.stringify(posts)) as BlogPost[];
-  } catch (error) {
-    console.error("Error reading blog posts from DB:", error);
-  }
-
-  const filePath = path.join(process.cwd(), 'data', 'blog-posts.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const posts = JSON.parse(fileContents) as BlogPost[];
-    return posts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  } catch (error) {
-    console.error("Error reading blog posts:", error);
-    return [];
-  }
-}
+import { getBlogImage } from '@/lib/blog-seo';
 
 // Helper to compute reading time dynamically from word count
 function getReadingTime(content: string): string {
@@ -64,7 +30,7 @@ export const revalidate = 3600;
 export const metadata = {
   title: 'Passport & Visa Photo Requirements Blog | Expert Guides 2026',
   description: 'Expert advice on global passport, visa, and ID photo requirements. Get 2026 compliance guidelines, biometric tips, and step-by-step guides for 50+ countries including US, UK, India, and Schengen.',
-  keywords: ['passport photo requirements', 'visa photo guide', 'biometric photo tips', 'passport photo compliance', 'global visa photo requirements', 'UK passport photo', 'India passport photo', 'Schengen visa photo'],
+  keywords: ['passport photo requirements', 'visa photo guide', 'US visa photo size', 'DS-160 photo requirements', 'UK digital passport photo', 'Schengen visa photo size', 'Australia visa photo size', 'India e-Visa photo requirements', 'passport photo checker'],
   alternates: {
     canonical: `${APP_URL}/blog`,
     languages: {
@@ -189,9 +155,9 @@ export default async function BlogIndex() {
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
                   <div className="lg:col-span-5 aspect-[16/9] lg:aspect-auto relative min-h-[180px] sm:min-h-[220px] overflow-hidden bg-slate-900 flex items-center justify-center">
-                    {featuredPost.featuredImage ? (
+                    {getBlogImage(featuredPost) ? (
                       <Image
-                        src={featuredPost.featuredImage}
+                        src={getBlogImage(featuredPost)!}
                         alt={featuredPost.title}
                         fill
                         priority
@@ -276,9 +242,9 @@ export default async function BlogIndex() {
                     className="flex flex-col h-full bg-white rounded-xl overflow-hidden border border-slate-200/90 shadow-xs hover:shadow-md transition-all duration-300 hover:-translate-y-1"
                   >
                     <div className="aspect-[16/9] relative overflow-hidden bg-slate-900 border-b border-slate-100 flex items-center justify-center">
-                      {post.featuredImage ? (
+                    {getBlogImage(post) ? (
                         <Image
-                          src={post.featuredImage}
+                        src={getBlogImage(post)!}
                           alt={post.title}
                           fill
                           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -343,7 +309,7 @@ export default async function BlogIndex() {
                 Need a Compliant Passport or Visa Photo?
               </h2>
               <p className="text-slate-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                Upload your selfie. Our AI crops to exact millimeter size, removes background shadows, and guarantees 100% acceptance.
+                Upload a genuine photo. PixPassVisa prepares the crop and format for review; the issuing authority makes the final acceptance decision.
               </p>
               <Link
                 href="/passport-photo-online"

@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/auth";
 import Razorpay from "razorpay";
 import dbConnect from "@/lib/mongodb";
 import Photo from "@/models/Photo";
@@ -44,7 +44,7 @@ export async function POST(req: Request) {
 
     const { getSpecById } = await import("@/lib/specs");
     const spec = getSpecById(photo.documentType);
-    const basePrice = isExpert ? 9.99 : (spec?.price || 6.99);
+    const basePrice = isExpert ? 13.99 : (spec?.price || 7.99);
 
     // Get localized price (Allows validated client override for currency)
     const { getLocalPrice } = await import("@/lib/currency");

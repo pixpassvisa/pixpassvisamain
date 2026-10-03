@@ -1,5 +1,5 @@
-const EXTERNAL_API_BASE_URL = process.env.PASSPORT_API_URL;
-const EXTERNAL_API_KEY = process.env.PASSPORT_API_KEY;
+const EXTERNAL_API_BASE_URL = process.env.PASSPORT_API_URL?.trim().replace(/\/$/, "");
+const EXTERNAL_API_KEY = process.env.PASSPORT_API_KEY?.trim();
 
 export interface ExternalCountry {
   country_code: string;
@@ -149,9 +149,9 @@ export async function processExternalPhoto(
   documentType: string = "passport",
   extraFields: Record<string, string> = {}
 ): Promise<ExternalProcessResponse> {
-  if (!EXTERNAL_API_BASE_URL) {
+  if (!EXTERNAL_API_BASE_URL || !EXTERNAL_API_KEY) {
     throw new Error(
-      "External API URL is not configured. Set the PASSPORT_API_URL environment variable. "
+      "External photo API is not configured. Set PASSPORT_API_URL and PASSPORT_API_KEY environment variables."
     );
   }
 
@@ -170,9 +170,7 @@ export async function processExternalPhoto(
   const headers: Record<string, string> = {
     accept: "application/json",
   };
-  if (EXTERNAL_API_KEY) {
-    headers["X-API-Key"] = EXTERNAL_API_KEY;
-  }
+  headers["X-API-Key"] = EXTERNAL_API_KEY;
 
   const response = await fetch(`${EXTERNAL_API_BASE_URL}/process`, {
     method: "POST",

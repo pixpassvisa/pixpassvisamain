@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default async function TermsPage() {
   // Use skipHeaders: true to keep the page static
-  const localPrice = await getLocalPrice(6.99, undefined, false, true);
+  const localPrice = await getLocalPrice(7.99, undefined, false, true);
 
   return (
     <div className="bg-white">

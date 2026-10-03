@@ -6,8 +6,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "UK Passport size photo maker & uk id Photo Maker",
-  description: "Create UK passport, visa, and ID photos online. 100% compliant for HMPO, Driving Licences, Railcards, and more in under a minute.",
+  title: "UK Passport Photo Size: Digital & Printed Photo Guide",
+  description: "Compare UK document photo formats, preview your crop, and check your photo. Digital passport applications need an unaltered original; follow HMPO guidance.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
     languages: {
@@ -16,11 +16,11 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    apple: "/apple-touch-icon.png",
+    apple: "/favicon.svg",
   },
   openGraph: {
     title: "UK Passport & Document Photo Maker | PixPassVisa",
-    description: "Create UK passport, visa, and ID photos online. 100% compliant for HMPO, Driving Licences, Railcards, and more.",
+    description: "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
     url: "/uk-passport-size-photo-maker",
     siteName: "PixPassVisa",
     locale: "en_GB",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "UK Passport & Document Photo Maker | PixPassVisa",
-    description: "Create UK passport, visa, and ID photos online. 100% compliant for HMPO, Driving Licences, Railcards, and more.",
+    description: "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
     images: ["https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/uk-hero_m4cc8l.webp"],
   },
 };
@@ -49,7 +49,7 @@ export default function UKPage() {
       "@type": "SoftwareApplication",
       "name": "UK Passport & Document Photo Maker",
       "url": "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
-      "description": "Create UK passport, visa, and ID photos online. 100% compliant for HMPO, Driving Licences, Railcards, and more.",
+      "description": "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
       "applicationCategory": "UtilitiesApplication",
       "operatingSystem": "All",
       "offers": {

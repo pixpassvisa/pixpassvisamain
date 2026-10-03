@@ -10,8 +10,11 @@ export async function POST(request: Request) {
 
     if (!apiUrl || !apiKey) {
       return NextResponse.json(
-        { error: "API configuration is missing" },
-        { status: 500 }
+        {
+          error: "Photo processing is temporarily unavailable because the processing API is not configured.",
+          details: "Set PASSPORT_API_URL and PASSPORT_API_KEY in the server environment.",
+        },
+        { status: 503 }
       );
     }
 

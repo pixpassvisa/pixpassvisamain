@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import "./studio.css";
+import Navbar from "./components/SiteHeader";
+import Footer from "./components/SiteFooter";
 import AuthProvider from "./components/AuthProvider";
 import ConditionalNavFooter from "./components/ConditionalNavFooter";
 import Script from "next/script";
+import ImageFallbackGuard from "./components/ImageFallbackGuard";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -16,11 +18,11 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.pixpassvisa.com/"),
   title: {
-    default: "PixPassVisa | AI Passport & Visa Photo Maker & Resizer Online",
-    template: "%s | PixPassVisa",
+    default: "Passport & Visa Photo Maker Online | pixpassvisa.com",
+    template: "%s | pixpassvisa.com",
   },
   description:
-    "AI-powered passport and visa photo maker & resizer for 50+ countries. Resize to 2x2 in, 35x45 mm, 600x600 px, or compress to 20KB, 50KB, 100KB, 200KB. 100% government biometric compliance guaranteed.",
+    "AI-powered passport and visa photo maker & resizer for 50+ countries. Resize to 2x2 in, 35x45 mm, 600x600 px, or compress to 20KB, 50KB, 100KB, 200KB. Review your photo before submitting to the issuing authority.",
   keywords: [
     "image resizer",
     "photo resizer",
@@ -71,12 +73,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PixPassVisa | Global AI Passport & Visa Photo Maker",
     description:
-      "Create 100% compliant biometric passport, visa, and ID photos for 50+ countries. Instant AI background removal, smart cropping, and DPI compression.",
+      "Prepare passport, visa, and ID photos for 50+ countries. Instant AI background removal, smart cropping, and DPI compression.",
     url: "https://www.pixpassvisa.com/",
     siteName: "PixPassVisa",
     images: [
       {
-        url: "https://www.pixpassvisa.com/og-image.jpg",
+        url: "https://www.pixpassvisa.com/opengraph-image",
         width: 1200,
         height: 630,
         alt: "PixPassVisa - AI Biometric Photo Maker & Resizer",
@@ -89,8 +91,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "PixPassVisa | Global AI Passport & Visa Photo Maker",
     description:
-      "Professional biometric passport & visa photos for 50+ countries. 100% government compliance guaranteed.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+      "Professional biometric passport & visa photos for 50+ countries. Free automated photo checks and paid downloads.",
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 
@@ -118,15 +120,6 @@ const globalSchema = {
       name: "PixPassVisa",
       publisher: {
         "@id": "https://www.pixpassvisa.com/#organization",
-      },
-      potentialAction: {
-        "@type": "SearchAction",
-        target: {
-          "@type": "EntryPoint",
-          urlTemplate:
-            "https://www.pixpassvisa.com/passport-photo-sizes?q={search_term_string}",
-        },
-        "query-input": "required name=search_term_string",
       },
     },
   ],
@@ -156,6 +149,7 @@ export default function RootLayout({
         className={`${dmSans.variable} antialiased bg-white text-slate-900`}
       >
         <AuthProvider>
+          <ImageFallbackGuard />
           <ConditionalNavFooter
             navbar={<Navbar />}
             footer={<Footer />}

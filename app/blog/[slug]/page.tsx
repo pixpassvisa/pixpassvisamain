@@ -9,6 +9,7 @@ import BlogModel from '@/models/Blog';
 import ReadingProgressBar from '@/app/components/ReadingProgressBar';
 import TocSidebar from '@/app/components/TocSidebar';
 import FaqAccordion from '@/app/components/FaqAccordion';
+import { getBlogImage, getBlogImageUrl, getBlogKeywords } from '@/lib/blog-seo';
 
 // Define the Blog Post type
 export interface BlogPost {
@@ -19,6 +20,7 @@ export interface BlogPost {
   author: string;
   content: string;
   featuredImage?: string;
+  keywords?: string[];
 }
 
 const APP_URL = 'https://www.pixpassvisa.com';
@@ -131,9 +133,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     return { title: 'Post Not Found | PixPassVisa' };
   }
 
+  const blogImage = getBlogImage(post);
+  const keywords = getBlogKeywords(post);
+
   return {
     title: `${post.title} | PixPassVisa`,
     description: post.description,
+    keywords,
     alternates: {
       canonical: `${APP_URL}/blog/${post.slug}`,
       languages: {
@@ -150,16 +156,14 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       modifiedTime: post.date,
       authors: [post.author],
       siteName: 'PixPassVisa',
+      ...(blogImage && { images: [{ url: getBlogImageUrl(blogImage)!, width: 1200, height: 630, alt: post.title }] }),
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
-      ...(post.featuredImage && { images: [post.featuredImage] }),
+      ...(blogImage && { images: [getBlogImageUrl(blogImage)] }),
     },
-    ...(post.featuredImage && {
-      openGraphImages: [{ url: post.featuredImage, width: 1200, height: 630, alt: post.title }],
-    }),
   };
 }
 
@@ -175,6 +179,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
   const category = getPostCategory(post.slug, post.title);
   const readTime = getReadingTime(post.content);
+  const blogImage = getBlogImage(post);
+  const keywords = getBlogKeywords(post);
 
   // Extract FAQs directly from this blog post's content (no static FAQ_MAP used)
   const { faqs, cleanContent } = extractFaqsFromContent(post.content);
@@ -209,6 +215,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     });
   });
 
+  // Keep editorial images visible even when an older post still contains a remote asset URL.
+  // The local featured illustration is a safe fallback and keeps the article useful offline.
+  processedContent = processedContent.replace(/<img\b([^>]*)>/gi, (match, attrs) => {
+    if (/onerror\s*=\s*/i.test(attrs)) return match;
+    return `<img${attrs} onerror="this.onerror=null;this.src='${blogImage || "/images/example-dimensions.jpg"}'">`;
+  });
+
   // JSON-LD: Article schema (BlogPosting)
   const articleSchema = {
     '@context': 'https://schema.org',
@@ -237,10 +250,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     },
     url: `${APP_URL}/blog/${post.slug}`,
     inLanguage: 'en-US',
-    ...(post.featuredImage && {
+    keywords,
+    ...(blogImage && {
       image: {
         '@type': 'ImageObject',
-        url: post.featuredImage,
+        url: getBlogImageUrl(blogImage),
         width: 1200,
         height: 630,
       },
@@ -413,11 +427,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             {/* Reading Content Area */}
             <div className="w-full max-w-3xl blog-content-wrapper">
               {/* Featured Image - Aligned with article column */}
-              {post.featuredImage && (
+              {blogImage && (
                 <div className="mb-10 overflow-hidden rounded-xl sm:rounded-2xl border border-slate-200/90 shadow-xs bg-slate-900">
                   <div className="relative aspect-[16/9] w-full">
                     <Image
-                      src={post.featuredImage}
+                      src={blogImage}
                       alt={post.title}
                       fill
                       priority
@@ -457,7 +471,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   Avoid Passport & Visa Photo Rejections
                 </h3>
                 <p className="text-slate-300 mb-8 max-w-xl mx-auto text-sm sm:text-base leading-relaxed relative z-10 font-normal">
-                  Our automatic AI tool fixes background shadows, crops to exact millimeter specs (2x2" or 35x45mm), and guarantees 100% biometric compliance.
+                  Our automatic tool can prepare common crops and formats (such as 2x2&quot; or 35x45mm) for review. Always compare the result with your issuing authority&apos;s current rules.
                 </p>
                 <Link
                   href="/passport-photo-online"

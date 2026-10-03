@@ -19,13 +19,13 @@ export const metadata: Metadata = {
     siteName: "PixPassVisa",
     locale: "de_DE",
     type: "website",
-    images: [{ url: "https://www.pixpassvisa.com/og-image.jpg", width: 1200, height: 630, alt: "Passbild Online Erstellen" }],
+    images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "Passbild Online Erstellen" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Passbild Online Erstellen | PixPassVisa",
     description: "Biometrisches Passbild online erstellen in 30 Sekunden.",
-    images: ["https://www.pixpassvisa.com/og-image.jpg"],
+    images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };
 
