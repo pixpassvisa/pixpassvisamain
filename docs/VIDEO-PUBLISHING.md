@@ -23,3 +23,6 @@ Upload pixpassvisa-photo-guide.mp4, select thumbnail.jpg, and upload captions.sr
 After publishing, set NEXT_PUBLIC_PHOTO_VIDEO_YOUTUBE_ID in Vercel to the 11-character video ID and redeploy. The /passport-photo-video page then uses the YouTube player. Until then, it plays the provided MP4 with captions.
 
 Video SEO reference: https://developers.google.com/search/docs/appearance/video
+
+Published video: https://youtu.be/erH4ogHwQmA
+The watch page now uses this video by default. The optional environment variable can override it for future videos.

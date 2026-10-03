@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function PhotoVideoPage() {
-  const youtubeId = process.env.NEXT_PUBLIC_PHOTO_VIDEO_YOUTUBE_ID;
+  const youtubeId = process.env.NEXT_PUBLIC_PHOTO_VIDEO_YOUTUBE_ID?.trim() || "erH4ogHwQmA";
   const validId = youtubeId && /^[A-Za-z0-9_-]{11}$/.test(youtubeId) ? youtubeId : null;
   const schema = {
     "@context": "https://schema.org", "@type": "VideoObject",
@@ -19,7 +19,7 @@ export default function PhotoVideoPage() {
     thumbnailUrl: ["https://www.pixpassvisa.com/videos/thumbnail.jpg"],
     uploadDate: video.createdAt, duration: `PT${video.duration}S`,
     contentUrl: "https://www.pixpassvisa.com/videos/pixpassvisa-photo-guide.mp4",
-    ...(validId ? { embedUrl: `https://www.youtube.com/embed/${validId}` } : {}),
+    ...(validId ? { embedUrl: `https://www.youtube-nocookie.com/embed/${validId}` } : {}),
     publisher: { "@id": "https://www.pixpassvisa.com/#organization" },
     transcript: video.chapters.map(c => c.text).join(" "),
   };
@@ -35,6 +35,7 @@ export default function PhotoVideoPage() {
         <a href="/videos/pixpassvisa-photo-guide.mp4">Download the video</a>
       </video>}
     <div className="my-8 flex flex-wrap gap-4"><Link href="/passport-photo-online" className="rounded-lg bg-green-900 px-6 py-3 font-semibold text-white">Create my photo</Link><Link href="/#pricing" className="rounded-lg border px-6 py-3 font-semibold">View photo packages</Link></div>
+    {validId && <p className="mb-8"><a className="underline" href={`https://www.youtube.com/watch?v=${validId}`} target="_blank" rel="noopener noreferrer">Watch on YouTube</a></p>}
     <h2 className="mb-4 text-2xl font-bold">Video transcript</h2>
     {video.chapters.map((chapter,i) => <section key={chapter.start} className="mb-6"><h3 className="font-semibold">{["Prepare your photo online", "Choose your document", "Take a suitable photo", "Review your preview", "Purchase your photo package", "Get started"][i]}</h3><p className="mt-2 leading-7 text-slate-600">{chapter.text}</p></section>)}
     <p className="border-t pt-6 text-sm text-slate-600">Narration uses a synthetic voice. Graphics are illustrative. <Link className="underline" href="/passport-photo-sizes">Compare photo sizes</Link> or read <Link className="underline" href="/editorial-methodology">how we research requirements</Link>.</p>
