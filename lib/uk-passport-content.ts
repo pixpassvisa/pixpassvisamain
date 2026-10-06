@@ -1,0 +1,9 @@
+export const ukPassportFaqs = [
+  { q: "What size is a UK passport photo in mm and cm?", a: "A printed UK passport photo is 35 mm wide by 45 mm high, or 3.5 × 4.5 cm. Head height from crown to chin must be 29–34 mm. These physical measurements apply to printed photos, not a universal digital crop." },
+  { q: "What are the UK digital passport photo dimensions and file size?", a: "GOV.UK requires a digital photo at least 600 pixels wide and 750 pixels tall, with a file size between 50 KB and 10 MB. It must be clear, in colour and unaltered by computer software." },
+  { q: "Should I crop my own photo before applying online?", a: "No. For a photo taken on your own device, GOV.UK says to include your head, shoulders and upper body and not crop it. The online passport application service handles the crop. Keep the original photograph." },
+  { q: "Is a 2 × 2 inch photo suitable for a UK passport?", a: "The UK printed passport format is 35 × 45 mm, not the square 2 × 2 inch format used for some other countries. Check the UK application route before preparing a print or digital upload." },
+  { q: "Does PixPassVisa provide an HMPO photo code?", a: "This tool does not provide an HMPO photo code. A digital file download is different from a code supplied by a participating photo booth or shop." },
+  { q: "Can the same photo be used for a driving licence or travel pass?", a: "Do not assume it can. DVLA, transport operators and other issuers have their own application processes and photo requirements. Follow the instructions for the exact document instead of treating passport dimensions as a universal format." },
+  { q: "Does passing a photo check guarantee passport acceptance?", a: "No. Automated checks can help you review an image but cannot certify it. HM Passport Office decides whether the submitted photograph meets its requirements. PixPassVisa is an independent service." },
+];

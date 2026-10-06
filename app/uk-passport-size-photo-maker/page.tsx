@@ -1,165 +1,22 @@
-import type { Metadata, Viewport } from "next";
+import type { Metadata } from "next";
 import UKDocumentClient from "./UKDocumentClient";
+import UKPassportGuide, { UKPassportIntro } from "./UKPassportGuide";
+import { ukPassportFaqs } from "@/lib/uk-passport-content";
 
-export const viewport: Viewport = {
-  themeColor: "#ffffff",
-};
-
+const pageUrl = "https://www.pixpassvisa.com/uk-passport-size-photo-maker";
 export const metadata: Metadata = {
-  title: "UK Passport Photo Size: Digital & Printed Photo Guide",
-  description: "Compare UK document photo formats, preview your crop, and check your photo. Digital passport applications need an unaltered original; follow HMPO guidance.",
-  alternates: {
-    canonical: "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
-    languages: {
-      en: "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
-      "x-default": "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
-    },
-  },
-  icons: {
-    apple: "/favicon.svg",
-  },
-  openGraph: {
-    title: "UK Passport & Document Photo Maker | PixPassVisa",
-    description: "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
-    url: "/uk-passport-size-photo-maker",
-    siteName: "PixPassVisa",
-    locale: "en_GB",
-    type: "website",
-    images: [
-      {
-        url: "https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/uk-hero_m4cc8l.webp",
-        width: 1200,
-        height: 630,
-        alt: "UK Passport Size Photo Maker",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "UK Passport & Document Photo Maker | PixPassVisa",
-    description: "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
-    images: ["https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/uk-hero_m4cc8l.webp"],
-  },
+  title: { absolute: "UK Passport Photo Size: 35 × 45 mm & Digital Rules | PixPassVisa" },
+  description: "UK passport photo size explained: 35 × 45 mm (3.5 × 4.5 cm) for prints, digital dimensions and file limits, plus GOV.UK guidance on cropping and editing.",
+  alternates: { canonical: pageUrl, languages: { en: pageUrl, "x-default": pageUrl } },
+  openGraph: { title: "UK Passport Photo Size & Requirements | PixPassVisa", description: "Compare printed passport dimensions and digital photo requirements with official GOV.UK sources.", url: pageUrl, siteName: "PixPassVisa", locale: "en_GB", type: "website", images: [{ url: "/images/uk-passport-photo-size-guide.png", width: 1200, height: 1000, alt: "PixPassVisa UK printed and digital passport photo size guide" }] },
+  twitter: { card: "summary_large_image", title: "UK Passport Photo Size & Requirements | PixPassVisa", description: "Printed and digital UK passport photo rules, explained separately.", images: ["/images/uk-passport-photo-size-guide.png"] },
 };
 
 export default function UKPage() {
   const schemas = [
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "UK Passport & Document Photo Maker",
-      "url": "https://www.pixpassvisa.com/uk-passport-size-photo-maker",
-      "description": "Choose your UK document, review its photo requirements, and preview your photo before downloading. Acceptance is decided by the issuing authority.",
-      "applicationCategory": "UtilitiesApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "6.99",
-        "priceCurrency": "GBP"
-      }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What size does a UK passport photo need to be?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A UK passport photo must be 35mm wide and 45mm tall, with your face centred and taking up 29-34mm from chin to crown. Our tool crops and sizes your upload to this exact spec automatically."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I use the same photo for my driving licence and my passport?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. The UK driving licence photo uses the same 35 x 45mm format as the passport, so one compliant photo works for both, as long as the background and pose meet each document's rules."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do I need a printed photo for the Oyster card or bus pass?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No. Oyster photocards and most bus pass applications accept a digital photo upload through the online form, so you only need a correctly cropped image file rather than a physical print."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Will a photo taken on my phone be accepted?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, provided the lighting is even, the background is plain, and your expression is neutral. Our tool checks framing and resizes the image, so a well-lit phone photo is usually enough."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How long does it take to get my photo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Processing takes under a minute. Upload your photo, choose your document, and download or print your compliant image straight away."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Can I apply the same photo to more than one document?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Upload one photo, then switch the document type at the top of the page to generate a new crop for each application, so you don't need to photograph yourself again for every form."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What background do UK documents require?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Almost every UK document on this list asks for a plain, light-coloured background with no patterns, shadows, or other people visible. Our tool flags backgrounds that are too busy or too dark before you download the photo."
-          }
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Home",
-          "item": "https://www.pixpassvisa.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "UK Passport Size Photo Maker",
-          "item": "https://www.pixpassvisa.com/uk-passport-size-photo-maker"
-        }
-      ]
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "PixPassVisa",
-      "url": "https://www.pixpassvisa.com/",
-      "logo": "https://www.pixpassvisa.com/logo.png"
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "PixPassVisa",
-      "url": "https://www.pixpassvisa.com/"
-    }
+    { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: "UK passport photo size: printed and digital requirements", inLanguage: "en-GB", description: metadata.description, publisher: { "@type": "Organization", name: "PixPassVisa", url: "https://www.pixpassvisa.com/" }, image: "https://www.pixpassvisa.com/images/uk-passport-photo-size-guide.png" },
+    { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: ukPassportFaqs.map(({q,a}) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
+    { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixpassvisa.com/" }, { "@type": "ListItem", position: 2, name: "Passport photo guides", item: "https://www.pixpassvisa.com/passport-photos" }, { "@type": "ListItem", position: 3, name: "UK passport photo size", item: pageUrl }] },
   ];
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
-      />
-      <UKDocumentClient />
-    </>
-  );
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas).replace(/</g, "\\u003c") }} /><UKPassportIntro /><UKDocumentClient /><UKPassportGuide /></>;
 }

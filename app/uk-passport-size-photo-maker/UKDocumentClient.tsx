@@ -15,43 +15,12 @@ const ukDocuments = [
   { id: "uk-boat", label: "UK Boat licence 35x45 mm", size: "35 × 45 mm" },
   { id: "uk-bus", label: "UK Bus pass online form", size: "Digital upload" },
   { id: "uk-driving", label: "UK Driving Licence 35x45 mm (3.5x4.5 cm)", size: "35 × 45 mm" },
-  { id: "uk-id", label: "UK ID / residence card 45x35 mm cm)", size: "35 × 45 mm" },
+  { id: "uk-id", label: "UK ID / residence card — confirm issuer requirements", size: "35 × 45 mm" },
   { id: "uk-leisure", label: "UK Leisure pass 35x45 mm", size: "35 × 45 mm" },
   { id: "uk-passport-offline", label: "UK Passport offline 35x45 mm (3.5x4.5 cm)", size: "35 × 45 mm" },
   { id: "uk-passport-online", label: "UK Passport online", size: "Digital upload" },
   { id: "uk-railcard", label: "UK Railcard 35x45 mm", size: "35 × 45 mm" },
   { id: "uk-school", label: "UK School card 35x45 mm", size: "35 × 45 mm" },
-];
-
-const faqs = [
-  {
-    q: "What size does a UK passport photo need to be?",
-    a: "A UK passport photo must be 35mm wide and 45mm tall, with your face centred and taking up 29-34mm from chin to crown. Our tool crops and sizes your upload to this exact spec automatically.",
-  },
-  {
-    q: "Can I use the same photo for my driving licence and my passport?",
-    a: "Yes. The UK driving licence photo uses the same 35 x 45mm format as the passport, so one compliant photo works for both, as long as the background and pose meet each document's rules.",
-  },
-  {
-    q: "Do I need a printed photo for the Oyster card or bus pass?",
-    a: "No. Oyster photocards and most bus pass applications accept a digital photo upload through the online form, so you only need a correctly cropped image file rather than a physical print.",
-  },
-  {
-    q: "Will a photo taken on my phone be accepted?",
-    a: "Yes, provided the lighting is even, the background is plain, and your expression is neutral. Our tool checks framing and resizes the image, so a well-lit phone photo is usually enough.",
-  },
-  {
-    q: "How long does it take to get my photo?",
-    a: "Processing takes under a minute. Upload your photo, choose your document, and download or print your compliant image straight away.",
-  },
-  {
-    q: "Can I apply the same photo to more than one document?",
-    a: "Yes. Upload one photo, then switch the document type at the top of the page to generate a new crop for each application, so you don't need to photograph yourself again for every form.",
-  },
-  {
-    q: "What background do UK documents require?",
-    a: "Almost every UK document on this list asks for a plain, light-coloured background with no patterns, shadows, or other people visible. Our tool flags backgrounds that are too busy or too dark before you download the photo.",
-  },
 ];
 
 export default function UKDocumentClient() {
@@ -95,6 +64,10 @@ export default function UKDocumentClient() {
 
   const processFile = async () => {
     if (!selectedFile) return;
+    if (selectedDoc === "uk-passport-online") {
+      setErrorMsg("For an online UK passport application, use your unaltered original. GOV.UK says not to crop a photo taken on your own device; the application service handles cropping. This processing tool is not the official submission service.");
+      return;
+    }
     setErrorMsg("");
     setIsProcessing(true);
 
@@ -125,8 +98,8 @@ export default function UKDocumentClient() {
       }
 
       router.push(`/preview/${data.photoId}?from=uk-passport`);
-    } catch (err: any) {
-      setErrorMsg(err.message || "Something went wrong. Please try again.");
+    } catch (err: unknown) {
+      setErrorMsg(err instanceof Error ? err.message : "Something went wrong. Please try again.");
       setIsProcessing(false);
     }
   };
@@ -158,14 +131,15 @@ export default function UKDocumentClient() {
     <div className="min-h-screen bg-white py-12 px-4 sm:px-6 lg:px-8 ">
       <div className="max-w-4xl mx-auto">
         <div className="text-center mb-10">
-          <h1 className="text-4xl font-bold text-slate-900 mb-4 tracking-tight">
-          UK Passport Size ID Photo Maker 
-          </h1>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
+          UK passport photo maker and format preview 
+          </h2>
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Create a compliant photo for any United Kingdom government ID passport size photo — passports, driving licences, railcards, and more — in under a minute.
+            Use the format controls to review a photo. Presets are formatting aids, not certification; check the instructions for your exact application.
           </p>
         </div>
 
+        <aside className="mb-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-relaxed text-amber-900">Online passport application? Keep your unaltered original. This tool will not process the online-passport preset because GOV.UK says not to crop an own-device photo. <a href="https://www.gov.uk/photos-for-passports" className="underline">Read the official digital photo instructions</a>.</aside>
         <div className="bg-white rounded-xl border border-slate-200">
           <div className="p-8 sm:p-10">
             {/* Step 1: Select Document */}
@@ -174,7 +148,7 @@ export default function UKDocumentClient() {
                 <span className="flex items-center justify-center w-8 h-8 rounded-full bg-blue-600 text-white font-bold mr-3 text-sm">
                   1
                 </span>
-                Select United kingdom government photo type
+                Select a UK document preset
               </h2>
               <div className="relative" ref={dropdownRef}>
                 <button
@@ -264,7 +238,7 @@ export default function UKDocumentClient() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
                     </svg>
                   </div>
-                  <h3 className="text-lg font-medium text-slate-900 mb-2">Drag & drop your potrait photo</h3>
+                  <h3 className="text-lg font-medium text-slate-900 mb-2">Drag & drop your portrait photo</h3>
                   <p className="text-sm text-slate-500 mb-6">Or click to browse from your device</p>
                   <button className="px-6 py-2.5 bg-white border border-slate-300 text-slate-700 rounded-lg text-sm font-medium hover:bg-slate-50">
                     Select image
@@ -350,167 +324,7 @@ export default function UKDocumentClient() {
           </div>
         </div>
 
-        {/* ---------------------------------------------------------- */}
-        {/* SEO CONTENT SECTION                                         */}
-        {/* ---------------------------------------------------------- */}
-        <article className="mt-16 prose prose-slate max-w-none prose-headings:font-semibold prose-a:text-blue-700">
-          <h2 className="text-2xl font-semibold text-slate-900 mt-0">
-            UK passport and document photos, sized right the first time
-          </h2>
-          
-          <figure className="my-8 rounded-xl overflow-hidden  border border-slate-200">
-            {/* HERO IMAGE */}
-            <picture>
-              <source type="image/webp" srcSet="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/uk-hero_m4cc8l.webp" />
-              <img 
-                src="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690540/uk-hero_m4cc8l.webp" 
-                alt="Collage of compliant UK passport, driving licence, and ID card photos" 
-                width={800} 
-                height={400} 
-                className="w-full h-auto object-cover m-0"
-                loading="eager"
-              />
-            </picture>
-            <figcaption className="text-sm text-center text-slate-500 mt-2 px-4 pb-2">
-              Generate compliant photos for all official UK documents instantly.
-            </figcaption>
-          </figure>
 
-          <p className="text-slate-700 leading-relaxed">
-            Every official document in the United Kingdom that carries a photo has its own size, background, and pose rules. Get one detail wrong and <a href="https://www.gov.uk/government/organisations/hm-passport-office" target="_blank" rel="noopener noreferrer">HMPO</a>, the <a href="https://www.gov.uk/government/organisations/driver-and-vehicle-licensing-agency" target="_blank" rel="noopener noreferrer">DVLA</a>, or your local council can reject the application outright, costing you the fee and another trip to a photo booth. This tool builds a compliant photo for fifteen UK documents from a single upload, so you crop, check, and download once instead of guessing at a printer.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Why the photo trips up so many applications</h2>
-          <p className="text-slate-700 leading-relaxed">
-            Photo booths are built for one shot, not for fifteen different documents. A background that passes for a passport photo can be too dark for a driving licence, and a crop that suits a printed 35 × 45mm card is the wrong shape for a digital Oyster upload. Each UK issuer, <a href="https://www.gov.uk/photos-for-passports" target="_blank" rel="noopener noreferrer">HMPO</a>, the <a href="https://www.gov.uk/renew-driving-licence" target="_blank" rel="noopener noreferrer">DVLA</a>, Transport for London, local councils, and the police, checks the photo before it looks at anything else in an application. Getting that one detail wrong is the single most common reason a first attempt bounces back, so it pays to solve it before you submit anything.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Every UK document we support</h2>
-          <p className="text-slate-700 leading-relaxed">
-            Most UK identity and travel documents share the same 35 × 45mm photo format, the same size HMPO uses for the passport. A handful, like the Oyster photocard, the bus pass, and the online passport application, only need a digital upload rather than a print. The table below covers everything you can create here.
-          </p>
-          <div className="overflow-x-auto not-prose my-6">
-            <table className="w-full text-sm border border-slate-200 rounded-lg overflow-hidden">
-              <thead>
-                <tr className="bg-slate-50 text-left">
-                  <th className="p-3 font-semibold text-slate-900 border-b border-slate-200">Document</th>
-                  <th className="p-3 font-semibold text-slate-900 border-b border-slate-200">Photo format</th>
-                </tr>
-              </thead>
-              <tbody>
-                {ukDocuments.map((doc, i) => (
-                  <tr key={doc.id} className={i % 2 === 0 ? "bg-white" : "bg-slate-50/50"}>
-                    <td className="p-3 text-slate-700 border-b border-slate-100">{doc.label.replace(/\s*35x45.*$/i, "").replace(/\s*45x35.*$/i, "")}</td>
-                    <td className="p-3 text-slate-700 border-b border-slate-100">{doc.size}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <h2 className="text-2xl font-semibold text-slate-900">UK passport photos: online and offline</h2>
-          <p className="text-slate-700 leading-relaxed">
-            HMPO runs two application routes, and each expects a different file. The <strong>online passport</strong> service uploads a digital photo directly into your application, so it checks lighting, framing, and background as a JPEG. The <strong>offline passport</strong> route, used for paper applications and renewals by post, needs a printed 35 × 45mm photo signed by a countersignatory on the back. Our tool produces both: a print-ready file for the paper form, and a correctly cropped digital file for the online portal, from the same source photo.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Driving licence, ID cards, and BNO passports</h2>
-          <p className="text-slate-700 leading-relaxed">
-            A <strong>UK driving licence</strong> photo follows the same 35 × 45mm spec as the passport, which is why one good photo can usually serve both applications. The same format covers the <strong>UK BNO passport</strong> for British National (Overseas) status holders, and the <strong>UK ID or residence card</strong>, where a plain background and neutral expression matter as much as the crop itself. Uniforms, sunglasses, and heavy shadows are the most common reasons these get sent back, so the tool checks for a plain backdrop and even lighting before it exports your image.
-          </p>
-          
-          <figure className="my-8 rounded-xl overflow-hidden  border border-slate-200">
-            {/* IN-CONTENT IMAGE 1 */}
-            <picture>
-              <source type="image/webp" srcSet="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690632/uk-driving-licence-example_wk6h56.webp" />
-              <img 
-                src="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690632/uk-driving-licence-example_wk6h56.webp" 
-                alt="Correct photo specifications for a UK driving licence and BNO passport" 
-                width={800} 
-                height={400} 
-                className="w-full h-auto object-cover m-0"
-                loading="lazy"
-              />
-            </picture>
-            <figcaption className="text-sm text-center text-slate-500 mt-2 px-4 pb-2">
-              A compliant UK driving licence photo using standard 35 × 45mm framing.
-            </figcaption>
-          </figure>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Travelcards and passes: Oyster, Freedom, and Railcard</h2>
-          <p className="text-slate-700 leading-relaxed">
-            London's <strong>Oyster travel photocard</strong> and the <strong>Bus pass online form</strong> both take a digital upload rather than a printed photo, which makes framing the single thing that trips people up. The <strong>London Freedom pass</strong>, offered to older and disabled residents for free travel, uses the standard 35 × 45mm crop, as does the <strong>UK Railcard</strong>, needed for discounted rail fares, and the <strong>UK Leisure pass</strong>, issued by local councils for subsidised access to sports and leisure centres. Upload once, pick the pass you need, and the crop adjusts automatically.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Firearms, boat, and seaman's documents</h2>
-          <p className="text-slate-700 leading-relaxed">
-            Specialist licences are held to the same photo standard as a passport, and they're just as easy to get rejected. <strong>UK BASC firearms and shotgun licensing</strong> photos go to the police alongside your certificate application, so the pose and background rules are strict. A <strong>UK boat licence</strong> photo, required for some inland waterway and coastal licences, follows the same 35 × 45mm rule. Mariners applying for a <strong>British Seaman's card</strong> or a <strong>British Seaman's discharge book</strong> need a photo that meets Merchant Navy identification standards, which again map to the standard passport crop.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">School cards and other everyday documents</h2>
-          <p className="text-slate-700 leading-relaxed">
-            Not every UK document is a government form. A <strong>UK school card</strong>, used for identification, library access, or discounted entry, still asks for a clean 35 × 45mm photo so it prints clearly on the card stock schools use. The same principles apply here as everywhere else on this list: plain background, even lighting, and a neutral expression looking straight at the camera.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Common mistakes that get UK photos rejected</h2>
-          <ul className="text-slate-700 leading-relaxed list-disc pl-5 space-y-2">
-            <li><strong>Busy or shadowed backgrounds.</strong> HMPO and the DVLA both want a plain, light-coloured background with no visible texture, furniture, or shadow behind the head.</li>
-            <li><strong>Wrong file size or shape.</strong> A photo cropped for a passport at 35 × 45mm is the wrong ratio for a digital Oyster or bus pass upload, which expects a different aspect and file size.</li>
-            <li><strong>Head too small or too large in the frame.</strong> HMPO expects the face to fill roughly 29-34mm of the 45mm height; too far back or too close and the photo is rejected on framing alone.</li>
-            <li><strong>Glasses, hats, or heavy makeup.</strong> Tinted glasses, headwear without a religious or medical reason, and heavy shadowing across the face are among the most common reasons UK photo ID gets sent back.</li>
-            <li><strong>Old photos reused across documents.</strong> A photo older than a few months, or one already used on an existing document, is often rejected for a fresh application, even if it still looks like you.</li>
-          </ul>
-          <p className="text-slate-700 leading-relaxed">
-            Our tool checks framing, background, and proportions against the rules for whichever document you select, so these issues get caught before you download the photo, not after your application has already been submitted and rejected.
-          </p>
-          
-          <figure className="my-8 rounded-xl overflow-hidden  border border-slate-200">
-            {/* IN-CONTENT IMAGE 2 */}
-            <picture>
-              <source type="image/webp" srcSet="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690775/uk-photo-mistakes_g0kywo.webp" />
-              <img 
-                src="https://res.cloudinary.com/dipzpwbbk/image/upload/v1784690775/uk-photo-mistakes_g0kywo.webp" 
-                alt="Examples of common mistakes in UK passport photos including bad lighting, shadows, and improper cropping" 
-                width={800} 
-                height={400} 
-                className="w-full h-auto object-cover m-0"
-                loading="lazy"
-              />
-            </picture>
-            <figcaption className="text-sm text-center text-slate-500 mt-2 px-4 pb-2">
-              Common rejection reasons: busy backgrounds, uneven lighting, and incorrect cropping.
-            </figcaption>
-          </figure>
-
-          <h2 className="text-2xl font-semibold text-slate-900">A faster alternative to the photo booth</h2>
-          <p className="text-slate-700 leading-relaxed">
-            A high-street photo booth or chemist typically prints one fixed format, charges per visit, and can't adjust the crop if you decide to apply for a second document later. Uploading a photo here instead means you keep one source image and generate a compliant version for any of the fifteen UK documents above, at any time, without a second trip out. It also removes the guesswork around lighting and background that causes most booth photos to fail on a first submission.
-          </p>
-
-          <h2 className="text-2xl font-semibold text-slate-900">How the photo maker works</h2>
-          <ol className="text-slate-700 leading-relaxed list-decimal pl-5 space-y-2">
-            <li><strong>Pick your document.</strong> Choose from all fifteen UK document types above, from passports to railcards.</li>
-            <li><strong>Upload one photo.</strong> Drag in a phone photo or a webcam shot; no studio setup needed.</li>
-            <li><strong>Download or print.</strong> The tool crops, sizes, and checks your photo against the document's rules in under a minute.</li>
-          </ol>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Frequently asked questions</h2>
-          <div className="not-prose divide-y divide-slate-200 border-t border-b border-slate-200 my-6">
-            {faqs.map((f) => (
-              <details key={f.q} className="group py-4">
-                <summary className="flex cursor-pointer items-center justify-between font-medium text-slate-900 list-none">
-                  {f.q}
-                  <span className="ml-4 text-blue-700 group-open:rotate-45 transition-transform">+</span>
-                </summary>
-                <p className="mt-2 text-slate-600 text-sm leading-relaxed">{f.a}</p>
-              </details>
-            ))}
-          </div>
-
-          <h2 className="text-2xl font-semibold text-slate-900">Get your photo right, first time</h2>
-          <p className="text-slate-700 leading-relaxed">
-            Whichever UK document you're applying for, the photo rules exist to keep identification consistent, not to slow you down. Choose your document type above, upload a photo, and let the tool handle the crop, size, and background check, so your application moves forward on the first try.
-          </p>
-        </article>
       </div>
     </div>
   );
