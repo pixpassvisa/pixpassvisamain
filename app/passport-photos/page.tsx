@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function PassportDirectoryPage() {
   // Show 1 unique entry per country for a clean directory
-  const passportSpecs = Array.from(new Map(getFilteredSpecs().map(s => [s.country, s])).values());
+  const passportSpecs = Array.from(new Map(getFilteredSpecs().sort((a, b) => Number(a.id.endsWith('-passport')) - Number(b.id.endsWith('-passport'))).map(s => [s.country, s])).values());
 
   return (
     <div className="min-h-screen bg-white">
@@ -46,7 +46,7 @@ export default function PassportDirectoryPage() {
       <main>
         <MasterDirectory 
           title="Passport Photo Directory"
-        subtitle="Select your destination country to view official biometric requirements and create a compliant passport photo in seconds."
+        subtitle="Browse passport presets and check the requirements of your issuing authority before preparing a photo."
         specs={passportSpecs}
         type="passport"
       />

@@ -56,17 +56,17 @@ export default function PassportPhotoCheckerPage() {
     {
       question: "Which country standards does the checker support?",
       answer:
-        "The validator supports 50+ official government specifications including United States (2x2 in / 51x51mm), United Kingdom (35x45mm HMPO), Canada (50x70mm), Australia (35x45mm DFAT), Schengen Area (35x45mm), India (Passport Seva & OCI), China, and all ICAO Doc 9303 compliant jurisdictions.",
+        "The selector contains country presets. Confirm the requirements for your exact document; a country preset does not cover every visa, OCI, digital submission, or capture workflow. Server validation currently uses passport configurations.",
     },
     {
       question: "How accurate is the automated biometric check?",
       answer:
-        "Our engine utilizes a 468-point facial landmark mesh to measure chin-to-crown proportions, eye positioning, tilt angles, and contrast levels. It applies the exact mathematical tolerances used by immigration authorities and consular screening software.",
+        "Computer vision provides measurements and feedback, but no measured accuracy rate or government certification is established here. Checks can miss issues and cannot guarantee acceptance.",
     },
     {
       question: "Will my uploaded photo be stored or shared?",
       answer:
-        "No. All processing happens ephemerally in volatile memory. Photos are never stored on permanent databases, never used for AI model training, and never shared with any third party.",
+        "Photos are uploaded for server processing and may be stored with Cloudinary. Closing the page does not delete stored copies. Read our privacy policy before uploading.",
     },
     {
       question: "What should I do if my photo fails a check?",
@@ -142,18 +142,18 @@ export default function PassportPhotoCheckerPage() {
         initialCountry="US"
         lockCountry={false}
         initialDocType="passport"
-        badgeText="Global ICAO Doc 9303 Compliant · 50+ Countries · Free"
+        badgeText="Country Presets · Free Automated Checks"
         title="Passport Photo Checker"
-        highlightTitle="Official Biometric Validator"
-        subtitle="Validate any passport or visa photo online against official embassy & ICAO 9303 biometric specifications. Select your country to get an instant pass/fail compliance report."
+        highlightTitle="Automated Photo Feedback"
+        subtitle="Select a country preset to review common photo issues. Automated checks can miss problems and do not guarantee passport or visa acceptance."
         directAnswer={{
           question: "How does an online passport photo checker work?",
-          answer: "An online passport photo checker analyzes your digital photo against official biometric requirements established by international civil aviation (ICAO Doc 9303) and national governments. The tool uses computer vision to measure exact pixel dimensions, chin-to-crown head percentage (50–69% for US/2×2, 70–80% for UK/Schengen/India), horizontal eye level alignment, background color uniformity, lighting balance, and detects prohibited items such as eyeglasses, severe shadows, or smiling.",
+          answer: "Upload a photograph, choose a country preset, and review automated feedback on framing, background, lighting and facial position. These checks can miss issues. Server validation currently uses passport configurations, so a visa selection does not establish compliance with that visa application’s rules.",
           keyPoints: [
             "Analyzes 30+ biometric parameters including head proportion & eye level",
             "Automatic checks for plain white or light grey background uniformity",
             "Scans for prohibited items: eyeglasses, hats, shadows, open mouth",
-            "Supports 50+ official country specifications (US, UK, Canada, Schengen, India, Australia)",
+            "Country presets must be checked against the requirements for your application",
             "Instant pass/fail compliance scoring before submitting to official authorities",
           ],
           lastReviewed: "September 2026",
@@ -177,23 +177,23 @@ export default function PassportPhotoCheckerPage() {
           },
         ]}
         specs={[
-          { label: "Global Standard", value: "ICAO Doc 9303 Compliant" },
+          { label: "Reference Rules", value: "Check issuing-authority instructions" },
           { label: "Country Coverage", value: "50+ Supported Countries" },
           { label: "Biometric Checks", value: "30+ Automated Parameters" },
           { label: "Landmark Precision", value: "468-Point MediaPipe Grid" },
-          { label: "Validation Speed", value: "Under 3 Seconds" },
-          { label: "Privacy Policy", value: "100% Ephemeral Processing" },
+          { label: "Processing Time", value: "Varies by image, network and server" },
+          { label: "Processing", value: "Server processing and storage" },
         ]}
         requirements={[
           {
             icon: <Globe className="w-5 h-5 text-blue-600" />,
             title: "50+ Country Specifications",
-            desc: "Applies exact official government guidelines for your selected country, including US, UK, Canada, Australia, Schengen, and India.",
+            desc: "Uses configured country presets. Confirm that the preset matches your document and submission method.",
           },
           {
             icon: <Ruler className="w-5 h-5 text-blue-600" />,
             title: "Biometric Head Proportion",
-            desc: "Calculates the exact chin-to-crown percentage to make sure your face satisfies embassy height standards.",
+            desc: "Measures head position and proportions. Review the result and the authority’s requirements separately.",
           },
           {
             icon: <ImageIcon className="w-5 h-5 text-blue-600" />,

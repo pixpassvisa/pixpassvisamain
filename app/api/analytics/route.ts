@@ -2,15 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 import connectToDatabase from "@/lib/mongodb";
 import AnalyticsSession from "@/models/AnalyticsSession";
 import AnalyticsEvent from "@/models/AnalyticsEvent";
+import { sanitizeAnalyticsPayload } from "@/lib/analytics-payload";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { sessionId, type, url, metadata, duration } = body;
-
-    if (!sessionId) {
-      return NextResponse.json({ error: "Missing sessionId" }, { status: 400 });
+    const sanitized = body && typeof body === "object" ? sanitizeAnalyticsPayload(body) : null;
+    if (!sanitized) {
+      return NextResponse.json({ error: "Invalid analytics payload" }, { status: 400 });
     }
+    const { sessionId, type, url, duration } = sanitized;
 
     await connectToDatabase();
 
@@ -45,7 +46,6 @@ export async function POST(req: NextRequest) {
         sessionId,
         eventType: type, // 'page_view', 'razorpay_open'
         url: url || "",
-        metadata,
       });
     }
 

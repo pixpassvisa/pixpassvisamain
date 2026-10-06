@@ -8,9 +8,9 @@ const getCategories = (price: string) => [
   {
     name: "General",
     faqs: [
-      { q: "What is PixPassVisa?", a: `PixPassVisa is a free online photo validation tool that checks your photos against U.S. State Department requirements for visas, passports, green cards, and the DV lottery. You get an instant PASS/FAIL report, and can pay ${price} to download a processed, compliant photo.` },
-      { q: "Is the photo validation really free?", a: `Yes! Photo validation is 100% free with no account required. You only pay ${price} if you choose to download a processed, fully compliant photo. You can validate unlimited photos at no cost.` },
-      { q: "How accurate is the validation?", a: "Our validation is 100% aligned with U.S. State Department specifications. We check dimensions (600×600px), file size (under 240KB), background color (pure white), face detection, eye position (56-69%), head size (50-69%), glasses detection, and expression analysis." },
+      { q: "What is PixPassVisa?", a: `PixPassVisa is a free online photo validation tool that checks your photos against U.S. State Department requirements for visas, passports, green cards, and the DV lottery. You get an instant PASS/FAIL report, and can pay ${price} to download a processed photo.` },
+      { q: "Is the photo validation really free?", a: `Yes! Photo validation is 100% free with no account required. You only pay ${price} if you choose to download a processed photo. You can validate unlimited photos at no cost.` },
+      { q: "How accurate is the validation?", a: "Automated checks provide feedback on selected image measurements. They can miss issues and do not verify every application rule. The issuing authority decides whether to accept your photo." },
       { q: "How long does validation take?", a: "Processing takes under 5 seconds per photo. You'll see your full PASS/FAIL compliance report almost instantly after uploading." },
       { q: "Can I upload multiple photos?", a: `You can validate unlimited photos for free. Each paid download covers 1 processed digital photo plus a A4 size print sheet (20 photos) for ${price}.` },
     ],
@@ -18,9 +18,9 @@ const getCategories = (price: string) => [
   {
     name: "Photo Requirements",
     faqs: [
-      { q: "What are the exact US visa photo specs?", a: "600×600 pixels, 1:1 aspect ratio, under 240KB, JPEG format, pure white background (RGB 255,255,255), eyes between 56-69% from bottom, head size 50-69% of image height, neutral expression, no glasses." },
-      { q: "Can I wear glasses in my photo?", a: "No. Since November 1, 2016, the U.S. Department of State does not allow glasses in any visa, passport, or immigration photos. This includes prescription glasses, sunglasses, and tinted lenses." },
-      { q: "What background color is required?", a: "A pure white background (RGB 255, 255, 255) is required. No visible patterns, shadows, textures, or other people should be in the background." },
+      { q: "What are the exact US visa photo specs?", a: "The State Department digital image guidance specifies a square JPEG from 600×600 to 1200×1200 pixels, at most 240 kB. Check your application-specific instructions." },
+      { q: "Can I wear glasses in my photo?", a: "US visa guidance generally prohibits eyeglasses, with limited documented medical exceptions. Check the official rules for your application." },
+      { q: "What background color is required?", a: "US visa guidance permits a plain white or off-white background. No visible patterns, shadows, textures, or other people should be in the background." },
       { q: "What expression should I have?", a: "A neutral expression with your mouth closed and both eyes open. No smiling, frowning, or exaggerated expressions." },
       { q: "What does eye position 56-69% mean?", a: "Your eyes must be positioned between 56% and 69% of the total image height, measured from the bottom edge. This ensures proper framing for biometric verification." },
       { q: "What does head size 50-69% mean?", a: "The distance from the crown of your head (top) to your chin (bottom) must be between 50% and 69% of the total image height. This ensures your face fills enough of the frame." },
@@ -30,7 +30,7 @@ const getCategories = (price: string) => [
     name: "Payment & Downloads",
     faqs: [
       { q: "How much does it cost?", a: `Photo processing and download costs a one-time fee of ${price} per photo — including auto-cropping, resizing, background removal, and file optimization.` },
-      { q: "What payment methods are accepted?", a: "We accept all major credit cards, debit cards, and PayPal through our secure payment processor." },
+      { q: "What payment methods are accepted?", a: "Available payment methods are shown by the payment provider at checkout." },
       { q: "Can I get a refund?", a: "If your processed photo is rejected by a government agency, you are eligible for a 50% refund. Contact support@pixpassvisa.com with your transaction ID and rejection proof within 30 days. The 50% deduction covers non-recoverable server processing costs." },
       { q: "How long are download links valid?", a: "Download links are valid for 1 hour after they are generated. After that, they expire for security. You can generate new links from your dashboard within 24 hours." },
     ],

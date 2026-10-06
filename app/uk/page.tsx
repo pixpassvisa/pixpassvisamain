@@ -168,7 +168,7 @@ export default function UKIndexPage() {
                   ))}
                 </div>
                 <span className="text-sm text-slate-700 font-bold">
-                  4.9 · Trusted by 17,000+ UK applicants
+                  Independent photo preparation · Preview before payment
                 </span>
               </div>
             </div>

@@ -81,7 +81,7 @@ export default function TocSidebar({ headings }: { headings: TOCPageHeading[] })
         <div className="absolute top-0 right-0 w-24 h-24 sm:w-32 sm:h-32 lg:w-32 lg:h-32 bg-blue-600/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-700" />
         <h4 className="font-bold text-base sm:text-lg lg:text-xl mb-2 sm:mb-3 relative z-10">Create passport Size photo </h4>
         <p className="text-slate-400 text-xs sm:text-sm mb-4 sm:mb-6 leading-relaxed relative z-10 font-medium">
-          Fix hair edges, remove background shadows, and validate 600x600 size instantly.
+          Check your document requirements first. Preview and checks are free; processed downloads are paid.
         </p>
         <a
           href="/passport-photo-online"

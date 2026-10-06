@@ -28,9 +28,9 @@ const STAGES = [
 ];
 
 const TRUST = [
-  { icon: <Lock className="w-3.5 h-3.5 text-blue-600" />, text: "Deleted after 24h" },
+  { icon: <Lock className="w-3.5 h-3.5 text-blue-600" />, text: "Read storage policy" },
   { icon: <CheckCircle2 className="w-3.5 h-3.5 text-cyan-600" />, text: "30+ checks" },
-  { icon: <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />, text: "HMPO & DVLA ready" },
+  { icon: <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />, text: "Check application rules" },
 ];
 
 interface UKEmbeddedToolProps {

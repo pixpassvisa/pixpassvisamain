@@ -1,0 +1,1374 @@
+{
+  "origin": "http://127.0.0.1:3001",
+  "checked": 217,
+  "failures": [],
+  "representatives": [
+    {
+      "path": "/us-passport-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": "us-passport",
+      "localFetchMs": 4
+    },
+    {
+      "path": "/us-visa-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": "us-visa",
+      "localFetchMs": 4
+    },
+    {
+      "path": "/schengen-visa-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": "schengen-visa",
+      "localFetchMs": 5
+    },
+    {
+      "path": "/india-passport-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": "india-passport",
+      "localFetchMs": 5
+    },
+    {
+      "path": "/algeria-passport-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": "algeria-passport",
+      "localFetchMs": 5
+    },
+    {
+      "path": "/australia-visa-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": null,
+      "localFetchMs": 3
+    },
+    {
+      "path": "/icao-visa-photo-editor",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": null,
+      "localFetchMs": 4
+    },
+    {
+      "path": "/blog/uk-visa-photo-requirements",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": null,
+      "localFetchMs": 4
+    },
+    {
+      "path": "/blog/australia-visa-photo-requirements-size-specifications",
+      "status": 200,
+      "h1Count": 1,
+      "documentId": null,
+      "localFetchMs": 5
+    }
+  ],
+  "results": [
+    {
+      "path": "/about",
+      "status": 200,
+      "title": "About Us - PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/about"
+    },
+    {
+      "path": "/algeria-passport-photo-editor",
+      "status": 200,
+      "title": "Algeria Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/algeria-passport-photo-editor"
+    },
+    {
+      "path": "/2x2-picture-editor",
+      "status": 200,
+      "title": "2x2 Picture Editor Online – Free Passport &amp; Visa Photo Sizer",
+      "canonical": "https://www.pixpassvisa.com/2x2-picture-editor"
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "title": "Passport &amp; Visa Photo Maker Online | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com"
+    },
+    {
+      "path": "/algeria-visa-photo-editor",
+      "status": 200,
+      "title": "Algeria Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/algeria-visa-photo-editor"
+    },
+    {
+      "path": "/argentina-visa-photo-editor",
+      "status": 200,
+      "title": "Argentina Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/argentina-visa-photo-editor"
+    },
+    {
+      "path": "/america-visa-size-photo",
+      "status": 200,
+      "title": "US Photo Format Selector: Visa, Passport &amp; Other Documents | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/america-visa-size-photo"
+    },
+    {
+      "path": "/argentina-passport-photo-editor",
+      "status": 200,
+      "title": "Argentina Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/argentina-passport-photo-editor"
+    },
+    {
+      "path": "/australia-visa-photo-editor",
+      "status": 200,
+      "title": "Australia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/australia-visa-photo-editor"
+    },
+    {
+      "path": "/australia-passport-photo-editor",
+      "status": 200,
+      "title": "Australia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/australia-passport-photo-editor"
+    },
+    {
+      "path": "/austria-passport-photo-editor",
+      "status": 200,
+      "title": "Austria Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/austria-passport-photo-editor"
+    },
+    {
+      "path": "/australian-passport-photo-checker",
+      "status": 200,
+      "title": "Australian Passport Photo Checker – Free DFAT &amp; APO Photo Test | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/australian-passport-photo-checker"
+    },
+    {
+      "path": "/austria-visa-photo-editor",
+      "status": 200,
+      "title": "Austria Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/austria-visa-photo-editor"
+    },
+    {
+      "path": "/belgium-visa-photo-editor",
+      "status": 200,
+      "title": "Belgium Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/belgium-visa-photo-editor"
+    },
+    {
+      "path": "/bhutan-passport-photo-editor",
+      "status": 200,
+      "title": "Bhutan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/bhutan-passport-photo-editor"
+    },
+    {
+      "path": "/belgium-passport-photo-editor",
+      "status": 200,
+      "title": "Belgium Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/belgium-passport-photo-editor"
+    },
+    {
+      "path": "/bhutan-visa-photo-editor",
+      "status": 200,
+      "title": "Bhutan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/bhutan-visa-photo-editor"
+    },
+    {
+      "path": "/blog/australia-visa-photo-requirements-size-specifications",
+      "status": 200,
+      "title": "Australia Visa Photos: Check Your ImmiAccount Instructions | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/australia-visa-photo-requirements-size-specifications"
+    },
+    {
+      "path": "/blog",
+      "status": 200,
+      "title": "Passport &amp; Visa Photo Requirements Blog | Expert Guides 2026 | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog"
+    },
+    {
+      "path": "/blog/country-wise-visa-photo-requirements-comparison-2026",
+      "status": 200,
+      "title": "Country-Wise Visa Photo Requirements Comparison 2026 — Australia vs USA vs UK vs Canada vs Schengen | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/country-wise-visa-photo-requirements-comparison-2026"
+    },
+    {
+      "path": "/blog/france-visa-requirements-latest-guide",
+      "status": 200,
+      "title": "France Visa Photo Requirements (2026 Latest Guide): Size, Rules &amp; Tips for Students, Professionals &amp; Tourists | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/france-visa-requirements-latest-guide"
+    },
+    {
+      "path": "/blog/india-visa-requirements-for-foreigners",
+      "status": 200,
+      "title": "India Visa Requirements for Foreigners (2026 Complete Guide): e-Visa, Types, Fees, Photos &amp; Application Process | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/india-visa-requirements-for-foreigners"
+    },
+    {
+      "path": "/blog/germany-student-visa-photo-requirements",
+      "status": 200,
+      "title": "Germany Student Visa Photo Requirements (2026 Complete Guide): Size, Background, Biometric Rules &amp; Common Mistakes | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/germany-student-visa-photo-requirements"
+    },
+    {
+      "path": "/blog/new-zealand-visa-photo-requirements",
+      "status": 200,
+      "title": "New Zealand Visa Photo Requirements 2026 — Official Size, Format &amp; Upload Rules | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/new-zealand-visa-photo-requirements"
+    },
+    {
+      "path": "/blog/uk-visa-photo-requirements",
+      "status": 200,
+      "title": "UK Visa Photos: Application Centres, ID Check App &amp; Uploads | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/uk-visa-photo-requirements"
+    },
+    {
+      "path": "/blog/uk-digital-passport-photo",
+      "status": 200,
+      "title": "UK Digital Passport Photo: How to Take and Submit One Online (2026) | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/uk-digital-passport-photo"
+    },
+    {
+      "path": "/blog/schengen-visa-photo-requirements-size-maker-tool-2026",
+      "status": 200,
+      "title": "Schengen Visa Photo Requirements 2026 – Size, Specs &amp; Free Online Maker Tool | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/schengen-visa-photo-requirements-size-maker-tool-2026"
+    },
+    {
+      "path": "/blog/us-visa-photo-size-background-rules-guide-uk-europe",
+      "status": 200,
+      "title": "US Visa Photo Requirements 2026: Official Size, Background &amp; Dress Code Rules | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/blog/us-visa-photo-size-background-rules-guide-uk-europe"
+    },
+    {
+      "path": "/brazil-visa-photo-editor",
+      "status": 200,
+      "title": "Brazil Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/brazil-visa-photo-editor"
+    },
+    {
+      "path": "/brazil-passport-photo-editor",
+      "status": 200,
+      "title": "Brazil Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/brazil-passport-photo-editor"
+    },
+    {
+      "path": "/bulgaria-passport-photo-editor",
+      "status": 200,
+      "title": "Bulgaria Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/bulgaria-passport-photo-editor"
+    },
+    {
+      "path": "/bulgaria-visa-photo-editor",
+      "status": 200,
+      "title": "Bulgaria Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/bulgaria-visa-photo-editor"
+    },
+    {
+      "path": "/ca/canada-passport-photo-requirements",
+      "status": 200,
+      "title": "Canada Passport Photo: Size, Requirements &amp; Guidelines 2026 | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/ca/canada-passport-photo-requirements"
+    },
+    {
+      "path": "/ca",
+      "status": 200,
+      "title": "Canada Passport Size Photo Maker Photo Tool IRCC Compliant | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/ca"
+    },
+    {
+      "path": "/chile-passport-photo-editor",
+      "status": 200,
+      "title": "Chile Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/chile-passport-photo-editor"
+    },
+    {
+      "path": "/chile-visa-photo-editor",
+      "status": 200,
+      "title": "Chile Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/chile-visa-photo-editor"
+    },
+    {
+      "path": "/china-visa-photo-editor",
+      "status": 200,
+      "title": "China Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/china-visa-photo-editor"
+    },
+    {
+      "path": "/china-passport-photo-editor",
+      "status": 200,
+      "title": "China Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/china-passport-photo-editor"
+    },
+    {
+      "path": "/contact",
+      "status": 200,
+      "title": "Contact Us | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/contact"
+    },
+    {
+      "path": "/create-china-visa-photo",
+      "status": 200,
+      "title": "China Visa Photo – Size, Requirements &amp; Online Creator",
+      "canonical": "https://www.pixpassvisa.com/create-china-visa-photo"
+    },
+    {
+      "path": "/croatia-visa-photo-editor",
+      "status": 200,
+      "title": "Croatia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/croatia-visa-photo-editor"
+    },
+    {
+      "path": "/create-dubai-visa-photo",
+      "status": 200,
+      "title": " Dubai Visa Photo online – Size, Requirements &amp; Online Creator",
+      "canonical": "https://www.pixpassvisa.com/create-dubai-visa-photo"
+    },
+    {
+      "path": "/croatia-passport-photo-editor",
+      "status": 200,
+      "title": "Croatia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/croatia-passport-photo-editor"
+    },
+    {
+      "path": "/czechia-passport-photo-editor",
+      "status": 200,
+      "title": "Czechia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/czechia-passport-photo-editor"
+    },
+    {
+      "path": "/czechia-visa-photo-editor",
+      "status": 200,
+      "title": "Czechia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/czechia-visa-photo-editor"
+    },
+    {
+      "path": "/data-security",
+      "status": 200,
+      "title": "Photo Processing, Storage &amp; Download Access | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/data-security"
+    },
+    {
+      "path": "/de",
+      "status": 200,
+      "title": "Passfoto &amp; Visumfoto Online Erstellen 2026 | Offiziell &amp; Geprüft | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/de"
+    },
+    {
+      "path": "/de/bewerbungsfoto",
+      "status": 200,
+      "title": "Bewerbungsfoto Online Erstellen 2026 | Tipps &amp; Vorschriften | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/de/bewerbungsfoto"
+    },
+    {
+      "path": "/de/biometrisches-passbild",
+      "status": 200,
+      "title": "Biometrisches Passbild online erstellen 2026 – ICAO-konform | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/de/biometrisches-passbild"
+    },
+    {
+      "path": "/de/dokumentenfoto-schweiz",
+      "status": 200,
+      "title": "Dokumentenfoto Schweiz: online für ID, Führerausweis &amp; Visum",
+      "canonical": "https://www.pixpassvisa.com/de/dokumentenfoto-schweiz"
+    },
+    {
+      "path": "/de/fuehrerschein-foto",
+      "status": 200,
+      "title": "Führerschein-Foto: Vorbereitung und Hinweise | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/de/fuehrerschein-foto"
+    },
+    {
+      "path": "/de/gesundheitskarte-foto",
+      "status": 200,
+      "title": "Foto für Gesundheitskarte (eGK) Online Erstellen | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/de/gesundheitskarte-foto"
+    },
+    {
+      "path": "/de/guides",
+      "status": 200,
+      "title": "Ratgeber &amp; Anleitungen für Passbilder, Visumfotos &amp; Bewerbungsfotos",
+      "canonical": "https://www.pixpassvisa.com/de/guides"
+    },
+    {
+      "path": "/de/guides/biometrisches-passbild-alle-anforderungen",
+      "status": 200,
+      "title": "Biometrisches Passbild: Format, Aufnahme und sichtbare Bildfehler",
+      "canonical": "https://www.pixpassvisa.com/de/guides/biometrisches-passbild-alle-anforderungen"
+    },
+    {
+      "path": "/de/guides/biometrisches-passfoto-anforderungen-deutschland",
+      "status": 200,
+      "title": "Passfoto in Deutschland: digitale Erfassung und Abgabe beim Bürgeramt",
+      "canonical": "https://www.pixpassvisa.com/de/guides/biometrisches-passfoto-anforderungen-deutschland"
+    },
+    {
+      "path": "/de/passbild-online",
+      "status": 200,
+      "title": "Passbild Online Erstellen 2026 | Biometrisches Passfoto 35x45 mm",
+      "canonical": "https://www.pixpassvisa.com/de/passbild-online"
+    },
+    {
+      "path": "/de/visum-foto",
+      "status": 200,
+      "title": "Biometrisches Passbild online erstellen – ICAO-konform | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/de/visum-foto"
+    },
+    {
+      "path": "/de/passfoto-schweiz-online",
+      "status": 200,
+      "title": "Passfoto Schweiz: Format, Anforderungen &amp; online vorbereiten",
+      "canonical": "https://www.pixpassvisa.com/de/passfoto-schweiz-online"
+    },
+    {
+      "path": "/denmark-passport-photo-editor",
+      "status": 200,
+      "title": "Denmark Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/denmark-passport-photo-editor"
+    },
+    {
+      "path": "/denmark-visa-photo-editor",
+      "status": 200,
+      "title": "Denmark Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/denmark-visa-photo-editor"
+    },
+    {
+      "path": "/digital-visa-photo-specs-2026",
+      "status": 200,
+      "title": "Digital US Visa Photo Specs 2026: Official Upload Guide",
+      "canonical": "https://www.pixpassvisa.com/digital-visa-photo-specs-2026"
+    },
+    {
+      "path": "/diversity-visa-lottery-photo-checker",
+      "status": 200,
+      "title": "DV Lottery Photo Checker – Free Green Card Photo Validator 2026/2027 | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/diversity-visa-lottery-photo-checker"
+    },
+    {
+      "path": "/editorial-methodology",
+      "status": 200,
+      "title": "Editorial &amp; Verification Methodology | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/editorial-methodology"
+    },
+    {
+      "path": "/egypt-passport-photo-editor",
+      "status": 200,
+      "title": "Egypt Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/egypt-passport-photo-editor"
+    },
+    {
+      "path": "/egypt-visa-photo-editor",
+      "status": 200,
+      "title": "Egypt Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/egypt-visa-photo-editor"
+    },
+    {
+      "path": "/estonia-visa-photo-editor",
+      "status": 200,
+      "title": "Estonia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/estonia-visa-photo-editor"
+    },
+    {
+      "path": "/estonia-passport-photo-editor",
+      "status": 200,
+      "title": "Estonia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/estonia-passport-photo-editor"
+    },
+    {
+      "path": "/faq",
+      "status": 200,
+      "title": "Frequently Asked Questions | PixPassVisa Support | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/faq"
+    },
+    {
+      "path": "/finland-visa-photo-editor",
+      "status": 200,
+      "title": "Finland Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/finland-visa-photo-editor"
+    },
+    {
+      "path": "/finland-passport-photo-editor",
+      "status": 200,
+      "title": "Finland Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/finland-passport-photo-editor"
+    },
+    {
+      "path": "/fr",
+      "status": 200,
+      "title": "Photo Passeport, Visa &amp; Carte d&#x27;Identité en Ligne | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/fr"
+    },
+    {
+      "path": "/fr/ephoto-ants",
+      "status": 200,
+      "title": "ePhoto ANTS en Ligne — Code Photo Numérique Passeport &amp; CNI 2026",
+      "canonical": "https://www.pixpassvisa.com/fr/ephoto-ants"
+    },
+    {
+      "path": "/fr/guides",
+      "status": 200,
+      "title": "Guides Photo d&#x27;Identité — Conseils et Tutoriels | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/guides"
+    },
+    {
+      "path": "/fr/guides/how-to-take-passport-photo-at-home",
+      "status": 200,
+      "title": "Comment Prendre une Photo Passeport à la Maison | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/guides/how-to-take-passport-photo-at-home"
+    },
+    {
+      "path": "/fr/guides/passport-photo-background",
+      "status": 200,
+      "title": "Fond Photo Passeport : Règles et Astuces 2026 | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/guides/passport-photo-background"
+    },
+    {
+      "path": "/fr/guides/passport-photo-size",
+      "status": 200,
+      "title": "Taille Photo Passeport : Dimensions Exactes par Pays 2026 | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/guides/passport-photo-size"
+    },
+    {
+      "path": "/fr/passport-photo-online",
+      "status": 200,
+      "title": "Créer votre Photo Passeport &amp; Visa — Outil en Ligne | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/passport-photo-online"
+    },
+    {
+      "path": "/fr/guides/photo-identite-france-passeport-cni-ephoto-permis-visa",
+      "status": 200,
+      "title": "Photo d&#x27;Identité France 2026 : Passeport, CNI, ePhoto Permis, Visa | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/guides/photo-identite-france-passeport-cni-ephoto-permis-visa"
+    },
+    {
+      "path": "/fr/photo-carte-identite",
+      "status": 200,
+      "title": "Photo Carte d&#x27;Identité en Ligne — CNI Conforme | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-carte-identite"
+    },
+    {
+      "path": "/fr/photo-identite",
+      "status": 200,
+      "title": "Photo d&#x27;Identité Conforme — CNI, Permis &amp; Carte Vitale | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-identite"
+    },
+    {
+      "path": "/fr/photo-passeport",
+      "status": 200,
+      "title": "Photo Passeport en Ligne 2026 — Conforme ANTS en 30s",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-passeport"
+    },
+    {
+      "path": "/fr/photo-identite-en-ligne",
+      "status": 200,
+      "title": "Photo d&#x27;Identité en Ligne — Passeport, Visa &amp; CNI | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-identite-en-ligne"
+    },
+    {
+      "path": "/fr/photo-passeport-biometrique",
+      "status": 200,
+      "title": "Photo Passeport Biométrique — Normes OACI 2026 | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-passeport-biometrique"
+    },
+    {
+      "path": "/fr/photo-visa",
+      "status": 200,
+      "title": "Photo Visa en Ligne — Tous Pays &amp; Types de Visa | PixPassVisa",
+      "canonical": "https://www.pixpassvisa.com/fr/photo-visa"
+    },
+    {
+      "path": "/france-visa-photo-editor",
+      "status": 200,
+      "title": "France Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/france-visa-photo-editor"
+    },
+    {
+      "path": "/france-passport-photo-editor",
+      "status": 200,
+      "title": "France Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/france-passport-photo-editor"
+    },
+    {
+      "path": "/germany-passport-photo-editor",
+      "status": 200,
+      "title": "Germany Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/germany-passport-photo-editor"
+    },
+    {
+      "path": "/germany-visa-photo-editor",
+      "status": 200,
+      "title": "Germany Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/germany-visa-photo-editor"
+    },
+    {
+      "path": "/ghana-passport-photo-editor",
+      "status": 200,
+      "title": "Ghana Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/ghana-passport-photo-editor"
+    },
+    {
+      "path": "/ghana-visa-photo-editor",
+      "status": 200,
+      "title": "Ghana Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/ghana-visa-photo-editor"
+    },
+    {
+      "path": "/greece-passport-photo-editor",
+      "status": 200,
+      "title": "Greece Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/greece-passport-photo-editor"
+    },
+    {
+      "path": "/greece-visa-photo-editor",
+      "status": 200,
+      "title": "Greece Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/greece-visa-photo-editor"
+    },
+    {
+      "path": "/hungary-passport-photo-editor",
+      "status": 200,
+      "title": "Hungary Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/hungary-passport-photo-editor"
+    },
+    {
+      "path": "/hungary-visa-photo-editor",
+      "status": 200,
+      "title": "Hungary Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/hungary-visa-photo-editor"
+    },
+    {
+      "path": "/icao-passport-photo-editor",
+      "status": 200,
+      "title": "ICAO Photo Standards: Choose Your Document",
+      "canonical": "https://www.pixpassvisa.com/icao-passport-photo-editor"
+    },
+    {
+      "path": "/icao-visa-photo-editor",
+      "status": 200,
+      "title": "ICAO Photo Standards: Choose Your Document",
+      "canonical": "https://www.pixpassvisa.com/icao-visa-photo-editor"
+    },
+    {
+      "path": "/india-passport-photo-editor",
+      "status": 200,
+      "title": "India Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/india-passport-photo-editor"
+    },
+    {
+      "path": "/india-visa-photo-editor",
+      "status": 200,
+      "title": "India Visa Photo Online (2026) | 35x45mm",
+      "canonical": "https://www.pixpassvisa.com/india-visa-photo-editor"
+    },
+    {
+      "path": "/indian-passport-size-photograph",
+      "status": 200,
+      "title": "Indian Passport Photo Size: Exact Requirements and Free Tool",
+      "canonical": "https://www.pixpassvisa.com/indian-passport-size-photograph"
+    },
+    {
+      "path": "/indonesia-passport-photo-editor",
+      "status": 200,
+      "title": "Indonesia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/indonesia-passport-photo-editor"
+    },
+    {
+      "path": "/indonesia-visa-photo-editor",
+      "status": 200,
+      "title": "Indonesia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/indonesia-visa-photo-editor"
+    },
+    {
+      "path": "/iran-passport-photo-editor",
+      "status": 200,
+      "title": "Iran Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/iran-passport-photo-editor"
+    },
+    {
+      "path": "/iran-visa-photo-editor",
+      "status": 200,
+      "title": "Iran Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/iran-visa-photo-editor"
+    },
+    {
+      "path": "/iraq-passport-photo-editor",
+      "status": 200,
+      "title": "Iraq Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/iraq-passport-photo-editor"
+    },
+    {
+      "path": "/iraq-visa-photo-editor",
+      "status": 200,
+      "title": "Iraq Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/iraq-visa-photo-editor"
+    },
+    {
+      "path": "/israel-visa-photo-editor",
+      "status": 200,
+      "title": "Israel Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/israel-visa-photo-editor"
+    },
+    {
+      "path": "/israel-passport-photo-editor",
+      "status": 200,
+      "title": "Israel Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/israel-passport-photo-editor"
+    },
+    {
+      "path": "/italy-visa-photo-editor",
+      "status": 200,
+      "title": "Italy Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/italy-visa-photo-editor"
+    },
+    {
+      "path": "/italy-passport-photo-editor",
+      "status": 200,
+      "title": "Italy Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/italy-passport-photo-editor"
+    },
+    {
+      "path": "/japan-visa-photo-editor",
+      "status": 200,
+      "title": "Japan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/japan-visa-photo-editor"
+    },
+    {
+      "path": "/japan-passport-photo-editor",
+      "status": 200,
+      "title": "Japan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/japan-passport-photo-editor"
+    },
+    {
+      "path": "/kazakhstan-visa-photo-editor",
+      "status": 200,
+      "title": "Kazakhstan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/kazakhstan-visa-photo-editor"
+    },
+    {
+      "path": "/kazakhstan-passport-photo-editor",
+      "status": 200,
+      "title": "Kazakhstan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/kazakhstan-passport-photo-editor"
+    },
+    {
+      "path": "/latvia-visa-photo-editor",
+      "status": 200,
+      "title": "Latvia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/latvia-visa-photo-editor"
+    },
+    {
+      "path": "/latvia-passport-photo-editor",
+      "status": 200,
+      "title": "Latvia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/latvia-passport-photo-editor"
+    },
+    {
+      "path": "/lithuania-visa-photo-editor",
+      "status": 200,
+      "title": "Lithuania Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/lithuania-visa-photo-editor"
+    },
+    {
+      "path": "/lithuania-passport-photo-editor",
+      "status": 200,
+      "title": "Lithuania Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/lithuania-passport-photo-editor"
+    },
+    {
+      "path": "/luxembourg-passport-photo-editor",
+      "status": 200,
+      "title": "Luxembourg Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/luxembourg-passport-photo-editor"
+    },
+    {
+      "path": "/luxembourg-visa-photo-editor",
+      "status": 200,
+      "title": "Luxembourg Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/luxembourg-visa-photo-editor"
+    },
+    {
+      "path": "/malawi-visa-photo-editor",
+      "status": 200,
+      "title": "Malawi Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/malawi-visa-photo-editor"
+    },
+    {
+      "path": "/malawi-passport-photo-editor",
+      "status": 200,
+      "title": "Malawi Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/malawi-passport-photo-editor"
+    },
+    {
+      "path": "/malaysia-passport-photo-editor",
+      "status": 200,
+      "title": "Malaysia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/malaysia-passport-photo-editor"
+    },
+    {
+      "path": "/malaysia-visa-photo-editor",
+      "status": 200,
+      "title": "Malaysia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/malaysia-visa-photo-editor"
+    },
+    {
+      "path": "/malta-passport-photo-editor",
+      "status": 200,
+      "title": "Malta Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/malta-passport-photo-editor"
+    },
+    {
+      "path": "/malta-visa-photo-editor",
+      "status": 200,
+      "title": "Malta Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/malta-visa-photo-editor"
+    },
+    {
+      "path": "/mexico-passport-photo-editor",
+      "status": 200,
+      "title": "Mexico Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/mexico-passport-photo-editor"
+    },
+    {
+      "path": "/mexico-visa-photo-editor",
+      "status": 200,
+      "title": "Mexico Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/mexico-visa-photo-editor"
+    },
+    {
+      "path": "/morocco-visa-photo-editor",
+      "status": 200,
+      "title": "Morocco Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/morocco-visa-photo-editor"
+    },
+    {
+      "path": "/morocco-passport-photo-editor",
+      "status": 200,
+      "title": "Morocco Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/morocco-passport-photo-editor"
+    },
+    {
+      "path": "/nepal-passport-photo-editor",
+      "status": 200,
+      "title": "Nepal Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/nepal-passport-photo-editor"
+    },
+    {
+      "path": "/nepal-visa-photo-editor",
+      "status": 200,
+      "title": "Nepal Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/nepal-visa-photo-editor"
+    },
+    {
+      "path": "/netherlands-visa-photo-editor",
+      "status": 200,
+      "title": "Netherlands Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/netherlands-visa-photo-editor"
+    },
+    {
+      "path": "/netherlands-passport-photo-editor",
+      "status": 200,
+      "title": "Netherlands Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/netherlands-passport-photo-editor"
+    },
+    {
+      "path": "/new-zealand-visa-photo-editor",
+      "status": 200,
+      "title": "New Zealand Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/new-zealand-visa-photo-editor"
+    },
+    {
+      "path": "/new-zealand-passport-photo-editor",
+      "status": 200,
+      "title": "New Zealand Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/new-zealand-passport-photo-editor"
+    },
+    {
+      "path": "/nigeria-visa-photo-editor",
+      "status": 200,
+      "title": "Nigeria Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/nigeria-visa-photo-editor"
+    },
+    {
+      "path": "/nigeria-passport-photo-editor",
+      "status": 200,
+      "title": "Nigeria Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/nigeria-passport-photo-editor"
+    },
+    {
+      "path": "/norway-visa-photo-editor",
+      "status": 200,
+      "title": "Norway Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/norway-visa-photo-editor"
+    },
+    {
+      "path": "/norway-passport-photo-editor",
+      "status": 200,
+      "title": "Norway Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/norway-passport-photo-editor"
+    },
+    {
+      "path": "/pakistan-passport-photo-editor",
+      "status": 200,
+      "title": "Pakistan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/pakistan-passport-photo-editor"
+    },
+    {
+      "path": "/online-passport-photo-checker",
+      "status": 200,
+      "title": "Online Passport Photo Checker – Free Instant Photo Test (2026) | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/online-passport-photo-checker"
+    },
+    {
+      "path": "/pakistan-visa-photo-editor",
+      "status": 200,
+      "title": "Pakistan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/pakistan-visa-photo-editor"
+    },
+    {
+      "path": "/passport-photo-app",
+      "status": 200,
+      "title": "Passport Photo Maker Online – No Download Required",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-app"
+    },
+    {
+      "path": "/passport-photo-checker",
+      "status": 200,
+      "title": "Passport Photo Checker – Free Biometric Compliance Validator (2026) | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-checker"
+    },
+    {
+      "path": "/passport-photo-editor",
+      "status": 200,
+      "title": "Passport Photo Editor Online – Edit, Crop &amp; Fix Background Instantly",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-editor"
+    },
+    {
+      "path": "/passport-photo-maker",
+      "status": 200,
+      "title": "Passport Photo Maker Online – Biometric &amp; Instant",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-maker"
+    },
+    {
+      "path": "/passport-photo-online",
+      "status": 200,
+      "title": "Create Passport &amp; Visa Photos Online – 50+ Countries | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-online"
+    },
+    {
+      "path": "/passport-photo-print-template-generator",
+      "status": 200,
+      "title": "Passport Photo Print Template – Print at Home | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-print-template-generator"
+    },
+    {
+      "path": "/passport-photo-video",
+      "status": 200,
+      "title": "How to Make a Passport or Visa Photo Online | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-video"
+    },
+    {
+      "path": "/passport-size-photo-maker",
+      "status": 200,
+      "title": "Free Passport Photo Maker Online | Official Passport Standards | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-size-photo-maker"
+    },
+    {
+      "path": "/passport-photo-sizes",
+      "status": 200,
+      "title": "Passport &amp; Visa Photo Size Chart 2026 (50+ Countries) | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photo-sizes"
+    },
+    {
+      "path": "/peru-passport-photo-editor",
+      "status": 200,
+      "title": "Peru Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/peru-passport-photo-editor"
+    },
+    {
+      "path": "/passport-photos",
+      "status": 200,
+      "title": "Official Passport Photo Sizes &amp; Requirements by Country | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/passport-photos"
+    },
+    {
+      "path": "/peru-visa-photo-editor",
+      "status": 200,
+      "title": "Peru Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/peru-visa-photo-editor"
+    },
+    {
+      "path": "/philippines-passport-photo-editor",
+      "status": 200,
+      "title": "Philippines Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/philippines-passport-photo-editor"
+    },
+    {
+      "path": "/philippines-visa-photo-editor",
+      "status": 200,
+      "title": "Philippines Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/philippines-visa-photo-editor"
+    },
+    {
+      "path": "/poland-visa-photo-editor",
+      "status": 200,
+      "title": "Poland Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/poland-visa-photo-editor"
+    },
+    {
+      "path": "/poland-passport-photo-editor",
+      "status": 200,
+      "title": "Poland Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/poland-passport-photo-editor"
+    },
+    {
+      "path": "/portugal-passport-photo-editor",
+      "status": 200,
+      "title": "Portugal Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/portugal-passport-photo-editor"
+    },
+    {
+      "path": "/portugal-visa-photo-editor",
+      "status": 200,
+      "title": "Portugal Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/portugal-visa-photo-editor"
+    },
+    {
+      "path": "/refund-policy",
+      "status": 200,
+      "title": "Refund Policy | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/refund-policy"
+    },
+    {
+      "path": "/privacy-policy",
+      "status": 200,
+      "title": "Privacy Policy | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/privacy-policy"
+    },
+    {
+      "path": "/romania-passport-photo-editor",
+      "status": 200,
+      "title": "Romania Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/romania-passport-photo-editor"
+    },
+    {
+      "path": "/romania-visa-photo-editor",
+      "status": 200,
+      "title": "Romania Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/romania-visa-photo-editor"
+    },
+    {
+      "path": "/russia-visa-photo-editor",
+      "status": 200,
+      "title": "Russia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/russia-visa-photo-editor"
+    },
+    {
+      "path": "/russia-passport-photo-editor",
+      "status": 200,
+      "title": "Russia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/russia-passport-photo-editor"
+    },
+    {
+      "path": "/saudi-arabia-passport-photo-editor",
+      "status": 200,
+      "title": "Saudi Arabia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/saudi-arabia-passport-photo-editor"
+    },
+    {
+      "path": "/saudi-arabia-visa-photo-editor",
+      "status": 200,
+      "title": "Saudi Arabia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/saudi-arabia-visa-photo-editor"
+    },
+    {
+      "path": "/schengen-passport-photo-editor",
+      "status": 200,
+      "title": "Schengen Passport Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/schengen-passport-photo-editor"
+    },
+    {
+      "path": "/schengen-visa-photo-editor",
+      "status": 200,
+      "title": "Schengen Visa Photo Online (2026) | 35x45mm",
+      "canonical": "https://www.pixpassvisa.com/schengen-visa-photo-editor"
+    },
+    {
+      "path": "/singapore-passport-photo-editor",
+      "status": 200,
+      "title": "Singapore Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/singapore-passport-photo-editor"
+    },
+    {
+      "path": "/singapore-visa-photo-editor",
+      "status": 200,
+      "title": "Singapore Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/singapore-visa-photo-editor"
+    },
+    {
+      "path": "/slovakia-passport-photo-editor",
+      "status": 200,
+      "title": "Slovakia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/slovakia-passport-photo-editor"
+    },
+    {
+      "path": "/slovakia-visa-photo-editor",
+      "status": 200,
+      "title": "Slovakia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/slovakia-visa-photo-editor"
+    },
+    {
+      "path": "/slovenia-visa-photo-editor",
+      "status": 200,
+      "title": "Slovenia Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/slovenia-visa-photo-editor"
+    },
+    {
+      "path": "/slovenia-passport-photo-editor",
+      "status": 200,
+      "title": "Slovenia Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/slovenia-passport-photo-editor"
+    },
+    {
+      "path": "/south-africa-passport-photo-editor",
+      "status": 200,
+      "title": "South Africa Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/south-africa-passport-photo-editor"
+    },
+    {
+      "path": "/south-africa-visa-photo-editor",
+      "status": 200,
+      "title": "South Africa Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/south-africa-visa-photo-editor"
+    },
+    {
+      "path": "/south-korea-visa-photo-editor",
+      "status": 200,
+      "title": "South Korea Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/south-korea-visa-photo-editor"
+    },
+    {
+      "path": "/south-korea-passport-photo-editor",
+      "status": 200,
+      "title": "South Korea Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/south-korea-passport-photo-editor"
+    },
+    {
+      "path": "/spain-visa-photo-editor",
+      "status": 200,
+      "title": "Spain Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/spain-visa-photo-editor"
+    },
+    {
+      "path": "/spain-passport-photo-editor",
+      "status": 200,
+      "title": "Spain Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/spain-passport-photo-editor"
+    },
+    {
+      "path": "/sri-lanka-visa-photo-editor",
+      "status": 200,
+      "title": "Sri Lanka Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/sri-lanka-visa-photo-editor"
+    },
+    {
+      "path": "/sri-lanka-passport-photo-editor",
+      "status": 200,
+      "title": "Sri Lanka Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/sri-lanka-passport-photo-editor"
+    },
+    {
+      "path": "/support",
+      "status": 200,
+      "title": "Support &amp; Resource Center | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/support"
+    },
+    {
+      "path": "/sweden-passport-photo-editor",
+      "status": 200,
+      "title": "Sweden Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/sweden-passport-photo-editor"
+    },
+    {
+      "path": "/sweden-visa-photo-editor",
+      "status": 200,
+      "title": "Sweden Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/sweden-visa-photo-editor"
+    },
+    {
+      "path": "/switzerland-passport-photo-editor",
+      "status": 200,
+      "title": "Switzerland Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/switzerland-passport-photo-editor"
+    },
+    {
+      "path": "/switzerland-visa-photo-editor",
+      "status": 200,
+      "title": "Switzerland Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/switzerland-visa-photo-editor"
+    },
+    {
+      "path": "/tajikistan-passport-photo-editor",
+      "status": 200,
+      "title": "Tajikistan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/tajikistan-passport-photo-editor"
+    },
+    {
+      "path": "/tajikistan-visa-photo-editor",
+      "status": 200,
+      "title": "Tajikistan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/tajikistan-visa-photo-editor"
+    },
+    {
+      "path": "/terms",
+      "status": 200,
+      "title": "Terms of Service | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/terms"
+    },
+    {
+      "path": "/thailand-passport-photo-editor",
+      "status": 200,
+      "title": "Thailand Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/thailand-passport-photo-editor"
+    },
+    {
+      "path": "/thailand-visa-photo-editor",
+      "status": 200,
+      "title": "Thailand Visa Photo Online (2026) | 35x45mm",
+      "canonical": "https://www.pixpassvisa.com/thailand-visa-photo-editor"
+    },
+    {
+      "path": "/turkey-passport-photo-editor",
+      "status": 200,
+      "title": "Turkey Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/turkey-passport-photo-editor"
+    },
+    {
+      "path": "/turkey-visa-photo-editor",
+      "status": 200,
+      "title": "Turkey Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/turkey-visa-photo-editor"
+    },
+    {
+      "path": "/uae-passport-photo-editor",
+      "status": 200,
+      "title": "United Arab Emirates Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/uae-passport-photo-editor"
+    },
+    {
+      "path": "/uae-visa-photo-editor",
+      "status": 200,
+      "title": "United Arab Emirates Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/uae-visa-photo-editor"
+    },
+    {
+      "path": "/uk",
+      "status": 200,
+      "title": "UK Passport Size Photo Maker &amp; Visa Photo Tool HMPO Compliant | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk"
+    },
+    {
+      "path": "/uk-passport-photo-checker-online-free",
+      "status": 200,
+      "title": "UK Passport Photo Checker – Requirements &amp; Online Check | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk-passport-photo-checker-online-free"
+    },
+    {
+      "path": "/uk-passport-photo-editor",
+      "status": 200,
+      "title": "United Kingdom Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/uk-passport-photo-editor"
+    },
+    {
+      "path": "/uk-passport-photo-requirements-tool",
+      "status": 200,
+      "title": "UK Passport Photo Requirements – Size &amp; Online Checker",
+      "canonical": "https://www.pixpassvisa.com/uk-passport-photo-requirements-tool"
+    },
+    {
+      "path": "/uk-visa-photo-editor",
+      "status": 200,
+      "title": "United Kingdom Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/uk-visa-photo-editor"
+    },
+    {
+      "path": "/uk-passport-size-photo-maker",
+      "status": 200,
+      "title": "UK Passport Photo Size: Digital &amp; Printed Photo Guide | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk-passport-size-photo-maker"
+    },
+    {
+      "path": "/uk/photo-for-driving-license-uk",
+      "status": 200,
+      "title": "UK Driving Licence Photo: Size &amp; Requirements 2026 | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk/photo-for-driving-license-uk"
+    },
+    {
+      "path": "/uk/passport-photos-london",
+      "status": 200,
+      "title": "Passport Photos in London: Choose Digital Capture or Printed Photos | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk/passport-photos-london"
+    },
+    {
+      "path": "/us-passport-photo-editor",
+      "status": 200,
+      "title": "United States Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/us-passport-photo-editor"
+    },
+    {
+      "path": "/uk/uk-application-registration-card-passport-size-photo",
+      "status": 200,
+      "title": "UK Application Registration Card (ARC) Photo: Size &amp; Requirements 2026 | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/uk/uk-application-registration-card-passport-size-photo"
+    },
+    {
+      "path": "/us-visa-photo-editor",
+      "status": 200,
+      "title": "United States Visa Photo Online (2026) | 51x51mm",
+      "canonical": "https://www.pixpassvisa.com/us-visa-photo-editor"
+    },
+    {
+      "path": "/uzbekistan-passport-photo-editor",
+      "status": 200,
+      "title": "Uzbekistan Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/uzbekistan-passport-photo-editor"
+    },
+    {
+      "path": "/uzbekistan-visa-photo-editor",
+      "status": 200,
+      "title": "Uzbekistan Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/uzbekistan-visa-photo-editor"
+    },
+    {
+      "path": "/venezuela-passport-photo-editor",
+      "status": 200,
+      "title": "Venezuela Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/venezuela-passport-photo-editor"
+    },
+    {
+      "path": "/venezuela-visa-photo-editor",
+      "status": 200,
+      "title": "Venezuela Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/venezuela-visa-photo-editor"
+    },
+    {
+      "path": "/visa-photo-validator",
+      "status": 200,
+      "title": "Visa Photo Validator – Passport &amp; Biometric Photo Checker | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/visa-photo-validator"
+    },
+    {
+      "path": "/yemen-passport-photo-editor",
+      "status": 200,
+      "title": "Yemen Passport Photo Maker (2026) | Size &amp; Photo Guide",
+      "canonical": "https://www.pixpassvisa.com/yemen-passport-photo-editor"
+    },
+    {
+      "path": "/yemen-visa-photo-editor",
+      "status": 200,
+      "title": "Yemen Visa Photo Guidance",
+      "canonical": "https://www.pixpassvisa.com/yemen-visa-photo-editor"
+    },
+    {
+      "path": "/visa-photo",
+      "status": 200,
+      "title": "Visa Photo Guidance &amp; Available Presets | PixPassVisa | pixpassvisa.com",
+      "canonical": "https://www.pixpassvisa.com/visa-photo"
+    }
+  ]
+}

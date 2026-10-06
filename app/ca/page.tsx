@@ -130,7 +130,7 @@ export default function CAIndexPage() {
                   ))}
                 </div>
                 <span className="text-sm text-slate-700 font-bold">
-                  4.9 · Trusted by 15,000+ Canadian applicants
+                  Independent photo preparation · Preview before payment
                 </span>
               </div>
             </div>

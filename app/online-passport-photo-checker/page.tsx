@@ -51,12 +51,12 @@ export default function OnlinePassportPhotoCheckerPage() {
     {
       question: "Do I need to download an app to use this checker?",
       answer:
-        "No. Everything runs directly in your browser on your phone, tablet, or computer. There's nothing to install, and nothing gets left behind on your device once you close the tab. If you find yourself on a native app store search instead, know that a browser-based check works just as well and skips the install entirely.",
+        "No installation is needed. You use a web interface, but your image is sent to our server and processing service for validation.",
     },
     {
       question: "How long does the online check actually take?",
       answer:
-        "Most uploads come back with a full result in under three seconds. The tool maps out the key points on your face and frame the moment the image finishes uploading, then compares those measurements against the rules for the country you selected, so there's no waiting around for a human reviewer.",
+        "Processing time depends on the image, network, and server availability. The tool maps out the key points on your face and frame the moment the image finishes uploading, then compares those measurements against the rules for the country you selected, so there's no waiting around for a human reviewer.",
     },
     {
       question: "Can I check a photo I already took on my phone?",
@@ -101,7 +101,7 @@ export default function OnlinePassportPhotoCheckerPage() {
     {
       question: "Is my photo stored or shared with anyone after I upload it?",
       answer:
-        "No. Your image is processed just long enough to generate your compliance report and is not written to a permanent database, shared with any government agency, or passed on to a third party. Once you close or refresh the page, there's nothing left saved on our end.",
+        "Uploaded photos are sent to our server and processing service and may be stored with Cloudinary. Closing this page does not delete stored copies. See our privacy policy for the stated retention policy; immediate deletion is not guaranteed.",
     },
     {
       question: "Can I check the same photo more than once?",
@@ -132,7 +132,7 @@ export default function OnlinePassportPhotoCheckerPage() {
       name: "Online Passport Photo Checker",
       url: "https://www.pixpassvisa.com/online-passport-photo-checker",
       description:
-        "Free online passport photo checker that runs in the browser with no download or sign-up, verifying size, head position, background, and lighting against official standards for 50+ countries.",
+        "Free online passport photo checker that uses a web interface with server processing, verifying size, head position, background, and lighting against official standards for 50+ countries.",
       applicationCategory: "UtilitiesApplication",
       operatingSystem: "All",
       offers: {
@@ -192,21 +192,21 @@ export default function OnlinePassportPhotoCheckerPage() {
         initialCountry="US"
         lockCountry={false}
         initialDocType="passport"
-        badgeText="No Download, No Sign-Up · Runs Right in Your Browser"
+        badgeText="No Installation · Server Processing"
         title="Online Passport Photo Checker"
-        highlightTitle="Free, Instant, In-Browser Photo Test"
-        subtitle="Before you print, upload, or hand a photo across the counter, run it through this checker. It's nothing more than your browser and your photo — pick your destination country, upload the image, and get a full pass/fail breakdown in a few seconds."
+        highlightTitle="Free Automated Photo Feedback"
+        subtitle="Before you print, upload, or hand a photo across the counter, run it through this checker. Your image is uploaded for server processing — pick your destination country, upload the image, and get a full pass/fail breakdown in a few seconds."
         directAnswer={{
           question: "How do I check my passport photo online for free?",
-          answer: "You can check your passport photo online instantly using our browser-based validator. Upload your photo from your phone or computer, and our computer vision algorithm will test your image across 30+ biometric standards—including exact dimensions (2×2 in / 35×45 mm), head proportion (50–69% or 70–80%), eye line alignment, background color uniformity, lighting balance, and prohibited items (glasses, hats, smiles). No download, app install, or email sign-up required.",
+          answer: "Choose a country preset and upload a photograph for automated feedback on common image issues. The photo is sent for server processing and may be stored. These checks can miss issues and do not guarantee acceptance; confirm the rules for your exact application.",
           keyPoints: [
-            "Instant results in under 3 seconds directly in your web browser",
-            "Zero image retention: photos processed ephemerally in RAM and immediately discarded",
-            "Covers official rules for 50+ countries including US, UK, Canada, Schengen, and Australia",
+            "Automated results displayed in your browser; processing time varies",
+            "Server processing and image storage: review our privacy policy before uploading",
+            "Country presets provide selected measurements; confirm current application rules",
             "Tests background uniformity, face height, eye height, tilt, and glare",
             "Includes actionable fix instructions for any flagged parameter",
           ],
-          lastReviewed: "September 2026",
+          lastReviewed: "6 October 2026",
           sourceAuthority: "ICAO Doc 9303, ISO/IEC 19794-5 & National Passport Issuing Authorities",
         }}
         officialSources={[

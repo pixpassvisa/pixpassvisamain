@@ -61,6 +61,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
         ]} 
       />
       <p className="max-w-7xl mx-auto px-6 py-3 text-xs text-slate-600">Independent preparation tool. Automated checks do not guarantee acceptance. Follow your issuing authority’s rules on photo capture and editing. Images below are illustrative.</p>
+      {isVisaIntent && <p className="max-w-7xl mx-auto px-6 py-3 text-sm text-amber-900 bg-amber-50">The preparation link selects the {spec.name} preset. Server validation currently uses a country passport configuration; it does not certify visa-specific requirements. Review your application instructions and the downloaded file.</p>}
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden pt-10 pb-16 lg:pt-10 lg:pb-24 ">
         
@@ -145,8 +146,8 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
       <section className="py-16 bg-[#f8faf9] border-y border-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-2xl font-bold text-slate-900">Official {countryName} Technical Requirements</h2>
-            <p className="text-slate-500 mt-2">Validated against {countryName} government standards</p>
+            <h2 className="text-2xl font-bold text-slate-900">{countryName} {docName} preset settings</h2>
+            <p className="text-slate-500 mt-2">Confirm these settings against your application instructions</p>
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -221,7 +222,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
               <Link href="/uk-passport-photo-checker-online-free" className="text-xs text-slate-600 hover:text-blue-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 font-medium">UK Passport Photo Checker</Link>
               <Link href="/digital-visa-photo-specs-2026" className="text-xs text-slate-600 hover:text-blue-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 font-medium">Digital Visa Specs 2026</Link>
               <Link href="/indian-passport-size-photograph" className="text-xs text-slate-600 hover:text-blue-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 font-medium">
-                Create inda icao standard photograph
+                Indian passport photo guidance
               </Link>
             </div>
           </div>
@@ -237,7 +238,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
           className="pointer-events-auto flex items-center justify-between w-full bg-slate-900 text-white p-2.5 pl-6 rounded-2xl shadow-2xl hover:bg-slate-800 transition-all border border-slate-700 hover:-translate-y-1 transform group"
         >
           <div className="flex flex-col">
-            <span className="font-bold text-sm">  Create {countryName} Passport size Photo</span>
+            <span className="font-bold text-sm">  Prepare {countryName} {docName} photo</span>
             <span className="text-[10px] text-slate-400 font-medium animate-pulse">No signup required</span>
           </div>
           <span className="relative bg-indigo-600 group-hover:bg-indigo-500 transition-colors px-5 py-2.5 rounded-xl text-sm font-black shadow-[0_4px_14px_0_rgb(79,70,229,0.39)] overflow-hidden">

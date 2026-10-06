@@ -118,26 +118,6 @@ const docs = [
   },
 ];
 
-const reviews = [
-  {
-    name: "Michael S.",
-    city: "München",
-    stars: 5,
-    text: "Mein Passbild wurde beim ersten Versuch für den Reisepass akzeptiert. Schnell und ohne Stress.",
-  },
-  {
-    name: "Julia B.",
-    city: "Berlin",
-    stars: 5,
-    text: "Ich war skeptisch, aber das Ergebnis war perfekt. Ich habe den Druckbogen bei Rossmann ausgedruckt, und alles hat sofort funktioniert.",
-  },
-  {
-    name: "Andreas M.",
-    city: "Hamburg",
-    stars: 5,
-    text: "Deutlich günstiger als beim Fotografen, und das Bild ist einwandfrei. Ich kann das Tool für die ganze Familie empfehlen.",
-  },
-];
 
 const requirementsTable = [
   {
@@ -348,9 +328,9 @@ export default function DeHomePage() {
         <div className="bg-slate-900 py-6">
           <div className="mx-auto flex max-w-5xl flex-wrap justify-around gap-3 px-4 sm:px-6 lg:px-10">
             {[
-              { v: "17.000+", l: "Zufriedene Nutzer" },
-              { v: "4,9 / 5", l: "Verifizierte Bewertung" },
-              { v: "99,8 %", l: "Akzeptanzrate" },
+              { v: "Vorschau", l: "Vor dem Kauf prüfen" },
+              { v: "Automatisch", l: "Keine Annahmegarantie" },
+              { v: "Unabhängig", l: "Keine Behörde" },
               { v: "< 30 s", l: "Bearbeitungszeit" },
               { v: "50+", l: "Länder unterstützt" },
             ].map((s) => (
@@ -694,59 +674,7 @@ export default function DeHomePage() {
         </section>
 
         {/* ══════════════ BEWERTUNGEN ══════════════ */}
-        <section
-          aria-labelledby="reviews-h2"
-          className="border-y-2 border-slate-200 bg-slate-50 py-14 sm:py-20"
-        >
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-10">
-            <header className="mb-10 max-w-2xl">
-              <span className="inline-block rounded-md border border-blue-200 bg-blue-50/70 px-3 py-1 text-xs font-bold uppercase tracking-wide text-blue-700">
-                Kundenbewertungen
-              </span>
-              <h2
-                id="reviews-h2"
-                className="mt-3 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl"
-              >
-                Das sagen unsere Nutzer
-              </h2>
-              <p className="mt-3 text-base leading-relaxed text-slate-600">
-                Über 17.000 Nutzer haben ihr biometrisches Passbild bereits mit
-                PixPassVisa erstellt.
-              </p>
-            </header>
-            <div className="grid gap-5 sm:grid-cols-3">
-              {reviews.map((r) => (
-                <figure
-                  key={r.name}
-                  className="flex flex-col gap-3 rounded-xl border-2 border-slate-200 bg-white p-6"
-                >
-                  <div
-                    className="flex gap-0.5 text-amber-500"
-                    aria-label={`${r.stars} von 5 Sternen`}
-                  >
-                    {[...Array(r.stars)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                    ))}
-                  </div>
-                  <blockquote className="text-sm italic leading-relaxed text-slate-700">
-                    „{r.text}"
-                  </blockquote>
-                  <figcaption className="flex items-center gap-3 text-sm text-slate-500">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full border border-blue-200 bg-blue-50/70 text-sm font-bold text-blue-700">
-                      {r.name.charAt(0)}
-                    </span>
-                    <span>
-                      <strong className="font-bold text-slate-900">
-                        {r.name}
-                      </strong>{" "}
-                      · {r.city}
-                    </span>
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </div>
-        </section>
+        {/* Customer reviews withheld until their provenance can be verified. */}
 
         {/* ══════════════ FAQ ══════════════ */}
         <section aria-labelledby="faq-h2" className="py-14 sm:py-20">

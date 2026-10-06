@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 
 // Generate a simple unique ID
 function generateSessionId() {
@@ -10,7 +10,6 @@ function generateSessionId() {
 
 export default function AnalyticsTracker() {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const startTime = useRef(Date.now());
   const sessionId = useRef<string>("");
 
@@ -39,7 +38,7 @@ export default function AnalyticsTracker() {
       }),
     }).catch(console.error);
 
-  }, [pathname, searchParams]);
+  }, [pathname]);
 
   // Track time spent when user leaves or closes tab
   useEffect(() => {
@@ -65,16 +64,17 @@ export default function AnalyticsTracker() {
       }
     };
 
-    window.addEventListener("beforeunload", sendBeacon);
-    document.addEventListener("visibilitychange", () => {
+    const onVisibilityChange = () => {
       if (document.visibilityState === "hidden") {
         sendBeacon();
       }
-    });
+    };
+    window.addEventListener("beforeunload", sendBeacon);
+    document.addEventListener("visibilitychange", onVisibilityChange);
 
     return () => {
       window.removeEventListener("beforeunload", sendBeacon);
-      document.removeEventListener("visibilitychange", sendBeacon); // Cleanup
+      document.removeEventListener("visibilitychange", onVisibilityChange);
     };
   }, []);
 

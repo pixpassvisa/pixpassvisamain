@@ -3,7 +3,8 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { CountrySpec } from "@/lib/specs";
-import { getCanonicalSlug, getShortId } from "@/lib/slug-utils";
+import { hasDocumentPreset } from "@/lib/document-intent";
+import { getShortId } from "@/lib/slug-utils";
 
 interface MasterDirectoryProps {
   title: string;
@@ -73,12 +74,12 @@ export default function MasterDirectory({ title, subtitle, specs, type }: Master
                 {spec.country}
               </h3>
               <p className="text-xs font-semibold text-slate-400 mb-4">
-                {spec.name.replace(spec.country, "").trim()}
+                {hasDocumentPreset(spec, type === "visa") ? "Configured photo preset" : "Application guidance — no separate preset"}
               </p>
               
               <div className="flex items-center justify-between pt-4 border-t border-slate-50">
-                <span className="text-xs font-bold text-slate-500">{spec.width_mm}x{spec.height_mm}mm</span>
-                <span className="text-xs font-bold text-emerald-600">Free Check →</span>
+                <span className="text-xs font-bold text-slate-500">{hasDocumentPreset(spec, type === "visa") ? `${spec.width_mm}x${spec.height_mm}mm preset` : "Confirm application requirements"}</span>
+                <span className="text-xs font-bold text-emerald-600">View guidance →</span>
               </div>
             </Link>
           );

@@ -28,7 +28,7 @@ export default function DirectAnswerBox({
           </span>
         </div>
         <span className="text-[11px] font-semibold text-slate-500">
-          Verified: <strong className="text-slate-700">{lastReviewed}</strong>
+          Review date: <strong className="text-slate-700">{lastReviewed}</strong>
         </span>
       </div>
 

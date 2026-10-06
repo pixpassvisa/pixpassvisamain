@@ -6,7 +6,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "US Visa Photo – 2x2 Inch Online Photo Maker",
+  title: "US Photo Format Selector: Visa, Passport & Other Documents",
   description:
     "Create a US visa photo online in seconds. Generate a 2x2 inch photo for US visa and passport applications with automatic cropping and background checks.",
   alternates: {
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "US Visa Photo 2x2 Online | PixPassVisa",
+    title: "US Photo Format Selector | PixPassVisa",
     description:
-      "Create a compliant 2x2 inch America visa photo online. Perfect for DS-160, US visa, and passport applications.",
+      "Compare available US document presets, then check your application instructions before preparing a photo.",
     type: "website",
     url: "https://www.pixpassvisa.com/america-visa-size-photo",
     siteName: "PixPassVisa",
@@ -38,9 +38,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "US Visa Photo 2x2 Online | PixPassVisa",
+    title: "US Photo Format Selector | PixPassVisa",
     description:
-      "Generate a compliant 2x2 inch America visa photo online in seconds.",
+      "Choose a US document preset and preview your photo before purchasing a download.",
     images: [
       "https://www.pixpassvisa.com/opengraph-image",
     ],
@@ -55,7 +55,7 @@ export default function AmericaVisaSizePhotoPage() {
       name: "America Visa Size Photo Maker",
       url: "https://www.pixpassvisa.com/america-visa-size-photo",
       description:
-        "Create a compliant America visa size photo online for DS-160, US visa, and passport applications.",
+        "Select among available US document presets; automated checks do not guarantee acceptance.",
       applicationCategory: "UtilitiesApplication",
       operatingSystem: "All",
       offers: {
@@ -105,7 +105,7 @@ export default function AmericaVisaSizePhotoPage() {
           name: "How long does it take to create my visa photo?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Most photos are processed in under a minute. Upload your selfie, let the AI crop and adjust it, then download your compliant image instantly.",
+            text: "Most photos are processed in under a minute. Upload your selfie, let the AI crop and adjust it, then review the preview and price before purchasing a download.",
           },
         },
       ],

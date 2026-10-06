@@ -209,7 +209,7 @@ export default function ToolPageRenderer({ html }: { html: string }) {
                 </div>
                 <div>
                   <span className="text-sm font-bold text-slate-900 group-hover:text-blue-600 block">Free Photo Validator</span>
-                  <p className="text-xs text-slate-500 mt-0.5">Instant compliance check for 600x600 size & ratio</p>
+                  <p className="text-xs text-slate-500 mt-0.5">Choose your document and review the photo checks</p>
                 </div>
               </Link>
               <Link href="/passport-photos" className="group flex items-center gap-4 p-5 bg-white rounded-2xl border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all">

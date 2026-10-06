@@ -38,9 +38,9 @@ const twoByTwoDocuments = [
 ];
 
 const TRUST_ITEMS = [
-  { tag: "01", title: "Privacy first", desc: "Photos never stored on our servers" },
-  { tag: "02", title: "ICAO compliant", desc: "Meets 9303 biometric standards" },
-  { tag: "03", title: "Instant result", desc: "AI processing in under 10 seconds" },
+  { tag: "01", title: "Privacy first", desc: "Review our processing and storage policy" },
+  { tag: "02", title: "Document guidance", desc: "Confirm your application requirements" },
+  { tag: "03", title: "Instant result", desc: "Processing time varies" },
   { tag: "04", title: "Free preview", desc: "Check before you pay anything" },
 ];
 

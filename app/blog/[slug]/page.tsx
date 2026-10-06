@@ -1,51 +1,16 @@
-import fs from 'fs';
-import path from 'path';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { CheckCircle2, FileCheck, Globe, HelpCircle } from 'lucide-react';
-import connectToDatabase from '@/lib/mongodb';
-import BlogModel from '@/models/Blog';
+import { getBlogPosts as getAllPosts } from '@/lib/blog-posts';
 import ReadingProgressBar from '@/app/components/ReadingProgressBar';
 import TocSidebar from '@/app/components/TocSidebar';
 import FaqAccordion from '@/app/components/FaqAccordion';
 import { getBlogImage, getBlogImageUrl, getBlogKeywords } from '@/lib/blog-seo';
 
-// Define the Blog Post type
-export interface BlogPost {
-  slug: string;
-  title: string;
-  description: string;
-  date: string;
-  author: string;
-  content: string;
-  featuredImage?: string;
-  keywords?: string[];
-}
-
 const APP_URL = 'https://www.pixpassvisa.com';
 
 export const revalidate = 3600;
-
-// Helper to get ALL posts
-async function getAllPosts(): Promise<BlogPost[]> {
-  try {
-    await connectToDatabase();
-    const posts = await BlogModel.find({ isPublished: true }).sort({ date: -1 }).lean() as BlogPost[];
-    if (posts && posts.length > 0) return posts;
-  } catch (error) {
-    console.error("Error reading blog posts from DB:", error);
-  }
-
-  const filePath = path.join(process.cwd(), 'data', 'blog-posts.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    return JSON.parse(fileContents) as BlogPost[];
-  } catch (error) {
-    console.error("Error reading blog posts:", error);
-    return [];
-  }
-}
 
 // Compute reading time dynamically from word count
 function getReadingTime(content: string): string {
@@ -153,7 +118,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: `${APP_URL}/blog/${post.slug}`,
       type: 'article',
       publishedTime: post.date,
-      modifiedTime: post.date,
+      modifiedTime: post.updatedAt || post.date,
       authors: [post.author],
       siteName: 'PixPassVisa',
       ...(blogImage && { images: [{ url: getBlogImageUrl(blogImage)!, width: 1200, height: 630, alt: post.title }] }),
@@ -229,7 +194,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     headline: post.title,
     description: post.description,
     datePublished: post.date,
-    dateModified: post.date,
+    dateModified: post.updatedAt || post.date,
     author: {
       '@type': 'Organization',
       name: post.author,
@@ -373,8 +338,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <span>By {post.author}</span>
               </div>
               <span className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
-              <time dateTime={post.date} className="text-slate-400">
-                {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              <time dateTime={post.updatedAt || post.date} className="text-slate-400">
+                {new Date(post.updatedAt || post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
               </time>
               <span className="w-1 h-1 bg-slate-700 rounded-full hidden sm:block" />
               <span className="text-cyan-400 font-semibold">{readTime}</span>
@@ -505,7 +470,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
                     <div>
                       <span className="text-sm font-bold text-slate-900 group-hover:text-blue-600 block">Free Photo Validator</span>
-                      <p className="text-xs text-slate-500 mt-0.5">Instant compliance check for 600x600 size & ratio</p>
+                      <p className="text-xs text-slate-500 mt-0.5">Choose your document and review the photo checks</p>
                     </div>
                   </Link>
                   <Link href="/passport-photos" className="group flex items-center gap-4 p-4.5 bg-white rounded-2xl border border-slate-200/90 hover:border-blue-400 hover:shadow-md transition-all">

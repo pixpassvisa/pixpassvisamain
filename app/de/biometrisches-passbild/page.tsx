@@ -280,7 +280,7 @@ export default function BiometrischesPassbildPage() {
                   ))}
                 </div>
                 <span className="text-sm text-slate-600 font-medium">
-                  4.9 · Empfohlen von über 17.000 Nutzern
+                  Automatische Prüfung · Keine Annahmegarantie
                 </span>
               </div>
 

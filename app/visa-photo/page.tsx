@@ -6,8 +6,8 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import { FileCheck, Camera, ShieldCheck, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Official Visa Photo Requirements & Sizes | International Visa Portal",
-  description: "Explore official visa photo specifications for over 50 countries. Our database includes technical requirements for DS-160, eVisas, and consular submissions.",
+  title: "Visa Photo Guidance & Available Presets | PixPassVisa",
+  description: "Browse country visa photo guidance and available presets. Confirm requirements for your application before choosing a photo tool.",
   keywords: ["visa photo requirements", "visa photo size index", "ds-160 photo standards", "eVisa photo database"],
   alternates: {
     canonical: "https://www.pixpassvisa.com/visa-photo",
@@ -19,8 +19,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Official Visa Photo Requirements & Sizes | International Visa Portal",
-    description: "Explore official visa photo specifications for over 50 countries. Our database includes technical requirements for DS-160, eVisas, and consular submissions.",
+    title: "Visa Photo Guidance & Available Presets | PixPassVisa",
+    description: "Browse country visa photo guidance and available presets. Confirm requirements for your application before choosing a photo tool.",
     url: "https://www.pixpassvisa.com/visa-photo",
     siteName: "PixPassVisa",
     images: [
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
 
 export default function VisaDirectoryPage() {
   // Show ALL countries, but de-duplicate by country name so we have 1 entry per nation
-  const uniqueSpecs = Array.from(new Map(getFilteredSpecs().map(s => [s.country, s])).values());
+  const uniqueSpecs = Array.from(new Map(getFilteredSpecs().sort((a, b) => Number(a.id.endsWith('-visa')) - Number(b.id.endsWith('-visa'))).map(s => [s.country, s])).values());
   const displaySpecs = uniqueSpecs;
 
   return (
@@ -47,7 +47,7 @@ export default function VisaDirectoryPage() {
       <main>
         <MasterDirectory 
           title="Visa Photo Directory"
-        subtitle="Technical photo specifications for international visas. Select your country to ensure your digital upload or consular photo is 100% compliant."
+        subtitle="Find country guidance and available visa presets. Some countries do not yet have a separate visa preset; check your application instructions."
         specs={displaySpecs}
         type="visa"
       />

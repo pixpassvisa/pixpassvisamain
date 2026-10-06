@@ -1,0 +1,5 @@
+[
+  { "source": "/icao-standard-photo", "destination": "/icao-visa-photo-editor", "permanent": true },
+  { "source": "/icao-standard-photograph", "destination": "/icao-visa-photo-editor", "permanent": true },
+  { "source": "/icao-compliant-photo", "destination": "/icao-visa-photo-editor", "permanent": true }
+]

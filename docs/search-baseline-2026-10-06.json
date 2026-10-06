@@ -1,0 +1,58 @@
+{
+  "recordedDate": "2026-10-06",
+  "source": "Owner-supplied summary of Search Console exports; original workbooks were not reprocessed in this task",
+  "filterLabel": "Last 3 months",
+  "observedChartRange": { "from": "2026-09-11", "to": "2026-10-03" },
+  "overall": { "clicks": 24, "impressions": 1092, "ctrPercent": 2.1978, "approxAveragePosition": 45.2 },
+  "queryRows": 390,
+  "queriesWithAtMostThreeImpressions": 361,
+  "pageRows": 62,
+  "aggregation": { "queryRowClicks": 17, "pageRowClicks": 33, "chartClicks": 24, "note": "Separate aggregations; do not add them. Page rows are not an indexed-page count; impressions are not market search volume." },
+  "countries": {
+    "UK": { "impressions": 221, "clicks": 0 },
+    "Germany": { "impressions": 188, "clicks": 1 },
+    "US": { "impressions": 142, "clicks": 0 },
+    "India": { "impressions": 64, "clicks": 19 },
+    "Canada": { "impressions": 56, "clicks": 0 },
+    "France": { "impressions": 55, "clicks": 0 },
+    "Australia": { "impressions": 24, "clicks": 2 }
+  },
+  "devices": {
+    "desktop": { "impressions": 697, "clicks": 21 },
+    "mobile": { "impressions": 390, "clicks": 3 },
+    "tablet": { "impressions": 5, "clicks": 0 }
+  },
+  "priorityPages": [
+    { "path": "/uk-passport-size-photo-maker", "impressions": 99, "clicks": 1, "position": 76.13 },
+    { "path": "/diversity-visa-lottery-photo-checker", "impressions": 75, "clicks": 3, "position": 43.09 },
+    { "path": "/de/guides/biometrisches-passbild-alle-anforderungen", "impressions": 74, "clicks": 1, "position": 47.82 },
+    { "path": "/de/guides/biometrisches-passfoto-anforderungen-deutschland", "impressions": 72, "clicks": 0, "position": 59.64 },
+    { "path": "/uk/photo-for-driving-license-uk", "impressions": 61, "clicks": 0, "position": 39.21 },
+    { "path": "/us-visa-photo-editor", "impressions": 55, "clicks": 6, "position": 69.25 },
+    { "path": "/passport-size-photo-maker", "impressions": 46, "clicks": 2, "position": 68.85 },
+    { "path": "/icao-visa-photo-editor", "impressions": 40, "clicks": 3, "position": 29.48 },
+    { "path": "/blog/uk-visa-photo-requirements", "impressions": 36, "clicks": 0, "position": 7.17 },
+    { "path": "/blog/australia-visa-photo-requirements-size-specifications", "impressions": 35, "clicks": 0, "position": 11.09 },
+    { "path": "/passport-photo-print-template-generator", "impressions": 34, "clicks": 2, "position": 49.09 },
+    { "path": "/passport-photo-checker", "impressions": 19, "clicks": 1, "position": 38.42 }
+  ],
+  "historicalIndexingEvidence": {
+    "discoveredNotIndexed": 129,
+    "duplicateGoogleChoseDifferentCanonical": 4,
+    "crawledNotIndexed": 1,
+    "redirect": 3,
+    "alternateProperCanonical": 1,
+    "validationStatus": "Started, not proof of resolution",
+    "drilldownChartEnds": "2026-09-21",
+    "discoveredBreakdown": { "passportEditors": 55, "visaEditors": 56, "other": 18 },
+    "lastCrawledPlaceholder": "1970-01-01 is unavailable-date evidence, not a real crawl date",
+    "exactOverlapWithPerformancePageRows": 0
+  },
+  "measurementPlan": {
+    "start": "Record the actual production deployment date; local edits are not a deployed treatment",
+    "compare": "Equal 28-day windows after allowing recrawl time; also preserve the supplied 23-day baseline",
+    "dimensions": ["landing page", "country", "device", "brand/non-brand", "query where available"],
+    "outcomes": ["clicks", "impressions", "CTR", "average position", "indexing status for inspected URLs", "consented funnel outcomes when configured"],
+    "caveats": ["No query-to-page mapping was supplied", "Small samples prevent reliable keyword and mobile-UX conclusions", "No causal ranking or acceptance guarantee"]
+  }
+}

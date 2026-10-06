@@ -397,7 +397,7 @@ export default function ValidatorClient() {
               { href: "/passport-size-photo-maker", label: "Passport Size Photo Maker" },
               { href: "/us-passport-photo-editor", label: "US Passport Photo Editor" },
               { href: "/us-visa-photo-editor", label: "US Visa Photo Editor" },
-              { href: "/icao-standard-photo", label: "ICAO Standard Photo Tool" },
+              { href: "/icao-visa-photo-editor", label: "ICAO Standard Photo Tool" },
             ].map(({ href, label }) => (
               <Link
                 key={href}
@@ -488,8 +488,8 @@ export default function ValidatorClient() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                { stat: "35%", label: "of first-time applicants submit a non-compliant photo" },
-                { stat: "14 days", label: "average delay a rejected photo adds to a visa timeline" },
+                { stat: "Free", label: "automated checks and previews" },
+                { stat: "Paid", label: "processed downloads at the checkout price" },
                 { stat: "ICAO 9303", label: "the standard every passport-issuing country follows" },
                 { stat: "468 pts", label: "facial landmarks MediaPipe checks in every scan" },
               ].map(({ stat, label }) => (

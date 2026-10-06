@@ -27,7 +27,6 @@ export default function OfficialSourceBadge({
       authority: "ISO Biometrics Standards",
     },
   ],
-  lastReviewedDate = "September 2026",
   documentType = "Passport & Visa Photo Requirements",
 }: OfficialSourceBadgeProps) {
   return (
@@ -39,11 +38,10 @@ export default function OfficialSourceBadge({
           </div>
           <div>
             <h3 className="text-sm font-bold text-slate-900 leading-tight">
-              Official Compliance &amp; Verification Layer
+              Official sources to check
             </h3>
             <p className="text-xs text-slate-500">
-              Verified for accuracy against official standards &bull; Last reviewed:{" "}
-              <span className="font-semibold text-slate-700">{lastReviewedDate}</span>
+              Confirm the current rules for your application. Automated feedback does not guarantee acceptance.
             </p>
           </div>
         </div>
@@ -57,7 +55,7 @@ export default function OfficialSourceBadge({
       </div>
 
       <p className="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-        PixPassVisa is an <strong>independent photo checking and compliance tool</strong>. We analyze head dimensions, background uniformity, eye alignment, and lighting against official regulatory specifications published by government and international authorities:
+        PixPassVisa is an <strong>independent photo preparation tool</strong>. Automated feedback covers selected image measurements. Review the issuing authority’s current instructions; these source links do not certify the tool or its output:
       </p>
 
       <div className="grid sm:grid-cols-2 gap-2.5">

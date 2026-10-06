@@ -41,7 +41,7 @@ export default function AboutPage() {
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">About PixPassVisa</h1>
           <p className="mt-4 text-lg text-gray-600 max-w-3xl leading-relaxed">
             Our mission is to eliminate the stress and uncertainty of government photo compliance.
-            We provide a fast, secure, and 100% accurate way to validate and process passport and visa photos from the comfort of your home.
+            We provide automated photo checks and preparation tools. Checks can miss issues and do not guarantee acceptance; the issuing authority makes the final decision.
           </p>
         </div>
       </section>
@@ -100,7 +100,7 @@ export default function AboutPage() {
                 We have built PixPassVisa with a privacy-first architecture:
               </p>
               <ul className="list-disc pl-5 space-y-2 mt-4 marker:text-blue-600">
-                <li><strong>No Permanent Storage:</strong> All uploaded photos are automatically and permanently deleted from our servers within 24 hours.</li>
+                <li><strong>No Permanent Storage:</strong> Cleanup jobs are intended to remove eligible photo files older than 24 hours. Successful deletion depends on the scheduled jobs; closing the browser does not remove stored copies immediately.</li>
                 <li><strong>No Model Training:</strong> We never use your face or personal photos to train any models.</li>
                 <li><strong>Secure Downloads:</strong> Your processed, compliant photos are delivered via secure, expiring download links.</li>
                 <li><strong>GDPR & CCPA Compliant:</strong> We strictly adhere to global privacy regulations. We do not sell your personal data.</li>

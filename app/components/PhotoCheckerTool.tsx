@@ -71,8 +71,8 @@ export interface PhotoCheckerToolProps {
 // ─── Trust Badges ────────────────────────────────────────────────────────────
 const TRUST_BADGES = [
   { icon: Lock, text: "Secure & Private" },
-  { icon: Zap, text: "Results in < 3s" },
-  { icon: Globe, text: "Official Specs" },
+  { icon: Zap, text: "Automated feedback" },
+  { icon: Globe, text: "Check document rules" },
   { icon: ShieldCheck, text: "100% Free Check" },
 ];
 
@@ -433,20 +433,8 @@ export default function PhotoCheckerTool({
             />
           )}
 
-          {/* Trust Rating Strip (Matching Homepage) */}
+          {/* Service facts; no unsupported customer ratings or counts. */}
           <div className="flex flex-wrap items-center gap-6 sm:gap-8 pt-2 border-t border-slate-100">
-            <div className="flex items-center gap-2.5">
-              <div className="flex gap-0.5">
-                {[1, 2, 3, 4, 5].map((i) => (
-                  <svg key={i} width="16" height="16" viewBox="0 0 24 24" fill="#1d4ed8">
-                    <path d="M12 2l2.9 8.9H23l-7.4 5.4 2.8 8.7L12 19.6l-6.4 5.4 2.8-8.7L2 10.9h8.1z" />
-                  </svg>
-                ))}
-              </div>
-              <span className="text-xs sm:text-sm font-semibold text-slate-700">
-                4.9 <span className="text-slate-400 font-normal">· Trusted by 17,000+ applicants</span>
-              </span>
-            </div>
 
             <div className="flex flex-wrap gap-4 text-xs font-medium text-slate-500">
               {TRUST_BADGES.map((b) => {
@@ -528,6 +516,14 @@ export default function PhotoCheckerTool({
               onDragLeave={() => setIsDragging(false)}
               onDrop={handleDrop}
             />
+            <p className="text-xs text-slate-600 mt-3">
+              Photos are uploaded for server processing and may be stored with Cloudinary.
+              Review our <Link href="/privacy-policy" className="underline">privacy policy</Link> before uploading.
+            </p>
+            {selectedDocType === "visa" && <p className="text-sm text-amber-900 bg-amber-50 rounded-lg p-3 mt-3" role="note">
+              This checker currently uses the selected country’s passport configuration on the server.
+              Its result does not validate application-specific visa requirements. Check your visa instructions separately.
+            </p>}
 
             {/* Checklist Chips */}
             <div className="flex flex-wrap gap-2 mt-4">
@@ -599,10 +595,10 @@ export default function PhotoCheckerTool({
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-slate-900 leading-tight">
-                      Official Document Specifications
+                    Selected Preset and Check Settings
                     </h3>
                     <p className="text-xs text-slate-400 font-medium">
-                      Exact criteria tested during verification
+                    Confirm these settings against your application instructions
                     </p>
                   </div>
                 </div>
@@ -648,8 +644,8 @@ export default function PhotoCheckerTool({
                 </div>
 
                 <div className="mt-6 pt-5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-400 font-medium">
-                  <span>⚡ Analysis completes in &lt; 3 seconds</span>
-                  <span>🔒 Ephemeral secure session</span>
+                  <span>Processing time varies</span>
+                  <Link href="/privacy-policy" className="underline">Processing and storage policy</Link>
                 </div>
               </div>
             )}
@@ -663,13 +659,13 @@ export default function PhotoCheckerTool({
           <div className="max-w-6xl mx-auto px-4 sm:px-6">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <span className="text-xs font-bold text-blue-700 tracking-wider uppercase bg-blue-50/70 border border-blue-200/60 rounded px-2.5 py-1">
-                Official Standards
+                Automated Feedback
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight mt-3 mb-2">
                 What the Biometric Validator Checks
               </h2>
               <p className="text-sm text-slate-500 font-normal">
-                Every photo undergoes the exact geometric and visual checks enforced by consular offices and automated border e-Gates.
+                Selected measurements can help identify common photo issues. This tool is not certified as an authority’s screening system and can miss problems.
               </p>
             </div>
 

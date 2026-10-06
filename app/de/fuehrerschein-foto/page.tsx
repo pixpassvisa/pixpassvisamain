@@ -2,6 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, X as Cross, Clock, ShieldCheck as Shield, Euro, Car } from "lucide-react";
+export const metadata: Metadata = {
+  title: "Führerschein-Foto: Vorbereitung und Hinweise | PixPassVisa",
+  description: "Hinweise zur Vorbereitung eines Führerschein-Fotos. Prüfen Sie die Vorgaben Ihrer Führerscheinstelle vor der Einreichung.",
+  alternates: { canonical: "https://www.pixpassvisa.com/de/fuehrerschein-foto" },
+};
 
 /* ─── Constants ─── */
 const ctaHref = "/de/passbild-online?type=germany-driving-licence";

@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import seoRedirects from "./data/seo-redirects.json";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -60,6 +61,7 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      ...seoRedirects,
       { source: "/de/ratgeber", destination: "/de/guides", permanent: true },
       { source: "/de/ratgeber/:slug", destination: "/de/guides/:slug", permanent: true },
       // Checker subpath redirects to canonical routes

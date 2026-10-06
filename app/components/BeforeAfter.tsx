@@ -1,83 +1,93 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import Image from "next/image";
-import { MoveHorizontal } from "lucide-react";
+import { MoveHorizontal, Ruler, ScanLine } from "lucide-react";
+
+const formats = {
+  us: {
+    label: "US visa", size: "2 × 2 in", ratio: "1:1", aspect: "1 / 1",
+    head: "50–69%", eyes: "56–69%", width: "600 px", height: "600 px",
+    headLabel: "of image height", eyeLabel: "from the bottom",
+    source: "https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/photo-composition-template.html",
+    sourceLabel: "US visa composition rules", crown: 10, chin: 74, eye: 42, scale: .91,
+  },
+  uk: {
+    label: "UK printed passport", size: "35 × 45 mm", ratio: "7:9", aspect: "7 / 9",
+    head: "29–34 mm", eyes: "Printed photo", width: "35 mm", height: "45 mm",
+    headLabel: "crown to chin", eyeLabel: "digital rules differ",
+    source: "https://www.gov.uk/photos-for-passports/photo-requirements",
+    sourceLabel: "UK printed-photo rules", crown: 6, chin: 76, eye: 42, scale: 1,
+  },
+} as const;
 
 export default function BeforeAfter() {
-  const [sliderPosition, setSliderPosition] = useState(50);
+  const [position, setPosition] = useState(45);
+  const [selected, setSelected] = useState<keyof typeof formats>("us");
+  const [showGuides, setShowGuides] = useState(true);
+  const captionId = useId();
+  const format = formats[selected];
 
-  return (
-    <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-      <div className="text-center mb-8 max-w-2xl">
-        <p className="studio-eyebrow justify-center">BEFORE &amp; AFTER PREVIEW</p>
-        <h2 className="text-3xl font-extrabold text-slate-900 sm:text-4xl">
-          See the crop before you download
-        </h2>
-        <p className="mt-4 text-base sm:text-lg text-slate-500">
-          Inspect the framing, background, and head position with the slider. Use a genuine photo and confirm the final requirements with your application authority.
-        </p>
-      </div>
-
-      <div className="relative w-full max-w-lg mx-auto aspect-square rounded-3xl overflow-hidden shadow-2xl bg-slate-100 group border border-slate-200">
-        {/* After Image (Background) */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/after-edit-600.png"
-            alt="Prepared passport photo preview on a plain background"
-            fill
-            className="object-contain bg-white"
-          />
-            <div className="absolute bottom-4 right-4 bg-emerald-700 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(4,120,87,0.3)] z-0">
-            Prepared Preview
-          </div>
-        </div>
-
-        {/* Before Image (Foreground, clipped) */}
-        <div
-          className="absolute inset-0 max-w-full"
-          style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
-        >
-          <Image
-            src="/images/before-edit-600.png"
-            alt="Original casual photo"
-            fill
-            className="object-cover filter blur-[2px] opacity-90 transition-all duration-300 group-hover:blur-none group-hover:opacity-100"
-          />
-            <div className="absolute top-4 left-4 bg-slate-900 text-white px-4 py-2 rounded-full text-sm font-bold shadow-[0_4px_12px_rgba(0,0,0,0.3)] z-0">
-            Original Photo
-          </div>
-        </div>
-
-        {/* Slider Handle (Visuals) */}
-        <div
-          className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-[0_0_15px_rgba(0,0,0,0.6)] z-10 pointer-events-none"
-          style={{ left: `calc(${sliderPosition}% - 2px)` }}
-        >
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-xl flex items-center justify-center border border-slate-100 transition-transform group-hover:scale-110">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" className="text-blue-600">
-              <path d="M15 18l6-6-6-6" />
-              <path d="M9 18l-6-6 6-6" />
-            </svg>
-          </div>
-        </div>
-
-        {/* Invisible Input for Accessibility & Touch control */}
-        <input
-          type="range"
-          min="0"
-          max="100"
-          value={sliderPosition}
-          onChange={(e) => setSliderPosition(Number(e.target.value))}
-          className="absolute inset-0 w-full h-full opacity-0 cursor-ew-resize z-20 m-0"
-          aria-label="Compare before and after images"
-        />
-      </div>
-      
-      <p className="mt-6 text-sm font-medium text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2 rounded-full hidden sm:inline-flex items-center gap-2">
-        <MoveHorizontal className="w-4 h-4 text-blue-600" />
-        <span>Drag the slider to compare before and after editing</span>
-      </p>
+  return <figure className="hero-comparison" aria-label="Before and after photo framing example">
+    <div className="hero-comparison-top">
+      <div><span className="hero-demo-dot" /> BEFORE &amp; AFTER</div>
+      <span>YOUR PHOTO, REFRAMED</span>
     </div>
-  );
+    <div className="hero-format-controls" role="group" aria-label="Example photo format">
+      {(Object.keys(formats) as (keyof typeof formats)[]).map(key => <button
+        type="button" key={key} aria-pressed={selected === key}
+        onClick={() => setSelected(key)}
+      >{formats[key].label}<span>{formats[key].size}</span></button>)}
+    </div>
+
+    <div className="hero-photo-workspace" data-format={selected}>
+      <div className="hero-width-dimension" aria-hidden="true"><span /><b>{format.width}</b><span /></div>
+      <div className="hero-comparison-photo" style={{ aspectRatio: format.aspect }}>
+        <div className="hero-prepared-layer">
+          <Image src="/images/after-edit-600.png" alt="Illustrative prepared portrait on a plain background"
+            fill priority sizes="(max-width: 700px) 80vw, (max-width: 1000px) 36vw, 390px"
+            style={{ objectFit: "cover", transform: `scale(${format.scale})` }} />
+          {showGuides && <>
+            <svg className="hero-ratio-guides" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+              {selected === "us" && <rect className="hero-eye-band" x="0" y="31" width="100" height="13" />}
+              <path className="hero-guide-dashed" d={`M 7 ${format.crown} H 94 M 7 ${format.chin} H 94 M 50 4 V 96`} />
+              <path className="hero-guide-eyes" d={`M 7 ${format.eye} H 94`} />
+              <path className="hero-guide-bracket" d={`M 87 ${format.crown} H 93 M 90 ${format.crown} V ${format.chin} M 87 ${format.chin} H 93`} />
+              {selected === "us" && <path className="hero-guide-bracket hero-eye-bracket" d={`M 75 ${format.eye} H 81 M 78 ${format.eye} V 98 M 75 98 H 81`} />}
+            </svg>
+            <span className="hero-head-callout" style={{ top: `${(format.crown + format.chin) / 2}%` }}>{format.head}<small>HEAD HEIGHT</small></span>
+            {selected === "us" && <span className="hero-eye-callout">56–69%<small>EYE HEIGHT ↑</small></span>}
+          </>}
+        </div>
+        <div className="hero-original-layer" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
+          <Image src="/images/before-edit-600.png" alt="Illustrative original portrait with a busy indoor background"
+            fill priority sizes="(max-width: 700px) 80vw, (max-width: 1000px) 36vw, 390px" style={{ objectFit: "cover" }} />
+        </div>
+        {position > 12 && <span className="hero-photo-tag hero-before-tag">BEFORE</span>}
+        {position < 88 && <span className="hero-photo-tag hero-after-tag">AFTER</span>}
+        <div className="hero-comparison-divider" style={{ left: `${position}%` }} aria-hidden="true">
+          <span><MoveHorizontal size={19} strokeWidth={2} /></span>
+        </div>
+        <input className="hero-comparison-range" type="range" min="0" max="100" value={position}
+          onChange={event => setPosition(Number(event.target.value))}
+          aria-label="Compare original and prepared photo"
+          aria-valuetext={`${position}% original photo visible`}
+          aria-describedby={captionId} />
+      </div>
+      <span className="hero-height-dimension" aria-hidden="true">{format.height}</span>
+    </div>
+
+    <div className="hero-comparison-toolbar">
+      <span><MoveHorizontal size={14} /> Drag to compare</span>
+      <button type="button" aria-pressed={showGuides} onClick={() => setShowGuides(!showGuides)}><ScanLine size={14} /> {showGuides ? "Hide guides" : "Show guides"}</button>
+    </div>
+    <dl className="hero-ratio-facts" aria-label={`${format.label} reference requirements`}>
+      <div><dt><Ruler size={12} /> FORMAT</dt><dd>{format.ratio}<small>{format.size}</small></dd></div>
+      <div><dt>HEAD HEIGHT</dt><dd>{format.head}<small>{format.headLabel}</small></dd></div>
+      <div><dt>{selected === "us" ? "EYE HEIGHT" : "APPLICATION"}</dt><dd>{format.eyes}<small>{format.eyeLabel}</small></dd></div>
+    </dl>
+    <figcaption id={captionId} className="hero-comparison-caption">
+      Illustrative framing guides, not a measured acceptance result. <a href={format.source} target="_blank" rel="noopener noreferrer">{format.sourceLabel} ↗</a>
+    </figcaption>
+  </figure>;
 }

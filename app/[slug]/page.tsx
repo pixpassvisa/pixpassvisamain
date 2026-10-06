@@ -7,6 +7,8 @@ import PassportMakerApp from "../passport-size-photo-maker/PassportMakerApp";
 import SpecialPhotoPageClient from "../components/SpecialPhotoPageClient";
 import { getLocalPrice } from "@/lib/currency";
 import Breadcrumbs from "../components/Breadcrumbs";
+import { hasDocumentPreset } from "@/lib/document-intent";
+import DocumentGuidancePage from "../components/DocumentGuidancePage";
 import ToolPageRenderer from "../components/ToolPageRenderer";
 
 interface PageProps {
@@ -75,11 +77,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       const intentLabel = isVisaUrl ? "Visa" : "Passport";
       const baseUrl = `https://www.pixpassvisa.com/${canonicalSlug}`;
 
+      if (!hasDocumentPreset(spec, isVisaUrl) || spec.id === 'icao-passport') {
+        return createMetadata({ title: spec.id === 'icao-passport' ? 'ICAO Photo Standards: Choose Your Document' : spec.country + ' ' + intentLabel + ' Photo Guidance', description: 'Check the application workflow and available presets. Confirm photo requirements with the issuing authority before editing or purchasing a photo.', canonical: baseUrl });
+      }
       const title = isVisaUrl
         ? `${spec.country} Visa Photo Online (2026) | ${spec.width_mm}x${spec.height_mm}mm`
         : `${spec.country} Passport Photo Maker (2026) | Size & Photo Guide`;
 
-      const description = `Create your ${spec.country} ${intentLabel.toLowerCase()} photo online in 2 mins. ${spec.width_mm}x${spec.height_mm}mm with automatic cropping and background checks.`;
+      const description = `Create your ${spec.country} ${intentLabel.toLowerCase()} photo with the configured preset. ${spec.width_mm}x${spec.height_mm}mm with automatic cropping and background checks.`;
 
       return createMetadata({
         title,
@@ -183,6 +188,7 @@ export default async function Page({ params }: PageProps) {
     case "spec": {
       const spec = route.data;
       const { canonicalSlug, isVisaUrl } = route;
+      if (!hasDocumentPreset(spec, isVisaUrl) || spec.id === 'icao-passport') return <DocumentGuidancePage spec={spec} isVisa={isVisaUrl} />;
       const localPrice = await getLocalPrice(spec.price, undefined, false, true);
       const enrichedSpec = { ...spec, local_price: localPrice };
       const baseUrl = `https://www.pixpassvisa.com/${canonicalSlug}`;
@@ -192,7 +198,7 @@ export default async function Page({ params }: PageProps) {
         "@graph": [
           {
             "@type": "SoftwareApplication",
-            "name": `${spec.country} ${spec.name} Photo Maker`,
+            "name": `${spec.country} ${intentLabel} Photo Preparation`,
             "applicationCategory": "UtilitiesApplication",
             "operatingSystem": "All",
             "url": baseUrl,

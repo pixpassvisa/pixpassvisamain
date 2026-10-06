@@ -2,6 +2,7 @@ import specs from "../data/countries-specs.json";
 import moneyPages from "../data/money-pages.json";
 import toolPages from "../data/tool-seo-pages.json";
 import specialPages from "../data/special-photo-pages.json";
+import seoRedirects from "../data/seo-redirects.json";
 
 export interface SpecEntry {
   id: string;
@@ -62,7 +63,7 @@ const specIdCache = new Map<string, string | null>();
  * Uses a prebuilt cache for O(1) lookup speed after first resolution.
  */
 export function getSpecIdFromSlug(slug?: string): string | null {
-  if (!slug) return null;
+  if (!slug || !/-(passport|visa)-photo(?:-editor)?$/.test(slug)) return null;
   if (specIdCache.has(slug)) return specIdCache.get(slug)!;
   
   // Normalize by removing common suffixes
@@ -157,6 +158,7 @@ export function getAllSlugs(): string[] {
     slugs.add(page.slug);
   });
 
-  return Array.from(slugs);
+  const retired = new Set(seoRedirects.map(route => route.source));
+  return Array.from(slugs).filter(slug => !retired.has(`/${slug}`));
 }
 

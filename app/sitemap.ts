@@ -6,6 +6,7 @@ import { getAllCAPages } from "@/lib/ca-content";
 import { getAllGermanGuides } from "@/lib/de-guides";
 import { getBlogPosts } from "@/lib/blog-posts";
 import routes from "@/data/route-manifest.json";
+import seoRedirects from "@/data/seo-redirects.json";
 import { SITE_URL, isPrivatePath } from "@/lib/seo";
 export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -23,7 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       if (updated && Number.isFinite(Date.parse(updated))) dated.set(pathname, new Date(updated).toISOString());
     }
   }
-  return [...paths].filter(p => !isPrivatePath(p)).sort().map(p => ({
+  const retired = new Set(seoRedirects.map(route => route.source));
+  return [...paths].filter(p => !isPrivatePath(p) && !retired.has(p)).sort().map(p => ({
     url: `${SITE_URL}${p}`,
     ...(dated.has(p) ? { lastModified: dated.get(p) } : {}),
     ...(p === "/" || p === "/fr" || p === "/de" ? { alternates: { languages: { en: `${SITE_URL}/`, fr: `${SITE_URL}/fr`, de: `${SITE_URL}/de`, "x-default": `${SITE_URL}/` } } } : {}),

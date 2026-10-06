@@ -271,8 +271,8 @@ export default function BewerbungsfotoPage() {
         <div className="bg-slate-900 py-6">
           <div className="mx-auto flex max-w-6xl flex-wrap justify-around gap-4 px-4 sm:px-8">
             {[
-              { v: "17.000+", l: "Zufriedene Nutzer" },
-              { v: "4,9 / 5", l: "Verifizierte Bewertung" },
+              { v: "Vorschau", l: "Vor dem Kauf prüfen" },
+              { v: "Automatisch", l: "Keine Annahmegarantie" },
               { v: "< 60 s", l: "Bearbeitungszeit" },
               { v: "2-in-1", l: "Print & Digital" },
               { v: "5,99 €", l: "Startpreis" },

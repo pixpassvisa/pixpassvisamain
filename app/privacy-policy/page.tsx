@@ -61,12 +61,12 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3">3. Photo Handling &amp; Retention</h2>
               <div className="bg-blue-50/70 border border-blue-200 rounded-xl p-5 mb-4">
-                <p className="text-sm font-semibold text-blue-800 mb-2">Our Photo Privacy Guarantees:</p>
+                <p className="text-sm font-semibold text-blue-800 mb-2">Photo processing and retention:</p>
                 <ul className="list-disc pl-5 space-y-1 text-sm text-blue-700">
-                  <li><strong>Auto-deletion:</strong> All original uploaded photos are automatically and permanently deleted after 24 hours</li>
-                  <li><strong>Expiring links:</strong> Download URLs are signed and expire after 1 hour</li>
-                  <li><strong>No permanent storage:</strong> Processed images are not stored after download</li>
-                  <li><strong>No sharing:</strong> Photos are never shared with third parties</li>
+                  <li><strong>Processing:</strong> Photos are sent to our servers and processing service. Cloudinary is used to store uploaded photos and generated images.</li>
+                  <li><strong>Retention:</strong> Cleanup jobs are intended to remove eligible photo files older than 24 hours. Deletion depends on successful scheduled cleanup; closing the browser or downloading a file does not delete stored copies immediately.</li>
+                  <li><strong>Access:</strong> Some paid downloads require an owner session or download token. A link expiry is not proof that the underlying image has been deleted.</li>
+                  <li><strong>Service providers:</strong> Photo processing and storage involve our service providers. Do not upload on the assumption that your photo remains only in your browser.</li>
                   <li><strong>No AI training:</strong> Photos are never used for machine learning or AI training</li>
                 </ul>
               </div>
@@ -107,7 +107,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3">7. Third-Party Services</h2>
               <p className="text-sm text-gray-600 leading-relaxed">
-                We use the following third-party services that may process limited data on our behalf: payment processors (for transaction processing), cloud hosting providers (for photo processing), and analytics services (for anonymous usage statistics). All third-party providers are GDPR-compliant.
+                We use the following third-party services that may process limited data on our behalf: payment processors (for transaction processing), cloud hosting providers (for photo processing), and analytics services (for anonymous usage statistics). Provider terms and operational controls must be reviewed separately; this page does not certify regulatory compliance.
               </p>
             </div>
 
