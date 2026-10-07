@@ -19,7 +19,7 @@ export default function PrivacyPolicyPage() {
       <section className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Privacy Policy</h1>
-          <p className="mt-3 text-gray-500">Last updated: February 21, 2026</p>
+          <p className="mt-3 text-gray-500">Last updated: October 7, 2026</p>
         </div>
       </section>
 
@@ -76,7 +76,7 @@ export default function PrivacyPolicyPage() {
             <div>
               <h2 className="text-xl font-bold text-slate-900 mb-3">4. Cookies</h2>
               <p className="text-sm text-gray-600 leading-relaxed">
-                We use essential cookies to maintain session state and process your photos. We may also use analytics cookies (such as Google Analytics) to understand how our service is used. You can disable non-essential cookies in your browser settings.
+                We use essential cookies to maintain session state and process your photos. We use Microsoft Clarity to understand interactions with our website through usage analytics, heatmaps, and session replay. We may also use Google Analytics. These services may use cookies and other technologies to collect usage and device data. For details about Microsoft&apos;s data practices, see the <a href="https://privacy.microsoft.com/privacystatement" className="text-blue-600 underline">Microsoft Privacy Statement</a>. You can manage cookies in your browser settings.
               </p>
             </div>
 
