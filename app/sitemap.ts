@@ -20,6 +20,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/", "2026-10-07"],
     ["/passport-photos", "2026-10-07"],
     ["/visa-photo", "2026-10-07"],
+    ["/passport-photo-checklist", "2026-10-07"],
   ]);
   for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {
