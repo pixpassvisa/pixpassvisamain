@@ -59,7 +59,7 @@ export default function MasterDirectory({ title, subtitle, specs, type }: Master
           const href = `/${normalizedBase}-${type}-photo-editor`;
 
           return (
-            <Link 
+            <Link prefetch={false}
               key={`${spec.id}-${type}`}
               href={href}
               className="group bg-white rounded-3xl border border-slate-100 p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-500/5 transition-all duration-300"

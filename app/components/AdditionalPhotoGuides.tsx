@@ -22,10 +22,10 @@ export default function AdditionalPhotoGuides({ type }: { type: "passport" | "vi
     <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-10">
       {countries.map(country => {
         const base = getShortId(country.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""));
-        return <li key={country}><Link className="text-blue-700 underline underline-offset-4" href={`/${base}-${type}-photo-editor`}>{country} {type} photo guide</Link></li>;
+        return <li key={country}><Link prefetch={false} className="text-blue-700 underline underline-offset-4" href={`/${base}-${type}-photo-editor`}>{country} {type} photo guide</Link></li>;
       })}
     </ul>
     <h2 className="text-xl font-bold text-slate-900 mb-4">More {type} photo tools and guides</h2>
-    <ul className="grid sm:grid-cols-2 gap-3">{tools.map(([label, href]) => <li key={href}><Link className="text-blue-700 underline underline-offset-4" href={href}>{label}</Link></li>)}</ul>
+    <ul className="grid sm:grid-cols-2 gap-3">{tools.map(([label, href]) => <li key={href}><Link prefetch={false} className="text-blue-700 underline underline-offset-4" href={href}>{label}</Link></li>)}</ul>
   </section>;
 }

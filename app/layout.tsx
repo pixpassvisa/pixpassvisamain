@@ -12,7 +12,7 @@ import ImageFallbackGuard from "./components/ImageFallbackGuard";
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
   subsets: ["latin"],
-  display: "swap",
+  display: "optional",
 });
 
 export const metadata: Metadata = {
@@ -159,7 +159,7 @@ export default function RootLayout({
           </ConditionalNavFooter>
         </AuthProvider>
 
-        <Script id="microsoft-clarity" strategy="afterInteractive">
+        <Script id="microsoft-clarity" strategy="lazyOnload">
           {`
             if (window.location.hostname === 'www.pixpassvisa.com' || window.location.hostname === 'pixpassvisa.com') {
               (function(c,l,a,r,i,t,y){
