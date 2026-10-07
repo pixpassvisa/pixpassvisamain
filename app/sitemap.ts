@@ -15,7 +15,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const route = getRouteBySlug(slug);
     if (route && (route.type !== "spec" || route.canonicalSlug === slug)) paths.add(`/${slug}`);
   }
-  const dated = new Map<string, string>();
+  // Actual editorial/link changes, not a date regenerated on each request.
+  const dated = new Map<string, string>([
+    ["/", "2026-10-07"],
+    ["/passport-photos", "2026-10-07"],
+    ["/visa-photo", "2026-10-07"],
+  ]);
   for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {
       const pathname = `/${prefix}/${post.slug}`;

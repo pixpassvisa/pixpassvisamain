@@ -7,7 +7,9 @@
     "build": "node scripts/generate-route-manifest.mjs && node --max-old-space-size=4096 node_modules/next/dist/bin/next build --webpack",
     "start": "node --max-old-space-size=3072 node_modules/next/dist/bin/next start",
     "lint": "eslint",
-    "test:seo": "node --experimental-strip-types --test tests/seo.test.mjs"
+    "test:seo": "node --experimental-strip-types --test tests/seo.test.mjs tests/blog-faq.test.mjs",
+    "audit:seo": "node scripts/audit-public-seo.mjs",
+    "audit:discovery": "node scripts/audit-discovery.mjs"
   },
   "dependencies": {
     "@mediapipe/tasks-vision": "^0.10.34",

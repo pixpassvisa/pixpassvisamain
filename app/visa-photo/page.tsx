@@ -1,3 +1,4 @@
+import AdditionalPhotoGuides from "../components/AdditionalPhotoGuides";
 import { getFilteredSpecs } from "@/lib/specs";
 import MasterDirectory from "../components/MasterDirectory";
 import { Metadata } from "next";
@@ -51,6 +52,8 @@ export default function VisaDirectoryPage() {
         specs={displaySpecs}
         type="visa"
       />
+
+      <AdditionalPhotoGuides type="visa" />
 
       {/* Cross-Links & Special Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

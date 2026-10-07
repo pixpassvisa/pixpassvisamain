@@ -1,3 +1,4 @@
+import AdditionalPhotoGuides from "../components/AdditionalPhotoGuides";
 import { getFilteredSpecs } from "@/lib/specs";
 import MasterDirectory from "../components/MasterDirectory";
 import { Metadata } from "next";
@@ -6,8 +7,8 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import { Globe, Camera, ShieldCheck, BookOpen } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Official Passport Photo Sizes & Requirements by Country | PixPassVisa",
-  description: "Browse the complete database of 2026 passport photo requirements for over 50 countries. Find dimensions, background rules, and creates compliant photos instantly.",
+  title: "Passport Photo Sizes & Guidance by Country | PixPassVisa",
+  description: "Browse country passport photo guides, dimensions and available presets. Check your issuing authority’s current capture and submission requirements.",
   keywords: ["passport photo size database", "passport photo requirements by country", "global passport photo standards"],
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-photos",
@@ -19,8 +20,8 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Official Passport Photo Sizes & Requirements by Country | PixPassVisa",
-    description: "Browse the complete database of 2026 passport photo requirements for over 50 countries. Find dimensions, background rules, and creates compliant photos instantly.",
+    title: "Passport Photo Sizes & Guidance by Country | PixPassVisa",
+    description: "Browse country passport photo guides, dimensions and available presets. Check your issuing authority’s current capture and submission requirements.",
     url: "https://www.pixpassvisa.com/passport-photos",
     siteName: "PixPassVisa",
     images: [
@@ -50,6 +51,8 @@ export default function PassportDirectoryPage() {
         specs={passportSpecs}
         type="passport"
       />
+
+      <AdditionalPhotoGuides type="passport" />
 
       {/* Cross-Links & Special Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">

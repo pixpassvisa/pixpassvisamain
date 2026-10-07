@@ -19,7 +19,8 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.pixpassvisa.com/"),
   title: {
     default: "Passport & Visa Photo Maker Online | pixpassvisa.com",
-    template: "%s | pixpassvisa.com",
+    // Page metadata owns its complete title; avoid appending the brand twice.
+    template: "%s",
   },
   description:
     "AI-powered passport and visa photo maker & resizer for 50+ countries. Resize to 2x2 in, 35x45 mm, 600x600 px, or compress to 20KB, 50KB, 100KB, 200KB. Review your photo before submitting to the issuing authority.",

@@ -1,0 +1,877 @@
+{
+  "origin": "local production build",
+  "checkedAt": "2026-10-07T06:05:17.005Z",
+  "checked": 217,
+  "failures": [],
+  "unreachable": [],
+  "pages": [
+    {
+      "path": "/",
+      "depth": 0
+    },
+    {
+      "path": "/2x2-picture-editor",
+      "depth": 2
+    },
+    {
+      "path": "/about",
+      "depth": 1
+    },
+    {
+      "path": "/algeria-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/algeria-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/america-visa-size-photo",
+      "depth": 1
+    },
+    {
+      "path": "/argentina-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/argentina-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/australia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/australia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/australian-passport-photo-checker",
+      "depth": 1
+    },
+    {
+      "path": "/austria-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/austria-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/belgium-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/belgium-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/bhutan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/bhutan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/blog",
+      "depth": 1
+    },
+    {
+      "path": "/blog/australia-visa-photo-requirements-size-specifications",
+      "depth": 2
+    },
+    {
+      "path": "/blog/country-wise-visa-photo-requirements-comparison-2026",
+      "depth": 2
+    },
+    {
+      "path": "/blog/france-visa-requirements-latest-guide",
+      "depth": 2
+    },
+    {
+      "path": "/blog/germany-student-visa-photo-requirements",
+      "depth": 2
+    },
+    {
+      "path": "/blog/india-visa-requirements-for-foreigners",
+      "depth": 2
+    },
+    {
+      "path": "/blog/new-zealand-visa-photo-requirements",
+      "depth": 2
+    },
+    {
+      "path": "/blog/schengen-visa-photo-requirements-size-maker-tool-2026",
+      "depth": 2
+    },
+    {
+      "path": "/blog/uk-digital-passport-photo",
+      "depth": 2
+    },
+    {
+      "path": "/blog/uk-visa-photo-requirements",
+      "depth": 2
+    },
+    {
+      "path": "/blog/us-visa-photo-size-background-rules-guide-uk-europe",
+      "depth": 2
+    },
+    {
+      "path": "/brazil-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/brazil-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/bulgaria-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/bulgaria-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/ca",
+      "depth": 2
+    },
+    {
+      "path": "/ca/canada-passport-photo-requirements",
+      "depth": 3
+    },
+    {
+      "path": "/chile-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/chile-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/china-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/china-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/contact",
+      "depth": 1
+    },
+    {
+      "path": "/create-china-visa-photo",
+      "depth": 2
+    },
+    {
+      "path": "/create-dubai-visa-photo",
+      "depth": 2
+    },
+    {
+      "path": "/croatia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/croatia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/czechia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/czechia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/data-security",
+      "depth": 1
+    },
+    {
+      "path": "/de",
+      "depth": 1
+    },
+    {
+      "path": "/de/bewerbungsfoto",
+      "depth": 2
+    },
+    {
+      "path": "/de/biometrisches-passbild",
+      "depth": 2
+    },
+    {
+      "path": "/de/dokumentenfoto-schweiz",
+      "depth": 2
+    },
+    {
+      "path": "/de/fuehrerschein-foto",
+      "depth": 2
+    },
+    {
+      "path": "/de/gesundheitskarte-foto",
+      "depth": 2
+    },
+    {
+      "path": "/de/guides",
+      "depth": 2
+    },
+    {
+      "path": "/de/guides/biometrisches-passbild-alle-anforderungen",
+      "depth": 3
+    },
+    {
+      "path": "/de/guides/biometrisches-passfoto-anforderungen-deutschland",
+      "depth": 3
+    },
+    {
+      "path": "/de/passbild-online",
+      "depth": 2
+    },
+    {
+      "path": "/de/passfoto-schweiz-online",
+      "depth": 2
+    },
+    {
+      "path": "/de/visum-foto",
+      "depth": 2
+    },
+    {
+      "path": "/denmark-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/denmark-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/digital-visa-photo-specs-2026",
+      "depth": 2
+    },
+    {
+      "path": "/diversity-visa-lottery-photo-checker",
+      "depth": 1
+    },
+    {
+      "path": "/editorial-methodology",
+      "depth": 1
+    },
+    {
+      "path": "/egypt-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/egypt-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/estonia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/estonia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/faq",
+      "depth": 1
+    },
+    {
+      "path": "/finland-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/finland-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/fr",
+      "depth": 1
+    },
+    {
+      "path": "/fr/ephoto-ants",
+      "depth": 2
+    },
+    {
+      "path": "/fr/guides",
+      "depth": 2
+    },
+    {
+      "path": "/fr/guides/how-to-take-passport-photo-at-home",
+      "depth": 2
+    },
+    {
+      "path": "/fr/guides/passport-photo-background",
+      "depth": 2
+    },
+    {
+      "path": "/fr/guides/passport-photo-size",
+      "depth": 2
+    },
+    {
+      "path": "/fr/guides/photo-identite-france-passeport-cni-ephoto-permis-visa",
+      "depth": 2
+    },
+    {
+      "path": "/fr/passport-photo-online",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-carte-identite",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-identite",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-identite-en-ligne",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-passeport",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-passeport-biometrique",
+      "depth": 2
+    },
+    {
+      "path": "/fr/photo-visa",
+      "depth": 2
+    },
+    {
+      "path": "/france-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/france-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/germany-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/germany-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/ghana-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/ghana-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/greece-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/greece-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/hungary-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/hungary-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/icao-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/icao-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/india-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/india-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/indian-passport-size-photograph",
+      "depth": 2
+    },
+    {
+      "path": "/indonesia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/indonesia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/iran-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/iran-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/iraq-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/iraq-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/israel-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/israel-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/italy-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/italy-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/japan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/japan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/kazakhstan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/kazakhstan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/latvia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/latvia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/lithuania-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/lithuania-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/luxembourg-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/luxembourg-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malawi-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malawi-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malaysia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malaysia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malta-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/malta-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/mexico-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/mexico-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/morocco-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/morocco-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/nepal-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/nepal-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/netherlands-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/netherlands-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/new-zealand-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/new-zealand-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/nigeria-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/nigeria-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/norway-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/norway-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/online-passport-photo-checker",
+      "depth": 2
+    },
+    {
+      "path": "/pakistan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/pakistan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/passport-photo-app",
+      "depth": 2
+    },
+    {
+      "path": "/passport-photo-checker",
+      "depth": 1
+    },
+    {
+      "path": "/passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/passport-photo-maker",
+      "depth": 2
+    },
+    {
+      "path": "/passport-photo-online",
+      "depth": 1
+    },
+    {
+      "path": "/passport-photo-print-template-generator",
+      "depth": 1
+    },
+    {
+      "path": "/passport-photo-sizes",
+      "depth": 1
+    },
+    {
+      "path": "/passport-photo-video",
+      "depth": 1
+    },
+    {
+      "path": "/passport-photos",
+      "depth": 1
+    },
+    {
+      "path": "/passport-size-photo-maker",
+      "depth": 2
+    },
+    {
+      "path": "/peru-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/peru-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/philippines-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/philippines-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/poland-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/poland-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/portugal-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/portugal-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/privacy-policy",
+      "depth": 1
+    },
+    {
+      "path": "/refund-policy",
+      "depth": 1
+    },
+    {
+      "path": "/romania-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/romania-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/russia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/russia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/saudi-arabia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/saudi-arabia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/schengen-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/schengen-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/singapore-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/singapore-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/slovakia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/slovakia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/slovenia-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/slovenia-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/south-africa-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/south-africa-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/south-korea-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/south-korea-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/spain-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/spain-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/sri-lanka-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/sri-lanka-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/support",
+      "depth": 1
+    },
+    {
+      "path": "/sweden-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/sweden-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/switzerland-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/switzerland-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/tajikistan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/tajikistan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/terms",
+      "depth": 1
+    },
+    {
+      "path": "/thailand-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/thailand-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/turkey-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/turkey-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uae-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uae-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uk",
+      "depth": 2
+    },
+    {
+      "path": "/uk-passport-photo-checker-online-free",
+      "depth": 2
+    },
+    {
+      "path": "/uk-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uk-passport-photo-requirements-tool",
+      "depth": 2
+    },
+    {
+      "path": "/uk-passport-size-photo-maker",
+      "depth": 1
+    },
+    {
+      "path": "/uk-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uk/passport-photos-london",
+      "depth": 3
+    },
+    {
+      "path": "/uk/photo-for-driving-license-uk",
+      "depth": 3
+    },
+    {
+      "path": "/uk/uk-application-registration-card-passport-size-photo",
+      "depth": 3
+    },
+    {
+      "path": "/us-passport-photo-editor",
+      "depth": 1
+    },
+    {
+      "path": "/us-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uzbekistan-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/uzbekistan-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/venezuela-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/venezuela-visa-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/visa-photo",
+      "depth": 1
+    },
+    {
+      "path": "/visa-photo-validator",
+      "depth": 1
+    },
+    {
+      "path": "/yemen-passport-photo-editor",
+      "depth": 2
+    },
+    {
+      "path": "/yemen-visa-photo-editor",
+      "depth": 2
+    }
+  ]
+}
