@@ -3,6 +3,7 @@ import connectToDatabase from "@/lib/mongodb";
 import Blog from "@/models/Blog";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import { revalidatePath } from "next/cache";
 
 export async function GET(req: NextRequest) {
   try {
@@ -36,6 +37,8 @@ export async function POST(req: NextRequest) {
     if(existing) return NextResponse.json({ error: "Slug must be unique" }, { status: 400 });
 
     const newBlog = await Blog.create(data);
+    revalidatePath("/blog", "layout");
+    revalidatePath("/sitemap.xml");
     return NextResponse.json(newBlog, { status: 201 });
   } catch (error) {
     return NextResponse.json({ error: "Failed to create blog" }, { status: 500 });

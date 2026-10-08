@@ -3,6 +3,7 @@ import connectToDatabase from "@/lib/mongodb";
 import Blog from "@/models/Blog";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import { revalidatePath } from "next/cache";
 
 export async function PUT(
   req: NextRequest,
@@ -22,6 +23,8 @@ export async function PUT(
     await connectToDatabase();
     
     const blog = await Blog.findByIdAndUpdate(id, body, { new: true });
+    revalidatePath("/blog", "layout");
+    revalidatePath("/sitemap.xml");
     return NextResponse.json(blog);
   } catch (error) {
     return NextResponse.json({ error: "Failed to update blog" }, { status: 500 });
@@ -44,6 +47,8 @@ export async function DELETE(
     const { id } = await params;
     await connectToDatabase();
     await Blog.findByIdAndDelete(id);
+    revalidatePath("/blog", "layout");
+    revalidatePath("/sitemap.xml");
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json({ error: "Failed to delete blog" }, { status: 500 });

@@ -3,6 +3,7 @@ import connectToDatabase from "@/lib/mongodb";
 import BlogModel from "@/models/Blog";
 import fs from "node:fs";
 import path from "node:path";
+import { mergeBlogPosts } from "./merge-blog-posts";
 // Define the Blog Post type
 export interface BlogPost {
   slug: string;
@@ -16,24 +17,25 @@ export interface BlogPost {
   keywords?: string[];
 }
 
-// Helper function to read the blog posts directly from DB with fallback to JSON
+// Read both sources independently: publishing a CMS post must not hide built-in guides.
 export async function getBlogPosts(): Promise<BlogPost[]> {
+  let localPosts: BlogPost[] = [];
+  let databasePosts: (BlogPost & { isPublished?: boolean })[] = [];
   try {
-    if (!process.env.MONGODB_URI) throw new Error("Local content fallback");
-    await connectToDatabase();
-    const posts = await BlogModel.find({ isPublished: true }).sort({ date: -1 }).lean() as BlogPost[];
-    if (posts && posts.length > 0) return applyReviewedBlogContent(JSON.parse(JSON.stringify(posts)) as BlogPost[]);
+    localPosts = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'data', 'blog-posts.json'), 'utf8'));
+  } catch (error) {
+    console.error("Error reading built-in blog posts:", error);
+  }
+  try {
+    if (process.env.MONGODB_URI) {
+      await connectToDatabase();
+      // Include publication state so a draft override cannot expose its built-in version.
+      const posts = await BlogModel.find().lean();
+      databasePosts = JSON.parse(JSON.stringify(posts));
+    }
   } catch (error) {
     if (process.env.MONGODB_URI) console.error("Blog database unavailable; using local content.");
   }
 
-  const filePath = path.join(process.cwd(), 'data', 'blog-posts.json');
-  try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const posts = JSON.parse(fileContents) as BlogPost[];
-    return applyReviewedBlogContent(posts).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  } catch (error) {
-    console.error("Error reading blog posts:", error);
-    return [];
-  }
+  return applyReviewedBlogContent(mergeBlogPosts(localPosts, databasePosts));
 }
