@@ -18,9 +18,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // Actual editorial/link changes, not a date regenerated on each request.
   const dated = new Map<string, string>([
     ["/", "2026-10-07"],
-    ["/passport-photos", "2026-10-07"],
-    ["/visa-photo", "2026-10-07"],
-    ["/passport-photo-checklist", "2026-10-07"],
+    ["/passport-photos", "2026-10-08"],
+    ["/visa-photo", "2026-10-08"],
+    ["/passport-photo-checklist", "2026-10-08"],
   ]);
   for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {

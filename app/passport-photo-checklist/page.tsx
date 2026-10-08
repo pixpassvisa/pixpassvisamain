@@ -3,22 +3,35 @@ import Link from "next/link";
 
 const url = "https://www.pixpassvisa.com/passport-photo-checklist";
 const title = "Passport & Visa Photo Checklist | PixPassVisa";
-const description = "A practical checklist for checking photo requirements, capture quality, printed dimensions and digital uploads before applying.";
+const description = "Use this free passport and visa photo checklist to review lighting, background, print size and digital uploads. Includes a printable worksheet and official sources.";
 
 export const metadata: Metadata = {
   title, description,
   alternates: { canonical: url },
-  openGraph: { title, description, url, type: "article" },
-  twitter: { card: "summary_large_image", title, description },
+  openGraph: { title, description, url, type: "article", siteName: "PixPassVisa", locale: "en_US", publishedTime: "2026-10-07", modifiedTime: "2026-10-08", images: [{ url: "https://www.pixpassvisa.com/opengraph-image", width: 1200, height: 630, alt: "PixPassVisa photo preparation" }] },
+  twitter: { card: "summary_large_image", title, description, images: ["https://www.pixpassvisa.com/opengraph-image"] },
 };
 
 export default function PhotoChecklist() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      { "@type": "Article", "@id": `${url}#article`, headline: "Passport & visa photo checklist", description, mainEntityOfPage: url, datePublished: "2026-10-07", dateModified: "2026-10-08", inLanguage: "en", author: { "@type": "Organization", name: "PixPassVisa Team", url: "https://www.pixpassvisa.com/about" }, publisher: { "@id": "https://www.pixpassvisa.com/#organization" }, isAccessibleForFree: true },
+      { "@type": "BreadcrumbList", itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixpassvisa.com/" },
+        { "@type": "ListItem", position: 2, name: "Passport photo guides", item: "https://www.pixpassvisa.com/passport-photos" },
+        { "@type": "ListItem", position: 3, name: "Photo checklist", item: url },
+      ] },
+    ],
+  };
   return (
-    <main className="mx-auto max-w-4xl px-5 py-12 sm:py-20">
+    <article className="mx-auto max-w-4xl px-5 py-12 sm:py-20">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-slate-600"><ol className="flex flex-wrap gap-2"><li><Link prefetch={false} href="/" className="underline">Home</Link><span aria-hidden="true"> /</span></li><li><Link prefetch={false} href="/passport-photos" className="underline">Passport photo guides</Link><span aria-hidden="true"> /</span></li><li aria-current="page">Photo checklist</li></ol></nav>
       <p className="text-sm font-semibold uppercase tracking-widest text-green-800">Before you apply</p>
       <h1 className="mt-3 text-4xl font-bold tracking-tight sm:text-5xl">Passport &amp; visa photo checklist</h1>
       <p className="mt-5 text-lg leading-relaxed text-slate-600">Check the requirements before you print or upload. Use this guide to identify your application route, prepare a suitable original and review the final photo.</p>
-      <p className="mt-3 text-sm text-slate-500">By PixPassVisa Team · Official references checked 7 October 2026</p>
+      <p className="mt-3 text-sm text-slate-500">By <Link prefetch={false} href="/about" className="underline">PixPassVisa Team</Link> · Published <time dateTime="2026-10-07">7 October 2026</time> · Updated <time dateTime="2026-10-08">8 October 2026</time>. Official references checked 7 October 2026.</p>
       <div className="mt-6 flex flex-wrap gap-4">
         <Link prefetch={false} href="/visa-photo-validator" className="rounded-lg bg-green-900 px-5 py-3 font-semibold text-white">Check your photo for free</Link>
         <a href="/resources/photo-checklist.html" className="rounded-lg border border-green-900 px-5 py-3 font-semibold text-green-900">Open printable checklist</a>
@@ -52,12 +65,21 @@ export default function PhotoChecklist() {
         <ul className="list-disc space-y-2 pl-5"><li>Compare the actual output with the official instructions.</li><li>Check for stretching, unexpected scaling or loss of detail.</li><li>Review all warnings from the official application portal.</li><li>Retake the photo if necessary; a third-party check is not an official acceptance decision.</li></ul>
         <p className="text-sm text-slate-600">The UK and US sources are examples. They do not establish requirements for other countries or visa types.</p>
       </section>
+      <section className="mt-10 space-y-4" aria-labelledby="checklist-questions">
+        <h2 id="checklist-questions" className="text-2xl font-bold">Common photo checklist questions</h2>
+        <h3 className="text-lg font-semibold">Is a passport photo the same as a visa photo?</h3>
+        <p>Do not assume the requirements match. Check the document type and application route separately. Our <Link prefetch={false} href="/passport-photos" className="underline">passport photo guides</Link> and <Link prefetch={false} href="/visa-photo" className="underline">visa photo guides</Link> help you find the relevant starting point.</p>
+        <h3 className="text-lg font-semibold">Does passing an online photo check guarantee acceptance?</h3>
+        <p>No. Automated checks can flag potential issues, but the issuing authority makes the acceptance decision. Compare your original photo and final output with its current instructions.</p>
+        <h3 className="text-lg font-semibold">Can I print this checklist for free?</h3>
+        <p>Yes. Open the <a href="/resources/photo-checklist.html" className="underline">printable photo checklist</a> and use your browser&apos;s Print command. No purchase or account is required for the worksheet.</p>
+      </section>
       <section className="mt-12 rounded-2xl bg-green-50 p-6 sm:p-8">
         <h2 className="text-2xl font-bold">Ready to review your photo?</h2>
         <p className="mt-3">Start with a free check. If your application permits the preparation you need, review the preview and displayed price before purchasing a download.</p>
         <div className="mt-5 flex flex-wrap gap-4"><Link prefetch={false} className="rounded-lg bg-green-900 px-5 py-3 font-semibold text-white" href="/visa-photo-validator">Start a free photo check</Link><Link prefetch={false} className="px-2 py-3 font-semibold text-green-900 underline" href="/passport-photo-online">Choose a document and preview</Link></div>
       </section>
       <p className="mt-8 text-sm text-slate-600">PixPassVisa is an independent commercial photo-preparation service. This checklist requires no purchase. For questions or corrections, <Link prefetch={false} href="/contact" className="underline">contact our team</Link>.</p>
-    </main>
+    </article>
   );
 }

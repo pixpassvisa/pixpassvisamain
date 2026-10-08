@@ -25,6 +25,7 @@ export default function AdditionalPhotoGuides({ type }: { type: "passport" | "vi
         return <li key={country}><Link prefetch={false} className="text-blue-700 underline underline-offset-4" href={`/${base}-${type}-photo-editor`}>{country} {type} photo guide</Link></li>;
       })}
     </ul>
+    <p className="mb-6 text-slate-600">Before preparing your photo, use our <Link prefetch={false} className="text-blue-700 underline underline-offset-4" href="/passport-photo-checklist">passport and visa photo checklist</Link> to review capture, print and upload requirements.</p>
     <h2 className="text-xl font-bold text-slate-900 mb-4">More {type} photo tools and guides</h2>
     <ul className="grid sm:grid-cols-2 gap-3">{tools.map(([label, href]) => <li key={href}><Link prefetch={false} className="text-blue-700 underline underline-offset-4" href={href}>{label}</Link></li>)}</ul>
   </section>;

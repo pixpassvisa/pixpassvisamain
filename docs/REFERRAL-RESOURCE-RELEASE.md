@@ -24,3 +24,9 @@ The printable version points its canonical link to the main checklist. The main 
 The resource is published, but no editorial messages or product listings have been submitted. Editorial outreach requires completing the destination's CAPTCHA where shown; listing submissions require an authenticated account. Email prospects require a connected sending mailbox.
 
 Evaluate the campaign by qualified referral traffic and completed paid downloads, with refunds and acquisition costs included when assessing profit. Publication of this resource does not itself establish a new backlink, revenue increase or ranking improvement.
+
+## SEO update — 8 October 2026
+
+Added a descriptive search snippet, explicit social preview metadata, Article and BreadcrumbList JSON-LD, matching visible breadcrumbs and author/date information, and practical visitor questions. Linked the checklist from both passport and visa directory content. Sitemap modification dates reflect this edit. Replaced the nested main element with an article.
+
+Validation: nine existing SEO tests passed. Generated HTML has one main landmark, one H1, the expected canonical URL, parseable Article/BreadcrumbList JSON-LD and visible question content. Structured data helps describe the page; Google decides indexing, rankings and rich-result presentation.
