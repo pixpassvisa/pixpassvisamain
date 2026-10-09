@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import jsPDF from "jspdf";
 import { useSearchParams } from "next/navigation";
 import { AlertTriangle, RefreshCw, Camera, Check } from "lucide-react";
 
@@ -233,11 +232,11 @@ export default function PrintTemplateApp() {
   // Download timer & processing state
   const [isDownloading, setIsDownloading] = useState(false);
   const [downloadFormat, setDownloadFormat] = useState<"jpg" | "pdf" | null>(null);
-  const [downloadSecondsLeft, setDownloadSecondsLeft] = useState(6);
-  const [downloadProgress, setDownloadProgress] = useState(0);
+  const [downloadError, setDownloadError] = useState<string | null>(null);
+  const downloadInFlight = useRef(false);
 
   // Execute actual file download
-  const executeDownload = (format: "jpg" | "pdf") => {
+  const executeDownload = async (format: "jpg" | "pdf") => {
     if (!canvasRef.current) return;
 
     if (format === "jpg") {
@@ -248,6 +247,7 @@ export default function PrintTemplateApp() {
     } else if (format === "pdf") {
       const imgData = canvasRef.current.toDataURL("image/jpeg", 1.0);
       const paper = PAPER_SIZES[paperSize];
+      const { default: jsPDF } = await import("jspdf");
       const pdf = new jsPDF({
         orientation: paper.width > paper.height ? "landscape" : "portrait",
         unit: "mm",
@@ -280,57 +280,25 @@ export default function PrintTemplateApp() {
     }
   };
 
-  // Start 6-second processing timer before download & upload to Cloudinary
-  const startDownloadWithTimer = (format: "jpg" | "pdf") => {
-    if (isDownloading || !canvasRef.current) return;
+  // Download as soon as generation finishes; cloud backup must not delay it.
+  const startDownload = async (format: "jpg" | "pdf") => {
+    if (downloadInFlight.current || !canvasRef.current) return;
+    downloadInFlight.current = true;
+    setDownloadError(null);
     setDownloadFormat(format);
-    setDownloadSecondsLeft(6);
-    setDownloadProgress(0);
     setIsDownloading(true);
-
-    // Trigger Cloudinary upload in parallel during the 6s countdown
-    uploadFinalImageToCloudinary(format);
+    try {
+      await executeDownload(format);
+      void uploadFinalImageToCloudinary(format);
+    } catch (error) {
+      console.error("Template download failed:", error);
+      setDownloadError("Could not generate your download. Please try again.");
+    } finally {
+      downloadInFlight.current = false;
+      setIsDownloading(false);
+      setDownloadFormat(null);
+    }
   };
-
-  // 6-second timer effect
-  useEffect(() => {
-    if (!isDownloading || !downloadFormat) return;
-
-    const DURATION_MS = 6000;
-    const startTime = Date.now();
-
-    const interval = setInterval(() => {
-      const elapsed = Date.now() - startTime;
-      const progressPercent = Math.min(100, (elapsed / DURATION_MS) * 100);
-      const remainingSeconds = Math.max(0, Math.ceil((DURATION_MS - elapsed) / 1000));
-
-      setDownloadProgress(progressPercent);
-      setDownloadSecondsLeft(remainingSeconds);
-
-      if (elapsed >= DURATION_MS) {
-        clearInterval(interval);
-        executeDownload(downloadFormat);
-
-        // Brief delay before closing modal so user sees 100% completion
-        setTimeout(() => {
-          setIsDownloading(false);
-          setDownloadFormat(null);
-          setDownloadProgress(0);
-          setDownloadSecondsLeft(6);
-        }, 500);
-      }
-    }, 50);
-
-    return () => clearInterval(interval);
-  }, [isDownloading, downloadFormat, paperSize]);
-
-  const getProcessingMessage = () => {
-    if (downloadSecondsLeft >= 5) return "Preparing 300 DPI high-resolution canvas...";
-    if (downloadSecondsLeft >= 3) return "Optimizing print grid & syncing to cloud...";
-    if (downloadSecondsLeft >= 1) return "Calibrating print quality & layout dimensions...";
-    return "Generating final file & starting download...";
-  };
-
   // Error Dialog Component
   const ErrorDialog = ({
     message,
@@ -400,7 +368,8 @@ export default function PrintTemplateApp() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8">
-      {/* Download Processing Modal (6-second timer) */}
+      {downloadError && <p role="alert" className="mb-4 text-red-700">{downloadError}</p>}
+      {/* Download generation status */}
       {isDownloading && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 animate-fade-in">
           <div className="bg-white rounded-2xl shadow-2xl w-full max-w-md p-6 sm:p-8 text-center border border-slate-100 relative overflow-hidden">
@@ -412,7 +381,7 @@ export default function PrintTemplateApp() {
               <div className="absolute inset-0 border-4 border-blue-200 border-t-blue-600 rounded-full animate-spin" />
               <div className="w-14 h-14 bg-blue-50/70 rounded-full flex flex-col items-center justify-center shadow-inner">
                 <span className="text-xl font-black text-blue-700 leading-none">
-                  {downloadSecondsLeft}s
+                  …
                 </span>
               </div>
             </div>
@@ -422,21 +391,8 @@ export default function PrintTemplateApp() {
             </h3>
 
             <p className="text-sm text-slate-600 mb-5 font-medium min-h-[1.5rem] transition-all duration-300">
-              {getProcessingMessage()}
+              Generating your print-ready file…
             </p>
-
-            {/* Progress Bar */}
-            <div className="w-full bg-slate-100 rounded-full h-3 mb-2.5 overflow-hidden p-0.5 border border-slate-200">
-              <div
-                className="bg-gradient-to-r from-blue-600 to-emerald-600 h-full rounded-full transition-all duration-75 ease-out"
-                style={{ width: `${downloadProgress}%` }}
-              />
-            </div>
-
-            <div className="flex justify-between text-xs text-slate-400 font-semibold mb-5">
-              <span>Rendering 300 DPI layout</span>
-              <span>{Math.round(downloadProgress)}%</span>
-            </div>
 
             {/* Details Badge */}
             <div className="bg-slate-50 rounded-xl p-3 text-xs text-slate-600 flex items-center justify-center gap-2 border border-slate-100">
@@ -612,7 +568,7 @@ export default function PrintTemplateApp() {
             {/* Download Buttons */}
             <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
               <button
-                onClick={() => startDownloadWithTimer("jpg")}
+                onClick={() => startDownload("jpg")}
                 disabled={isDownloading}
                 className={`w-full py-3 px-4 rounded-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 ${
                   isDownloading && downloadFormat === "jpg"
@@ -643,14 +599,14 @@ export default function PrintTemplateApp() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       />
                     </svg>
-                    <span>Processing JPG ({downloadSecondsLeft}s)...</span>
+                    <span>Generating JPG...</span>
                   </>
                 ) : (
                   <span>Download as JPG</span>
                 )}
               </button>
               <button
-                onClick={() => startDownloadWithTimer("pdf")}
+                onClick={() => startDownload("pdf")}
                 disabled={isDownloading}
                 className={`w-full py-3 px-4 rounded-lg font-bold shadow-md transition-all flex items-center justify-center gap-2 ${
                   isDownloading && downloadFormat === "pdf"
@@ -681,7 +637,7 @@ export default function PrintTemplateApp() {
                         d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
                       />
                     </svg>
-                    <span>Processing PDF ({downloadSecondsLeft}s)...</span>
+                    <span>Generating PDF...</span>
                   </>
                 ) : (
                   <span>Download as PDF</span>

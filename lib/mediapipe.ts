@@ -6,13 +6,12 @@
  * ─────────────────────────────────────────────────────
  */
 
-import {
+import type {
   FaceLandmarker,
   PoseLandmarker,
-  FilesetResolver,
-  type FaceLandmarkerResult,
-  type PoseLandmarkerResult,
-  type NormalizedLandmark,
+  FaceLandmarkerResult,
+  PoseLandmarkerResult,
+  NormalizedLandmark,
 } from "@mediapipe/tasks-vision";
 
 /* ─── Biometric Constants ─── */
@@ -33,6 +32,7 @@ let landmarkerPromise: Promise<FaceLandmarker> | null = null;
 export async function getMediaPipeLandmarker(): Promise<FaceLandmarker> {
   if (!landmarkerPromise) {
     landmarkerPromise = (async () => {
+      const { FaceLandmarker, FilesetResolver } = await import("@mediapipe/tasks-vision");
       const vision = await FilesetResolver.forVisionTasks(
         "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.34/wasm"
       );
@@ -289,5 +289,5 @@ export function resetSmoothing(): void {
 
 /* ─── Re-export types for consumers ─── */
 
-export { FaceLandmarker, PoseLandmarker };
+export type { FaceLandmarker, PoseLandmarker };
 export type { FaceLandmarkerResult, PoseLandmarkerResult, NormalizedLandmark };

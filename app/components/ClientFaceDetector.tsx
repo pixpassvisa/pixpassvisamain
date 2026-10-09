@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, useCallback } from "react";
 import {
-  FaceLandmarker,
+  type FaceLandmarker,
   getMediaPipeLandmarker,
   computeFaceBox,
   computeTiltAngle,
@@ -272,7 +272,8 @@ export default function ClientFaceDetector({
         setFeedbacks(localFeedbacks);
         setProgress(90);
 
-        const tesselation = FaceLandmarker.FACE_LANDMARKS_TESSELATION ?? [];
+        const { FaceLandmarker: FaceLandmarkerClass } = await import("@mediapipe/tasks-vision");
+        const tesselation = FaceLandmarkerClass.FACE_LANDMARKS_TESSELATION ?? [];
         const startTime = performance.now();
         const duration = 3000;
 

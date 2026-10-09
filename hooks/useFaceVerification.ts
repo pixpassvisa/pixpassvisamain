@@ -30,7 +30,6 @@ export function useFaceVerification() {
         }
       }, 1400);
 
-      const startTime = Date.now();
 
       try {
         const formData = new FormData();
@@ -55,12 +54,6 @@ export function useFaceVerification() {
         
         if (data.error) {
           throw new Error(data.error);
-        }
-
-        const elapsed = Date.now() - startTime;
-        const remainingTime = 8000 - elapsed;
-        if (remainingTime > 0) {
-          await new Promise(resolve => setTimeout(resolve, remainingTime));
         }
 
         setReport(data);
