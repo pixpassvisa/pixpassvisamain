@@ -8,7 +8,7 @@ The coverage export contains 144 discovered-but-not-indexed URLs. Its January 19
 
 All eight canonical-conflict examples also return 200 with self-canonicals. The Google-selected destinations are not present in the supplied screenshots and require authenticated URL Inspection. Current HTTP results do not prove that Google has recrawled, accepted a canonical, or indexed a URL. Redirect and proper-alternate exclusions are often intentional.
 
-The live site already includes several earlier improvements, despite stale local delivery notes. The verified frontend repository is `pixpassvisa/pixpassvisamain`, branch `main`. Its current GitHub workflow deploys to a VPS with PM2, not Vercel. The release was prepared from `7dab7dd0b8c49b15b457fcfa8d4cb1200adbc3fa`; modified files matched the local pre-edit baseline.
+The live site already includes several earlier improvements, despite stale local delivery notes. The verified frontend repository is `pixpassvisa/pixpassvisamain`, branch `main`. Its legacy GitHub workflow targets a VPS with PM2, but public response headers confirm that the domain is hosted on Vercel. The user confirms that Vercel automatically pulls main. The release was prepared from `7dab7dd0b8c49b15b457fcfa8d4cb1200adbc3fa`; modified files matched the local pre-edit baseline.
 
 ## Implemented changes
 
@@ -48,3 +48,4 @@ The live site already includes several earlier improvements, despite stale local
 - [GOV.UK: printed passport photos](https://www.gov.uk/photos-for-passports/photo-requirements)
 
 Indexing and ranking remain Google's decisions. Technical checks, sitemap submission and a successful deployment do not confirm indexing or future revenue.
+
