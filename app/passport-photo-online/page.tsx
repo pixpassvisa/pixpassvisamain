@@ -1,4 +1,7 @@
 "use client";
+import { takeCheckerPhoto } from "@/lib/checker-handoff";
+import { trackCheckerEvent } from "@/lib/checker-events";
+import PriceDisplay from "@/app/components/PriceDisplay";
 import PhotoPolicyNote from "@/app/components/PhotoPolicyNote";
 
 import { useSearchParams, useRouter } from "next/navigation";
@@ -52,6 +55,18 @@ function ToolForm() {
   const [guidelinesOpen, setGuidelinesOpen] = useState(false);
   const [showGuide, setShowGuide] = useState(false);
   const [previewUrl, setPreviewUrl] = useState<string>("");
+
+  const handoffRead = useRef(false);
+  useEffect(() => {
+    if (handoffRead.current) return;
+    handoffRead.current = true;
+    if (searchParams.get("from") !== "checker" || !initialType || !documentTypes.some(d => d.id === initialType)) return;
+    const photo = takeCheckerPhoto(initialType);
+    if (photo) {
+      setSelectedFile(photo);
+      requestAnimationFrame(() => window.scrollTo({ top: 0, behavior: "instant" }));
+    }
+  }, [initialType, searchParams]);
 
   // Header inline document selector
   const [headerSelectorOpen, setHeaderSelectorOpen] = useState(false);
@@ -138,6 +153,8 @@ function ToolForm() {
   };
 
   const handleExternalProcess = async (file: File) => {
+    const fromChecker = searchParams.get("from") === "checker";
+    if (fromChecker) trackCheckerEvent('checker_preview_started');
     setIsUploading(true);
     setErrorMsg("");
     setCropMsg("Processing Your Photo...");
@@ -164,11 +181,13 @@ function ToolForm() {
       const res = await fetch("/api/external-process", { method: "POST", body: formData });
       const data = await res.json();
       if (!res.ok) throw new Error(data.details || data.error || "Processing failed");
+      if (fromChecker) trackCheckerEvent('checker_preview_ready');
 
       setCropMsg("Redirecting to your photo...");
       await new Promise(r => setTimeout(r, 800));
       router.push(`/preview/${data.photoId}`);
     } catch (err: any) {
+      if (fromChecker) trackCheckerEvent('checker_preview_failed');
       setErrorMsg(err.message || "Processing failed. Please try again.");
     } finally {
       setIsUploading(false);
@@ -303,6 +322,16 @@ function ToolForm() {
             />
           )}
 
+          {selectedFile && !isUploading && !errorMsg && (
+            <section className="mt-4 rounded-2xl border border-blue-200 bg-white p-6 space-y-4">
+              <h2 className="text-lg font-bold text-slate-900">Your photo is ready for the editor</h2>
+              {previewUrl && <img src={previewUrl} alt="Your selected photo" className="h-40 w-32 rounded-lg object-contain bg-slate-100" />}
+              <p className="text-sm text-slate-600">Selected document: {activeDoc.label}. Review the photo policy before processing. Preview is free; digital photo and print-sheet downloads cost <PriceDisplay basePrice={7.99} /> once.</p>
+              <button type="button" onClick={() => handleExternalProcess(selectedFile)} className="w-full rounded-xl bg-blue-600 px-5 py-4 font-bold text-white hover:bg-blue-700">Create free preview</button>
+              <button type="button" onClick={handleReset} className="text-sm text-slate-600 underline">Choose a different photo</button>
+            </section>
+          )}
+
           {/* Advanced Inline Processing State */}
           {isUploading && (
             <div className="mt-4 bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 shadow-2xl animate-in fade-in slide-in-from-bottom-4 duration-500">
@@ -413,7 +442,7 @@ export default function ToolPage() {
           Passport size photo maker  & Visa Photo maker
         </h1>
         <h2 className="mt-1.5 text-sm text-slate-500 font-normal">
-          Free visa photo Validator & Maker for 50+ Countries
+          Free preview. Paid digital photo and print-sheet downloads.
         </h2>
       </div>
       <div className="py-4">

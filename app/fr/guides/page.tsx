@@ -9,12 +9,6 @@ export const metadata: Metadata = {
   description: "Guides complets pour des photos d'identité conformes : tailles, arrière-plans, astuces pour photos maison. Tout savoir pour réussir vos photos passeport et visa.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/fr/guides",
-    languages: {
-      en: "https://www.pixpassvisa.com/blog",
-      fr: "https://www.pixpassvisa.com/fr/guides",
-      de: "https://www.pixpassvisa.com/de/guides",
-      "x-default": "https://www.pixpassvisa.com/blog",
-    },
   },
   openGraph: { title: "Guides Photo d'Identité | PixPassVisa", description: "Guides complets photo passeport et visa.", url: "https://www.pixpassvisa.com/fr/guides", siteName: "PixPassVisa", locale: "fr_FR", type: "website" },
   twitter: {

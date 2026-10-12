@@ -8,15 +8,25 @@ import { getBlogPosts } from "@/lib/blog-posts";
 import routes from "@/data/route-manifest.json";
 import seoRedirects from "@/data/seo-redirects.json";
 import { SITE_URL, isPrivatePath } from "@/lib/seo";
+import { hasDocumentPreset } from "@/lib/document-intent";
 export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = new Set<string>(routes);
   for (const slug of getAllSlugs()) {
     const route = getRouteBySlug(slug);
-    if (route && (route.type !== "spec" || route.canonicalSlug === slug)) paths.add(`/${slug}`);
+    // Keep incomplete document guidance accessible through the directories, but
+    // do not submit country-name-only placeholders as finished search pages.
+    if (route && (route.type !== "spec" || (route.canonicalSlug === slug &&
+      (hasDocumentPreset(route.data, route.isVisaUrl) || route.data.id === "icao-passport")))) paths.add(`/${slug}`);
   }
   // Actual editorial/link changes, not a date regenerated on each request.
   const dated = new Map<string, string>([
+    ["/passport-size-photo-maker", "2026-10-12"],
+    ["/uk-passport-photo-requirements-tool", "2026-10-12"],
+    ["/visa-photo-validator", "2026-10-12"],
+    ["/de/guides", "2026-10-12"],
+    ["/fr/guides", "2026-10-12"],
+    ["/blog", "2026-10-12"],
     ["/", "2026-10-07"],
     ["/passport-photos", "2026-10-08"],
     ["/visa-photo", "2026-10-08"],

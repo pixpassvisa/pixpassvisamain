@@ -9,7 +9,7 @@ export default function AdditionalPhotoGuides({ type }: { type: "passport" | "vi
   const tools = type === "passport" ? [
     ["Passport photo app guide", "/passport-photo-app"],
     ["Passport photo editing guide", "/passport-photo-editor"],
-    ["Passport photo maker guide", "/passport-photo-maker"],
+    ["Passport photo maker guide", "/passport-size-photo-maker"],
     ["UK passport requirements tool", "/uk-passport-photo-requirements-tool"],
   ] : [
     ["China visa photo tool", "/create-china-visa-photo"],

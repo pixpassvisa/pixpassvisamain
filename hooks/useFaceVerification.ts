@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { ValidationReport } from "@/lib/validation-engine";
+import { trackCheckerEvent } from "@/lib/checker-events";
 
 export function useFaceVerification() {
   const [isProcessing, setIsProcessing] = useState(false);
@@ -10,6 +11,7 @@ export function useFaceVerification() {
   const verifyPhoto = useCallback(
     async (file: File, countryCode: string, docType: string) => {
       setIsProcessing(true);
+      trackCheckerEvent('checker_started');
       setError(null);
       setReport(null);
       setLoadingMessage("started validating your photo...");
@@ -57,7 +59,9 @@ export function useFaceVerification() {
         }
 
         setReport(data);
+        trackCheckerEvent('checker_completed');
       } catch (err: unknown) {
+        trackCheckerEvent('checker_failed');
         const message =
           err instanceof Error
             ? err.message

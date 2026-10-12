@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import PassportMakerApp from "./PassportMakerApp";
+import PriceDisplay from "../components/PriceDisplay";
 import toolPages from "../../data/tool-seo-pages.json";
 import ToolPageRenderer from "../components/ToolPageRenderer";
 import DirectAnswerBox from "../components/DirectAnswerBox";
@@ -7,9 +8,9 @@ import OfficialSourceBadge from "../components/OfficialSourceBadge";
 import { ShieldCheck, FileCheck, Zap, Sparkles, Ruler, Globe, CheckCircle2, Camera } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Free Passport Photo Maker Online | Official Passport Standards",
+  title: "Passport Photo Maker Online | Free Preview, Paid Downloads",
   description:
-    "Create passport size photos online for free. Select your country, upload a photo, remove the background automatically, and download a print-ready photo.",
+    "Choose your document, upload a photo and review a free preview. Paid downloads include a digital photo and print sheet. Check your application rules before editing.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-size-photo-maker",
     languages: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Free Passport Photo Maker Online",
+    title: "Passport Photo Maker with Free Preview",
     description:
       "Create passport and visa photos online. Select your country, upload a photo, and download a print-ready photo instantly.",
     type: "website",
@@ -32,26 +33,26 @@ const schemas = [
     name: "Passport Size Photo Maker Online",
     url: "https://www.pixpassvisa.com/passport-size-photo-maker",
     description:
-      "Free AI passport photo maker and resizer. Automatically removes background, crops to exact millimeter and pixel ratios, and formats compliant photos for 50+ countries.",
+      "Passport photo editor with a free preview and paid digital photo and print-sheet downloads.",
     applicationCategory: "DesignApplication",
     operatingSystem: "All",
     offers: {
       "@type": "Offer",
-      price: "0",
+      price: "7.99",
       priceCurrency: "USD",
     },
   },
   {
     "@context": "https://schema.org",
     "@type": "HowTo",
-    name: "How to Create a Compliant Passport Photo Online",
-    description: "Step-by-step instructions to create, crop, and download an official biometric passport photo from home.",
+    name: "How to prepare a passport photo preview",
+    description: "Choose a document preset, review a free preview, and optionally purchase prepared files.",
     step: [
       {
         "@type": "HowToStep",
         position: 1,
         name: "Select Destination Country & Document Type",
-        text: "Pick your country (e.g. US 2x2 in, UK/Schengen 35x45 mm, India 51x51 mm) to load the exact biometric template.",
+        text: "Check the application instructions, including restrictions on editing, then choose a matching document preset.",
       },
       {
         "@type": "HowToStep",
@@ -63,13 +64,13 @@ const schemas = [
         "@type": "HowToStep",
         position: 3,
         name: "Automatic AI Crop & Background Removal",
-        text: "The AI isolates the subject, replaces the background with pure white or light grey, and aligns head proportion (50–69% or 70–80%).",
+        text: "Review the prepared preview and its dimensions. Use an original or retake the photo when the authority does not permit editing.",
       },
       {
         "@type": "HowToStep",
         position: 4,
         name: "Download Digital Photo or Printable Sheet",
-        text: "Export high-resolution 300 DPI single image or 4x6 / A4 printable template.",
+        text: "If the prepared files suit your application, purchase the digital photo and print-sheet downloads at the displayed price.",
       },
     ],
   },
@@ -98,12 +99,12 @@ const TRUST_ITEMS = [
   {
     icon: <ShieldCheck className="w-5 h-5 text-blue-600" />,
     title: "Privacy first",
-    desc: "Photos never stored on our servers",
+    desc: "Read our storage and deletion policy",
   },
   {
     icon: <FileCheck className="w-5 h-5 text-blue-600" />,
-    title: "ISO compliant",
-    desc: "Meets ICAO 9303 biometric standards",
+    title: "Document presets",
+    desc: "Check your issuing authority's rules",
   },
   {
     icon: <Zap className="w-5 h-5 text-blue-600" />,
@@ -377,6 +378,7 @@ export default function PassportSizePhotoMakerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
       <div className="bg-slate-50 min-h-screen">
+        <p className="mx-auto max-w-4xl px-5 pt-6 text-center text-sm text-slate-700">Free preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={7.99} /> once. No subscription.</p>
         {/* ── Tool ── */}
         <PassportMakerApp title={toolPage?.h1} subtitle={toolPage?.metaDescription} img={(toolPage as any)?.img} />
 
@@ -384,16 +386,15 @@ export default function PassportSizePhotoMakerPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-6">
           <DirectAnswerBox
             question="How do I create a passport size photo online?"
-            answer="To create an official passport photo online, select your target country to load the exact millimeter dimensions and chin-to-crown ratio (such as 2×2 inches for the US or 35×45 mm for the UK/Schengen/India). Upload a well-lit, forward-facing picture. Our AI automatically crops the image to the exact biometric margin, replaces the background with uniform white or light grey, and produces a 300 DPI high-resolution JPEG and printable 4×6 / A4 sheet."
+            answer="Choose your country and document, check the authority's editing restrictions, and upload a clear original photo. Review the preview before deciding whether to purchase the prepared digital photo and print sheet. A preset or passing check does not guarantee acceptance."
             keyPoints={[
-              "Instant AI background removal & solid color replacement (White / Light Grey)",
-              "Automatic head alignment: 50–69% (US/2×2) or 70–80% (ICAO/35×45mm)",
-              "Export individual high-res 300 DPI photos or printable 4×6 / A4 multi-photo templates",
-              "100% ephemeral privacy: zero image storage on remote servers",
-              "Compliant with official specifications for 50+ countries worldwide",
+              "Choose the document and submission method first",
+              "Retake photos with blur, heavy shadows or unsuitable expressions",
+              "Review the free preview before paying for prepared files",
+              "Photos are uploaded for server processing; read the privacy policy",
             ]}
-            lastReviewed="September 2026"
-            sourceAuthority="ICAO Doc 9303, ISO/IEC 19794-5 & National Consular Authorities"
+            lastReviewed="12 October 2026"
+            sourceAuthority="PixPassVisa product workflow"
           />
 
           <OfficialSourceBadge

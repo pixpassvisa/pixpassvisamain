@@ -33,12 +33,6 @@ export const metadata = {
   keywords: ['passport photo requirements', 'visa photo guide', 'US visa photo size', 'DS-160 photo requirements', 'UK digital passport photo', 'Schengen visa photo size', 'Australia visa photo size', 'India e-Visa photo requirements', 'passport photo checker'],
   alternates: {
     canonical: `${APP_URL}/blog`,
-    languages: {
-      en: `${APP_URL}/blog`,
-      fr: `${APP_URL}/fr/guides`,
-      de: `${APP_URL}/de/guides`,
-      "x-default": `${APP_URL}/blog`,
-    },
   },
   openGraph: {
     title: 'Global Passport & Visa Photo Guides | PixPassVisa Blog',

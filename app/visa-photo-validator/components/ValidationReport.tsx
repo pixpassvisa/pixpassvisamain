@@ -1,6 +1,9 @@
 "use client";
 
 import React, { useRef } from "react";
+import { useRouter } from "next/navigation";
+import { stageCheckerPhoto } from "@/lib/checker-handoff";
+import { trackCheckerEvent } from "@/lib/checker-events";
 import { motion, AnimatePresence, useInView, Variants } from "framer-motion";
 import { ValidationReport, ValidationMetric } from "@/lib/validation-engine";
 
@@ -11,6 +14,7 @@ interface Props {
   onReset: () => void;
   selectedDocId?: string;
   selectedDocPrice?: number;
+  sourceFile?: File | null;
 }
 
 import PriceDisplay from "@/app/components/PriceDisplay";
@@ -249,7 +253,8 @@ function SummaryList({ items, title, dark = false }: { items: string[]; title: s
 
 // ─── Main Report Component ─────────────────────────────────────────────────────
 
-export default function ValidationReportView({ report, onReset, selectedDocId, selectedDocPrice }: Props) {
+export default function ValidationReportView({ report, onReset, selectedDocId, selectedDocPrice, sourceFile }: Props) {
+  const router = useRouter();
   const { overall_result, compliance_score, summary, suggestions, metrics } = report;
   const ref = useRef(null);
   const inView = useInView(ref, { once: true });
@@ -333,19 +338,32 @@ export default function ValidationReportView({ report, onReset, selectedDocId, s
           <ScoreRing score={compliance_score} pass={isPass} />
         </div>
 
-        {overall_result === "FAIL" && (
-          <div className="mt-6 border-t border-slate-100 pt-6">
+          <div className="mt-6 border-t border-slate-100 pt-6 space-y-3">
+            <h3 className="text-lg font-bold text-slate-900">
+              {isPass ? "Need a digital photo or print sheet?" : "Prepare a new photo preview"}
+            </h3>
+            <p className="text-sm text-slate-600">
+              {isPass
+                ? "Your check is complete. If you need a formatted file, continue to the editor and review the preview before paying."
+                : "Review the issues below first. Retake photos with blur, poor lighting or an unsuitable expression; editing cannot fix every issue."}
+            </p>
+            <p className="text-sm font-semibold text-slate-900">
+              Free check and preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={selectedDocPrice ?? 7.99} /> once.
+            </p>
+            {!selectedDocId && <p className="text-sm text-amber-800">No matching editor preset is available for this selection. Review the available documents before uploading.</p>}
             <button
               onClick={() => {
-                const url = selectedDocId ? `/passport-photo-online?type=${selectedDocId}` : '/passport-photo-online';
-                window.location.href = url;
+                trackCheckerEvent('checker_editor_click');
+                if (sourceFile && selectedDocId) stageCheckerPhoto(sourceFile, selectedDocId);
+                const url = selectedDocId ? `/passport-photo-online?type=${encodeURIComponent(selectedDocId)}&from=checker` : '/passport-photo-online';
+                router.push(url);
               }}
               className="w-full h-14 rounded-xl bg-blue-600 text-white font-bold text-sm uppercase tracking-widest hover:bg-blue-700 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-blue-500/20/30"
             >
-              Create your ID photo
+              {selectedDocId ? "Continue to free preview" : "Choose an available document"}
             </button>
+            <p className="text-xs text-slate-500">A passing check is guidance, not government approval. Purchase only if you need the prepared files.</p>
           </div>
-        )}
       </motion.div>
 
       {/* ── Metric Cards Grid ─────────────────────────────────────── */}

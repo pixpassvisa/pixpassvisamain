@@ -42,7 +42,7 @@ test('representative editor routes resolve their intended presets or disclose mi
   }
   for(const slug of ['algeria','algeria-passport','australia-photo','made-up-visa-photo-editor','us-visa-photo-editor-extra']) assert.equal(getRouteBySlug(slug),null,slug);
 });
-test('exact ICAO redirects are unique, terminate at a live route and leave the sitemap inventory', () => {
+test('exact SEO redirects are unique, terminate at a live route and leave the sitemap inventory', () => {
   const redirects = JSON.parse(fs.readFileSync('data/seo-redirects.json','utf8'));
   const sources = new Set(redirects.map(r=>r.source));
   assert.equal(sources.size,redirects.length);
@@ -50,7 +50,7 @@ test('exact ICAO redirects are unique, terminate at a live route and leave the s
     assert.equal(r.permanent,true);
     assert.ok(!r.source.includes(':') && !r.source.includes('*'));
     assert.ok(!sources.has(r.destination),'no chain');
-    assert.ok(getRouteBySlug(r.destination.slice(1)),'valid destination');
+    assert.ok(getRouteBySlug(r.destination.slice(1)) || fs.existsSync(`app${r.destination}/page.tsx`),'valid destination');
     assert.ok(!getAllSlugs().includes(r.source.slice(1)),'retired slug not generated');
   }
 });

@@ -7,6 +7,8 @@ import { useFaceVerification } from "@/hooks/useFaceVerification";
 import ValidationReportView from "@/app/visa-photo-validator/components/ValidationReport";
 import { getFilteredDocumentTypes, SUPPORTED_COUNTRIES } from "@/lib/specs";
 import { countryMapping } from "@/lib/external-api";
+import { findCheckerDocument } from "@/lib/checker-handoff";
+import PriceDisplay from "./PriceDisplay";
 import DirectAnswerBox from "./DirectAnswerBox";
 import OfficialSourceBadge from "./OfficialSourceBadge";
 
@@ -334,6 +336,7 @@ export default function PhotoCheckerTool({
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [checkedInput, setCheckedInput] = useState<{ file: File; country: string; document: string } | null>(null);
 
   const { verifyPhoto, isProcessing, loadingMessage, report, setReport, error, setError } = useFaceVerification();
 
@@ -367,6 +370,7 @@ export default function PhotoCheckerTool({
 
   const handleVerify = useCallback(() => {
     if (!file) return;
+    setCheckedInput({ file, country: selectedCountry, document: selectedDocType });
     verifyPhoto(file, selectedCountry, selectedDocType);
   }, [file, selectedCountry, selectedDocType, verifyPhoto]);
 
@@ -376,19 +380,12 @@ export default function PhotoCheckerTool({
     };
   }, [previewUrl]);
 
-  // Document matching for Price & Order redirect
-  const matchedDoc = documentTypes.find((d) => {
-    const slug = d.id.replace(/-passport$/, "").replace(/-visa$/, "");
-    const code = countryMapping[slug] || slug.toUpperCase();
-    return code === selectedCountry && d.id.endsWith(`-${selectedDocType}`);
-  }) || documentTypes.find((d) => {
-    const slug = d.id.replace(/-passport$/, "").replace(/-visa$/, "");
-    const code = countryMapping[slug] || slug.toUpperCase();
-    return code === selectedCountry;
-  });
+  const matchedDoc = findCheckerDocument(documentTypes, selectedCountry, selectedDocType, countryMapping);
+  const selectedDocId = matchedDoc?.id;
+  const selectedDocPrice = matchedDoc?.price;
 
-  const selectedDocId = matchedDoc?.id || (selectedCountry === "AU" ? "australia-passport" : selectedCountry === "GB" ? "uk-passport" : (selectedCountry === "CHE" || selectedCountry === "CH") ? "switzerland-passport" : (selectedCountry === "NI") ? "nigeria-passport" : "us-passport");
-  const selectedDocPrice = matchedDoc?.price || 7.99;
+  // A report belongs to the file and selection that produced it.
+  useEffect(() => { setReport(null); setError(null); }, [file, selectedCountry, selectedDocType, setReport, setError]);
 
   return (
     <div className="bg-slate-50/50 min-h-screen">
@@ -520,6 +517,7 @@ export default function PhotoCheckerTool({
               Photos are uploaded for server processing and may be stored with Cloudinary.
               Review our <Link href="/privacy-policy" className="underline">privacy policy</Link> before uploading.
             </p>
+            <p className="mt-3 text-sm text-slate-600">Photo checks are free. Need prepared files? Preview in the editor, then download a digital photo and print sheet for <PriceDisplay basePrice={7.99} /> once.</p>
             {selectedDocType === "visa" && <p className="text-sm text-amber-900 bg-amber-50 rounded-lg p-3 mt-3" role="note">
               This checker currently uses the selected country’s passport configuration on the server.
               Its result does not validate application-specific visa requirements. Check your visa instructions separately.
@@ -578,9 +576,10 @@ export default function PhotoCheckerTool({
 
           {/* RIGHT: Validation Report OR Specs Overview */}
           <div className="lg:col-span-6 lg:sticky lg:top-8">
-            {report ? (
+            {report && checkedInput?.file === file && checkedInput.country === selectedCountry && checkedInput.document === selectedDocType ? (
               <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-sm">
                 <ValidationReportView
+                  sourceFile={file}
                   report={report}
                   onReset={handleReset}
                   selectedDocId={selectedDocId}

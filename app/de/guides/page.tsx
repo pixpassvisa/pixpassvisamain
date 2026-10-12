@@ -16,12 +16,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://www.pixpassvisa.com/de/guides",
-    languages: {
-      en: "https://www.pixpassvisa.com/blog",
-      fr: "https://www.pixpassvisa.com/fr/guides",
-      de: "https://www.pixpassvisa.com/de/guides",
-      "x-default": "https://www.pixpassvisa.com/blog",
-    },
   },
   openGraph: {
     title: "PixPassVisa Ratgeber | Biometrische Passbilder & Visumfotos",

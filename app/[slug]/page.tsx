@@ -10,6 +10,7 @@ import Breadcrumbs from "../components/Breadcrumbs";
 import { hasDocumentPreset } from "@/lib/document-intent";
 import DocumentGuidancePage from "../components/DocumentGuidancePage";
 import ToolPageRenderer from "../components/ToolPageRenderer";
+import UKPassportRequirements from "../components/UKPassportRequirements";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -108,6 +109,8 @@ export default async function Page({ params }: PageProps) {
   if (!route) {
     notFound();
   }
+
+  if (slug === "uk-passport-photo-requirements-tool") return <UKPassportRequirements />;
 
   // Enforce canonical URL: permanently redirect non-canonical alias slugs to canonical slug
   if (route.type === "spec" && slug !== route.canonicalSlug) {
