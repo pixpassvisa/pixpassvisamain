@@ -18,18 +18,18 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-video-preview": -1, "max-image-preview": "large", "max-snippet": -1 } },
   openGraph: {
     title: "PixPassVisa | Biometrische Passbilder & Visumfotos Online",
-    description: "Erstellen Sie konforme biometrische Fotos für über 50 Länder. Offizielle Standards für Deutschland (Personalausweis, Führerschein) und mehr.",
+    description: "Passbild-Ratgeber und Werkzeuge von PixPassVisa. Bildqualität und den vorgeschriebenen Abgabeweg getrennt prüfen.",
     url: "https://www.pixpassvisa.com/de",
     siteName: "PixPassVisa",
-    images: [{ url: "https://res.cloudinary.com/dipzpwbbk/image/upload/v1779008016/c24d89b1-ab0e-4f1d-9035-5814bc7b91ca_preview_ip9ogs.jpg", width: 1200, height: 630, alt: "PixPassVisa - Passfoto Online" }],
+    images: [{ url: "https://www.pixpassvisa.com/images/guides/de-guides.png", width: 1200, height: 630, alt: "PixPassVisa - Passfoto Online" }],
     locale: "de_DE",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "PixPassVisa | Biometrische Passbilder & Visumfotos Online",
-    description: "Professionelle Pass- und Visumfotos für über 50 Länder. Biometrische Konformität garantiert.",
-    images: ["https://res.cloudinary.com/dipzpwbbk/image/upload/v1779008016/c24d89b1-ab0e-4f1d-9035-5814bc7b91ca_preview_ip9ogs.jpg"],
+    description: "Pass- und Visumfotos vorbereiten und Bildanforderungen verstehen. Prüfen Sie die Vorgaben Ihrer zuständigen Behörde.",
+    images: ["https://www.pixpassvisa.com/images/guides/de-guides.png"],
   },
 };
 

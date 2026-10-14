@@ -73,3 +73,26 @@ test('analytics discards image IDs, query parameters and arbitrary metadata', ()
   assert.equal(sanitizeAnalyticsPayload({sessionId:'bad',type:'page_view'}),null);
   assert.equal(sanitizeAnalyticsPayload({sessionId:'sess_test',type:'photo_secret'}),null);
 });
+
+test('reviewed country guides have working actions and distinct on-domain assets', () => {
+  const { reviewedPhotoGuides } = loadTs('lib/reviewed-photo-guides.ts');
+  const guides = Object.entries(reviewedPhotoGuides);
+  assert.equal(new Set(guides.map(([,g])=>g.title)).size,guides.length);
+  assert.equal(new Set(guides.map(([,g])=>g.description)).size,guides.length);
+  assert.equal(new Set(guides.map(([,g])=>g.image)).size,guides.length);
+  for (const [slug,guide] of guides) {
+    assert.ok(getRouteBySlug(slug),slug);
+    assert.ok(guide.title.includes('PixPassVisa'),slug);
+    assert.ok(fs.existsSync('public'+guide.image),guide.image);
+    assert.ok(guide.sources.length>0,slug);
+    for(const section of guide.sections) if(section.source!==undefined) assert.ok(guide.sources[section.source],slug);
+    for(const action of guide.next){
+      const pathname = new URL(action.href,'https://www.pixpassvisa.com').pathname;
+      assert.ok(getRouteBySlug(pathname.slice(1)) || fs.existsSync(`app${pathname}/page.tsx`),action.href);
+      assert.ok(!action.href.includes('pixpassport.com'));
+    }
+  }
+  for(const slug of ['south-africa-visa-photo-editor','chile-visa-photo-editor']){
+    assert.ok(!reviewedPhotoGuides[slug].next.some(link=>link.href.startsWith('/passport-photo-online')),'unsupported visa must not silently select another preset');
+  }
+});

@@ -1,10 +1,12 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function UKPassportRequirements() {
   return <main className="mx-auto max-w-3xl px-5 py-12 space-y-7 text-slate-700">
     <nav aria-label="Breadcrumb" className="text-sm"><Link href="/">Home</Link> / <Link href="/passport-photos">Passport photos</Link> / UK requirements</nav>
     <h1 className="text-3xl font-bold text-slate-900">UK passport photo requirements: digital or printed?</h1>
     <p>Choose your application route before using a photo tool. This guide compares the two formats so you can decide whether you need an original digital photo or printed photographs.</p>
+    <Image src="/images/guides/uk-photo-routes.png" alt="PixPassVisa UK passport photo guide: online application, original digital file and HMPO review" width={1200} height={630} priority sizes="(max-width: 800px) 95vw, 728px" className="rounded-2xl w-full h-auto" />
     <div className="overflow-x-auto rounded-xl border border-slate-200">
       <table className="w-full text-left text-sm">
         <caption className="p-4 text-left font-bold">Photo format by application route</caption>
@@ -26,6 +28,6 @@ export default function UKPassportRequirements() {
       <p>If your original is suitable for an online application, you may not need an editor. For feedback, use the <Link className="text-blue-700 underline" href="/passport-photo-checker">free photo checker</Link> and select United Kingdom. Its result is guidance, not HMPO approval.</p>
       <p>To understand the tool settings, read the <Link className="text-blue-700 underline" href="/uk-passport-photo-editor">UK passport preset page</Link>. Check the editing restrictions before purchasing prepared files.</p>
     </section>
-    <p className="text-sm text-slate-500">Reviewed 12 October 2026 against the GOV.UK pages linked above. PixPassVisa is independent of HM Passport Office.</p>
+    <p className="text-sm text-slate-500">Reviewed 14 October 2026 against the GOV.UK pages linked above. PixPassVisa is independent of HM Passport Office. <Link className="underline" href="/editorial-methodology">Read our editorial process</Link>.</p>
   </main>;
 }

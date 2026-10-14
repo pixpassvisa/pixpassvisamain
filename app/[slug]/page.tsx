@@ -11,6 +11,8 @@ import { hasDocumentPreset } from "@/lib/document-intent";
 import DocumentGuidancePage from "../components/DocumentGuidancePage";
 import ToolPageRenderer from "../components/ToolPageRenderer";
 import UKPassportRequirements from "../components/UKPassportRequirements";
+import ReviewedPhotoGuidePage from "../components/ReviewedPhotoGuidePage";
+import { reviewedPhotoGuides } from "@/lib/reviewed-photo-guides";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -43,6 +45,23 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { slug } = await params;
   const route = getRouteBySlug(slug);
   if (!route) return {};
+
+  const guide = reviewedPhotoGuides[slug];
+  if (guide) {
+    const image = `https://www.pixpassvisa.com${guide.image}`;
+    return {
+      ...createMetadata({ title: guide.title, description: guide.description, canonical: `https://www.pixpassvisa.com/${slug}`,
+        openGraph: { images: [{ url: image, width: 1200, height: 630, alt: guide.imageAlt }] } }),
+      twitter: { card: 'summary_large_image', title: guide.title, description: guide.description, images: [image] },
+    };
+  }
+
+  if (slug === 'uk-passport-photo-requirements-tool') {
+    const image = 'https://www.pixpassvisa.com/images/guides/uk-photo-routes.png';
+    const title = 'UK Passport Photos: Digital vs Printed | PixPassVisa';
+    const description = 'Choose the UK passport photo route: original digital image or two printed photos. Compare file limits, dimensions and HMPO photo-code options.';
+    return { ...createMetadata({title, description, canonical: `https://www.pixpassvisa.com/${slug}`, openGraph:{images:[{url:image,width:1200,height:630,alt:'PixPassVisa guide to UK passport photo application routes'}]}}), twitter:{card:'summary_large_image',title,description,images:[image]} };
+  }
 
   switch (route.type) {
     case "tool": {
@@ -116,6 +135,8 @@ export default async function Page({ params }: PageProps) {
   if (route.type === "spec" && slug !== route.canonicalSlug) {
     permanentRedirect(`/${route.canonicalSlug}`);
   }
+
+  if (reviewedPhotoGuides[slug]) return <ReviewedPhotoGuidePage guide={reviewedPhotoGuides[slug]} slug={slug} />;
 
   switch (route.type) {
     case "tool": {

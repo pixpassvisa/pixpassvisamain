@@ -9,9 +9,13 @@ import routes from "@/data/route-manifest.json";
 import seoRedirects from "@/data/seo-redirects.json";
 import { SITE_URL, isPrivatePath } from "@/lib/seo";
 import { hasDocumentPreset } from "@/lib/document-intent";
+import { reviewedPhotoGuides, PHOTO_GUIDE_REVIEW_DATE } from "@/lib/reviewed-photo-guides";
 export const revalidate = 3600;
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const paths = new Set<string>(routes);
+  // Reviewed country guidance has its own substantive application workflow,
+  // even when there is no corresponding paid preparation preset.
+  for (const slug of Object.keys(reviewedPhotoGuides)) paths.add(`/${slug}`);
   for (const slug of getAllSlugs()) {
     const route = getRouteBySlug(slug);
     // Keep incomplete document guidance accessible through the directories, but
@@ -32,6 +36,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["/visa-photo", "2026-10-08"],
     ["/passport-photo-checklist", "2026-10-08"],
   ]);
+  for (const slug of Object.keys(reviewedPhotoGuides)) dated.set(`/${slug}`, PHOTO_GUIDE_REVIEW_DATE);
+  for (const pathname of ['/de/guides', '/uk-passport-photo-requirements-tool', '/passport-photo-online', '/passport-photos', '/visa-photo']) dated.set(pathname, PHOTO_GUIDE_REVIEW_DATE);
   for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {
       const pathname = `/${prefix}/${post.slug}`;

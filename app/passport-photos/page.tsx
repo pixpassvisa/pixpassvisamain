@@ -1,3 +1,4 @@
+import ReviewedGuideLinks from "../components/ReviewedGuideLinks";
 import AdditionalPhotoGuides from "../components/AdditionalPhotoGuides";
 import { getFilteredSpecs } from "@/lib/specs";
 import MasterDirectory from "../components/MasterDirectory";
@@ -52,7 +53,8 @@ export default function PassportDirectoryPage() {
         type="passport"
       />
 
-      <AdditionalPhotoGuides type="passport" />
+      <ReviewedGuideLinks document="passport" />
+<AdditionalPhotoGuides type="passport" />
 
       {/* Cross-Links & Special Guides Section */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
