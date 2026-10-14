@@ -10,6 +10,7 @@ import { compressImage } from "@/lib/compressImage";
 import { countryMapping } from "@/lib/external-api";
 import { documentTypes } from "./constants";
 import styles from "./studio.module.css";
+import StudioComparison from "./components/StudioComparison";
 
 function ToolForm() {
   const router = useRouter();
@@ -21,7 +22,7 @@ function ToolForm() {
   const [error, setError] = useState("");
   const [phase, setPhase] = useState<"idle" | "reading" | "processing" | "opening">("idle");
   const [dragging, setDragging] = useState(false);
-  const [comparison, setComparison] = useState(55);
+
   const input = useRef<HTMLInputElement>(null);
   const request = useRef<AbortController | null>(null);
   const busy = useRef(false);
@@ -141,10 +142,7 @@ function ToolForm() {
         {file && <button type="button" className={styles.primary} disabled={pending} onClick={() => void processPhoto()}>{pending && <LoaderCircle size={20} className={styles.spin} />}{pending ? phase === "opening" ? "Opening preview…" : "Preparing your preview…" : error ? "Try creating preview again" : "Create my free preview"}{!pending && <ArrowRight size={20} />}</button>}
         <p className={styles.price}><ShieldCheck size={17} />Preview first. Downloads <PriceDisplay basePrice={7.99} /> once. No subscription.</p><PhotoPolicyNote />
       </section>
-      <aside className={styles.aside}><div className={styles.exampleHeading}><span className={styles.kicker}>THE POSSIBILITIES, IN PICTURE</span><h2>A little preparation.<br />A polished result.</h2><p>Slide to explore an example transformation.</p></div>
-        <div className={styles.comparison}><img src="/assets/hero-compliant.png" alt="Example photo with a plain background" /><img src="/assets/hero-raw.png" alt="Original example photo" style={{ clipPath: `inset(0 ${100 - comparison}% 0 0)` }} /><div className={styles.divider} style={{ left: `${comparison}%` }}><span>↔</span></div><span className={styles.before}>Before</span><span className={styles.after}>After</span><input type="range" min="0" max="100" value={comparison} aria-label="Compare original and prepared example photo" onChange={e => setComparison(Number(e.target.value))} /></div>
-        <p className={styles.caption}>Illustrative example · Your result depends on your photo and document rules.</p><div className={styles.tips}><h3>A better photo starts here</h3>{["Face the camera with a neutral expression", "Use even daylight and a plain background", "Keep your full head and shoulders in frame"].map((tip, i) => <p key={tip}><span>0{i + 1}</span>{tip}</p>)}</div>
-      </aside>
+      <aside><StudioComparison /></aside>
     </div>
     <section className={styles.faq}><h2>A few things worth knowing</h2><details><summary>When do I pay?</summary><p>Create and review your preview first. Digital photo and print-sheet downloads require a one-time payment of <PriceDisplay basePrice={7.99} />.</p></details><details><summary>Can I use a photo from my phone?</summary><p>Yes. Choose a JPG, PNG or WebP from your camera roll. Export HEIC photos as JPG first. Use the original photo rather than a screenshot.</p></details><details><summary>Is acceptance guaranteed?</summary><p>No. Automated checks are guidance; your issuing authority makes the final decision. Check your application’s rules, especially whether digital editing is permitted.</p></details></section>
   </div></main>;
