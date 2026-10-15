@@ -348,7 +348,7 @@ export default function ValidationReportView({ report, onReset, selectedDocId, s
                 : "Review the issues below first. Retake photos with blur, poor lighting or an unsuitable expression; editing cannot fix every issue."}
             </p>
             <p className="text-sm font-semibold text-slate-900">
-              Free check and preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={selectedDocPrice ?? 7.99} /> once.
+              Free check and preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={selectedDocPrice ?? 4.99} /> once.
             </p>
             {!selectedDocId && <p className="text-sm text-amber-800">No matching editor preset is available for this selection. Review the available documents before uploading.</p>}
             <button

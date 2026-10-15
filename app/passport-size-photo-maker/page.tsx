@@ -38,7 +38,7 @@ const schemas = [
     operatingSystem: "All",
     offers: {
       "@type": "Offer",
-      price: "7.99",
+      price: "4.99",
       priceCurrency: "USD",
     },
   },
@@ -378,7 +378,7 @@ export default function PassportSizePhotoMakerPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
       <div className="bg-slate-50 min-h-screen">
-        <p className="mx-auto max-w-4xl px-5 pt-6 text-center text-sm text-slate-700">Free preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={7.99} /> once. No subscription.</p>
+        <p className="mx-auto max-w-4xl px-5 pt-6 text-center text-sm text-slate-700">Free preview. Digital photo and print-sheet downloads: <PriceDisplay basePrice={4.99} /> once. No subscription.</p>
         {/* ── Tool ── */}
         <PassportMakerApp title={toolPage?.h1} subtitle={toolPage?.metaDescription} img={(toolPage as any)?.img} />
 

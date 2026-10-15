@@ -9,9 +9,9 @@ import { getSafeSpec } from "@/lib/specs";
 export async function POST(req: Request) {
   try {
     const session = await getServerSession(authOptions);
-    const { email, photoUrl, documentType, photoId } = await req.json();
+    const { email, photoId, downloadToken } = await req.json();
 
-    if (!email || !photoId) {
+    if (typeof email !== "string" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) || !photoId) {
       return NextResponse.json({ error: "Email and photoId are required" }, { status: 400 });
     }
 
@@ -30,21 +30,23 @@ export async function POST(req: Request) {
     const photoGuestEmail = photo.guestEmail ? photo.guestEmail.trim().toLowerCase() : "";
     const sessionEmail = session?.user?.email ? session.user.email.trim().toLowerCase() : "";
 
-    // Security check: email must match photo's registered guest email OR logged-in user email
-    const isAuthorizedRecipient = (photoGuestEmail && requestedEmail === photoGuestEmail) ||
-      (sessionEmail && requestedEmail === sessionEmail);
-
-    if (!isAuthorizedRecipient && (photoGuestEmail || sessionEmail)) {
-      return NextResponse.json(
-        { error: "Photos can only be delivered to the verified email address associated with the order." },
-        { status: 403 }
-      );
+    const isOwner = photo.userId
+      ? photo.userId.toString() === (session?.user as { id?: string })?.id
+      : Boolean(sessionEmail && sessionEmail === photoGuestEmail);
+    const validToken = typeof downloadToken === "string" && Boolean(photo.downloadToken) && downloadToken === photo.downloadToken;
+    // Without a token, only resend to the address already attached to this order.
+    const registeredRecipient = Boolean(photoGuestEmail && requestedEmail === photoGuestEmail);
+    if (!isOwner && !validToken && !registeredRecipient) {
+      return NextResponse.json({ error: "Use the email entered at checkout, or open the secure download link from your order email." }, { status: 403 });
+    }
+    if (photo.isExpired || Date.now() - new Date(photo.createdAt).getTime() > 86400000 || !photo.secureUrl) {
+      return NextResponse.json({ error: "This photo has expired and is no longer available for delivery." }, { status: 410 });
     }
 
     const verifiedPhotoUrl = photo.secureUrl || photo.previewUrl;
     const printSheetUrl = photo.printSheetUrl || "";
 
-    const spec = getSafeSpec(documentType || 'us-passport');
+    const spec = getSafeSpec(photo.documentType);
     const docName = spec.name || 'Photo';
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.pixpassvisa.com';
 
@@ -87,7 +89,7 @@ export async function POST(req: Request) {
     `;
 
     const result = await sendEmail({
-      to: email,
+      to: requestedEmail,
       subject: `Your ${docName} Delivery - PixPassVisa`,
       html: htmlContent,
     });
@@ -109,7 +111,7 @@ export async function POST(req: Request) {
     if (result.success) {
       return NextResponse.json({ success: true });
     } else {
-      throw new Error("Email sending failed");
+      return NextResponse.json({ error: "Email delivery is temporarily unavailable. Your payment is complete; please download your photo here or contact support@pixpassvisa.com." }, { status: 503 });
     }
   } catch (error: any) {
     console.error("Failed to send photo via email:", error);

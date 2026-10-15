@@ -52,7 +52,7 @@ const COUNTRY_TO_CURRENCY: Record<string, string> = {
 // Fixed price mapping for specific currencies (PPP-adjusted)
 export const FIXED_PRICES: Record<string, { amount: number; symbol: string; decimals: number }> = {
   // Tier 1: fixed standard download price
-  USD: { amount: 7.99, symbol: "$", decimals: 2 },
+  USD: { amount: 4.99, symbol: "$", decimals: 2 },
   EUR: { amount: 6.99, symbol: "€", decimals: 2 },
   GBP: { amount: 6.99, symbol: "£", decimals: 2 },
   CHF: { amount: 15.99, symbol: "CHF", decimals: 2 },
@@ -75,7 +75,7 @@ export const FIXED_PRICES: Record<string, { amount: number; symbol: string; deci
   DKK: { amount: 39, symbol: "kr", decimals: 0 },
   
   // Tier 3: ~50% Discount
-  INR: { amount: 599, symbol: "₹", decimals: 0 },
+  INR: { amount: 499, symbol: "₹", decimals: 0 },
   CNY: { amount: 29, symbol: "¥", decimals: 0 },
   BRL: { amount: 24, symbol: "R$", decimals: 0 },
   MXN: { amount: 89, symbol: "$", decimals: 0 },
@@ -103,7 +103,7 @@ export interface LocalPrice {
 
 export const EXPERT_PRICES: Record<string, { amount: number; symbol: string; decimals: number }> = {
   // Scaling roughly 1.6x - 2x from standard
-  USD: { amount: 13.99, symbol: "$", decimals: 2 },
+  USD: { amount: 11.99, symbol: "$", decimals: 2 },
   EUR: { amount: 11.99, symbol: "€", decimals: 2 },
   GBP: { amount: 11.99, symbol: "£", decimals: 2 },
   CHF: { amount: 20.99, symbol: "CHF", decimals: 2 },
@@ -124,7 +124,7 @@ export const EXPERT_PRICES: Record<string, { amount: number; symbol: string; dec
   NOK: { amount: 99, symbol: "kr", decimals: 0 },
   DKK: { amount: 69, symbol: "kr", decimals: 0 },
   
-  INR: { amount: 699, symbol: "₹", decimals: 0 },
+  INR: { amount: 599, symbol: "₹", decimals: 0 },
   CNY: { amount: 49, symbol: "¥", decimals: 0 },
   BRL: { amount: 45, symbol: "R$", decimals: 0 },
   MXN: { amount: 149, symbol: "$", decimals: 0 },
@@ -143,7 +143,7 @@ export const EXPERT_PRICES: Record<string, { amount: number; symbol: string; dec
 };
 
 export async function getLocalPrice(
-  baseUsdPrice: number = 7.99,
+  baseUsdPrice: number = 4.99,
   forcedCurrency?: string,
   isExpert: boolean = false,
   skipHeaders: boolean = false
@@ -173,7 +173,8 @@ export async function getLocalPrice(
 
     // Use fixed price if available, otherwise fallback to baseUsdPrice
     const priceMap = isExpert ? EXPERT_PRICES : FIXED_PRICES;
-    const fixed = priceMap[currency] || priceMap["USD"];
+    if (!priceMap[currency]) currency = "USD";
+    const fixed = priceMap[currency];
     const amount = fixed.amount;
     const symbol = fixed.symbol;
     const decimals = fixed.decimals;
@@ -193,8 +194,8 @@ export async function getLocalPrice(
     console.error("Failed to get local price, falling back to USD", error);
     return {
       currency: "USD",
-      amount: 7.99,
-      formatted: "$7.99",
+      amount: isExpert ? EXPERT_PRICES.USD.amount : FIXED_PRICES.USD.amount,
+      formatted: `$${(isExpert ? EXPERT_PRICES.USD.amount : FIXED_PRICES.USD.amount).toFixed(2)}`,
       symbol: "$",
     };
   }

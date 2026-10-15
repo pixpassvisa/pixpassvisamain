@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import PriceDisplay from "@/app/components/PriceDisplay";
+import { getClientTimezoneCurrency } from "@/lib/currency";
 import { useRouter } from "next/navigation";
 import { Lock, CreditCard, ShieldCheck, CheckCircle2 } from "lucide-react";
 
@@ -82,6 +84,7 @@ export default function ExpertEditPage() {
       // Prepare FormData
       const formData = new FormData();
       formData.append("email", email);
+      formData.append("currencyOverride", getClientTimezoneCurrency());
       formData.append("gaClientId", gaClientId); // Pass it here
       photos.forEach((photo) => formData.append("image", photo));
 
@@ -97,7 +100,7 @@ export default function ExpertEditPage() {
       setMessage("Opening payment gateway...");
 
       const options = {
-        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        key: data.keyId,
         amount: data.amount,
         currency: data.currency,
         name: "PixPassVisa",
@@ -179,7 +182,7 @@ export default function ExpertEditPage() {
         <div className="text-center mb-10">
           <h1 className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Expert Manual Edit</h1>
           <p className="mt-4 text-lg text-slate-600">
-            Let our company experts manually edit and perfect your photo for just $10.<br/>
+            Let our company experts manually edit and perfect your photo for <PriceDisplay basePrice={11.99} isExpert />.<br/>
             Submit up to 3 photos (any background color) and we'll do the rest!
           </p>
         </div>
@@ -254,11 +257,11 @@ export default function ExpertEditPage() {
                   <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 flex items-center justify-between">
                      <div>
                        <p className="text-sm font-bold text-slate-800">
-                         One-time payment: $10.00
+                         One-time payment: <PriceDisplay basePrice={11.99} isExpert />
                        </p>
                        <p className="text-xs text-slate-500 mt-0.5">No subscription &bull; No hidden charges</p>
                      </div>
-                     <span className="text-2xl font-black text-slate-900">$10.00</span>
+                     <span className="text-2xl font-black text-slate-900"><PriceDisplay basePrice={11.99} isExpert /></span>
                   </div>
 
                   {/* Outcome Clarity */}
@@ -308,7 +311,7 @@ export default function ExpertEditPage() {
                   ) : (
                     <>
                       <span className="flex items-center gap-2">
-                        Submit Photos for Expert Edit &ndash; $10.00
+                        Submit Photos for Expert Edit &ndash; <PriceDisplay basePrice={11.99} isExpert />
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                           <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                         </svg>

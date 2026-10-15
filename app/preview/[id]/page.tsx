@@ -25,12 +25,18 @@ export default async function PreviewPage(props: { params: Promise<{ id: string 
   const session = await getServerSession(authOptions);
   const isPaid = photoRecord.status === "paid";
 
-  const localPrice = await getLocalPrice(7.99);
-  const expertPrice = await getLocalPrice(13.99, undefined, true);
-  const downloadToken = photoRecord.downloadToken || (searchParams.token as string) || "";
+  const localPrice = await getLocalPrice(4.99);
+  const expertPrice = await getLocalPrice(11.99, undefined, true);
+  const suppliedToken = typeof searchParams.token === "string" ? searchParams.token : "";
+  const isOwner = photoRecord.userId
+    ? photoRecord.userId.toString() === (session?.user as { id?: string })?.id
+    : Boolean(session?.user?.email && photoRecord.guestEmail && session.user.email.toLowerCase() === photoRecord.guestEmail.toLowerCase());
+  const downloadToken = isOwner || (suppliedToken && suppliedToken === photoRecord.downloadToken)
+    ? photoRecord.downloadToken || "" : "";
 
   return (
     <PreviewClient
+      key={photoRecord._id.toString()}
       photoId={photoRecord._id.toString()}
       previewUrl={photoRecord.previewUrl}
       documentType={photoRecord.documentType}

@@ -229,7 +229,7 @@ export default async function Page({ params }: PageProps) {
             "description": `Online biometric tool for ${spec.country} ${spec.name} requirements. Prepares ${spec.width_mm}x${spec.height_mm}mm photos with AI face alignment.`,
             "offers": {
               "@type": "Offer",
-              "price": "7.99",
+              "price": "4.99",
               "priceCurrency": "USD",
               "availability": "https://schema.org/InStock",
             },

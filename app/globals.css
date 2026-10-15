@@ -747,3 +747,5 @@ body {
   --color-blue-600:#466832; --color-blue-700:#355127; --color-blue-800:#29411f; --color-blue-900:#1e3019;
   --color-indigo-50:#f1f6e9; --color-indigo-100:#e2edcf; --color-indigo-600:#355127; --color-indigo-700:#29411f;
 }
+
+@keyframes checkout-appear { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }

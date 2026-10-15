@@ -1,8 +1,8 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import crypto from "crypto";
 import dbConnect from "@/lib/mongodb";
 import ExpertOrder from "@/models/ExpertOrder";
-import { sendEmail } from "@/lib/mail";
+import { sendEmailOrThrow as sendEmail } from "@/lib/mail";
 
 export async function POST(req: Request) {
   try {
@@ -67,6 +67,7 @@ export async function POST(req: Request) {
     order.razorpayPaymentId = razorpay_payment_id;
     await order.save();
 
+    after(async () => {
     // Send confirmation to admin and user via email
     try {
       const adminHtml = `
@@ -100,6 +101,8 @@ export async function POST(req: Request) {
       console.error("Failed to send emails for expert edit:", mailError);
       // We don't fail the complete verification request if the email fails, we still return success.
     }
+
+    });
 
     return NextResponse.json({ success: true, message: "Payment verified successfully" });
   } catch (error: any) {

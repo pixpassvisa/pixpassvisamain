@@ -23,7 +23,7 @@ test('homepage structured data has no fabricated rating', () => {
   assert.ok(!page.includes('aggregateRating'));
   assert.ok(page.includes('homeFaqs.map'));
   const sharedChecker = fs.readFileSync('app/components/PhotoCheckerTool.tsx','utf8');
-  assert.ok(!sharedChecker.includes('17,000') && !sharedChecker.includes('4.9'));
+  assert.ok(!sharedChecker.includes('17,000') && !/\b4\.9(?!\d)/.test(sharedChecker));
 });
 test('representative editor routes resolve their intended presets or disclose missing intent', () => {
   for (const [slug,id,matched] of [

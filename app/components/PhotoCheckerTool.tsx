@@ -517,7 +517,7 @@ export default function PhotoCheckerTool({
               Photos are uploaded for server processing and may be stored with Cloudinary.
               Review our <Link href="/privacy-policy" className="underline">privacy policy</Link> before uploading.
             </p>
-            <p className="mt-3 text-sm text-slate-600">Photo checks are free. Need prepared files? Preview in the editor, then download a digital photo and print sheet for <PriceDisplay basePrice={7.99} /> once.</p>
+            <p className="mt-3 text-sm text-slate-600">Photo checks are free. Need prepared files? Preview in the editor, then download a digital photo and print sheet for <PriceDisplay basePrice={4.99} /> once.</p>
             {selectedDocType === "visa" && <p className="text-sm text-amber-900 bg-amber-50 rounded-lg p-3 mt-3" role="note">
               This checker currently uses the selected country’s passport configuration on the server.
               Its result does not validate application-specific visa requirements. Check your visa instructions separately.

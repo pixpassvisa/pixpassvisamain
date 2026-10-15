@@ -361,7 +361,7 @@ function OrderPanel({
                     </div>
                     <div className="text-right">
                       <p className="text-2xl font-black text-slate-900">
-                        {expertPrice?.formatted || "₹699"}
+                        {expertPrice?.formatted || "₹599"}
                       </p>
                     </div>
                   </div>
@@ -505,7 +505,7 @@ function OrderPanel({
             </div>
           ) : (
             /* ── Paid ─────────────────────────────────────────────────────────── */
-            <div className="space-y-4">
+            <div id="payment-success" role="status" className="space-y-4 motion-safe:animate-[checkout-appear_350ms_ease-out]">
               <div className="bg-emerald-50 rounded-2xl p-6 text-center border border-emerald-200">
                 <div className="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Icon d={ICONS.check} size={28} stroke={3} />
@@ -517,8 +517,7 @@ function OrderPanel({
 
                 <div className="mt-3 text-emerald-600 text-sm leading-relaxed">
                   <p>
-                    Every ID photo is carefully reviewed by our experts to
-                    ensure it meets all requirements.
+                    {isExpertPlan ? "Your expert review order is confirmed." : "Your photo is ready to download below."}
                   </p>
                   <p className="mt-1">
                     If we find any issues, we’ll notify you via email with your
@@ -850,7 +849,7 @@ const ExpertsFixModal = memo(function ExpertsFixModal({
                 Premium Pack
               </span>
               <span className="text-base sm:text-xl font-black text-slate-900 leading-tight">
-                {expertPrice || "₹699"}
+                {expertPrice || "₹599"}
               </span>
             </div>
 
@@ -1041,6 +1040,10 @@ export default function PreviewClient({
   const [hasPaid, setHasPaid] = useState(initialIsPaid || false);
   const [downloadToken, setDownloadToken] = useState(initialDownloadToken || "");
   const [guestEmail, setGuestEmail] = useState("");
+  const [deliveryOpen, setDeliveryOpen] = useState(false);
+  const [deliveryEmail, setDeliveryEmail] = useState("");
+  const [deliveryBusy, setDeliveryBusy] = useState(false);
+  const [deliveryMessage, setDeliveryMessage] = useState("");
   const [timeLeft, setTimeLeft] = useState(20 * 60);
   const [localPrice, setLocalPrice] = useState<LocalPrice>(initialLocalPrice);
   const [expertPrice, setExpertPrice] =
@@ -1114,7 +1117,7 @@ export default function PreviewClient({
 
   const passCount = checks.filter((c) => c.status === "PASS").length;
 
-  const { loading, handlePayment } = usePayment({
+  const { loading, phase, error: paymentError, handlePayment } = usePayment({
     photoId,
     localPrice: isExpertPlan ? expertPrice : localPrice,
     isExpert: isExpertPlan,
@@ -1130,11 +1133,17 @@ export default function PreviewClient({
     onSuccess: (data) => {
       if (data?.downloadToken) {
         setDownloadToken(data.downloadToken);
+        const url = new URL(window.location.href);
+        url.searchParams.set("token", data.downloadToken);
+        window.history.replaceState(null, "", url);
       }
+      requestAnimationFrame(() => document.getElementById("payment-success")?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth", block: "center" }));
+
     },
   });
 
   const onPaymentClick = () => {
+    if (phase === "pending") { void handlePayment(); return; }
     const trimmed = (guestEmail || "").trim();
     const isEmailValid = !!(
       trimmed &&
@@ -1194,29 +1203,30 @@ export default function PreviewClient({
     return () => clearInterval(interval);
   }, []);
 
-  const handleEmailPhoto = async () => {
-    const emailTo = window.prompt(
-      "Enter your email address to receive the photo:",
-    );
-    if (!emailTo) return;
+  const handleEmailPhoto = () => {
+    setDeliveryEmail(guestEmail || session?.user?.email || "");
+    setDeliveryMessage("");
+    setDeliveryOpen(true);
+  };
+
+  const submitDelivery = async (event: React.FormEvent) => {
+    event.preventDefault();
+    if (deliveryBusy) return;
+    setDeliveryBusy(true);
+    setDeliveryMessage("");
     try {
       const res = await fetch("/api/send-photo", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: emailTo,
-          photoUrl: previewUrl,
-          documentType,
-          photoId,
-        }),
+        body: JSON.stringify({ email: deliveryEmail.trim(), photoId, downloadToken }),
+        signal: AbortSignal.timeout(20000),
       });
-      alert(
-        res.ok
-          ? "Photo sent! Check your inbox."
-          : "Failed to send. Please try again.",
-      );
+      const data = await res.json();
+      setDeliveryMessage(res.ok ? "Email sent. Check your inbox and spam folder." : data.error || "Email could not be sent. Your download is still available.");
     } catch {
-      alert("Error sending email.");
+      setDeliveryMessage("Could not confirm email delivery. Check your inbox before retrying. You can still download your photo here.");
+    } finally {
+      setDeliveryBusy(false);
     }
   };
 
@@ -1224,6 +1234,17 @@ export default function PreviewClient({
     <div className="min-h-screen bg-slate-200/40 flex flex-col">
       <div className="flex-1 flex items-start justify-center px-4 py-6 sm:py-8">
         <div className="w-full max-w-6xl">
+          {(loading || paymentError) && (
+            <div role="status" aria-live="polite" className="mb-5 rounded-2xl border border-blue-200 bg-white p-5 shadow-sm">
+              <div className="flex items-center gap-3">
+                {loading && <span className="h-5 w-5 rounded-full border-2 border-blue-200 border-t-blue-600 motion-safe:animate-spin" />}
+                <p className="font-semibold text-slate-900">{phase === "verifying" ? "Confirming payment and unlocking your downloads…" : phase === "opening" ? "Preparing your secure checkout…" : phase === "checkout" ? "Complete your payment in Razorpay" : "Payment update"}</p>
+              </div>
+              {paymentError && <p className="mt-2 text-sm text-slate-700 break-words">{paymentError}</p>}
+              {phase === "pending" && <button disabled={loading} onClick={() => handlePayment()} className="mt-3 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white disabled:opacity-50">Check payment status</button>}
+            </div>
+          )}
+          {hasPaid && <p className="mb-4 text-sm font-semibold text-emerald-700">Payment complete · Downloads unlocked</p>}
           {/* Header */}
           <div className="mb-4 text-center lg:text-left">
             <h1 className="text-2xl font-black text-slate-900">
@@ -1312,7 +1333,7 @@ export default function PreviewClient({
           setIsExpertPlan(true);
           setIsFixModalOpen(false);
           if (email) setGuestEmail(email);
-          handlePayment(email || guestEmail);
+          handlePayment(email || guestEmail, true);
         }}
         expertPrice={expertPrice?.formatted}
         previewUrl={previewUrl}
@@ -1340,6 +1361,21 @@ export default function PreviewClient({
         />
       )}
 
+      {deliveryOpen && (
+        <div className="fixed inset-0 z-[150] flex items-center justify-center bg-slate-900/50 px-4" role="dialog" aria-modal="true" aria-labelledby="delivery-title" onKeyDown={(e) => { if (e.key === "Escape" && !deliveryBusy) setDeliveryOpen(false); }}>
+          <form onSubmit={submitDelivery} className="w-full max-w-sm rounded-2xl bg-white p-6 shadow-xl motion-safe:animate-[checkout-appear_200ms_ease-out]">
+            <h2 id="delivery-title" className="text-xl font-bold">Email your photo</h2>
+            <p className="mt-2 text-sm text-slate-600">Your download stays available if email delivery is delayed.</p>
+            <label htmlFor="delivery-email" className="mt-5 block text-sm font-semibold">Email address</label>
+            <input id="delivery-email" type="email" required autoFocus value={deliveryEmail} onChange={(e) => setDeliveryEmail(e.target.value)} className="mt-2 w-full rounded-xl border border-slate-300 p-3" />
+            {deliveryMessage && <p role="status" className="mt-3 text-sm text-slate-700">{deliveryMessage}</p>}
+            <div className="mt-5 flex gap-3">
+              <button type="button" disabled={deliveryBusy} onClick={() => setDeliveryOpen(false)} className="flex-1 rounded-xl bg-slate-100 p-3 font-semibold">Close</button>
+              <button disabled={deliveryBusy} className="flex-1 rounded-xl bg-blue-600 p-3 font-semibold text-white disabled:opacity-50">{deliveryBusy ? "Sending…" : "Send email"}</button>
+            </div>
+          </form>
+        </div>
+      )}
       {/* Email Dialog */}
       {isEmailDialogOpen && (
         <div className="fixed inset-0 z-[150] flex items-center justify-center bg-slate-900/50 px-4">

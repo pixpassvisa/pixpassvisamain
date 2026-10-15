@@ -28,10 +28,10 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Email and at least one image are required" }, { status: 400 });
     }
 
-    // Convert local price $10 USD (we'll just use currency logic similar to the preview page, or fixed $10)
     const { getLocalPrice } = await import("@/lib/currency");
-    // $10 fixed price for expert edit
-    const localPrice = await getLocalPrice(10.00, undefined);
+    const requestedCurrency = formData.get("currencyOverride");
+    const currencyOverride = typeof requestedCurrency === "string" && /^[A-Za-z]{3}$/.test(requestedCurrency) ? requestedCurrency.toUpperCase() : undefined;
+    const localPrice = await getLocalPrice(11.99, currencyOverride, true);
     
     let amountUnit = 100;
     if (localPrice.currency === 'JPY') amountUnit = 1;
@@ -71,6 +71,7 @@ export async function POST(req: NextRequest) {
     await expertOrder.save();
 
     return NextResponse.json({
+      keyId: razorpayKeyId,
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,

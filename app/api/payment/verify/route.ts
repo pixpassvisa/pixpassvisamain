@@ -1,4 +1,4 @@
-import { NextResponse } from "next/server";
+import { after, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import dbConnect from "@/lib/mongodb";
@@ -9,6 +9,13 @@ import crypto from "crypto";
 import { sendEmail } from "@/lib/mail";
 import { getSafeSpec } from "@/lib/specs";
 import { logAuditEvent } from "@/lib/audit";
+import { ensureDownloadToken } from "@/lib/payment-download";
+
+async function sendDeliveryEmail(options: Parameters<typeof sendEmail>[0]) {
+  const result = await sendEmail(options);
+  if (!result.success) throw new Error("Email provider did not accept delivery");
+  return result;
+}
 
 export async function POST(req: Request) {
   try {
@@ -56,7 +63,7 @@ export async function POST(req: Request) {
     }
 
     // Ensure the verified order ID matches the order created for this photo
-    if (photo.razorpayOrderId && photo.razorpayOrderId !== razorpay_order_id) {
+    if (!photo.razorpayOrderId || photo.razorpayOrderId !== razorpay_order_id) {
       return NextResponse.json(
         { error: "Payment does not correspond to this photo order" },
         { status: 400 }
@@ -76,7 +83,7 @@ export async function POST(req: Request) {
     }
 
     const existingPaymentRecord = await Payment.findOne({
-      razorpayPaymentId: razorpay_payment_id,
+      gatewayPaymentId: razorpay_payment_id,
     });
     if (
       existingPaymentRecord &&
@@ -101,7 +108,7 @@ export async function POST(req: Request) {
     photo.status = "paid";
     photo.razorpayPaymentId = razorpay_payment_id;
     if (!photo.downloadToken) {
-      photo.downloadToken = crypto.randomBytes(24).toString("hex");
+      photo.downloadToken = await ensureDownloadToken(photo._id);
     }
     await photo.save();
 
@@ -131,7 +138,7 @@ export async function POST(req: Request) {
         guestEmail: userEmail || "customer@pixpassvisa.com",
         documentType: photo.documentType,
         isExpert: Boolean(photo.isExpert),
-        amount: photo.isExpert ? 13.99 : 7.99,
+        amount: photo.isExpert ? 11.99 : 4.99,
         currency: "USD",
         status: "paid",
         photoId: photo._id,
@@ -172,17 +179,19 @@ export async function POST(req: Request) {
 
     // Idempotency check: if already paid (e.g., via webhook), skip sending duplicate emails
     if (alreadyPaid) {
-      return NextResponse.json({ success: true, message: "Payment verified successfully" });
+      return NextResponse.json({ success: true, message: "Payment verified successfully", downloadToken: photo.downloadToken });
     }
 
-    // Fire & forget delivery + testimonial email
+    // Return download access before delivering email using the server lifecycle.
+    after(async () => {
+    // Delivery + testimonial email
     console.log(`[PAYMENT VERIFY] Attempting to send email for photo ${photoId} to: ${userEmail}`);
 
     if (userEmail) {
       const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.pixpassvisa.com';
       const photoDownloadUrl = photo.secureUrl || '';
       const printSheetDownloadUrl = photo.printSheetUrl || '';
-      const previewLink = `${appUrl}/preview/${photoId}`;
+      const previewLink = `${appUrl}/preview/${photoId}?token=${photo.downloadToken}`;
       const spec = getSafeSpec(photo.documentType);
       const documentName = spec.name || "Passport Photo";
       const countryName = spec.country || spec.name || "Passport Photo";
@@ -204,14 +213,14 @@ export async function POST(req: Request) {
 
           const adminEmail = process.env.ADMIN_EMAILS || process.env.RESEND_REPLY_TO;
           if (adminEmail) {
-            await sendEmail({
+            await sendDeliveryEmail({
               to: adminEmail,
               subject: `New Expert Edit Order: ${photo._id} (${countryName})`,
               html: adminHtml,
             });
           }
 
-          await sendEmail({
+          await sendDeliveryEmail({
             to: userEmail,
             bcc: 'usvisaphotoai@gmail.com',
             subject: "Your Expert Photo Edit Order is Confirmed - PixPassVisa",
@@ -232,7 +241,7 @@ export async function POST(req: Request) {
             },
           });
         } else {
-          await sendEmail({
+          await sendDeliveryEmail({
             to: userEmail,
             bcc: 'usvisaphotoai@gmail.com',
             subject: `Your ${countryName} (${documentName}) photo is ready — Download now! 🎉`,
@@ -327,6 +336,8 @@ export async function POST(req: Request) {
     } else {
       console.warn(`[PAYMENT VERIFY] No email found for photo ${photoId}, skipping gift delivery email.`);
     }
+
+    });
 
     return NextResponse.json({
       success: true,

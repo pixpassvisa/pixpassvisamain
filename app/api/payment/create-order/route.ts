@@ -38,13 +38,17 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Photo not found" }, { status: 404 });
     }
 
+    if (photo.userId && photo.userId.toString() !== (session?.user as any)?.id) {
+      return NextResponse.json({ error: "Unauthorized photo access" }, { status: 403 });
+    }
+
     if (photo.status === "paid") {
       return NextResponse.json({ error: "Photo is already paid for" }, { status: 400 });
     }
 
     const { getSpecById } = await import("@/lib/specs");
     const spec = getSpecById(photo.documentType);
-    const basePrice = isExpert ? 13.99 : (spec?.price || 7.99);
+    const basePrice = isExpert ? 11.99 : (spec?.price || 4.99);
 
     // Get localized price (Allows validated client override for currency)
     const { getLocalPrice } = await import("@/lib/currency");
@@ -127,6 +131,7 @@ export async function POST(req: Request) {
     await photo.save();
 
     return NextResponse.json({
+      keyId: razorpayKeyId,
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,

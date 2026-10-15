@@ -20,25 +20,21 @@ function getResendConfig() {
   if (!fromEmail) {
     throw new Error('[Mail] Missing required environment variable: RESEND_FROM_EMAIL');
   }
-  if (!replyTo) {
-    throw new Error('[Mail] Missing required environment variable: RESEND_REPLY_TO');
-  }
 
   return { apiKey, fromEmail, replyTo };
 }
 
 export const sendEmail = async (options: SendMailOptions) => {
-  const { apiKey, fromEmail, replyTo } = getResendConfig();
-  const resend = new Resend(apiKey);
-
   try {
+    const { apiKey, fromEmail, replyTo } = getResendConfig();
+    const resend = new Resend(apiKey);
     // Build payload — Resend SDK uses discriminated unions, so we only include
     // html/text when they are actually provided to satisfy the type system.
     const payload: Record<string, unknown> = {
       from: fromEmail,
       to: options.to,
       subject: options.subject,
-      replyTo: replyTo,
+      ...(replyTo ? { replyTo } : {}),
     };
 
     if (options.bcc) {
@@ -65,3 +61,10 @@ export const sendEmail = async (options: SendMailOptions) => {
     return { success: false, error };
   }
 };
+
+/** Use when a caller's catch block records delivery failure. */
+export async function sendEmailOrThrow(options: SendMailOptions) {
+  const result = await sendEmail(options);
+  if (!result.success) throw new Error("Email provider did not accept delivery");
+  return result;
+}

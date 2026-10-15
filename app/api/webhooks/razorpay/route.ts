@@ -6,7 +6,8 @@ import ExpertOrder from "@/models/ExpertOrder";
 import Order from "@/models/Order";
 import Payment from "@/models/Payment";
 import Dispute from "@/models/Dispute";
-import { sendEmail } from "@/lib/mail";
+import { sendEmailOrThrow as sendEmail } from "@/lib/mail";
+import { ensureDownloadToken } from "@/lib/payment-download";
 import { getSafeSpec } from "@/lib/specs";
 import { sendGA4PurchaseEvent } from "@/lib/ga4";
 import { logAuditEvent } from "@/lib/audit";
@@ -57,6 +58,7 @@ export async function POST(req: Request) {
         if (photo && photo.status !== "paid") {
           photo.status = "paid";
           photo.razorpayPaymentId = paymentEntity.id;
+          photo.downloadToken = await ensureDownloadToken(photo._id);
 
           const userEmail = (photo as any).guestEmail || paymentEntity.email;
 
@@ -81,7 +83,7 @@ export async function POST(req: Request) {
               guestEmail: userEmail || paymentEntity.email || "customer@pixpassvisa.com",
               documentType: photo.documentType,
               isExpert: Boolean(photo.isExpert),
-              amount: paymentEntity.amount ? paymentEntity.amount / 100 : (photo.isExpert ? 13.99 : 7.99),
+              amount: paymentEntity.amount ? paymentEntity.amount / 100 : (photo.isExpert ? 11.99 : 4.99),
               currency: paymentEntity.currency || "USD",
               status: "paid",
               photoId: photo._id,
@@ -145,7 +147,7 @@ export async function POST(req: Request) {
             const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.pixpassvisa.com';
             const photoDownloadUrl = photo.secureUrl || '';
             const printSheetDownloadUrl = photo.printSheetUrl || '';
-            const previewLink = `${appUrl}/preview/${photoId}`;
+            const previewLink = `${appUrl}/preview/${photoId}?token=${photo.downloadToken}`;
             const spec = getSafeSpec(photo.documentType);
             const documentName = spec.name || "Passport Photo";
             const countryName = spec.country || spec.name || "Passport Photo";
@@ -302,7 +304,7 @@ export async function POST(req: Request) {
               guestEmail: customerEmail,
               documentType: "expert-photo-edit",
               isExpert: true,
-              amount: paymentEntity.amount ? paymentEntity.amount / 100 : 13.99,
+              amount: paymentEntity.amount ? paymentEntity.amount / 100 : 11.99,
               currency: paymentEntity.currency || "USD",
               status: "paid",
               metadata: {
