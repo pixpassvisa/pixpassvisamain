@@ -114,7 +114,7 @@ export default function PhotoIdentiteEnLignePage() {
         ctaHref="/fr/passport-photo-online"
         showImage={true}
       />
-      <main className="mx-auto max-w-6xl px-6 py-16 text-slate-800">
+      <div className="mx-auto max-w-6xl px-6 py-16 text-slate-800">
         <article>
           <header className="mb-10">
             <p className="mt-6 text-lg leading-relaxed text-slate-600">
@@ -282,7 +282,7 @@ export default function PhotoIdentiteEnLignePage() {
             </p>
           </section>
         </article>
-      </main>
+      </div>
       <FaqSectionFr
         faqs={onlineFaqs}
         title="Questions fréquentes — Photo d'identité en ligne"

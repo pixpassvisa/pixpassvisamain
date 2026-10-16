@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, X as Cross, Clock, ShieldCheck as Shield, Euro, Car } from "lucide-react";
 export const metadata: Metadata = {
+  openGraph: { title: "Führerschein-Foto: Vorbereitung und Hinweise | PixPassVisa", description: "Hinweise zur Vorbereitung eines Führerschein-Fotos. Prüfen Sie die Vorgaben Ihrer Führerscheinstelle vor der Einreichung.", url: "https://www.pixpassvisa.com/de/fuehrerschein-foto", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Führerschein-Foto: Vorbereitung und Hinweise | PixPassVisa", description: "Hinweise zur Vorbereitung eines Führerschein-Fotos. Prüfen Sie die Vorgaben Ihrer Führerscheinstelle vor der Einreichung.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: "Führerschein-Foto: Vorbereitung und Hinweise | PixPassVisa",
   description: "Hinweise zur Vorbereitung eines Führerschein-Fotos. Prüfen Sie die Vorgaben Ihrer Führerscheinstelle vor der Einreichung.",
   alternates: { canonical: "https://www.pixpassvisa.com/de/fuehrerschein-foto" },
@@ -160,7 +162,7 @@ const jsonLd = {
 /* ─── Page ─── */
 export default function FuehrerscheinFotoPage() {
   return (
-    <main className="bg-white text-slate-900  antialiased">
+    <div className="bg-white text-slate-900  antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -596,6 +598,6 @@ export default function FuehrerscheinFotoPage() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

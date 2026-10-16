@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export default function UKPassportRequirements() {
-  return <main className="mx-auto max-w-3xl px-5 py-12 space-y-7 text-slate-700">
+  return <div className="mx-auto max-w-3xl px-5 py-12 space-y-7 text-slate-700">
     <nav aria-label="Breadcrumb" className="text-sm"><Link href="/">Home</Link> / <Link href="/passport-photos">Passport photos</Link> / UK requirements</nav>
     <h1 className="text-3xl font-bold text-slate-900">UK passport photo requirements: digital or printed?</h1>
     <p>Choose your application route before using a photo tool. This guide compares the two formats so you can decide whether you need an original digital photo or printed photographs.</p>
@@ -29,5 +29,5 @@ export default function UKPassportRequirements() {
       <p>To understand the tool settings, read the <Link className="text-blue-700 underline" href="/uk-passport-photo-editor">UK passport preset page</Link>. Check the editing restrictions before purchasing prepared files.</p>
     </section>
     <p className="text-sm text-slate-500">Reviewed 14 October 2026 against the GOV.UK pages linked above. PixPassVisa is independent of HM Passport Office. <Link className="underline" href="/editorial-methodology">Read our editorial process</Link>.</p>
-  </main>;
+  </div>;
 }

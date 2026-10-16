@@ -259,7 +259,7 @@ export default function DeHomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <main className="bg-white text-slate-900">
+      <div className="bg-white text-slate-900">
         {/* ══════════════ HERO ══════════════ */}
         <section aria-labelledby="hero-h1" className="pt-8 md:pt-10">
           <div className="mx-auto max-w-7xl px-3 py-10 sm:px-4 md:py-10 lg:px-6">
@@ -735,7 +735,7 @@ export default function DeHomePage() {
             </p>
           </div>
         </div>
-      </main>
+      </div>
     </>
   );
 }

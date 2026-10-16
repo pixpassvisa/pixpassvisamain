@@ -263,7 +263,7 @@ export default async function UKSlugPage({ params }: PageProps) {
           )}
 
           {/* Rendered Markdown Article */}
-          <main
+          <div
             className={page.toc.length > 0 ? "lg:col-span-3" : "lg:col-span-4"}
           >
             <article className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-xs prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-a:text-blue-700 prose-a:font-bold">
@@ -309,7 +309,7 @@ export default async function UKSlugPage({ params }: PageProps) {
                 ← Explore All UK Passport &amp; Visa Guides
               </Link>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

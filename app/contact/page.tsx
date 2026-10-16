@@ -4,6 +4,8 @@ import { HelpCircle, CreditCard, Building, Lock, Mail, MapPin } from "lucide-rea
 import Breadcrumbs from "../components/Breadcrumbs";
 
 export const metadata: Metadata = {
+  openGraph: { title: "Contact Us", description: "Contact PixPassVisa support team.", url: "https://www.pixpassvisa.com/contact", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Contact Us", description: "Contact PixPassVisa support team.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: "Contact Us",
   description: "Contact PixPassVisa support team.",
   alternates: {

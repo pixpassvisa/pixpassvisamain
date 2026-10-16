@@ -58,9 +58,9 @@ export default function SupportPage() {
       </header>
 
       {/* Main Interactive Sidebar + Tabbed Layout */}
-      <main>
+      <div>
         <SupportHubClient />
-      </main>
+      </div>
 
       {/* Bottom Guarantee Banner */}
       <footer className="bg-white border-t border-slate-200 py-8 mt-12">

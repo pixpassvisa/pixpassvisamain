@@ -1,22 +1,23 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { allSpecs } from "@/lib/specs";
+import { getShortId } from "@/lib/country-slug";
+import { allSpecs, getFilteredDocumentTypes } from "@/lib/specs";
 import SizeChartClient from "./SizeChartClient";
 import DirectAnswerBox from "@/app/components/DirectAnswerBox";
-import OfficialSourceBadge from "@/app/components/OfficialSourceBadge";
+
 import { ShieldCheck, ArrowRight, Printer, Sparkles, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Passport & Visa Photo Size Chart 2026 (50+ Countries) | PixPassVisa",
   description:
-    "Comprehensive passport and visa photo size comparison chart for 50+ countries. Exact physical dimensions in mm and inches, pixel dimensions at 300 DPI, head height percentages, and official background colors.",
+    "Compare configured passport and visa photo sizes, pixel dimensions and backgrounds. Check the issuing authority’s current requirements before choosing a preset.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-photo-sizes",
   },
   openGraph: {
     title: "Passport & Visa Photo Size Chart 2026 (50+ Countries) | PixPassVisa",
     description:
-      "Exact passport and visa photo dimensions for US (2x2 in), UK (35x45 mm), Canada (50x70 mm), Schengen, India OCI, and 50+ nations.",
+      "Compare configured print and digital photo sizes. Confirm the current requirements for your exact passport or visa application.",
     url: "https://www.pixpassvisa.com/passport-photo-sizes",
     siteName: "PixPassVisa",
     locale: "en_US",
@@ -25,6 +26,8 @@ export const metadata: Metadata = {
 };
 
 export default function PassportPhotoSizesPage() {
+  const available = new Set(getFilteredDocumentTypes().map(doc => doc.id));
+  const chartSpecs = allSpecs.map(spec => ({ ...spec, toolAvailable: available.has(spec.id), guideHref: `/${getShortId(spec.country.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, ""))}-${spec.id.endsWith("-visa") ? "visa" : "passport"}-photo-editor` }));
   const schemas = [
     {
       "@context": "https://schema.org",
@@ -32,7 +35,7 @@ export default function PassportPhotoSizesPage() {
       name: "Global Passport & Visa Photo Size Chart 2026",
       url: "https://www.pixpassvisa.com/passport-photo-sizes",
       description:
-        "Official dimensions, digital pixel resolutions, and background requirements for biometric passport and visa photographs across 50+ countries.",
+        "Configured photo dimensions and backgrounds for passport and visa preparation. Confirm the requirements for your application with its issuing authority.",
     },
     {
       "@context": "https://schema.org",
@@ -61,34 +64,29 @@ export default function PassportPhotoSizesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas) }}
       />
 
-      <main className="min-h-screen bg-slate-50/50 pb-16">
+      <div className="min-h-screen bg-slate-50/50 pb-16">
         {/* Header Hero */}
         <section className="bg-white border-b border-slate-200 py-10 sm:py-14 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-800 text-xs font-bold mb-4 uppercase tracking-wider">
               <ShieldCheck className="w-3.5 h-3.5 text-blue-600" />
-              Official Standards Database 2026/2027
+              Photo size reference
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4">
               Passport &amp; Visa Photo Size Chart (50+ Countries)
             </h1>
             <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
-              Find the exact millimeter, inch, and digital pixel requirements for your passport, visa, or identity document. All dimensions are verified against official government consular gazettes and ICAO Doc 9303.
+              Compare the photo presets available in our reference data. Physical print size, digital upload size, and face positioning are separate requirements. Confirm the current rules for your specific application before using a preset.
             </p>
 
             {/* Direct Answer Box for AI & Featured Snippets */}
             <DirectAnswerBox
               question="What are the standard passport photo sizes worldwide?"
-              answer="Passport and visa photo sizes vary by country, with three dominant global standards: (1) 2 × 2 inches (51 × 51 mm / 600 × 600 px) for the United States, India OCI, and US Visas; (2) 35 × 45 mm (413 × 531 px @ 300 DPI) used by the United Kingdom, European Union (Schengen), Australia, New Zealand, and most of Asia; and (3) 50 × 70 mm used exclusively for Canadian passports. All require a plain, shadow-free background and neutral facial expression."
-              keyPoints={[
-                "United States: 2 × 2 in (51 × 51 mm) — 50–69% head height — Plain white background — No glasses",
-                "United Kingdom: 35 × 45 mm — 29–34 mm head height — Light grey/cream background — HMPO compliant",
-                "European Union (Schengen): 35 × 45 mm — 70–80% (32–36 mm) head height — Light grey background",
-                "Canada: 50 × 70 mm (Passport) / 35 × 45 mm (Visa) — 31–36 mm chin to crown — Pure white background",
-              ]}
-              lastReviewed="September 2026"
-              sourceAuthority="ICAO Doc 9303 & National Consular Authorities"
+              answer="Choose the country and exact document first. A printed size in millimeters does not establish the pixel dimensions or file-size limit for an online upload. Check the issuing authority’s instructions, then compare the relevant preset below."
+              keyPoints={["Select the exact passport or visa application", "Check printed and digital requirements separately", "Use the official instructions to confirm capture and editing rules"]}
+              lastReviewed="16 October 2026"
+              sourceAuthority="PixPassVisa preset reference"
             />
           </div>
         </section>
@@ -96,13 +94,10 @@ export default function PassportPhotoSizesPage() {
         {/* Content & Table Section */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
           {/* Client-Side Interactive Table */}
-          <SizeChartClient specs={allSpecs} />
+          <SizeChartClient specs={chartSpecs} />
 
           {/* Official Verification Layer */}
-          <OfficialSourceBadge
-            lastReviewedDate="September 2026"
-            documentType="Multi-Country Biometric Specifications"
-          />
+          <p className="my-6 text-sm text-slate-600">These presets are not government certification. Start with the <Link className="underline" href="/passport-photos">passport guides</Link> or <Link className="underline" href="/visa-photo">visa guides</Link> for your application.</p>
 
           {/* Additional Guidance & Internal Linking Hub */}
           <div className="grid md:grid-cols-3 gap-6 mt-10">
@@ -161,7 +156,7 @@ export default function PassportPhotoSizesPage() {
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </>
   );
 }

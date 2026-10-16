@@ -2,9 +2,9 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { CountrySpec } from "@/lib/specs";
+import type { CountrySpec } from "@/lib/specs";
 import { hasDocumentPreset } from "@/lib/document-intent";
-import { getShortId } from "@/lib/slug-utils";
+import { getShortId } from "@/lib/country-slug";
 
 interface MasterDirectoryProps {
   title: string;
@@ -29,9 +29,9 @@ export default function MasterDirectory({ title, subtitle, specs, type }: Master
         <h1 className="text-4xl lg:text-6xl font-extrabold text-slate-900 tracking-tight mb-4">
           {title}
         </h1>
-        <h2 className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-normal">
           {subtitle}
-        </h2>
+        </p>
         
         <div className="mt-10 max-w-xl mx-auto relative">
           <input

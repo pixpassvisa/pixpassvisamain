@@ -233,7 +233,7 @@ export default function DokumentenfotoSchweizPage() {
         </div>
       </header>
 
-      <main>
+      <div>
         <section className="border-b border-slate-200 bg-[#f7f8f8] py-12 sm:py-16">
           <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-7 lg:grid-cols-[.8fr_1.2fr] lg:items-start">
@@ -345,7 +345,7 @@ export default function DokumentenfotoSchweizPage() {
             </Link>
           </div>
         </section>
-      </main>
+      </div>
     </div>
   );
 }

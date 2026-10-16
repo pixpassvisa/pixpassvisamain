@@ -61,7 +61,7 @@ export default function EditorialMethodologyPage() {
   ];
 
   return (
-    <main className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white">
       {/* Hero */}
       <section className="bg-slate-900 text-white py-16 px-4 sm:px-6 lg:px-8 border-b border-slate-800">
         <div className="max-w-4xl mx-auto text-center">
@@ -181,6 +181,6 @@ export default function EditorialMethodologyPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

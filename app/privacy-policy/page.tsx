@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  openGraph: { title: "Privacy Policy", description: "PixPassVisa privacy policy. Learn how we handle your photos, data, and personal information. GDPR and CCPA compliant.", url: "https://www.pixpassvisa.com/privacy-policy", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Privacy Policy", description: "PixPassVisa privacy policy. Learn how we handle your photos, data, and personal information. GDPR and CCPA compliant.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: "Privacy Policy",
   description: "PixPassVisa privacy policy. Learn how we handle your photos, data, and personal information. GDPR and CCPA compliant.",
   alternates: {

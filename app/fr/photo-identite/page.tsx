@@ -10,16 +10,11 @@ import { X } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Photo d'Identité Conforme — CNI, Permis & Carte Vitale | PixPassVisa",
-  description: "Obtenez une photo d'identité aux normes françaises 2026 en 30s : fond gris clair, cadrage IA. Valide pour CNI, permis et carte Vitale. Garanti ou remboursé.",
+  description: "Comprenez les exigences de photo pour vos documents français. Vérifiez le mode de prise de vue et de dépôt demandé par votre administration avant de préparer une image.",
   keywords: ["photo identité", "photo identité france", "photo CNI", "photo permis de conduire", "erreurs photo identité"],
   alternates: {
     canonical: "https://www.pixpassvisa.com/fr/photo-identite",
-    languages: {
-      en: "https://www.pixpassvisa.com/passport-photos",
-      fr: "https://www.pixpassvisa.com/fr/photo-identite",
-      de: "https://www.pixpassvisa.com/de/biometrisches-passbild",
-      "x-default": "https://www.pixpassvisa.com/passport-photos",
-    },
+    languages: { fr: "https://www.pixpassvisa.com/fr/photo-identite", "x-default": "https://www.pixpassvisa.com/fr/photo-identite" },
   },
   openGraph: {
     title: "Photo d'Identité Conforme | PixPassVisa",

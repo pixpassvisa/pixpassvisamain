@@ -124,8 +124,8 @@ function ToolForm() {
     }
   }
 
-  return <main className={styles.studio}><div className={styles.shell}>
-    <header className={styles.intro}><span className={styles.eyebrow}>● THE PIXPASSVISA PHOTO STUDIO</span><h1>Your next journey.<br /><em>One great photo.</em></h1><p>Passport & visa photos, made simple. Choose your document, add a photo, and preview the result before you pay.</p></header>
+  return <div className={styles.shell}>
+
     <ol className={styles.steps} aria-label="Photo creation steps">{["Choose & upload", "Preview your photo", "Purchase & download"].map((label, i) => <li key={label} aria-current={i === 0 ? "step" : undefined}><span>{i + 1}</span>{label}</li>)}</ol>
     <div className={styles.workspace}>
       <section className={styles.editor} aria-label="Create your photo" aria-busy={pending}>
@@ -145,6 +145,6 @@ function ToolForm() {
       <aside><StudioComparison /></aside>
     </div>
     <section className={styles.faq}><h2>A few things worth knowing</h2><details><summary>When do I pay?</summary><p>Create and review your preview first. Digital photo and print-sheet downloads require a one-time payment of <PriceDisplay basePrice={4.99} />.</p></details><details><summary>Can I use a photo from my phone?</summary><p>Yes. Choose a JPG, PNG or WebP from your camera roll. Export HEIC photos as JPG first. Use the original photo rather than a screenshot.</p></details><details><summary>Is acceptance guaranteed?</summary><p>No. Automated checks are guidance; your issuing authority makes the final decision. Check your application’s rules, especially whether digital editing is permitted.</p></details></section>
-  </div></main>;
+  </div>;
 }
-export default function ToolPage() { return <Suspense fallback={<div className={styles.loading} role="status">Loading your photo studio…</div>}><ToolForm /></Suspense>; }
+export default function ToolPage() { return <div className={styles.studio}><div className={styles.shell}><header className={styles.intro}><span className={styles.eyebrow}>● THE PIXPASSVISA PHOTO STUDIO</span><h1>Passport &amp; visa photo maker.<br /><em>Preview your photo.</em></h1><p>Passport & visa photos, made simple. Choose your document, add a photo, and preview the result before you pay.</p></header></div><Suspense fallback={<div className={styles.loading} role="status">Loading your photo studio…</div>}><ToolForm /></Suspense></div>; }

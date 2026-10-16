@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
+  openGraph: { title: "Refund Policy", description: "PixPassVisa refund policy — 100% money-back guarantee on rejected photos.", url: "https://www.pixpassvisa.com/refund-policy", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Refund Policy", description: "PixPassVisa refund policy — 100% money-back guarantee on rejected photos.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: "Refund Policy",
   description: "PixPassVisa refund policy — 100% money-back guarantee on rejected photos.",
   alternates: {

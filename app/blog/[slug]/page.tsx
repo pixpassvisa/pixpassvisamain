@@ -1,3 +1,4 @@
+import { normalizeArticleHeadings } from "@/lib/article-headings";
 import { extractFaqsFromContent } from "@/lib/blog-faq";
 import Link from 'next/link';
 import Image from 'next/image';
@@ -100,7 +101,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const keywords = getBlogKeywords(post);
 
   // Extract FAQs directly from this blog post's content (no static FAQ_MAP used)
-  const { faqs, cleanContent } = extractFaqsFromContent(post.content);
+  const { faqs, cleanContent } = extractFaqsFromContent(normalizeArticleHeadings(post.content));
 
   // Extract headings for Table of Contents (H2, H3, H4)
   const headingMatches = cleanContent.match(/<h[234][^>]*>(.*?)<\/h[234]>/gi) || [];
@@ -300,7 +301,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </header>
 
         {/* Article Main Layout */}
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14 md:py-16 lg:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 sm:py-14 md:py-16 lg:py-20">
           <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 xl:gap-20 justify-center">
             {/* Desktop TOC Sidebar */}
             {headings.length > 0 && (
@@ -456,7 +457,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </section>
             </div>
           </div>
-        </main>
+        </div>
       </div>
     </>
   );

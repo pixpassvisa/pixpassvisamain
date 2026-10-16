@@ -46,7 +46,7 @@ export default function VisaDirectoryPage() {
   return (
     <div className="min-h-screen bg-white">
       <Breadcrumbs />
-      <main>
+      <div>
         <MasterDirectory 
           title="Visa Photo Directory"
         subtitle="Find country guidance and available visa presets. Some countries do not yet have a separate visa preset; check your application instructions."
@@ -126,7 +126,7 @@ export default function VisaDirectoryPage() {
           </div>
         </div>
       </section>
-      </main>
+      </div>
     </div>
   );
 }

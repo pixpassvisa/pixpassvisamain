@@ -3,6 +3,8 @@ import Link from "next/link";
 import { getLocalPrice } from "@/lib/currency";
 
 export const metadata: Metadata = {
+  openGraph: { title: "Terms of Service", description: "PixPassVisa terms of service. Terms, conditions, and usage policies for our US visa and passport photo validation service.", url: "https://www.pixpassvisa.com/terms", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Terms of Service", description: "PixPassVisa terms of service. Terms, conditions, and usage policies for our US visa and passport photo validation service.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: "Terms of Service",
   description: "PixPassVisa terms of service. Terms, conditions, and usage policies for our US visa and passport photo validation service.",
   alternates: {

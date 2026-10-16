@@ -13,12 +13,7 @@ export const metadata: Metadata = {
   keywords: ["photo biométrique", "photo passeport biométrique", "normes OACI", "ICAO photo", "photo biométrique en ligne"],
   alternates: {
     canonical: "https://www.pixpassvisa.com/fr/photo-passeport-biometrique",
-    languages: {
-      en: "https://www.pixpassvisa.com/passport-photos",
-      fr: "https://www.pixpassvisa.com/fr/photo-passeport-biometrique",
-      de: "https://www.pixpassvisa.com/de/biometrisches-passbild",
-      "x-default": "https://www.pixpassvisa.com/passport-photos",
-    },
+    languages: { fr: "https://www.pixpassvisa.com/fr/photo-passeport-biometrique", "x-default": "https://www.pixpassvisa.com/fr/photo-passeport-biometrique" },
   },
   openGraph: {
     title: "Photo Passeport Biométrique | PixPassVisa", description: "Photo biométrique conforme aux normes OACI internationales.",

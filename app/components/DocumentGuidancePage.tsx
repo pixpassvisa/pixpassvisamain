@@ -4,7 +4,7 @@ import type { SpecEntry } from '@/lib/slug-utils';
 export default function DocumentGuidancePage({ spec, isVisa }: { spec: SpecEntry; isVisa: boolean }) {
   const document = isVisa ? 'visa' : 'passport';
   const icao = spec.id === 'icao-passport';
-  return <main className="max-w-3xl mx-auto px-6 py-16 space-y-6">
+  return <div className="max-w-3xl mx-auto px-6 py-16 space-y-6">
     <nav aria-label="Breadcrumb"><Link href="/">Home</Link> / <Link href={isVisa ? '/visa-photo' : '/passport-photos'}>{isVisa ? 'Visa' : 'Passport'} photo directory</Link></nav>
     <h1 className="text-3xl font-bold">{icao ? 'ICAO photo standards and document requirements' : `${spec.country} ${document} photo guidance`}</h1>
     {icao ? <>
@@ -27,5 +27,5 @@ export default function DocumentGuidancePage({ spec, isVisa }: { spec: SpecEntry
     </>}
     <p><Link href="/passport-photos">Browse passport presets</Link> · <Link href="/visa-photo">Browse visa guidance</Link> · <Link href="/editorial-methodology">How to evaluate the guidance</Link></p>
     <p>PixPassVisa is independent of issuing authorities. Automated checks and purchased downloads do not guarantee acceptance.</p>
-  </main>;
+  </div>;
 }

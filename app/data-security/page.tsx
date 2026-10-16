@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 export const metadata: Metadata = {
+  openGraph: { title: "Photo Processing, Storage & Download Access | PixPassVisa", description: "How PixPassVisa processes and stores photos, handles paid download access, and schedules cleanup. Review the limitations before uploading.", url: "https://www.pixpassvisa.com/data-security", siteName: "PixPassVisa", type: "website", images: ["https://www.pixpassvisa.com/opengraph-image"] },
+  twitter: { card: "summary_large_image", title: "Photo Processing, Storage & Download Access | PixPassVisa", description: "How PixPassVisa processes and stores photos, handles paid download access, and schedules cleanup. Review the limitations before uploading.", images: ["https://www.pixpassvisa.com/opengraph-image"] },
   title: 'Photo Processing, Storage & Download Access | PixPassVisa',
   description: 'How PixPassVisa processes and stores photos, handles paid download access, and schedules cleanup. Review the limitations before uploading.',
   alternates: { canonical: 'https://www.pixpassvisa.com/data-security' },
 };
 export default function DataSecurityPage() {
-  return <main className="max-w-3xl mx-auto px-6 py-16 space-y-6">
+  return <div className="max-w-3xl mx-auto px-6 py-16 space-y-6">
     <h1 className="text-3xl font-bold">Photo processing, storage, and access</h1>
     <p>PixPassVisa uses server processing and storage providers. The web interface does not mean your photograph stays only in your browser.</p>
     <h2 className="text-xl font-semibold">Where photos are processed</h2>
@@ -18,5 +20,5 @@ export default function DataSecurityPage() {
     <h2 className="text-xl font-semibold">Payments</h2>
     <p>The application integrates Razorpay for checkout. Available payment methods appear there. This page makes no unsupported claim that PixPassVisa or its payment setup holds a security certification.</p>
     <p><Link href="/contact" className="underline">Contact support</Link> · <Link href="/privacy-policy" className="underline">Privacy policy</Link></p>
-  </main>;
+  </div>;
 }

@@ -49,6 +49,7 @@ export const getPublicPages = cache(async () => {
       if (updated && Number.isFinite(Date.parse(updated))) dated.set(pathname, new Date(updated).toISOString());
     }
   }
+  for (const pathname of ["/passport-photo-sizes", "/passport-photo-online", "/faq", "/fr/passport-photo-online", "/de/passbild-online"]) dated.set(pathname, "2026-10-16");
   const retired = new Set(seoRedirects.map(route => route.source));
   return [...paths].filter(p => !isPrivatePath(p) && !retired.has(p)).sort().map(path => ({
     path,

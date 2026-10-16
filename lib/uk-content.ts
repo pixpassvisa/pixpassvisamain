@@ -83,7 +83,8 @@ function extractToc(markdownContent: string): UKTocItem[] {
 function compileMarkdownToHtml(markdownContent: string): string {
   const renderer = new marked.Renderer();
 
-  renderer.heading = function ({ tokens, depth }) {
+  renderer.heading = function ({ tokens, depth: originalDepth }) {
+    const depth = Math.max(2, originalDepth);
     const text = this.parser.parseInline(tokens);
     const rawText = text.replace(/<[^>]*>/g, "");
     const id = slugify(rawText);

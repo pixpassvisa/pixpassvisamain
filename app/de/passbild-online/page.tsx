@@ -295,7 +295,7 @@ function ToolFormDe() {
 export default function DeToolPage() {
   return (
     <div className="bg-slate-50 min-h-screen ">
-      <div className="py-4">
+      <div className="py-4"><header className="max-w-5xl mx-auto px-6 py-8"><h1 className="text-3xl font-bold text-slate-900">Passbild online vorbereiten</h1><p className="mt-3 text-slate-600">Wählen Sie Ihr Dokument und prüfen Sie die Fotovorgaben Ihrer Behörde vor dem Hochladen.</p></header>
         <Suspense fallback={<div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" /></div>}>
           <ToolFormDe />
         </Suspense>

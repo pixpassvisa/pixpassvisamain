@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "PixPassVisa | Photo Passeport & Visa en Ligne",
-    description: "Photos passeport et visa professionnelles pour plus de 50 pays. Conformité biométrique garantie.",
+    description: "Photos passeport et visa professionnelles pour plus de 50 pays. Vérifiez les exigences de votre autorité avant de soumettre la photo.",
     images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };

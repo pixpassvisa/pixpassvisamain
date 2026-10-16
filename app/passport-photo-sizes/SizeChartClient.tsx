@@ -3,10 +3,12 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import { Search, Globe, ArrowRight, ShieldCheck, Download, Filter } from "lucide-react";
-import { CountrySpec } from "@/lib/specs";
+import type { CountrySpec } from "@/lib/specs";
+
+import { matchesPhotoSize } from "@/lib/photo-size-filter";
 
 interface SizeChartClientProps {
-  specs: CountrySpec[];
+  specs: (CountrySpec & { toolAvailable: boolean; guideHref: string })[];
 }
 
 export default function SizeChartClient({ specs }: SizeChartClientProps) {
@@ -21,17 +23,7 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
         `${spec.width_mm}x${spec.height_mm}`.includes(searchTerm.toLowerCase()) ||
         `${spec.width_px}x${spec.height_px}`.includes(searchTerm.toLowerCase());
 
-      if (filterRegion === "all") return matchSearch;
-      if (filterRegion === "2x2") {
-        return matchSearch && (spec.width_mm === 51 || spec.width_mm === "51" || spec.id.includes("us-") || spec.id.includes("in-oci"));
-      }
-      if (filterRegion === "35x45") {
-        return matchSearch && (spec.width_mm === 35 || spec.width_mm === "35");
-      }
-      if (filterRegion === "50x70") {
-        return matchSearch && (spec.width_mm === 50 || spec.width_mm === "50");
-      }
-      return matchSearch;
+      return matchSearch && matchesPhotoSize(spec, filterRegion);
     });
   }, [specs, searchTerm, filterRegion]);
 
@@ -46,6 +38,7 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            aria-label="Search photo sizes by country or dimensions"
             placeholder="Search country, mm or px size..."
             className="w-full pl-10 pr-4 py-2 text-xs sm:text-sm bg-slate-50 border border-slate-200 rounded-xl focus:outline-hidden focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all text-slate-800"
           />
@@ -58,13 +51,14 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
           </span>
           {[
             { id: "all", label: "All (50+)" },
-            { id: "35x45", label: "35×45 mm (UK/EU/AU)" },
-            { id: "2x2", label: "2×2 in (51×51 mm US/OCI)" },
-            { id: "50x70", label: "50×70 mm (Canada)" },
+            { id: "35x45", label: "35×45 mm" },
+            { id: "2x2", label: "2×2 in (51×51 mm)" },
+            { id: "50x70", label: "50×70 mm" },
           ].map((pill) => (
             <button
               key={pill.id}
               onClick={() => setFilterRegion(pill.id)}
+              aria-pressed={filterRegion === pill.id}
               className={`px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all cursor-pointer ${
                 filterRegion === pill.id
                   ? "bg-blue-600 text-white shadow-xs"
@@ -80,9 +74,9 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
       {/* Results Count */}
       <div className="flex items-center justify-between text-xs text-slate-500 px-1">
         <span>
-          Showing <strong>{filteredSpecs.length}</strong> official country specifications
+          Showing <strong>{filteredSpecs.length}</strong> configured photo presets
         </span>
-        <span>Requirements updated for 2026/2027</span>
+        <span>Confirm your application’s current rules</span>
       </div>
 
       {/* Interactive Specs Table */}
@@ -93,7 +87,7 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
               <tr className="border-b border-slate-200 bg-slate-50 text-[11px] font-black uppercase text-slate-500 tracking-wider">
                 <th className="py-3.5 px-4">Country &amp; Document</th>
                 <th className="py-3.5 px-4">Print Size (mm / in)</th>
-                <th className="py-3.5 px-4">Digital Size (px @ 300 DPI)</th>
+                <th className="py-3.5 px-4">Digital preset (px)</th>
                 <th className="py-3.5 px-4">Head Height</th>
                 <th className="py-3.5 px-4">Background</th>
                 <th className="py-3.5 px-4 text-right">Action</th>
@@ -108,7 +102,7 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
                 </tr>
               ) : (
                 filteredSpecs.map((spec) => {
-                  const isInch = spec.width_mm === 51 || spec.width_mm === "51";
+                  const isInch = matchesPhotoSize(spec, "2x2");
                   return (
                     <tr
                       key={spec.id}
@@ -181,10 +175,10 @@ export default function SizeChartClient({ specs }: SizeChartClientProps) {
                       {/* Action CTA */}
                       <td className="py-3.5 px-4 text-right whitespace-nowrap">
                         <Link
-                          href={`/passport-photo-online?type=${spec.id}`}
+                          href={spec.toolAvailable ? `/passport-photo-online?type=${spec.id}` : spec.guideHref}
                           className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-600 text-blue-700 hover:text-white font-bold text-xs transition-all shadow-2xs"
                         >
-                          <span>Make Photo</span>
+                          <span>{spec.toolAvailable ? "Make Photo" : "Read guide"}</span>
                           <ArrowRight className="h-3 w-3" />
                         </Link>
                       </td>

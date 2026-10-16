@@ -33,17 +33,8 @@ export interface SpecEntry {
 /**
  * Normalizes a country ID or name to its SEO-preferred short version.
  */
-export function getShortId(id: string): string {
-  return id
-    .replace("-passport", "")
-    .replace("-visa", "")
-    .replace("ds-160", "us")
-    .replace("united-states", "us")
-    .replace("united-kingdom", "uk")
-    .replace("united-arab-emirates", "uae")
-    .replace("icao-/-eu", "icao")
-    .replace("icao-eu", "icao");
-}
+export { getShortId } from "./country-slug";
+import { getShortId } from "./country-slug";
 
 /**
  * Generates the single canonical slug for a given spec ID.

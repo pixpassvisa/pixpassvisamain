@@ -198,7 +198,7 @@ export default function UKPassportPhotoCheckerClient() {
   const selectedDocPrice = 5.99;
 
   return (
-    <main className="min-h-screen bg-slate-100">
+    <div className="min-h-screen bg-slate-100">
 
       {/* ── HERO / TOOL ────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-white border-b border-slate-200" aria-labelledby="uk-validator-heading">
@@ -1049,6 +1049,6 @@ export default function UKPassportPhotoCheckerClient() {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 }

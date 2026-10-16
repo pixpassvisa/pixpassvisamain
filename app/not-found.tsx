@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="mx-auto max-w-3xl px-6 py-24 text-center">
+    <div className="mx-auto max-w-3xl px-6 py-24 text-center">
       <p className="text-sm font-semibold text-slate-500">404 — Page not found</p>
       <h1 className="mt-4 text-4xl font-bold">Let’s get you to the right place.</h1>
       <p className="mt-6 text-lg text-slate-600">This address may have changed. Choose a photo tool or browse our country guides.</p>
@@ -22,6 +22,6 @@ export default function NotFound() {
         <Link prefetch={false} href="/passport-photo-online" className="underline">Create a photo</Link>
         <Link prefetch={false} href="/passport-photo-sizes" className="underline">Photo size guides</Link>
       </nav>
-    </main>
+    </div>
   );
 }

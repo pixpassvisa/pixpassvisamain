@@ -262,7 +262,7 @@ export default async function CASlugPage({ params }: PageProps) {
           )}
 
           {/* Rendered Markdown Article */}
-          <main
+          <div
             className={page.toc.length > 0 ? "lg:col-span-3" : "lg:col-span-4"}
           >
             <article className="bg-white p-6 sm:p-10 rounded-2xl border border-slate-200 shadow-xs prose prose-slate max-w-none prose-headings:font-black prose-headings:text-slate-900 prose-a:text-red-700 prose-a:font-bold">
@@ -308,7 +308,7 @@ export default async function CASlugPage({ params }: PageProps) {
                 ← Explore All Canada Passport &amp; Visa Guides
               </Link>
             </div>
-          </main>
+          </div>
         </div>
       </div>
     </div>

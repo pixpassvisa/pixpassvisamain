@@ -45,7 +45,7 @@ export default function PassportDirectoryPage() {
   return (
     <div className="min-h-screen bg-white">
       <Breadcrumbs />
-      <main>
+      <div>
         <MasterDirectory 
           title="Passport Photo Directory"
         subtitle="Browse passport presets and check the requirements of your issuing authority before preparing a photo."
@@ -125,7 +125,7 @@ export default function PassportDirectoryPage() {
           </div>
         </div>
       </section>
-      </main>
+      </div>
     </div>
   );
 }

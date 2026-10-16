@@ -1,3 +1,4 @@
+import { cache } from "react";
 import { applyReviewedBlogContent } from "./reviewed-blog-content";
 import connectToDatabase from "@/lib/mongodb";
 import BlogModel from "@/models/Blog";
@@ -18,7 +19,7 @@ export interface BlogPost {
 }
 
 // Read both sources independently: publishing a CMS post must not hide built-in guides.
-export async function getBlogPosts(): Promise<BlogPost[]> {
+export const getBlogPosts = cache(async (): Promise<BlogPost[]> => {
   let localPosts: BlogPost[] = [];
   let databasePosts: (BlogPost & { isPublished?: boolean })[] = [];
   try {
@@ -38,4 +39,4 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
   }
 
   return applyReviewedBlogContent(mergeBlogPosts(localPosts, databasePosts));
-}
+});

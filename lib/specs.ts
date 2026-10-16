@@ -1,4 +1,4 @@
-import specsData from "@/data/countries-specs.json";
+import specsData from "@/data/country-presets.json";
 import { DocumentType } from "@/app/passport-photo-online/types";
 import { countryMapping } from "./external-api";
 

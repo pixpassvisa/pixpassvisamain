@@ -268,7 +268,7 @@ export default async function GermanGuideDetailPage({ params }: Props) {
             )}
 
             {/* Main Article Body */}
-            <main
+            <div
               className={`w-full min-w-0 ${
                 guide.toc.length > 0 ? "lg:col-span-8" : "lg:col-span-12 max-w-3xl mx-auto"
               }`}
@@ -360,7 +360,7 @@ export default async function GermanGuideDetailPage({ params }: Props) {
                   Passfoto erstellen →
                 </Link>
               </div>
-            </main>
+            </div>
           </div>
 
           {/* Related Guides */}

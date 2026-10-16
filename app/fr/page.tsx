@@ -195,7 +195,7 @@ export default function FrHomePage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
-      <main className="pb-20 md:pb-0">
+      <div className="pb-20 md:pb-0">
           <section aria-labelledby="hero-h1" className="pt-8 md:pt-10">
           <div className="mx-auto max-w-7xl px-3 py-10 sm:px-4 md:py-10 lg:px-6">
             <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
@@ -550,7 +550,7 @@ export default function FrHomePage() {
         </div>
 
     
-      </main>
+      </div>
     </>
   );
 }

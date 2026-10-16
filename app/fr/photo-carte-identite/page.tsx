@@ -15,12 +15,7 @@ export const metadata: Metadata = {
   keywords: ["photo carte identité", "photo CNI", "photo carte nationale identité", "photo CNI en ligne"],
   alternates: {
     canonical: "https://www.pixpassvisa.com/fr/photo-carte-identite",
-    languages: {
-      en: "https://www.pixpassvisa.com/passport-photos",
-      fr: "https://www.pixpassvisa.com/fr/photo-carte-identite",
-      de: "https://www.pixpassvisa.com/de/biometrisches-passbild",
-      "x-default": "https://www.pixpassvisa.com/passport-photos",
-    },
+    languages: { fr: "https://www.pixpassvisa.com/fr/photo-carte-identite", "x-default": "https://www.pixpassvisa.com/fr/photo-carte-identite" },
   },
   openGraph: {
     title: "Photo Carte d'Identité en Ligne | PixPassVisa", description: "Photo CNI conforme aux normes françaises.",

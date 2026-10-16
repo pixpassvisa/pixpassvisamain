@@ -2,15 +2,10 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Créer votre Photo Passeport & Visa — Outil en Ligne | PixPassVisa",
-  description: "Outil professionnel de création de photos passeport et visa. Téléchargez votre photo, sélectionnez votre pays, obtenez une photo conforme en 30 secondes.",
+  description: "Préparez une photo de passeport ou de visa : choisissez votre document, téléversez votre photo et vérifiez le résultat avant de poursuivre.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/fr/passport-photo-online",
-    languages: {
-      en: "https://www.pixpassvisa.com/passport-photo-online",
-      fr: "https://www.pixpassvisa.com/fr/passport-photo-online",
-      de: "https://www.pixpassvisa.com/de/passbild-online",
-      "x-default": "https://www.pixpassvisa.com/passport-photo-online",
-    },
+    languages: { fr: "https://www.pixpassvisa.com/fr/passport-photo-online", "x-default": "https://www.pixpassvisa.com/fr/passport-photo-online" },
   },
   openGraph: {
     title: "Créer votre Photo — PixPassVisa", description: "Outil de création de photos passeport et visa conformes.",
@@ -20,7 +15,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Créer votre Photo Passeport & Visa | PixPassVisa",
-    description: "Outil de création de photos passeport et visa conformes en 30 secondes.",
+    description: "Préparez votre photo et vérifiez les exigences de votre autorité avant de la soumettre.",
     images: ["https://www.pixpassvisa.com/opengraph-image"],
   },
 };

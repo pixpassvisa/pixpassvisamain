@@ -11,7 +11,7 @@ const getCategories = (price: string) => [
       { q: "What is PixPassVisa?", a: `PixPassVisa is a free online photo validation tool that checks your photos against U.S. State Department requirements for visas, passports, green cards, and the DV lottery. You get an instant PASS/FAIL report, and can pay ${price} to download a processed photo.` },
       { q: "Is the photo validation really free?", a: `Yes! Photo validation is 100% free with no account required. You only pay ${price} if you choose to download a processed photo. You can validate unlimited photos at no cost.` },
       { q: "How accurate is the validation?", a: "Automated checks provide feedback on selected image measurements. They can miss issues and do not verify every application rule. The issuing authority decides whether to accept your photo." },
-      { q: "How long does validation take?", a: "Processing takes under 5 seconds per photo. You'll see your full PASS/FAIL compliance report almost instantly after uploading." },
+      { q: "How long does validation take?", a: "Processing time depends on the image and service availability. Keep the page open while the photo is checked; review any retry message if processing does not complete." },
       { q: "Can I upload multiple photos?", a: `You can validate unlimited photos for free. Each paid download covers 1 processed digital photo plus a A4 size print sheet (20 photos) for ${price}.` },
     ],
   },

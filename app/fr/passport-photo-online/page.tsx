@@ -307,7 +307,7 @@ function ToolFormFr() {
 export default function FrToolPage() {
   return (
     <div className="bg-slate-50 min-h-screen ">
-      <div className="py-4">
+      <div className="py-4"><header className="max-w-5xl mx-auto px-6 py-8"><h1 className="text-3xl font-bold text-slate-900">Préparer une photo de passeport ou de visa</h1><p className="mt-3 text-slate-600">Choisissez votre document et vérifiez les exigences de votre autorité avant de téléverser votre photo.</p></header>
         <Suspense fallback={<div className="flex items-center justify-center h-64"><div className="w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full animate-spin" /></div>}>
           <ToolFormFr />
         </Suspense>

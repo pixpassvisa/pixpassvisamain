@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Passbild Online Erstellen 2026 | Biometrisches Passfoto 35x45 mm",
-  description: "Biometrisches Passbild online erstellen: KI-Prüfung, Hintergrund entfernen, ICAO-konform in 30 Sekunden.",
+  description: "Passbild online vorbereiten: Dokument auswählen und Foto prüfen. Beachten Sie die Aufnahme- und Abgabevorgaben Ihrer zuständigen Behörde.",
   alternates: {
     canonical: "https://www.pixpassvisa.com/de/passbild-online",
     languages: {

@@ -240,7 +240,7 @@ const faqSchema = {
 /* ─── Page ─── */
 export default function BiometrischesPassbildPage() {
   return (
-    <main className="bg-white text-slate-900 antialiased">
+    <div className="bg-white text-slate-900 antialiased">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
@@ -618,6 +618,6 @@ export default function BiometrischesPassbildPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

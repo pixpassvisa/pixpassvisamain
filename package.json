@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "node scripts/generate-route-manifest.mjs && node --max-old-space-size=4096 node_modules/next/dist/bin/next build --webpack",
+    "build": "node scripts/generate-country-presets.mjs && node scripts/generate-route-manifest.mjs && node --max-old-space-size=4096 node_modules/next/dist/bin/next build --webpack",
     "start": "node --max-old-space-size=3072 node_modules/next/dist/bin/next start",
     "lint": "eslint",
     "test:checkout": "node --test tests/checkout.test.mjs",
-    "test:seo": "node --experimental-strip-types --test tests/seo.test.mjs tests/blog-faq.test.mjs tests/blog-posts.test.mjs tests/checker-handoff.test.mjs",
+    "test:seo": "node --experimental-strip-types --test tests/seo.test.mjs tests/blog-faq.test.mjs tests/blog-posts.test.mjs tests/checker-handoff.test.mjs tests/performance-seo.test.mjs",
     "audit:seo": "node scripts/audit-public-seo.mjs",
     "audit:discovery": "node scripts/audit-discovery.mjs"
   },

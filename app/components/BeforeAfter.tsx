@@ -45,7 +45,7 @@ export default function BeforeAfter() {
       <div className="hero-comparison-photo" style={{ aspectRatio: format.aspect }}>
         <div className="hero-prepared-layer">
           <Image src="/images/after-edit-600.png" alt="Illustrative prepared portrait on a plain background"
-            fill priority sizes="(max-width: 700px) 80vw, (max-width: 1000px) 36vw, 390px"
+            fill priority sizes="(max-width: 380px) 75vw, 300px"
             style={{ objectFit: "cover", transform: `scale(${format.scale})` }} />
           {showGuides && <>
             <svg className="hero-ratio-guides" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
@@ -61,7 +61,7 @@ export default function BeforeAfter() {
         </div>
         <div className="hero-original-layer" style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}>
           <Image src="/images/before-edit-600.png" alt="Illustrative original portrait with a busy indoor background"
-            fill priority sizes="(max-width: 700px) 80vw, (max-width: 1000px) 36vw, 390px" style={{ objectFit: "cover" }} />
+            fill priority sizes="(max-width: 380px) 75vw, 300px" style={{ objectFit: "cover" }} />
         </div>
         {position > 12 && <span className="hero-photo-tag hero-before-tag">BEFORE</span>}
         {position < 88 && <span className="hero-photo-tag hero-after-tag">AFTER</span>}
