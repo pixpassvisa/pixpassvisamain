@@ -7,10 +7,11 @@ import "./home.css";
 
 export const metadata: Metadata = {
   title: { absolute: "Passport & Visa Photo Maker Online | pixpassvisa.com" },
-  description: "Prepare passport, visa, and ID photos online for 50+ countries. Check your photo for free, review the country-specific crop, and buy a high-resolution digital photo and print sheet with fixed one-time pricing.",
+  description: "Create passport and visa photos online. Check your photo for free, browse country requirements, and preview digital photos and print sheets before purchase.",
   keywords: ["passport photo maker", "passport photo online", "visa photo maker", "visa photo online", "passport photo checker", "passport photo requirements", "passport photo size", "visa photo requirements by country", "passport photo background checker", "DS-160 photo", "DV lottery photo checker", "UK digital passport photo", "Schengen visa photo", "passport photo print template"],
   alternates: { canonical: "https://www.pixpassvisa.com/", languages: { en: "https://www.pixpassvisa.com/", fr: "https://www.pixpassvisa.com/fr", de: "https://www.pixpassvisa.com/de", "x-default": "https://www.pixpassvisa.com/" } },
 };
+export const revalidate = 3600;
 export default function Home() {
   const schema = { "@context": "https://schema.org", "@graph": [
     { "@type": "WebApplication", name: "PixPassVisa", url: "https://www.pixpassvisa.com/", applicationCategory: "PhotographyApplication", operatingSystem: "Web browser", description: "Passport and visa photo preparation for 50+ countries with a free automated photo checker and fixed one-time download pricing.", featureList: ["Country-specific biometric cropping", "Background and lighting checks", "High-resolution JPEG download", "Printable photo sheet"], offers: { "@type": "Offer", price: "4.99", priceCurrency: "USD", availability: "https://schema.org/InStock" } },

@@ -23,30 +23,8 @@ export const metadata: Metadata = {
     template: "%s",
   },
   description:
-    "AI-powered passport and visa photo maker & resizer for 50+ countries. Resize to 2x2 in, 35x45 mm, 600x600 px, or compress to 20KB, 50KB, 100KB, 200KB. Review your photo before submitting to the issuing authority.",
-  keywords: [
-    "image resizer",
-    "photo resizer",
-    "resize image online",
-    "passport photo resizer",
-    "visa photo resizer",
-    "passport photo maker",
-    "resize photo to 2x2",
-    "resize photo to 35x45 mm",
-    "600x600 photo resizer",
-    "resize image to 20KB",
-    "resize image to 50KB",
-    "resize image to 100KB",
-    "resize image to 200KB",
-    "US visa photo size",
-    "Schengen visa photo resizer",
-    "Indian passport photo resizer",
-    "UK passport photo resizer",
-    "Canada visa photo size",
-    "Australia passport photo",
-    "signature resize online",
-    "government form photo resizer",
-  ],
+    "Prepare passport and visa photos online. Browse country requirements, try free automated photo checks, and preview digital photos and print sheets before purchase.",
+
   authors: [{ name: "PixPassVisa Team" }],
   creator: "PixPassVisa",
   applicationName: "PixPassVisa",
@@ -74,7 +52,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "PixPassVisa | Global AI Passport & Visa Photo Maker",
     description:
-      "Prepare passport, visa, and ID photos for 50+ countries. Instant AI background removal, smart cropping, and DPI compression.",
+      "Prepare passport, visa, and ID photos for 50+ countries. Review country-specific crops and preview digital photos and print sheets before purchase.",
     url: "https://www.pixpassvisa.com/",
     siteName: "PixPassVisa",
     images: [
