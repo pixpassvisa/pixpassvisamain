@@ -16,7 +16,7 @@ function ToolForm() {
   const router = useRouter();
   const params = useSearchParams();
   const initialType = params.get("type");
-  const [docId, setDocId] = useState(documentTypes.find(d => d.id === initialType)?.id || "us-passport");
+  const [docId, setDocId] = useState(documentTypes.find(d => d.id === initialType)?.id || "icao-passport");
   const [file, setFile] = useState<File | null>(null);
   const [preview, setPreview] = useState("");
   const [error, setError] = useState("");
