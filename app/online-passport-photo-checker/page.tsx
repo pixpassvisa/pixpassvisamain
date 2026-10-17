@@ -229,7 +229,7 @@ export default function OnlinePassportPhotoCheckerPage() {
         specs={[
           { label: "Check Duration", value: "Under 3 Seconds" },
           { label: "Install Required", value: "None — Browser Only" },
-          { label: "Privacy Protection", value: "No Images Stored" },
+          { label: "Privacy Protection", value: "See storage policy" },
           { label: "Compliance Report", value: "Full Category Breakdown" },
           { label: "Country Coverage", value: "50+ Global Standards" },
           { label: "Service Cost", value: "Free, Unlimited Checks" },

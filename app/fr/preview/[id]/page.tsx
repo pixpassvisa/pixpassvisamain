@@ -28,7 +28,7 @@ export default async function FrPreviewPage(props: { params: Promise<{ id: strin
   }
 
   const localPrice = await getLocalPrice(4.99);
-  const expertPrice = await getLocalPrice(11.99, undefined, true);
+  const expertPrice = await getLocalPrice(6.99, undefined, true);
 
   return (
     <PreviewClientFr

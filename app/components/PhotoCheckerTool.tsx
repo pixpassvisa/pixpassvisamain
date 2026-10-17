@@ -579,6 +579,7 @@ export default function PhotoCheckerTool({
             {report && checkedInput?.file === file && checkedInput.country === selectedCountry && checkedInput.document === selectedDocType ? (
               <div className="bg-white rounded-2xl border border-slate-200 p-5 sm:p-7 shadow-sm">
                 <ValidationReportView
+                  visaScope={selectedDocType === "visa"}
                   sourceFile={file}
                   report={report}
                   onReset={handleReset}

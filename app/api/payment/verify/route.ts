@@ -138,7 +138,7 @@ export async function POST(req: Request) {
         guestEmail: userEmail || "customer@pixpassvisa.com",
         documentType: photo.documentType,
         isExpert: Boolean(photo.isExpert),
-        amount: photo.isExpert ? 11.99 : 4.99,
+        amount: photo.isExpert ? 6.99 : 4.99,
         currency: "USD",
         status: "paid",
         photoId: photo._id,

@@ -203,20 +203,20 @@ test('simultaneous webhook and browser confirmation receive the same download to
 
 test('standard and premium prices match approved USD and INR amounts', async () => {
   const { getLocalPrice } = load('lib/currency.ts', {});
-  for (const [currency, expert, expected] of [['USD', false, 4.99], ['INR', false, 499], ['USD', true, 11.99], ['INR', true, 599]]) {
+  for (const [currency, expert, expected] of [['USD', false, 4.99], ['INR', false, 499], ['USD', true, 6.99], ['INR', true, 599]]) {
     const price = await getLocalPrice(0, currency, expert);
     assert.equal(price.amount, expected);
     assert.equal(price.currency, currency);
   }
   const fallback = await getLocalPrice(0, 'CZK', true);
   assert.equal(fallback.currency, 'USD');
-  assert.equal(fallback.amount, 11.99);
+  assert.equal(fallback.amount, 6.99);
   assert.equal((await getLocalPrice(0, 'EUR')).amount, 6.99);
 });
 
 test('server creates Razorpay orders with approved amounts in minor units', async () => {
   const currency = load('lib/currency.ts', {});
-  for (const [code, expert, expected] of [['USD', false, 499], ['INR', false, 49900], ['USD', true, 1199], ['INR', true, 59900]]) {
+  for (const [code, expert, expected] of [['USD', false, 499], ['INR', false, 49900], ['USD', true, 699], ['INR', true, 59900]]) {
     let gatewayOrder;
     const photo = { _id: 'photo', status: 'ready', documentType: 'us-passport', save: async () => {} };
     const route = load('app/api/payment/create-order/route.ts', {

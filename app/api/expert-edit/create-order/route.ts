@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     const { getLocalPrice } = await import("@/lib/currency");
     const requestedCurrency = formData.get("currencyOverride");
     const currencyOverride = typeof requestedCurrency === "string" && /^[A-Za-z]{3}$/.test(requestedCurrency) ? requestedCurrency.toUpperCase() : undefined;
-    const localPrice = await getLocalPrice(11.99, currencyOverride, true);
+    const localPrice = await getLocalPrice(6.99, currencyOverride, true);
     
     let amountUnit = 100;
     if (localPrice.currency === 'JPY') amountUnit = 1;

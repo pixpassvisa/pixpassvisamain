@@ -48,7 +48,7 @@ export async function POST(req: Request) {
 
     const { getSpecById } = await import("@/lib/specs");
     const spec = getSpecById(photo.documentType);
-    const basePrice = isExpert ? 11.99 : (spec?.price || 4.99);
+    const basePrice = isExpert ? 6.99 : (spec?.price || 4.99);
 
     // Get localized price (Allows validated client override for currency)
     const { getLocalPrice } = await import("@/lib/currency");

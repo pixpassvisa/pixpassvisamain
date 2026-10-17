@@ -15,6 +15,7 @@ interface Props {
   selectedDocId?: string;
   selectedDocPrice?: number;
   sourceFile?: File | null;
+  visaScope?: boolean;
 }
 
 import PriceDisplay from "@/app/components/PriceDisplay";
@@ -253,7 +254,7 @@ function SummaryList({ items, title, dark = false }: { items: string[]; title: s
 
 // ─── Main Report Component ─────────────────────────────────────────────────────
 
-export default function ValidationReportView({ report, onReset, selectedDocId, selectedDocPrice, sourceFile }: Props) {
+export default function ValidationReportView({ report, onReset, selectedDocId, selectedDocPrice, sourceFile, visaScope = false }: Props) {
   const router = useRouter();
   const { overall_result, compliance_score, summary, suggestions, metrics } = report;
   const ref = useRef(null);
@@ -308,7 +309,7 @@ export default function ValidationReportView({ report, onReset, selectedDocId, s
                   <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               )}
-              {overall_result}
+              {visaScope ? "VISA RULES NOT VERIFIED" : overall_result}
             </motion.div>
 
             {/* Counts summary */}

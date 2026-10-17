@@ -1,51 +1,19 @@
-import { redirect } from "next/navigation";
-import dbConnect from "@/lib/mongodb";
-import Photo from "@/models/Photo";
-import PreviewClient from "./PreviewClient";
+import PreviewLoader from "./PreviewLoader";
 import { getLocalPrice } from "@/lib/currency";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
 
-export default async function PreviewPage(props: { params: Promise<{ id: string }>, searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
-  const params = await props.params;
-  const searchParams = await props.searchParams;
-
-  let photoRecord;
-  try {
-    await dbConnect();
-    photoRecord = await Photo.findById(params.id);
-  } catch (error) {
-    // Invalid ID format
-  }
-
-  if (!photoRecord) {
-    redirect("/passport-photo-online");
-  }
-
-  const session = await getServerSession(authOptions);
-  const isPaid = photoRecord.status === "paid";
-
-  const localPrice = await getLocalPrice(4.99);
-  const expertPrice = await getLocalPrice(11.99, undefined, true);
-  const suppliedToken = typeof searchParams.token === "string" ? searchParams.token : "";
-  const isOwner = photoRecord.userId
-    ? photoRecord.userId.toString() === (session?.user as { id?: string })?.id
-    : Boolean(session?.user?.email && photoRecord.guestEmail && session.user.email.toLowerCase() === photoRecord.guestEmail.toLowerCase());
-  const downloadToken = isOwner || (suppliedToken && suppliedToken === photoRecord.downloadToken)
-    ? photoRecord.downloadToken || "" : "";
-
-  return (
-    <PreviewClient
-      key={photoRecord._id.toString()}
-      photoId={photoRecord._id.toString()}
-      previewUrl={photoRecord.previewUrl}
-      documentType={photoRecord.documentType}
-      metrics={photoRecord.metrics ? JSON.parse(JSON.stringify(photoRecord.metrics)) : {}}
-      localPrice={localPrice}
-      expertPrice={expertPrice}
-      initialIsPaid={isPaid}
-      from={searchParams.from as string}
-      downloadToken={downloadToken}
-    />
-  );
+export default async function PreviewPage(props: {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const { id } = await props.params;
+  const query = await props.searchParams;
+  const [localPrice, expertPrice] = await Promise.all([
+    getLocalPrice(4.99), getLocalPrice(6.99, undefined, true),
+  ]);
+  // A refresh renders a stable shell. Load the saved photo through the same
+  // public endpoint that succeeds after processing, without a second auth/DB
+  // render path. Download endpoints still enforce payment and authorization.
+  return <PreviewLoader photoId={id} localPrice={localPrice} expertPrice={expertPrice}
+    from={typeof query.from === "string" ? query.from : undefined}
+    downloadToken={typeof query.token === "string" ? query.token : ""} />;
 }

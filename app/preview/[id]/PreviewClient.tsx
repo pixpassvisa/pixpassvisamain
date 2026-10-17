@@ -87,8 +87,8 @@ function TrustBadges({
     documentType?.toLowerCase().startsWith("ca");
   const badges = [
     { icon: ICONS.shield, text: "Secure Checkout" },
-    { icon: ICONS.refresh, text: "Refund if Rejected" },
-    { icon: ICONS.lock, text: "256-bit SSL" },
+    { icon: ICONS.refresh, text: "Refund policy applies" },
+    { icon: ICONS.lock, text: "Secure checkout" },
   ];
   return (
     <div className="flex items-center justify-center gap-x-5 gap-y-1.5 py-3 flex-wrap border-t border-slate-100 mt-3">
@@ -96,7 +96,7 @@ function TrustBadges({
         <div className="flex items-center gap-1.5 text-slate-500">
           <Icon d={ICONS.shield} size={13} className="text-blue-600" />
           <span className="text-[11px] font-semibold text-slate-700">
-            UK Gov Compliant
+            Review HMPO requirements
           </span>
         </div>
       )}
@@ -104,7 +104,7 @@ function TrustBadges({
         <div className="flex items-center gap-1.5 text-slate-500">
           <Icon d={ICONS.shield} size={13} className="text-red-600" />
           <span className="text-[11px] font-semibold text-slate-700">
-            IRCC &amp; Passport Program Compliant
+            Review Canadian requirements
           </span>
         </div>
       )}
@@ -244,7 +244,7 @@ function OrderPanel({
 }: any) {
   return (
     <div className="w-full lg:w-[38%] space-y-4">
-      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden lg:sticky lg:top-6">
+      <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden lg:sticky lg:top-28">
         <div className="p-5 sm:p-6">
           {!hasPaid ? (
             <div className="space-y-4">
@@ -256,14 +256,14 @@ function OrderPanel({
                   className="text-emerald-600 shrink-0"
                 />
                 <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                  Order Summary - Accepted for passport &amp; visa applications
+                  Choose your download
                 </p>
               </div>
 
               {/* Plans */}
               <div className="space-y-3">
                 {/* Basic */}
-                <button
+                <button aria-pressed={!isExpertPlan}
                   onClick={() => setIsExpertPlan(false)}
                   className={cx(
                     "w-full text-left rounded-xl border-2 p-4 transition-colors duration-150 relative",
@@ -286,10 +286,10 @@ function OrderPanel({
                   </div>
                   <ul className="space-y-1.5">
                     {[
-                      " AI Biometric Check",
+                      "Digital photo in your selected format",
                       "Instant digital download",
-                      " Official A4 print sheet",
-                      "100% acceptance guarantee",
+                      "Printable A4 photo sheet",
+                      "One-time payment · no subscription",
                     ].map((f) => (
                       <li
                         key={f}
@@ -311,112 +311,15 @@ function OrderPanel({
                   </ul>
                 </button>
 
-                {/* Expert Review / Premium Pack Card */}
-                <div
-                  onClick={() => setIsExpertPlan(true)}
-                  className={cx(
-                    "w-full text-left rounded-2xl border-2 p-4 sm:p-5 transition-all duration-200 relative cursor-pointer",
-                    isExpertPlan
-                      ? "border-blue-500 bg-blue-50/70/30 shadow-[0_0_0_1px_rgba(132,204,22,0.2)]"
-                      : "border-slate-200 bg-white hover:border-blue-300",
-                  )}
-                >
-                  {/* Floating MOST POPULAR Badge */}
-                  <div className="absolute -top-3 right-5 bg-[#ff9500] text-white text-[10px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-xs z-10">
-                    MOST POPULAR
+                <button type="button" aria-pressed={isExpertPlan}
+                  onClick={() => setIsExpertPlan(!isExpertPlan)}
+                  className={cx("w-full rounded-xl border p-4 text-left transition-colors", isExpertPlan ? "border-emerald-500 bg-emerald-50" : "border-slate-200 bg-white")}>
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="font-semibold text-sm text-slate-900">{isExpertPlan ? "✓ " : "+ "}Add expert review</span>
+                    <span className="font-bold text-slate-900">{expertPrice?.formatted} total</span>
                   </div>
-
-                  {/* Header: Tag, Title & Price */}
-                  <div className="flex justify-between items-start mb-3">
-                    <div>
-                      <span className="inline-block bg-blue-100 text-blue-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded uppercase tracking-wider">
-                        EXPERT REVIEW
-                      </span>
-                      <h4 className="text-lg font-bold text-slate-900 mt-1">
-                        Premium Pack
-                      </h4>
-                    </div>
-                    <div className="text-right">
-                      <p className="text-2xl font-black text-slate-900">
-                        {expertPrice?.formatted || "₹599"}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Features List with Green Checkmarks */}
-                  <ul className="space-y-2 mb-4">
-                    {[
-                      "Everything in Standard",
-                      "Human expert review in <15 min",
-                      "Extra compliance verifications",
-                      "Priority processing",
-                      "Email support",
-                      "Reduced rejection risk",
-                    ].map((f) => (
-                      <li
-                        key={f}
-                        className="flex items-center gap-2.5 text-[13.5px] text-slate-700 font-medium leading-snug"
-                      >
-                        <Icon
-                          d={ICONS.check}
-                          size={14}
-                          className="text-emerald-500 shrink-0"
-                          stroke={3}
-                        />
-                        <span>{f}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Sub-Card: See What Our Experts Fix */}
-                  <div
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setIsExpertPlan(true);
-                      startTransition(() => {
-                        if (onOpenFixModal) onOpenFixModal();
-                      });
-                    }}
-                    className="bg-blue-50/70/80 border border-blue-200/90 rounded-xl p-3.5 flex items-center justify-between gap-3 group/fix hover:bg-blue-100/70 transition-colors cursor-pointer"
-                  >
-                    <div className="space-y-2">
-                      <div>
-                        <h5 className="text-sm font-bold text-slate-900 leading-tight group-hover/fix:text-blue-700 transition-colors">
-                          See What Our Experts Fix
-                        </h5>
-                        
-                      </div>
-
-                      {/* Avatars + Count */}
-                      <div className="flex items-center">
-                        <div className="flex -space-x-2 overflow-hidden py-0.5">
-                          {[
-                            "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80",
-                            "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&auto=format&fit=crop&q=80",
-                            "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&auto=format&fit=crop&q=80",
-                            "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=80",
-                            "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&auto=format&fit=crop&q=80",
-                          ].map((src, idx) => (
-                            <img
-                              key={idx}
-                              src={src}
-                              alt="Customer avatar"
-                              className="inline-block h-6 w-6 rounded-full ring-2 ring-white object-cover"
-                            />
-                          ))}
-                        </div>
-                        <span className="text-xs font-semibold text-slate-600 ml-2.5">
-                          +2.7k
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Green Action Button */}
-                    <div className="w-9 h-9 rounded-full bg-emerald-500 group-hover/fix:bg-emerald-600 text-white flex items-center justify-center transition-transform group-hover/fix:scale-105 shrink-0 shadow-xs">
-                      <Icon d={ICONS.arrowRight} size={16} stroke={2.5} />
-                    </div>
-                  </div>
-                </div>
+                  <p className="mt-1 text-xs text-slate-600">Includes the Standard Pack, a human review and email support.</p>
+                </button>
               </div>
 
               {/* Guest Email */}
@@ -427,6 +330,8 @@ function OrderPanel({
                   </label>
                   <input
                     type="email"
+                    autoComplete="email"
+                    aria-label="Email for delivery"
                     value={guestEmail}
                     onChange={(e: any) => setGuestEmail(e.target.value)}
                     placeholder="Enter your email"
@@ -436,7 +341,7 @@ function OrderPanel({
               )}
 
               {/* CTA */}
-              <div className="space-y-1 pt-1 hidden lg:block">
+              <div className="space-y-1 pt-1">
                 <button
                   onClick={handlePayment}
                   disabled={loading || verifying}
@@ -454,7 +359,7 @@ function OrderPanel({
                       <Icon d={ICONS.lock} size={15} className="shrink-0" />
                       {isExpertPlan
                         ? "Get Expert Review"
-                        : "Download Now"} —{" "}
+                        : "Pay & download"} —{" "}
                       {isExpertPlan
                         ? expertPrice?.formatted
                         : localPrice?.formatted}
@@ -462,6 +367,7 @@ function OrderPanel({
                   )}
                 </button>
 
+                <p className="pt-2 text-center text-xs text-slate-500">One payment. Your digital photo and print sheet are available after payment.</p>
                 <TrustBadges from={from} spec={spec} documentType={documentType} />
 
                 <div className="flex justify-center pt-1">
@@ -968,7 +874,7 @@ function MobileCTA({
               ) : (
                 <>
                   <Icon d={ICONS.lock} size={15} />
-                  {isExpertPlan ? "Expert Review" : "Download Photo"}
+                  {isExpertPlan ? "Expert Review" : "Pay & download"}
                 </>
               )}
             </button>
@@ -985,7 +891,7 @@ function MobileCTA({
           </div>
         </div>
       </div>
-      <div className="h-28 lg:hidden" />
+      <div className="h-52 lg:hidden" />
     </>
   );
 }
@@ -1021,7 +927,7 @@ export default function PreviewClient({
   const [deliveryEmail, setDeliveryEmail] = useState("");
   const [deliveryBusy, setDeliveryBusy] = useState(false);
   const [deliveryMessage, setDeliveryMessage] = useState("");
-  const [timeLeft, setTimeLeft] = useState(20 * 60);
+  const timeLeft = 0;
   const [localPrice, setLocalPrice] = useState<LocalPrice>(initialLocalPrice);
   const [expertPrice, setExpertPrice] =
     useState<LocalPrice>(initialExpertPrice);
@@ -1061,7 +967,7 @@ export default function PreviewClient({
 
     push("Face Detection", "PASS", "1 face verified", "Single face detected");
 
-    const eyePct = metrics.eyeLevelPct || 0;
+    const eyePct = Number.isFinite(Number(metrics.eyeLevelPct)) ? Number(metrics.eyeLevelPct) : 0;
     const minEye = Number(spec?.eye_min_pct) || 56;
     const maxEye = Number(spec?.eye_max_pct) || 69;
     push(
@@ -1071,7 +977,7 @@ export default function PreviewClient({
       `Target: ${minEye}–${maxEye}%`,
     );
 
-    const headPct = metrics.headSizePct || 0;
+    const headPct = Number.isFinite(Number(metrics.headSizePct)) ? Number(metrics.headSizePct) : 0;
     const minHead = Number(spec?.head_min_pct) || 50;
     const maxHead = Number(spec?.head_max_pct) || 69;
     push(
@@ -1172,13 +1078,7 @@ export default function PreviewClient({
     }
   }, [initialLocalPrice]);
 
-  useEffect(() => {
-    const interval = setInterval(
-      () => setTimeLeft((p) => (p > 0 ? p - 1 : 0)),
-      1000,
-    );
-    return () => clearInterval(interval);
-  }, []);
+
 
   const handleEmailPhoto = () => {
     setDeliveryEmail(guestEmail || session?.user?.email || "");
@@ -1225,8 +1125,7 @@ export default function PreviewClient({
           {/* Header */}
           <div className="mb-4 text-center lg:text-left">
             <h1 className="text-2xl font-black text-slate-900">
-              Your <span className="text-blue-600">ID Photo</span> Is Ready{" "}
-              {spec?.flag || (isUK ? "🇬🇧" : "")} {spec?.name || spec?.country || (isUK ? "United Kingdom" : "")}
+              Your photo preview is ready
             </h1>
             <div className="flex items-center justify-center lg:justify-start gap-1.5 mt-2">
               <Icon
@@ -1235,10 +1134,10 @@ export default function PreviewClient({
                 className="text-emerald-600 shrink-0"
               />
               <p className="text-[12px] text-slate-500 font-semibold flex items-center gap-1 flex-wrap justify-center lg:justify-start">
-                Secure checkout · 100% acceptance guarantee · Refund if rejected
+                Review your photo, choose a pack, and download after secure payment.
                 {isUK && (
                   <span className="ml-1 md:ml-2 font-bold text-slate-700 flex items-center gap-1">
-                    <span className="text-xl">🇬🇧</span> UK Gov Compliant
+                    <span className="text-xl">🇬🇧</span> Review HMPO requirements
                   </span>
                 )}
               </p>
