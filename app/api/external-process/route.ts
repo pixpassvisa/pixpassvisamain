@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
-import { processExternalPhoto } from "@/lib/external-api";
+import { PhotoProcessingError, processExternalPhoto } from "@/lib/external-api";
 import dbConnect from "@/lib/mongodb";
 import Photo from "@/models/Photo";
+import { getSpecById } from "@/lib/specs";
 
 export async function POST(req: NextRequest) {
   try {
@@ -35,6 +36,15 @@ export async function POST(req: NextRequest) {
       );
     }
 
+    const fullDocId = formData.get("full_doc_id") as string;
+    const selectedSpec = getSpecById(fullDocId || `${countryCode}-${documentType}`);
+    const [outputWidth, outputHeight] = result.dimensions.split("x").map(Number);
+    const expectedRatio = Number(selectedSpec?.width_px) / Number(selectedSpec?.height_px);
+    if (!outputWidth || !outputHeight || (Number.isFinite(expectedRatio) &&
+        Math.abs(outputWidth / outputHeight - expectedRatio) > 0.005)) {
+      return NextResponse.json({ error: "The processor could not produce the selected document's photo size. Please choose another supported format or contact support." }, { status: 400 });
+    }
+
     // Upload original image to Cloudinary
     let originalUrl: string | undefined;
     try {
@@ -48,7 +58,6 @@ export async function POST(req: NextRequest) {
     // Save to database
     await dbConnect();
 
-    const fullDocId = formData.get("full_doc_id") as string;
     const crypto = await import("crypto");
     const downloadToken = crypto.randomBytes(24).toString("hex");
     
@@ -107,10 +116,10 @@ export async function POST(req: NextRequest) {
       {
         error: configurationError
           ? "Photo processing is temporarily unavailable because the processing API is not configured."
-          : "Processing failed",
+          : error instanceof PhotoProcessingError && error.status === 400 ? message : "Processing failed",
         details: message,
       },
-      { status: configurationError ? 503 : 500 }
+      { status: configurationError ? 503 : error instanceof PhotoProcessingError && error.status === 400 ? 400 : 500 }
     );
   }
 }

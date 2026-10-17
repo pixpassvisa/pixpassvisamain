@@ -60,34 +60,6 @@ const ICONS = {
 const cx = (...c: (string | false | undefined | null)[]) =>
   c.filter(Boolean).join(" ");
 
-const METRIC_FIXES = [
-  { key: "gov12", label: "ICAO Standard photo", icon: "✓" },
-
-  { key: "gov", label: "Government compliant photo", icon: "✓" },
-  { key: "gov5", label: "AI biometric validation", icon: "✓" },
-  { key: "gov2", label: "100% acceptance guarantee", icon: "✓" },
-  { key: "gov0", label: "Refund if rejected", icon: "✓" },
-  { key: "gov3", label: "Instant download + print sheet", icon: "✓" },
-];
-
-function MetricFix({ metric }: { metric: (typeof METRIC_FIXES)[0] }) {
-  return (
-    <div className="flex items-center gap-2.5 py-2.5 border-b border-slate-100 last:border-0">
-      <div className="w-5 h-5 rounded-full bg-blue-100 flex items-center justify-center shrink-0">
-        <Icon
-          d={ICONS.check}
-          size={11}
-          className="text-blue-600"
-          stroke={2.5}
-        />
-      </div>
-      <span className="text-[13px] text-slate-700 font-medium">
-        {metric.label}
-      </span>
-    </div>
-  );
-}
-
 // Flat trust strip — the thing that should make someone feel safe paying
 function TrustBadges({
   from,
@@ -182,7 +154,7 @@ function PhotoPanel({
           {allPass && (
             <div className="flex items-center gap-1.5 bg-emerald-50 text-emerald-700 border border-emerald-200 rounded-full px-2.5 py-1">
               <Icon d={ICONS.check} size={12} stroke={2.5} />
-              <span className="text-[11px] font-bold">Verified Compliant</span>
+              <span className="text-[11px] font-bold">Framing checks passed</span>
             </div>
           )}
         </div>
@@ -218,12 +190,17 @@ function PhotoPanel({
               <Icon d={ICONS.photo} size={14} className="text-blue-600" />
             </div>
             <p className="text-sm font-bold text-slate-900">
-              Your Photo Meets Official Requirements
+              {allPass ? "Your photo measurements" : "Your photo needs review"}
             </p>
           </div>
           <div className="space-y-0">
-            {METRIC_FIXES.map((m) => (
-              <MetricFix key={m.key} metric={m} />
+            {checks.map((check) => (
+              <div key={check.name} className="flex items-center justify-between gap-3 py-3 border-b border-slate-100 last:border-0 text-sm">
+                <span>{check.name}<span className="block text-xs text-slate-500">{check.detail}</span></span>
+                <span className={check.status === "PASS" ? "text-emerald-700 font-semibold" : "text-amber-700 font-semibold"}>
+                  {check.status === "PASS" ? "✓ " : "Review: "}{check.value}
+                </span>
+              </div>
             ))}
           </div>
           <div className="mt-4 rounded-xl bg-blue-50/70 border border-blue-200 px-3 py-2.5 flex items-start gap-2">
@@ -233,7 +210,7 @@ function PhotoPanel({
               className="text-blue-600 shrink-0 mt-0.5"
             />
             <p className="text-[11px] text-blue-700 font-medium leading-relaxed">
-              ✓ Background professionally corrected to official requirements
+              The measurement guides are for preview only and are not included in your downloaded photo.
             </p>
           </div>
         </div>
@@ -1104,12 +1081,12 @@ export default function PreviewClient({
       `Target: ${minHead}–${maxHead}%`,
     );
 
-    const bgValid = metrics.backgroundValid || metrics.backgroundCorrected;
+    const bgValid = metrics.backgroundValid === true;
     push(
       "Background",
       bgValid ? "PASS" : "WARN",
-      bgValid ? "Corrected ✓" : "Review Needed",
-      bgValid ? "Auto-corrected to white" : "Needs correction",
+      bgValid ? (metrics.backgroundCorrected ? "Corrected" : "Checked") : "Review Needed",
+      bgValid ? "Background check passed" : "Needs correction",
     );
 
     return { verifying: false, checks: results, overallPass: !hasWarn };

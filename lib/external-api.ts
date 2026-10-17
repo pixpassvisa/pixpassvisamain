@@ -1,3 +1,10 @@
+export class PhotoProcessingError extends Error {
+  constructor(message: string, public status: number) {
+    super(message);
+    this.name = "PhotoProcessingError";
+  }
+}
+
 const EXTERNAL_API_BASE_URL = process.env.PASSPORT_API_URL?.trim().replace(/\/$/, "");
 const EXTERNAL_API_KEY = process.env.PASSPORT_API_KEY?.trim();
 
@@ -186,24 +193,8 @@ export async function processExternalPhoto(
       (typeof errorData.error === "string" && errorData.error) ||
       `Processing failed: ${response.status} ${response.statusText}`;
 
-    // Fallback to "US" standard config if external API lacks config for the requested country
-    if (countryCode !== "US" && message.includes("No config found for country")) {
-      console.warn(`[external-api] ${message} — falling back to country_code "EU"`);
-      formData.set("country_code", "EU");
-      const fallbackRes = await fetch(`${EXTERNAL_API_BASE_URL}/process`, {
-        method: "POST",
-        headers,
-        body: formData,
-      });
-      if (fallbackRes.ok) {
-        const fallbackData = (await fallbackRes.json()) as unknown;
-        if (fallbackData && typeof fallbackData === "object" && !Array.isArray(fallbackData)) {
-          return fallbackData as ExternalProcessResponse;
-        }
-      }
-    }
-
-    throw new Error(message);
+    // Never substitute a different country/ratio for the selected document.
+    throw new PhotoProcessingError(message, response.status);
   }
 
   const data: unknown = await response.json();
