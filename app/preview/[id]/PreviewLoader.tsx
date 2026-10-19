@@ -7,6 +7,7 @@ import type { LocalPrice } from "./hooks/usePayment";
 export default function PreviewLoader(props: {
   photoId: string; localPrice: LocalPrice; expertPrice: LocalPrice;
   from?: string; downloadToken: string;
+  currencyOverride?: "USD";
 }) {
   const [photo, setPhoto] = useState<any>(null);
   const [error, setError] = useState("");

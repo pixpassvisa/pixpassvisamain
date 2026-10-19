@@ -908,6 +908,7 @@ export default function PreviewClient({
   initialIsPaid,
   from,
   downloadToken: initialDownloadToken,
+  currencyOverride,
 }: {
   photoId: string;
   previewUrl: string;
@@ -918,6 +919,7 @@ export default function PreviewClient({
   initialIsPaid?: boolean;
   from?: string;
   downloadToken?: string;
+  currencyOverride?: "USD";
 }) {
   const { data: session, status } = useSession();
   const [hasPaid, setHasPaid] = useState(initialIsPaid || false);
@@ -1058,6 +1060,7 @@ export default function PreviewClient({
   };
 
   useEffect(() => {
+    if (currencyOverride) return;
     const tzCurrency = getClientTimezoneCurrency();
     if (
       !initialLocalPrice ||
@@ -1076,7 +1079,7 @@ export default function PreviewClient({
         })
         .catch(console.error);
     }
-  }, [initialLocalPrice]);
+  }, [initialLocalPrice, currencyOverride]);
 
 
 

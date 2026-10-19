@@ -77,3 +77,31 @@ test('preview renders legacy string metrics and clear one-time checkout', () => 
   assert.match(html, /One-time payment/);
   assert.doesNotMatch(html, /MOST POPULAR|\+2.7k/);
 });
+
+test('explicit USD preview keeps dollar prices despite an Indian browser timezone', async () => {
+  const calls = [];
+  const Page = load('page.tsx', { './PreviewLoader': { default: () => null },
+    '@/lib/currency': { getLocalPrice: async (amount, currency, expert) => {
+      calls.push([currency, !!expert]);
+      return { amount, currency, formatted: `$${amount}`, symbol: '$' };
+    } } });
+  const shell = await Page({ params: Promise.resolve({id:'photo-1'}), searchParams: Promise.resolve({currency:'USD'}) });
+  assert.equal(shell.props.currencyOverride, 'USD');
+  assert.deepEqual(calls, [['USD', false], ['USD', true]]);
+  const effects = [];
+  let timezoneReads = 0;
+  const Client = load('PreviewClient.tsx', {
+    react: {...React, useEffect: fn => effects.push(fn)},
+    'next-auth/react': {useSession: () => ({data:null,status:'unauthenticated'})},
+    '@/lib/currency': {getClientTimezoneCurrency: () => {timezoneReads++; return 'INR';}},
+    '@/lib/specs': {getSpecById: () => ({name:'Passport'})},
+    './hooks/usePayment': {usePayment: () => ({loading:false,phase:'idle',error:'',handlePayment(){}})},
+  });
+  renderToString(React.createElement(Client, {...shell.props,previewUrl:'/photo.jpg',documentType:'us-passport',metrics:{}}));
+  const currencyEffect = effects.find(fn => fn.toString().includes('getClientTimezoneCurrency'));
+  assert.ok(currencyEffect);
+  currencyEffect();
+  assert.equal(timezoneReads, 0);
+  const defaultShell = await Page({params:Promise.resolve({id:'photo-1'}),searchParams:Promise.resolve({currency:['USD']})});
+  assert.equal(defaultShell.props.currencyOverride, undefined);
+});
