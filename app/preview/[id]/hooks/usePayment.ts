@@ -160,7 +160,7 @@ export function usePayment({
         currency: orderData.currency,
         name: "PixPassVisa",
         description: "Get your passport or visa photo verified & corrected instantly.",
-        image: "https://res.cloudinary.com/ddxu2wqfm/image/upload/v1774782293/logo_evktxq.jpg",
+        // Use the logo and styling saved in the merchant's Razorpay dashboard.
         order_id: orderData.orderId,
         handler: (response: any) => { void verifyPayment(response); },
         modal: {
@@ -176,7 +176,6 @@ export function usePayment({
           name: session?.user?.name || "",
           email: session?.user?.email || emailToUse,
         },
-        theme: { color: "#2563eb" },
       });
 
       razorpayInstance.on("payment.failed", () => {

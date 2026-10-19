@@ -105,7 +105,7 @@ export default function ExpertEditPage() {
         currency: data.currency,
         name: "PixPassVisa",
         description: "Expert manual editing for guaranteed compliance. 100% Guaranteed Approval.",
-        image: "https://res.cloudinary.com/ddxu2wqfm/image/upload/v1774782293/logo_evktxq.jpg",
+        // Use the logo and styling saved in the merchant's Razorpay dashboard.
         order_id: data.orderId,
         handler: async function (response: any) {
           setMessage("Verifying payment...");
@@ -130,9 +130,6 @@ export default function ExpertEditPage() {
         },
         prefill: {
           email: email,
-        },
-        theme: {
-          color: "#2563eb",
         },
       };
 
