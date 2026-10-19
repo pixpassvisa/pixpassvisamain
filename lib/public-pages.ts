@@ -11,6 +11,7 @@ import seoRedirects from "@/data/seo-redirects.json";
 import { isPrivatePath } from "@/lib/seo";
 import { hasDocumentPreset } from "@/lib/document-intent";
 import { reviewedPhotoGuides, PHOTO_GUIDE_REVIEW_DATE } from "@/lib/reviewed-photo-guides";
+import { priorityCountryGuides, COUNTRY_GUIDE_DATE } from "@/lib/priority-country-guides";
 export const getPublicPages = cache(async () => {
   const paths = new Set<string>([...routes, "/site-map"]);
   const titles = new Map<string, string>();
@@ -39,6 +40,11 @@ export const getPublicPages = cache(async () => {
     ["/passport-photo-checklist", "2026-10-08"],
   ]);
   for (const slug of Object.keys(reviewedPhotoGuides)) dated.set(`/${slug}`, PHOTO_GUIDE_REVIEW_DATE);
+  for (const [slug, guide] of Object.entries(priorityCountryGuides)) {
+    paths.add(`/${slug}`);
+    dated.set(`/${slug}`, COUNTRY_GUIDE_DATE);
+    titles.set(`/${slug}`, guide.title);
+  }
   for (const pathname of ['/de/guides', '/uk-passport-photo-requirements-tool', '/passport-photo-online', '/passport-photos', '/visa-photo']) dated.set(pathname, PHOTO_GUIDE_REVIEW_DATE);
   for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {

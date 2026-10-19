@@ -13,6 +13,8 @@ import ToolPageRenderer from "../components/ToolPageRenderer";
 import UKPassportRequirements from "../components/UKPassportRequirements";
 import ReviewedPhotoGuidePage from "../components/ReviewedPhotoGuidePage";
 import { reviewedPhotoGuides } from "@/lib/reviewed-photo-guides";
+import PriorityCountryGuide from "../components/PriorityCountryGuide";
+import { priorityCountryGuides, COUNTRY_DEMO_IMAGE } from "@/lib/priority-country-guides";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -46,6 +48,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const route = getRouteBySlug(slug);
   if (!route) return {};
 
+  const priorityGuide = priorityCountryGuides[slug];
+  if (priorityGuide) {
+    const image = `https://www.pixpassvisa.com${COUNTRY_DEMO_IMAGE}`;
+    return { ...createMetadata({ title: priorityGuide.title, description: priorityGuide.description,
+      canonical: `https://www.pixpassvisa.com/${slug}`,
+      openGraph: { images: [{ url: image, width: 1564, height: 1006, alt: 'Fictional adult portrait illustrating an unsuitable photo setup and a retake' }] } }),
+      twitter: { card: 'summary_large_image', title: priorityGuide.title, description: priorityGuide.description, images: [image] } };
+  }
   const guide = reviewedPhotoGuides[slug];
   if (guide) {
     const image = `https://www.pixpassvisa.com${guide.image}`;
@@ -136,6 +146,7 @@ export default async function Page({ params }: PageProps) {
     permanentRedirect(`/${route.canonicalSlug}`);
   }
 
+  if (priorityCountryGuides[slug]) return <PriorityCountryGuide guide={priorityCountryGuides[slug]} slug={slug} />;
   if (reviewedPhotoGuides[slug]) return <ReviewedPhotoGuidePage guide={reviewedPhotoGuides[slug]} slug={slug} />;
 
   switch (route.type) {
