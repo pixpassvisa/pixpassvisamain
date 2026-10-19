@@ -2,9 +2,7 @@ import { cache } from "react";
 import { pageLabel, pageGroup } from "./page-directory";
 import { getAllSlugs } from "@/lib/slug-utils";
 import { getRouteBySlug } from "@/lib/slug-router";
-import { getAllUKPages } from "@/lib/uk-content";
-import { getAllCAPages } from "@/lib/ca-content";
-import { getAllGermanGuides } from "@/lib/de-guides";
+import localGuides from "@/data/local-guide-index.json";
 import { getBlogPosts } from "@/lib/blog-posts";
 import routes from "@/data/route-manifest.json";
 import seoRedirects from "@/data/seo-redirects.json";
@@ -46,7 +44,7 @@ export const getPublicPages = cache(async () => {
     titles.set(`/${slug}`, guide.title);
   }
   for (const pathname of ['/de/guides', '/uk-passport-photo-requirements-tool', '/passport-photo-online', '/passport-photos', '/visa-photo']) dated.set(pathname, PHOTO_GUIDE_REVIEW_DATE);
-  for (const [prefix, posts] of [["uk", getAllUKPages()], ["ca", getAllCAPages()], ["de/guides", getAllGermanGuides()], ["blog", await getBlogPosts()]] as const) {
+  for (const [prefix, posts] of [["uk", localGuides.filter(g=>g.prefix==='uk')], ["ca", localGuides.filter(g=>g.prefix==='ca')], ["de/guides", localGuides.filter(g=>g.prefix==='de/guides')], ["blog", await getBlogPosts()]] as const) {
     for (const post of posts) {
       const pathname = `/${prefix}/${post.slug}`;
       paths.add(pathname);

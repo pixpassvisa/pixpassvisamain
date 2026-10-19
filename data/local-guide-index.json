@@ -1,0 +1,41 @@
+[
+  {
+    "prefix": "uk",
+    "slug": "passport-photos-london",
+    "title": "Passport Photos in London: Choose Digital Capture or Printed Photos",
+    "date": "2026-08-19",
+    "updatedAt": "2026-10-06"
+  },
+  {
+    "prefix": "uk",
+    "slug": "photo-for-driving-license-uk",
+    "title": "UK Driving Licence Photo: Size & Requirements 2026",
+    "date": "2026-08-11"
+  },
+  {
+    "prefix": "uk",
+    "slug": "uk-application-registration-card-passport-size-photo",
+    "title": "UK Application Registration Card (ARC) Photo: Size & Requirements 2026",
+    "date": "2026-08-18"
+  },
+  {
+    "prefix": "ca",
+    "slug": "canada-passport-photo-requirements",
+    "title": "Canada Passport Photo: Size, Requirements & Guidelines 2026",
+    "date": "2026-08-19"
+  },
+  {
+    "prefix": "de/guides",
+    "slug": "biometrisches-passbild-alle-anforderungen",
+    "title": "Biometrisches Passbild: Format, Aufnahme und sichtbare Bildfehler",
+    "date": "2026-08-16",
+    "updatedAt": "2026-10-06"
+  },
+  {
+    "prefix": "de/guides",
+    "slug": "biometrisches-passfoto-anforderungen-deutschland",
+    "title": "Passfoto in Deutschland: digitale Erfassung und Abgabe beim Bürgeramt",
+    "date": "2026-08-07",
+    "updatedAt": "2026-10-06"
+  }
+]

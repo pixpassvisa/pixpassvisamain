@@ -3,7 +3,15 @@ import { getPublicPages } from "@/lib/public-pages";
 import { directoryGroups } from "@/lib/page-directory";
 
 export default async function PageDirectory({ expanded = false }: { expanded?: boolean }) {
-  const pages = await getPublicPages();
+  let pages: Awaited<ReturnType<typeof getPublicPages>>;
+  try {
+    pages = await getPublicPages();
+  } catch {
+    // Navigation is optional content: a CMS/data failure must never abort a
+    // customer's preview or checkout through the root layout.
+    console.error('[page-directory] Navigation unavailable');
+    return <nav aria-label="Photo guides"><Link href="/passport-photos">Passport guides</Link>{' · '}<Link href="/visa-photo">Visa guides</Link>{' · '}<Link href="/site-map">All pages</Link></nav>;
+  }
   return <nav className="page-directory" aria-label={expanded ? "All website pages" : "Footer page directory"}>
     {directoryGroups.map(group => {
       const entries = pages.filter(page => page.group === group).sort((a, b) => a.title.localeCompare(b.title));
