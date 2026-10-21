@@ -370,7 +370,7 @@ function OrderPanel({
                 <p className="pt-2 text-center text-xs text-slate-500">One payment. Your digital photo and print sheet are available after payment.</p>
                 <TrustBadges from={from} spec={spec} documentType={documentType} />
 
-                <div className="flex justify-center pt-1">
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
                   <a
                     href="https://razorpay.com/"
                     target="_blank"
@@ -383,7 +383,21 @@ function OrderPanel({
                       alt="Razorpay | Payment Gateway | Neobank"
                     />
                   </a>
+                  <span
+                    className="inline-flex h-10 items-center justify-center rounded-md border border-slate-200 bg-white px-3"
+                  >
+                    <img
+                      src="/paypal-logo.png"
+                      width={100}
+                      height={26}
+                      alt="PayPal accepted for international customers"
+                    />
+                  </span>
                 </div>
+                <p className="pt-2 text-center text-xs leading-relaxed text-slate-500">
+                  International customers: choose Wallet → PayPal in checkout.
+                  Only PayPal accounts issued outside India are accepted.
+                </p>
               </div>
             </div>
           ) : (
