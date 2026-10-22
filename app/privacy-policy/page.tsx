@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
       <section className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
           <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900">Privacy Policy</h1>
-          <p className="mt-3 text-gray-500">Last updated: October 7, 2026</p>
+          <p className="mt-3 text-gray-500">Last updated: October 22, 2026</p>
         </div>
       </section>
 
@@ -49,8 +49,10 @@ export default function PrivacyPolicyPage() {
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li>Payment processing is handled by our third-party payment processor</li>
                 <li>We never store credit card numbers or full payment details on our servers</li>
-                <li>We receive only a transaction confirmation and payment status</li>
+                <li>We receive gateway order and payment references, payment status, and available technical failure codes</li>
               </ul>
+              <h3 className="text-base font-semibold text-slate-900 mt-4 mb-2">Checkout diagnostics and support</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">We record checkout stages, your receipt email, gateway references, and available technical error codes to investigate payment problems. Contact requests contain your email, selected issue, optional reference, and message. These diagnostic and support records are scheduled for deletion after 90 days; database cleanup may not be immediate. Permanent order and payment records are separate. Support notifications are sent through Resend. Cloudflare Turnstile checks contact submissions for automated abuse. Short-lived, keyed hashes of network addresses and email addresses enforce submission limits; raw IP addresses are not stored in these rate-limit records. Do not submit card details, passwords, or OTPs.</p>
               <h3 className="text-base font-semibold text-slate-900 mt-4 mb-2">Usage Data</h3>
               <ul className="list-disc pl-5 space-y-1 text-sm text-gray-600">
                 <li>Browser type, device type, and operating system</li>

@@ -1,4 +1,5 @@
 "use client";
+import PaymentHelp from "@/app/components/PaymentHelp";
 
 import { useSession } from "next-auth/react";
 import { useState, useEffect, useMemo, useCallback, startTransition, memo } from "react";
@@ -1016,7 +1017,7 @@ export default function PreviewClient({
 
   const passCount = checks.filter((c) => c.status === "PASS").length;
 
-  const { loading, phase, error: paymentError, handlePayment } = usePayment({
+  const { loading, phase, error: paymentError, reference: paymentReference, handlePayment } = usePayment({
     photoId,
     localPrice: isExpertPlan ? expertPrice : localPrice,
     isExpert: isExpertPlan,
@@ -1135,6 +1136,7 @@ export default function PreviewClient({
                 <p className="font-semibold text-slate-900">{phase === "verifying" ? "Confirming payment and unlocking your downloads…" : phase === "opening" ? "Preparing your secure checkout…" : phase === "checkout" ? "Complete your payment in Razorpay" : "Payment update"}</p>
               </div>
               {paymentError && <p className="mt-2 text-sm text-slate-700 break-words">{paymentError}</p>}
+              {paymentError && <PaymentHelp reference={paymentReference} />}
               {phase === "pending" && <button disabled={loading} onClick={() => handlePayment()} className="mt-3 rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white disabled:opacity-50">Check payment status</button>}
             </div>
           )}

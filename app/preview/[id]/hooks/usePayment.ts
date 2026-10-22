@@ -1,3 +1,4 @@
+import { startCheckoutAttempt, reportCheckout, paymentGuidance, type AttemptReceipt } from "@/lib/checkout-client";
 import { useState, useRef, useEffect } from "react";
 
 export interface LocalPrice {
@@ -31,7 +32,10 @@ export function usePayment({
   const [loading, setLoading] = useState(false);
   const [phase, setPhase] = useState("idle");
   const [error, setError] = useState("");
+  const [reference, setReference] = useState("");
+  const attempt = useRef<AttemptReceipt | null>(null);
   const busy = useRef(false);
+  const completed = useRef(false);
   const receipt = useRef<any>(null);
   const storageKey = `pixpassvisa:payment:${photoId}`;
 
@@ -51,12 +55,14 @@ export function usePayment({
       });
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error(data.error || "Verification unavailable");
+      completed.current = true;
       onSuccess?.(data);
       setHasPaid(true);
       receipt.current = null;
       try { sessionStorage.removeItem(storageKey); } catch {}
       setPhase("success");
     } catch {
+      void reportCheckout(attempt.current, "verification_pending");
       setPhase("pending");
       setError("Your payment confirmation needs another check. Please do not pay again. Retry verification below, or contact support with your payment ID: " + response.razorpay_payment_id);
     } finally {
@@ -89,15 +95,20 @@ export function usePayment({
     });
 
   const handlePayment = async (overrideEmail?: string, expertOverride?: boolean) => {
-    if (busy.current) return;
+    if (busy.current || completed.current) return;
     if (receipt.current) return verifyPayment(receipt.current);
     busy.current = true;
     setLoading(true);
     setPhase("opening");
     setError("");
+    let sdkFailed = false;
     const emailToUse = (overrideEmail !== undefined ? overrideEmail : guestEmail) || "";
     try {
+      attempt.current = await startCheckoutAttempt({ photoId, email: session?.user?.email || emailToUse });
+      setReference(attempt.current.reference);
       if (!(await initializeRazorpay())) {
+        sdkFailed = true;
+        void reportCheckout(attempt.current, "sdk_failed");
         throw new Error("Checkout could not load. Check your connection and try again.");
       }
       // Capture GA4 Client ID
@@ -127,6 +138,7 @@ export function usePayment({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
+          ...attempt.current,
           photoId,
           currencyOverride: localPrice?.currency || "USD",
           isExpert: expertOverride ?? isExpert,
@@ -166,10 +178,12 @@ export function usePayment({
         modal: {
           confirm_close: true,
           ondismiss: () => {
-            if (receipt.current) return;
+            if (receipt.current || completed.current) return;
             busy.current = false;
             setLoading(false);
+            void reportCheckout(attempt.current, "checkout_closed");
             setPhase("idle");
+            setError(previous => previous || "Checkout closed without confirmation. If money was debited, contact support before paying again.");
           },
         },
         prefill: {
@@ -178,13 +192,15 @@ export function usePayment({
         },
       });
 
-      razorpayInstance.on("payment.failed", () => {
-        setError("Payment was not completed. You can retry in the secure checkout or close it to return here.");
+      razorpayInstance.on("payment.failed", (response: any) => {
+        void reportCheckout(attempt.current, "client_payment_failed", response.error);
+        setError(paymentGuidance(response.error?.reason));
       });
       setPhase("checkout");
       razorpayInstance.open();
+      void reportCheckout(attempt.current, "checkout_opened");
     } catch (err: any) {
-      console.error("Payment initiation error:", err);
+      if (!sdkFailed) void reportCheckout(attempt.current, "request_failed");
       setError(err?.message || "Failed to initiate payment");
       setPhase("idle");
       busy.current = false;
@@ -192,5 +208,5 @@ export function usePayment({
     }
   };
 
-  return { loading, phase, error, handlePayment };
+  return { loading, phase, error, reference, handlePayment };
 }

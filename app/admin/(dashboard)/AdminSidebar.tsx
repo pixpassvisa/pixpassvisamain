@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AdminLogoutButton from "./AdminLogoutButton";
 import { 
-  BarChart3, 
+  BarChart3,
+  CreditCard,
   Package, 
   ShieldCheck, 
   FileText, 
@@ -19,6 +20,8 @@ import {
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Analytics Overview", icon: BarChart3 },
+  { href: "/admin/payment-attempts", label: "Payment Attempts", icon: CreditCard },
+  { href: "/admin/support", label: "Support Inbox", icon: MessageSquare },
   { href: "/admin/orders", label: "Permanent Orders", icon: Package },
   { href: "/admin/audit-events", label: "Audit Events Log", icon: ShieldCheck },
   { href: "/admin/blogs", label: "Manage Blogs", icon: FileText },

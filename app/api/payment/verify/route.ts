@@ -1,3 +1,4 @@
+import { gatewayAttempt } from "@/lib/checkout-diagnostics";
 import { after, NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
@@ -103,6 +104,8 @@ export async function POST(req: Request) {
         return NextResponse.json({ error: "Unauthorized photo access" }, { status: 403 });
       }
     }
+
+    await gatewayAttempt(razorpay_order_id, "verified", { outcome: "captured", gatewayPaymentId: razorpay_payment_id }).catch(() => { console.error("Checkout diagnostics update failed after signed verification"); });
 
     const alreadyPaid = photo.status === "paid";
     photo.status = "paid";

@@ -1,3 +1,4 @@
+import { gatewayAttempt, safeError } from "@/lib/checkout-diagnostics";
 import { NextResponse } from "next/server";
 import crypto from "crypto";
 import dbConnect from "@/lib/mongodb";
@@ -44,6 +45,22 @@ export async function POST(req: Request) {
 
     const event = JSON.parse(rawBody);
 
+    const diagnosticPayment = event.payload?.payment?.entity;
+    if (diagnosticPayment?.order_id && ["payment.failed", "payment.captured", "order.paid"].includes(event.event)) {
+      const failed = event.event === "payment.failed";
+      await gatewayAttempt(diagnosticPayment.order_id, failed ? "gateway_failed" : "captured", {
+        outcome: failed ? "failed" : "captured", gatewayPaymentId: diagnosticPayment.id,
+        ...(failed ? { error: safeError(diagnosticPayment) } : {}),
+      });
+      if (!failed) {
+        await Payment.updateOne({ gatewayOrderId: diagnosticPayment.order_id, status: { $nin: ["refunded", "partially_refunded"] } }, { $set: { status: "captured", gatewayPaymentId: diagnosticPayment.id } });
+        await Order.updateOne({ "metadata.razorpayOrderId": diagnosticPayment.order_id, status: { $in: ["pending", "failed"] } }, { $set: { status: "paid" } });
+      }
+      if (failed) {
+        await Payment.updateOne({ gatewayOrderId: diagnosticPayment.order_id, status: { $nin: ["captured", "refunded", "partially_refunded"] } }, { $set: { status: "failed", gatewayPaymentId: diagnosticPayment.id, "metadata.failure": safeError(diagnosticPayment) } });
+        await Order.updateOne({ "metadata.razorpayOrderId": diagnosticPayment.order_id, status: "pending" }, { $set: { status: "failed" } });
+      }
+    }
     // Handle payment.captured or order.paid
     // Razorpay often sends order.paid which contains order and payment entities
     if (event.event === "order.paid" || event.event === "payment.captured") {
@@ -63,13 +80,10 @@ export async function POST(req: Request) {
           const userEmail = (photo as any).guestEmail || paymentEntity.email;
 
           // Update or create permanent Order record
-          let permanentOrder = photo.orderId ? await Order.findById(photo.orderId) : null;
+          let permanentOrder = await Order.findOne({ "metadata.razorpayOrderId": paymentEntity.order_id });
           if (!permanentOrder) {
             permanentOrder = await Order.findOne({
-              $or: [
-                { "metadata.razorpayOrderId": paymentEntity.order_id },
-                { photoId: photo._id },
-              ],
+              "metadata.razorpayOrderId": paymentEntity.order_id,
             });
           }
 
@@ -421,7 +435,7 @@ export async function POST(req: Request) {
 
       if (photoId) {
         const photo = await Photo.findById(photoId);
-        if (photo && photo.status !== "paid") {
+        if (photo && photo.status !== "paid" && photo.status !== "payment_failed" && photo.razorpayOrderId === paymentEntity.order_id) {
           photo.status = "payment_failed";
           await photo.save();
 
@@ -433,14 +447,6 @@ export async function POST(req: Request) {
             const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://www.pixpassvisa.com';
             const previewLink = `${appUrl}/preview/${photoId}`;
             const previewImageUrl = photo.secureUrl || photo.previewUrl || '';
-
-            // Update permanent Order & Payment status
-            if (photo.orderId) {
-              await Order.findByIdAndUpdate(photo.orderId, { status: "failed" });
-            }
-            if (paymentEntity.order_id) {
-              await Payment.findOneAndUpdate({ gatewayOrderId: paymentEntity.order_id }, { status: "failed" });
-            }
 
             try {
               await sendEmail({

@@ -1,12 +1,19 @@
 "use client";
+import PaymentHelp from "@/app/components/PaymentHelp";
+import { startCheckoutAttempt, reportCheckout, paymentGuidance, type AttemptReceipt } from "@/lib/checkout-client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import PriceDisplay from "@/app/components/PriceDisplay";
 import { getClientTimezoneCurrency } from "@/lib/currency";
 import { useRouter } from "next/navigation";
 import { Lock, CreditCard, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export default function ExpertEditPage() {
+  const attempt = useRef<AttemptReceipt | null>(null);
+  const busy = useRef(false);
+  const paymentReceived = useRef(false);
+  const [reference, setReference] = useState("");
+  const [pendingReceipt, setPendingReceipt] = useState<any>(null);
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [photos, setPhotos] = useState<File[]>([]);
@@ -41,25 +48,53 @@ export default function ExpertEditPage() {
 
   const initializeRazorpay = () => {
     return new Promise((resolve) => {
+      if ((window as any).Razorpay) { resolve(true); return; }
       const script = document.createElement("script");
       script.src = "https://checkout.razorpay.com/v1/checkout.js";
-      script.onload = () => resolve(true);
-      script.onerror = () => resolve(false);
+      const timer = setTimeout(() => { script.remove(); resolve(false); }, 15000);
+      script.onload = () => { clearTimeout(timer); resolve(true); };
+      script.onerror = () => { clearTimeout(timer); script.remove(); resolve(false); };
       document.body.appendChild(script);
     });
   };
 
+  const verifyExpert = async (receipt: any) => {
+    paymentReceived.current = true;
+    busy.current = true; setLoading(true); setPendingReceipt(receipt);
+    try { sessionStorage.setItem("pixpassvisa:expert:pending", JSON.stringify(receipt)); } catch {}
+    try {
+      const res = await fetch("/api/expert-edit/verify", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(receipt), signal: AbortSignal.timeout(30000) });
+      const result = await res.json();
+      if (!res.ok || !result.success) throw new Error("Confirmation unavailable");
+      setIsSuccess(true); setPendingReceipt(null);
+      try { sessionStorage.removeItem("pixpassvisa:expert:pending"); } catch {}
+    } catch {
+      void reportCheckout(attempt.current, "verification_pending");
+      setMessage("Payment confirmation is pending. Do not pay again. Check its status below or contact support with payment ID " + receipt.razorpay_payment_id);
+    } finally { busy.current = false; setLoading(false); }
+  };
+  useEffect(() => {
+    try { const saved = sessionStorage.getItem("pixpassvisa:expert:pending"); if (saved) { setPendingReceipt(JSON.parse(saved)); setMessage("A previous payment needs confirmation. Check payment status before trying again."); } } catch {}
+  }, []);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (busy.current) return;
+    if (pendingReceipt) { await verifyExpert(pendingReceipt); return; }
     if (!email) return alert("Please enter your email");
     if (photos.length === 0) return alert("Please upload at least 1 photo");
 
+    busy.current = true;
     setLoading(true);
     setMessage("Uploading photos and preparing order...");
 
     try {
+      paymentReceived.current = false;
+      attempt.current = await startCheckoutAttempt({ kind: "expert", email });
+      setReference(attempt.current.reference);
       const isRazorpayLoaded = await initializeRazorpay();
       if (!isRazorpayLoaded) {
+        void reportCheckout(attempt.current, "sdk_failed");
         throw new Error("Razorpay SDK failed to load. Are you online?");
       }
 
@@ -83,6 +118,8 @@ export default function ExpertEditPage() {
 
       // Prepare FormData
       const formData = new FormData();
+      formData.append("reference", attempt.current.reference);
+      formData.append("token", attempt.current.token);
       formData.append("email", email);
       formData.append("currencyOverride", getClientTimezoneCurrency());
       formData.append("gaClientId", gaClientId); // Pass it here
@@ -107,27 +144,13 @@ export default function ExpertEditPage() {
         description: "Expert manual editing for guaranteed compliance. 100% Guaranteed Approval.",
         // Use the logo and styling saved in the merchant's Razorpay dashboard.
         order_id: data.orderId,
-        handler: async function (response: any) {
-          setMessage("Verifying payment...");
-          const verifyRes = await fetch("/api/expert-edit/verify", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              razorpay_payment_id: response.razorpay_payment_id,
-              razorpay_order_id: response.razorpay_order_id,
-              razorpay_signature: response.razorpay_signature,
-              expertOrderId: data.expertOrderId,
-            }),
-          });
-
-          if (verifyRes.ok) {
-            setIsSuccess(true);
-            setMessage("Payment successful! Our team will process your photos shortly.");
-          } else {
-            alert("Payment verification failed. Please contact support.");
-            setLoading(false);
-          }
-        },
+        handler: (response: any) => { void verifyExpert({ ...response, expertOrderId: data.expertOrderId }); },
+        modal: { confirm_close: true, ondismiss: () => {
+          if (paymentReceived.current) return;
+          busy.current = false; setLoading(false);
+          void reportCheckout(attempt.current, "checkout_closed");
+          setMessage("Checkout closed. If you were charged, contact support before paying again.");
+        } },
         prefill: {
           email: email,
         },
@@ -136,15 +159,14 @@ export default function ExpertEditPage() {
       // @ts-ignore
       const rzp = new window.Razorpay(options);
       rzp.on("payment.failed", function (response: any) {
-        alert("Payment failed: " + response.error.description);
-        setLoading(false);
-        setMessage("");
+        void reportCheckout(attempt.current, "client_payment_failed", response.error);
+        setMessage(paymentGuidance(response.error?.reason));
       });
       rzp.open();
+      void reportCheckout(attempt.current, "checkout_opened");
     } catch (err: any) {
-      alert(err.message || "An error occurred");
-      setLoading(false);
-      setMessage("");
+      busy.current = false; setLoading(false);
+      setMessage(err.message || "Checkout could not start. Please contact support.");
     }
   };
 
@@ -175,6 +197,11 @@ export default function ExpertEditPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-12 px-4 sm:px-6">
+      <div className="mx-auto max-w-3xl px-4 pt-6">
+        {message && <p role="status" className="rounded-xl border border-blue-200 bg-blue-50 p-4 text-sm">{message}</p>}
+        {pendingReceipt && <button type="button" disabled={loading} onClick={() => verifyExpert(pendingReceipt)} className="mt-3 rounded-xl bg-blue-700 px-5 py-3 font-semibold text-white">Check payment status</button>}
+        <PaymentHelp reference={reference} />
+      </div>
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-10">
           <h1 className="text-3xl font-black text-slate-900 tracking-tight sm:text-4xl">Expert Manual Edit</h1>

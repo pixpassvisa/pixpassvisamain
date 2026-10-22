@@ -1,3 +1,4 @@
+import { gatewayAttempt } from "@/lib/checkout-diagnostics";
 import { after, NextResponse } from "next/server";
 import crypto from "crypto";
 import dbConnect from "@/lib/mongodb";
@@ -44,7 +45,7 @@ export async function POST(req: Request) {
     }
 
     // Verify order linkage
-    if (order.razorpayOrderId && order.razorpayOrderId !== razorpay_order_id) {
+    if (!order.razorpayOrderId || order.razorpayOrderId !== razorpay_order_id) {
       return NextResponse.json({ error: "Payment does not match this expert order" }, { status: 400 });
     }
 
@@ -56,6 +57,8 @@ export async function POST(req: Request) {
     if (existingOrderWithPayment) {
       return NextResponse.json({ error: "This payment has already been redeemed" }, { status: 400 });
     }
+
+    await gatewayAttempt(razorpay_order_id, "verified", { outcome: "captured", gatewayPaymentId: razorpay_payment_id }).catch(() => { console.error("Checkout diagnostics update failed after signed verification"); });
 
     // Idempotency check: if already paid (e.g., via webhook), skip sending emails again
     if (order.status === "paid") {

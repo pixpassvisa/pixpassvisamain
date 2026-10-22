@@ -6,6 +6,7 @@ interface SendMailOptions {
   text?: string;
   html?: string;
   bcc?: string | string[];
+  replyTo?: string;
 }
 
 // Validate required environment variables at module load (server-side only)
@@ -34,7 +35,7 @@ export const sendEmail = async (options: SendMailOptions) => {
       from: fromEmail,
       to: options.to,
       subject: options.subject,
-      ...(replyTo ? { replyTo } : {}),
+      ...((options.replyTo || replyTo) ? { replyTo: options.replyTo || replyTo } : {}),
     };
 
     if (options.bcc) {

@@ -1,3 +1,5 @@
+import { beginGatewayOrder, recordAttempt, safeError } from "@/lib/checkout-diagnostics";
+import { normalizedEmail } from "@/lib/request-protection";
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
@@ -8,24 +10,14 @@ import Order from "@/models/Order";
 import Payment from "@/models/Payment";
 
 export async function POST(req: Request) {
+  let reference = "";
   try {
     const razorpayKeyId = process.env.RAZORPAY_KEY_ID || process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
     const razorpayKeySecret = process.env.RAZORPAY_KEY_SECRET;
     
-    if (!razorpayKeyId || !razorpayKeySecret) {
-      console.error("Missing Razorpay Keys");
-      return NextResponse.json({ error: "Server configuration error: Missing payment keys" }, { status: 500 });
-    }
-
-    const razorpay = new Razorpay({
-      key_id: razorpayKeyId,
-      key_secret: razorpayKeySecret,
-    });
-
-
     const session = await getServerSession(authOptions);
 
-    const { photoId, currencyOverride, isExpert, guestEmail, gaClientId } = await req.json();
+    const { photoId, currencyOverride, isExpert, guestEmail, gaClientId, reference: attemptReference, token: attemptToken } = await req.json();
 
     if (!photoId) {
       return NextResponse.json({ error: "Missing photoId" }, { status: 400 });
@@ -46,6 +38,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Photo is already paid for" }, { status: 400 });
     }
 
+    const customerEmail = normalizedEmail(session?.user?.email || guestEmail);
+    if (!customerEmail) return NextResponse.json({ error: "Enter a valid receipt email." }, { status: 400 });
+    reference = await beginGatewayOrder(attemptReference, attemptToken, { kind: "photo", photoId: photo._id.toString(), email: customerEmail, documentType: photo.documentType });
+    if (!razorpayKeyId || !razorpayKeySecret) throw { error: { code: "CONFIGURATION_ERROR", reason: "payment_keys_missing" } };
+    const razorpay = new Razorpay({ key_id: razorpayKeyId, key_secret: razorpayKeySecret });
     const { getSpecById } = await import("@/lib/specs");
     const spec = getSpecById(photo.documentType);
     const basePrice = isExpert ? 6.99 : (spec?.price || 4.99);
@@ -72,6 +69,7 @@ export async function POST(req: Request) {
       receipt: `receipt_${photoId}`,
       notes: {
         photoId,
+        checkoutReference: reference,
         ...((session?.user as any)?.id ? { userId: (session?.user as any).id } : {}),
         ...(guestEmail ? { guestEmail } : {}),
         ...(gaClientId ? { gaClientId } : {}),
@@ -80,7 +78,7 @@ export async function POST(req: Request) {
 
     const order = await razorpay.orders.create(options);
 
-    const customerEmail = (session?.user?.email || guestEmail || "").trim();
+    await recordAttempt(reference, "order_created", "server", { gatewayOrderId: order.id, amount: amount / amountUnit, currency, gatewayMode: razorpayKeyId.startsWith("rzp_live_") ? "live" : "test" });
 
     // Create permanent Order record
     const permanentOrder = await Order.create({
@@ -131,15 +129,17 @@ export async function POST(req: Request) {
     await photo.save();
 
     return NextResponse.json({
+      reference,
       keyId: razorpayKeyId,
       orderId: order.id,
       amount: order.amount,
       currency: order.currency,
     });
   } catch (error: any) {
-    console.error("Payment Order Error:", error);
+    console.error("Payment order could not be prepared");
+    if (reference) await recordAttempt(reference, "order_error", "server", { error: safeError(error) }).catch(() => {});
     return NextResponse.json(
-      { error: "Failed to create payment order" },
+      { error: "Checkout could not be prepared. Please contact support@pixpassvisa.com with the reference below.", reference },
       { status: 500 }
     );
   }
