@@ -1,3 +1,4 @@
+import SupportCard from "./SupportCard";
 import HomeNextSteps from "./HomeNextSteps";
 import Link from "next/link";
 import { ArrowUpRight, Upload, ScanFace, Download, Globe2, Check, FileImage, Printer } from "lucide-react";
@@ -16,6 +17,7 @@ export default function HomeSections({ basePrice = 4.99 }: { basePrice?: number;
   return <div className="studio-sections">
     <div className="studio-format-strip"><div className="studio-wrap"><span>ONE PHOTO. MANY POSSIBILITIES.</span><span><FileImage size={19} /> Digital photo</span><span><Printer size={19} /> Printable sheet</span><span><Globe2 size={19} /> Country-specific formats</span></div></div>
     <HomeNextSteps />
+    <SupportCard />
     <HomeProofSections />
     <section className="studio-wrap studio-section" id="how-it-works"><div className="studio-section-heading"><div><p className="studio-eyebrow">FROM YOUR CAMERA TO YOUR APPLICATION</p><h2>Three steps.<br />One less to-do.</h2></div><p>Keep the original. Review the details.<br />Download when you’re happy.</p></div>
     <div className="studio-steps">{[

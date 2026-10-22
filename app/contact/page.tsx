@@ -29,13 +29,13 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-slate-50 py-12">
+      <section id="contact-form" className="bg-slate-50 py-12 scroll-mt-36">
         <div className="mx-auto grid max-w-5xl gap-8 px-4 lg:grid-cols-[1fr_1.4fr]">
-          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-700">We’re here to help</p><h2 className="mt-3 text-3xl font-bold text-slate-900">Let’s get you unstuck.</h2>
+          <div><p className="text-xs font-bold uppercase tracking-widest text-blue-700">24/7 email support</p><h2 className="mt-3 text-3xl font-bold text-slate-900">Let’s get you unstuck.</h2>
           <p className="mt-4 text-slate-600">If you were charged, please don’t pay again until we’ve checked. Include your reference so we can find the right attempt.</p>
           <a href="mailto:support@pixpassvisa.com" className="mt-5 block break-all font-semibold text-blue-700 underline">support@pixpassvisa.com</a>
           <div className="mt-8 rounded-xl border border-slate-200 bg-white p-5 text-sm text-slate-600"><h3 className="font-bold text-slate-900">Before you send</h3><ul className="mt-3 list-disc space-y-3 pl-5"><li>Checkout won’t open? Check your connection and try refreshing.</li><li>Payment declined? Read the gateway message and check the chosen method.</li><li>Charged without a download? Keep the payment ID and contact us.</li></ul><p className="mt-4">Never send card numbers, CVVs, passwords, or OTPs.</p></div></div>
-          <ContactForm />
+          <div><p className="mb-4 text-sm text-slate-600">Send a message any time, day or night. Response times may vary.</p><ContactForm /></div>
         </div>
       </section>
       <section className="py-12 lg:py-16">
