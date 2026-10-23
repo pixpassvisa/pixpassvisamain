@@ -3,6 +3,7 @@ import type { CountryPhotoGuide } from '@/lib/priority-country-guides';
 import { COUNTRY_GUIDE_DATE, COUNTRY_DEMO_IMAGE, priorityCountryGuides } from '@/lib/priority-country-guides';
 import CountryPhotoComparison from './CountryPhotoComparison';
 import PriceDisplay from './PriceDisplay';
+import CountryServiceOptions from './CountryServiceOptions';
 import styles from './PriorityCountryGuide.module.css';
 
 export default function PriorityCountryGuide({guide,slug}:{guide:CountryPhotoGuide;slug:string}) {
@@ -26,6 +27,7 @@ export default function PriorityCountryGuide({guide,slug}:{guide:CountryPhotoGui
         </div>
         <CountryPhotoComparison />
       </header>
+      {(guide.code === 'US' || guide.code === 'UK') && <CountryServiceOptions country={guide.code} />}
       <section className={styles.answer} aria-labelledby="quick-answer"><p className={styles.eyebrow}>THE SHORT ANSWER</p><h2 id="quick-answer">What does a {guide.country} passport photo need?</h2><p>{guide.answer}</p><a href={guide.sources[0].url}>Read the official requirements ↗</a></section>
       <dl className={styles.facts}>{guide.facts.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
       <section id="photo-size" className={styles.dimensions}>

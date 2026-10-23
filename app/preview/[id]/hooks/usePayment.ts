@@ -1,5 +1,6 @@
 import { startCheckoutAttempt, reportCheckout, paymentGuidance, type AttemptReceipt } from "@/lib/checkout-client";
 import { useState, useRef, useEffect } from "react";
+import { trackAcquisitionEvent } from "@/lib/acquisition-events";
 
 export interface LocalPrice {
   currency: string;
@@ -198,6 +199,7 @@ export function usePayment({
       });
       setPhase("checkout");
       razorpayInstance.open();
+      trackAcquisitionEvent("begin_checkout");
       void reportCheckout(attempt.current, "checkout_opened");
     } catch (err: any) {
       if (!sdkFailed) void reportCheckout(attempt.current, "request_failed");

@@ -6,6 +6,7 @@ import PriceDisplay from "@/app/components/PriceDisplay";
 import PhotoPolicyNote from "@/app/components/PhotoPolicyNote";
 import { takeCheckerPhoto } from "@/lib/checker-handoff";
 import { trackCheckerEvent } from "@/lib/checker-events";
+import { trackAcquisitionEvent } from "@/lib/acquisition-events";
 import { compressImage } from "@/lib/compressImage";
 import { countryMapping } from "@/lib/external-api";
 import { documentTypes } from "./constants";
@@ -71,7 +72,10 @@ function ToolForm() {
       if (image.naturalWidth < 300 || image.naturalHeight < 300) throw new Error("Choose an original image at least 300 × 300 pixels.");
       const compressed = await compressImage(photo);
       if (compressed.size > 3 * 1024 * 1024) throw new Error("This image is too large to upload. Export a smaller JPG and try again.");
-      if (current === generation.current) setFile(compressed);
+      if (current === generation.current) {
+        setFile(compressed);
+        trackAcquisitionEvent("photo_selected", activeDoc.id);
+      }
     } catch (err) {
       if (current === generation.current) setError(err instanceof Error && err.name !== "EncodingError" ? err.message : "We couldn’t read this image. Try exporting it as a new JPG.");
     } finally {
@@ -91,6 +95,7 @@ function ToolForm() {
     const timeout = setTimeout(() => controller.abort(), 120000);
     const fromChecker = params.get("from") === "checker";
     if (fromChecker) trackCheckerEvent("checker_preview_started");
+    trackAcquisitionEvent("photo_processing_started", activeDoc.id);
     let opening = false;
     try {
       const slug = activeDoc.id.replace(/-passport$/, "").replace(/-visa$/, "").toLowerCase();
@@ -111,12 +116,14 @@ function ToolForm() {
       if (!result?.photoId || typeof result.photoId !== "string") throw new Error("The preview wasn’t returned. Please try again.");
       if (current !== generation.current) return;
       if (fromChecker) trackCheckerEvent("checker_preview_ready");
+      trackAcquisitionEvent("photo_preview_ready", activeDoc.id);
       opening = true;
       setPhase("opening");
       router.push(`/preview/${encodeURIComponent(result.photoId)}`);
     } catch (err) {
       if (current !== generation.current) return;
       if (fromChecker) trackCheckerEvent("checker_preview_failed");
+      trackAcquisitionEvent("photo_processing_failed", activeDoc.id);
       setError(controller.signal.aborted ? "Processing took too long. Your photo is still here; please try again." : err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       clearTimeout(timeout);

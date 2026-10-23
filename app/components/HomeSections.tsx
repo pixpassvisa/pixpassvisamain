@@ -10,8 +10,8 @@ const destinations = [
   { code: "US", country: "United States", detail: "Passport & visa photo guides", href: "/us-passport-photo-editor" },
   { code: "UK", country: "United Kingdom", detail: "Digital & printed photo guidance", href: "/uk-passport-size-photo-maker" },
   { code: "AU", country: "Australia", detail: "Check your passport photo", href: "/australian-passport-photo-checker" },
-  { code: "DE", country: "Germany", detail: "Digital capture and document guidance", href: "/passport-photo-country-guide#germany" },
-  { code: "FR", country: "France", detail: "Approved capture and photo guidance", href: "/passport-photo-country-guide#france" },
+  { code: "DE", country: "Germany", detail: "Digital capture and document guidance", href: "/germany-passport-photo-editor" },
+  { code: "FR", country: "France", detail: "Approved capture and photo guidance", href: "/france-passport-photo-editor" },
 ];
 export default function HomeSections({ basePrice = 4.99 }: { basePrice?: number; [key: string]: unknown }) {
   return <div className="studio-sections">

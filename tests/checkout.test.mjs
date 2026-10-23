@@ -10,6 +10,7 @@ function load(file, mocks, globals = {}) {
   const { outputText } = ts.transpileModule(source, { compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true } });
   const exports = {};
   vm.runInNewContext(outputText, { exports, require: (id) => {
+    if (id === '@/lib/acquisition-events' && !(id in mocks)) return { trackAcquisitionEvent: () => {} };
     if (id === '@/lib/checkout-diagnostics' && !(id in mocks)) return { gatewayAttempt: async () => {}, beginGatewayOrder: async () => 'CHK-TEST', recordAttempt: async () => {}, safeError: () => ({}) };
     if (id === '@/lib/request-protection' && !(id in mocks)) return { normalizedEmail: v => String(v || '').trim().toLowerCase() };
     if (id === '@/lib/checkout-client' && !(id in mocks)) return { startCheckoutAttempt: async () => ({ reference: 'CHK-TEST', token: 'test-token' }), reportCheckout: async () => {}, paymentGuidance: () => 'Payment failed' };

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import UKDocumentClient from "./UKDocumentClient";
+import CountryServiceOptions from '@/app/components/CountryServiceOptions';
 import UKPassportGuide, { UKPassportIntro } from "./UKPassportGuide";
 import { ukPassportFaqs } from "@/lib/uk-passport-content";
 
@@ -18,5 +19,5 @@ export default function UKPage() {
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: ukPassportFaqs.map(({q,a}) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixpassvisa.com/" }, { "@type": "ListItem", position: 2, name: "Passport photo guides", item: "https://www.pixpassvisa.com/passport-photos" }, { "@type": "ListItem", position: 3, name: "UK passport photo size", item: pageUrl }] },
   ];
-  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas).replace(/</g, "\\u003c") }} /><UKPassportIntro /><UKDocumentClient /><UKPassportGuide /></>;
+  return <><script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schemas).replace(/</g, "\\u003c") }} /><UKPassportIntro /><div className="mx-auto max-w-6xl px-4"><CountryServiceOptions country="UK" /></div><UKDocumentClient /><UKPassportGuide /></>;
 }

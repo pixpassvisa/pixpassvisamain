@@ -15,6 +15,7 @@ function load(file, mocks, globals = {}) {
   const exports = {};
   vm.runInNewContext(outputText, { exports, require: id => {
     if (id === 'react/jsx-runtime') return jsx;
+    if (id === '@/app/components/PaymentHelp') return { default: () => null };
     if (!(id in mocks)) throw new Error(`Unexpected dependency: ${id}`);
     return mocks[id];
   }, console, setTimeout, clearTimeout, AbortController, ...globals });
