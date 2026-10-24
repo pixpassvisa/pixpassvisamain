@@ -37,7 +37,7 @@ export const getPublicPages = cache(async () => {
     ["/visa-photo", "2026-10-08"],
     ["/passport-photo-checklist", "2026-10-08"],
   ]);
-  for (const slug of Object.keys(reviewedPhotoGuides)) dated.set(`/${slug}`, PHOTO_GUIDE_REVIEW_DATE);
+  for (const [slug, guide] of Object.entries(reviewedPhotoGuides)) dated.set(`/${slug}`, guide.reviewedAt || PHOTO_GUIDE_REVIEW_DATE);
   for (const [slug, guide] of Object.entries(priorityCountryGuides)) {
     paths.add(`/${slug}`);
     dated.set(`/${slug}`, COUNTRY_GUIDE_DATE);
@@ -56,6 +56,7 @@ export const getPublicPages = cache(async () => {
   for (const pathname of ["/passport-photo-sizes", "/passport-photo-online", "/faq", "/fr/passport-photo-online", "/de/passbild-online"]) dated.set(pathname, "2026-10-16");
   const retired = new Set(seoRedirects.map(route => route.source));
   for (const pathname of ['/', '/us-passport-photo-editor', '/uk-passport-photo-editor', '/uk-passport-size-photo-maker', '/australian-passport-photo-checker']) dated.set(pathname, '2026-10-23');
+  for (const pathname of ["/passport-photo-country-guide", "/visa-photo", "/us-passport-photo-editor"]) dated.set(pathname, "2026-10-24");
   return [...paths].filter(p => !isPrivatePath(p) && !retired.has(p)).sort().map(path => ({
     path,
     title: pageLabel(path, titles.get(path)),

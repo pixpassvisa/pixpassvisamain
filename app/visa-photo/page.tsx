@@ -71,8 +71,8 @@ export default function VisaDirectoryPage() {
             <div className="w-10 h-10 rounded-xl bg-emerald-100 flex items-center justify-center text-emerald-600 mb-3">
               <Camera className="w-5 h-5" />
             </div>
-            <span className="text-sm font-bold text-slate-900 group-hover:text-emerald-700 block mb-1">Create Photo Now</span>
-            <p className="text-xs text-slate-500">Upload & get a compliant visa photo instantly</p>
+            <span className="text-sm font-bold text-slate-900 group-hover:text-emerald-700 block mb-1">Preview Photo Options</span>
+            <p className="text-xs text-slate-500">Preview a configured visa photo preset</p>
           </Link>
           <Link href="/visa-photo-validator" className="group p-6 bg-purple-50/70 rounded-2xl border border-purple-100 hover:shadow-lg hover:border-purple-300 transition-all">
             <div className="w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center text-purple-600 mb-3">

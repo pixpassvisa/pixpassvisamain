@@ -28,6 +28,7 @@ export default function PriorityCountryGuide({guide,slug}:{guide:CountryPhotoGui
         <CountryPhotoComparison />
       </header>
       {(guide.code === 'US' || guide.code === 'UK') && <CountryServiceOptions country={guide.code} />}
+      {guide.code === 'US' && <p className="my-6 text-sm leading-7">Applying for a visa instead of a passport? <Link className="font-semibold underline" href="/us-visa-photo-editor">Read the US visa photo guide for DS-160 JPEG dimensions and file limits</Link>.</p>}
       <section className={styles.answer} aria-labelledby="quick-answer"><p className={styles.eyebrow}>THE SHORT ANSWER</p><h2 id="quick-answer">What does a {guide.country} passport photo need?</h2><p>{guide.answer}</p><a href={guide.sources[0].url}>Read the official requirements ↗</a></section>
       <dl className={styles.facts}>{guide.facts.map(([label,value])=><div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}</dl>
       <section id="photo-size" className={styles.dimensions}>

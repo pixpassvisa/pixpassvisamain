@@ -1,4 +1,6 @@
 export type ReviewedPhotoGuide = {
+  reviewedAt?: string;
+  primaryAction?: { label: string; href: string };
   country: string; document: 'passport' | 'visa'; title: string; description: string;
   heading: string; intro: string; image: string; imageAlt: string;
   facts: { label: string; value: string }[];
@@ -8,6 +10,26 @@ export type ReviewedPhotoGuide = {
 };
 export const PHOTO_GUIDE_REVIEW_DATE = '2026-10-14';
 export const reviewedPhotoGuides: Record<string, ReviewedPhotoGuide> = {
+  'us-visa-photo-editor': {
+    reviewedAt: '2026-10-24',
+    primaryAction: { label: 'Preview your US visa photo', href: '/passport-photo-online?type=us-visa' },
+    country: 'United States', document: 'visa',
+    title: 'US Visa Photo Editor: DS-160 Size & JPEG Requirements | PixPassVisa',
+    description: 'Prepare for a DS-160 photo upload: compare JPEG size, square dimensions and printed visa photos. Preview the US visa preset before buying a download.',
+    heading: 'US visa photo editor: prepare for your DS-160 upload',
+    intro: 'Applying from the UK, Australia, Germany or France? Choose the US visa requirements, not your local passport format. Start with your original photograph, check the upload instructions and preview the US visa preset before paying.',
+    image: '/images/example-portrait.webp', imageAlt: 'AI-generated illustrative portrait, not a submitted or accepted visa photo',
+    facts: [{label:'Digital dimensions',value:'600–1200 px square'},{label:'File format',value:'JPEG, sRGB colour'},{label:'Maximum file size',value:'240 kB'}],
+    sections: [
+      {heading:'DS-160 digital photo requirements', paragraphs:['The State Department specifies a square JPEG, from 600 × 600 to 1200 × 1200 pixels, in 24-bit sRGB colour. The file must be no larger than 240 kB, with compression no greater than 20:1. Check the saved file, not only the preview shown in an editor.'],source:0},
+      {heading:'Digital upload and 2 × 2 inch prints are different outputs',paragraphs:['For DS-160 applications, upload the digital photo with the form. The embassy or consulate may also request a print. Printed visa photos are 2 × 2 inches (51 × 51 mm); consult the instructions for your appointment.','Use a recent colour photograph taken within six months, against white or off-white, with a clear front-facing view. Do not digitally change your appearance. A correct file size does not establish that the photograph is acceptable.'],source:1},
+      {heading:'Check three separate problems before uploading',paragraphs:['First, inspect the original for blur, shadows and obstructed features. Second, check the exported JPEG properties for dimensions and file size. Third, compare the photograph with your application checklist. Solving a file-format error does not solve a capture problem.','Keep the original camera file separately from any prepared copy. If the preview changes your appearance or removes detail, retake the photograph. A successful upload is not a promise of visa approval.']},
+      {heading:'What you can preview and buy at PixPassVisa',paragraphs:['The preparation link below selects our US visa preset. Previewing is free. Standard downloads include a digital file and printable sheet; physical prints and delivery are not included. Review the displayed price and output before purchasing.','Our automated feedback is supplementary and does not certify DS-160 compliance. Check the downloaded file against the current portal requirements. If you already have a suitable finished photo and only need a sheet layout, use our free print-template tool instead.']},
+      {heading:'Applying for a US visa from abroad',paragraphs:['Your place of residence and payment currency do not select the document format. A UK resident applying for a US visa needs the US visa workflow; a US citizen renewing a US passport needs the separate passport guide.','The same distinction applies to visitors in Australia, Germany and France. Choose the destination and application type first. Checkout shows the available payment options; a displayed currency alone does not guarantee that your bank will authorise a payment.']},
+    ],
+    sources:[{label:'US Department of State: digital image requirements',url:'https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos/digital-image-requirements.html'},{label:'US Department of State: visa photo requirements',url:'https://travel.state.gov/content/travel/en/us-visas/visa-information-resources/photos.html'}],
+    next:[{label:'Preview the US visa preset',href:'/passport-photo-online?type=us-visa',description:'Free preview; standard downloads are US$4.99 in USD. Other currencies use the displayed local price.'},{label:'Free print-sheet layout',href:'/passport-photo-print-template-generator',description:'Arrange an already suitable photo for printing; physical printing is separate.'},{label:'US passport photo guide',href:'/us-passport-photo-editor',description:'Choose this separate workflow for a passport application or renewal.'},{label:'Refunds and support',href:'/refund-policy',description:'Read the terms before purchasing a prepared file.'}],
+  },
   'australia-passport-photo-editor': {
     country: 'Australia', document: 'passport', title: 'Australian Passport Photos: Size, Prints & Editing | PixPassVisa',
     description: 'Check Australian passport photo dimensions, print quality and editing restrictions. See how PixPassVisa photo checks differ from Passport Office approval.',
