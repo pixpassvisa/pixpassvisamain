@@ -71,7 +71,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
               <div className="flex flex-wrap items-center gap-3 mb-6">
                 <div className="inline-flex items-center space-x-2 bg-blue-50/70 border border-emerald-100 px-3 py-1 rounded-sm">
                   <span className="flex h-2 w-2 rounded-full bg-blue-600 animate-pulse"></span>
-                  <span className="text-sm font-semibold text-blue-700 tracking-wide uppercase">AI Compliance Check</span>
+                  <span className="text-sm font-semibold text-blue-700 tracking-wide uppercase">Photo preparation preview</span>
                 </div>
                 <Link
                   href={siblingLink.href}
@@ -86,7 +86,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
 
                         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-slate-900 leading-tight tracking-tight mb-3">
 
-                 {spec.country} {docName} Photo Editor Online 2026
+                 {spec.country} {docName} Photo Editor Online
               </h1>
 
               <p className="text-sm sm:text-base text-slate-600 leading-relaxed mb-7 max-w-lg">
@@ -114,7 +114,7 @@ export default function ProgrammaticLandingPage({ spec, slug }: Props) {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                {["Biometric Validation", "Background Removal", "Instant Download", "Print-Ready Sheets"].map((item, i) => (
+                {["Document presets", "Free preview", "Paid digital download", "Printable sheets"].map((item, i) => (
                   <div key={i} className="flex items-center space-x-2 text-sm text-slate-500 font-medium">
                     <svg className="w-5 h-5 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
                       <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />

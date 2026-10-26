@@ -15,7 +15,7 @@ export const reviewedPhotoGuides: Record<string, ReviewedPhotoGuide> = {
     primaryAction: { label: 'Preview your US visa photo', href: '/passport-photo-online?type=us-visa' },
     country: 'United States', document: 'visa',
     title: 'US Visa Photo Editor: DS-160 Size & JPEG Requirements | PixPassVisa',
-    description: 'Prepare for a DS-160 photo upload: compare JPEG size, square dimensions and printed visa photos. Preview the US visa preset before buying a download.',
+    description: 'Check your DS-160 photo file for free: JPEG format, square dimensions and file size. Read US visa photo rules and preview preparation before purchasing.',
     heading: 'US visa photo editor: prepare for your DS-160 upload',
     intro: 'Applying from the UK, Australia, Germany or France? Choose the US visa requirements, not your local passport format. Start with your original photograph, check the upload instructions and preview the US visa preset before paying.',
     image: '/images/example-portrait.webp', imageAlt: 'AI-generated illustrative portrait, not a submitted or accepted visa photo',

@@ -6,8 +6,8 @@ import { homeFaqs } from "@/lib/home-content";
 import "./home.css";
 
 export const metadata: Metadata = {
-  title: { absolute: "Passport & Visa Photo Maker Online | pixpassvisa.com" },
-  description: "Create passport and visa photos online. Check your photo for free, browse country requirements, and preview digital photos and print sheets before purchase.",
+  title: { absolute: "Passport & Visa Photo Maker — Free Preview | PixPassVisa" },
+  description: "Make passport and visa photos online with country-specific presets. Free checks and preview; paid digital downloads and print sheets. No subscription.",
   keywords: ["passport photo maker", "passport photo online", "visa photo maker", "visa photo online", "passport photo checker", "passport photo requirements", "passport photo size", "visa photo requirements by country", "passport photo background checker", "DS-160 photo", "DV lottery photo checker", "UK digital passport photo", "Schengen visa photo", "passport photo print template"],
   alternates: { canonical: "https://www.pixpassvisa.com/", languages: { en: "https://www.pixpassvisa.com/", fr: "https://www.pixpassvisa.com/fr", de: "https://www.pixpassvisa.com/de", "x-default": "https://www.pixpassvisa.com/" } },
 };

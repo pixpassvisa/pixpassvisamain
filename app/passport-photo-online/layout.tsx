@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Create Passport & Visa Photos Online – 50+ Countries",
+  title: "Passport Photo Maker Online — Preview Before You Pay",
   description:
-    "Select your country and document, upload a photo, and review a free preview. Purchase your digital photo and print sheet with one-time pricing.",
+    "Choose your document, upload a photo and preview the result for free. Buy a digital photo and printable sheet with one payment. No subscription.",
   
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-photo-online",

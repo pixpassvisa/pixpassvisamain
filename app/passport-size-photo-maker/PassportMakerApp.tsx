@@ -29,7 +29,7 @@ const TIPS = [
 
 const TRUST = [
   { icon: Lock, text: "Privacy policy available" },
-  { icon: CheckCircle2, text: "30+ checks" },
+  { icon: CheckCircle2, text: "Preview before purchase" },
   { icon: Globe, text: "Country-specific formats" },
 ];
 

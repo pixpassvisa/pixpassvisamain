@@ -24,9 +24,9 @@ import { ShieldCheck, FileCheck, Zap, Sparkles } from "lucide-react";
 
 // ─── Shared stat items ────────────────────────────────────────────────────────
 const STATS = [
-  { value: "100+", label: "Countries" },
-  { value: "30+", label: "Compliance checks" },
-  { value: "< 2 min", label: "Processing time" },
+  { value: "Choose", label: "Your document" },
+  { value: "Review", label: "Photo guidance" },
+  { value: "One-time", label: "Download payment" },
   { value: "Free", label: "Photo preview" },
 ];
 
@@ -34,7 +34,7 @@ const STATS = [
 const TRUST_ITEMS = [
   { icon: <ShieldCheck className="w-5 h-5 text-blue-600" />, title: "Privacy first", desc: "Read our storage and deletion policy" },
   { icon: <FileCheck className="w-5 h-5 text-blue-600" />, title: "Document guidance", desc: "Review your authority's photo rules" },
-  { icon: <Zap className="w-5 h-5 text-blue-600" />, title: "Instant result", desc: "AI processing in under 10 seconds" },
+  { icon: <Zap className="w-5 h-5 text-blue-600" />, title: "Preview first", desc: "Review the result before purchasing" },
   { icon: <Sparkles className="w-5 h-5 text-blue-600" />, title: "Free preview", desc: "Check before you pay anything" },
 ];
 
@@ -181,7 +181,7 @@ export default async function Page({ params }: PageProps) {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10 sm:py-14 text-center">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold mb-5">
                 <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
-                Official Standards · Free to try
+                Document presets · Free preview
               </div>
 
               {/* Stats grid */}
@@ -203,13 +203,13 @@ export default async function Page({ params }: PageProps) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <div className="text-center mb-8 sm:mb-12">
                 <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-50/70 border border-blue-200 text-blue-700 text-xs font-extrabold uppercase tracking-wider mb-3">
-                  Complete Biometric Guide
+                  Photo preparation guide
                 </span>
                 <h2 className="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
                   Detailed Guide &amp; Frequently Asked Questions
                 </h2>
                 <p className="text-slate-500 mt-2 text-sm sm:text-base max-w-md mx-auto font-medium">
-                  Everything you need to know about creating a compliant passport photo.
+                  Choose the right application, review the output and check the official instructions.
                 </p>
               </div>
 

@@ -57,6 +57,7 @@ export const getPublicPages = cache(async () => {
   const retired = new Set(seoRedirects.map(route => route.source));
   for (const pathname of ['/', '/us-passport-photo-editor', '/uk-passport-photo-editor', '/uk-passport-size-photo-maker', '/australian-passport-photo-checker']) dated.set(pathname, '2026-10-23');
   for (const pathname of ["/passport-photo-country-guide", "/visa-photo", "/us-passport-photo-editor"]) dated.set(pathname, "2026-10-24");
+  for (const pathname of ["/", "/passport-photo-online", "/2x2-picture-editor", "/passport-photo-app", "/passport-photo-editor", "/digital-visa-photo-specs-2026"]) dated.set(pathname, "2026-10-24");
   return [...paths].filter(p => !isPrivatePath(p) && !retired.has(p)).sort().map(path => ({
     path,
     title: pageLabel(path, titles.get(path)),
