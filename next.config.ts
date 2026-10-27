@@ -1,5 +1,6 @@
 import type { NextConfig } from "next";
 import seoRedirects from "./data/seo-redirects.json";
+import { canonicalRedirects } from "./lib/redirect-rules.mjs";
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -60,7 +61,7 @@ const nextConfig: NextConfig = {
     ];
   },
   async redirects() {
-    return [
+    return canonicalRedirects([
       ...seoRedirects,
       { source: "/de/ratgeber", destination: "/de/guides", permanent: true },
       { source: "/de/ratgeber/:slug", destination: "/de/guides/:slug", permanent: true },
@@ -166,7 +167,7 @@ const nextConfig: NextConfig = {
         destination: "/us-passport-photo-editor",
         permanent: true,
       },
-    ];
+    ]);
   },
 };
 

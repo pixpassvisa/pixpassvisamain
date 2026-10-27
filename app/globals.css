@@ -1,4 +1,10 @@
-@import "tailwindcss";
+@import "tailwindcss" source(none);
+/* Scan shipped UI/content only; audit snapshots and documentation are not UI. */
+@source "./";
+@source "../lib";
+@source "../hooks";
+@source "../data";
+@source "../content";
 @plugin "@tailwindcss/typography";
 
 

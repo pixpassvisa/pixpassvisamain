@@ -6,7 +6,7 @@ export default function HomeHero() {
   return <section className="studio-hero studio-wrap studio-hero-with-comparison" aria-labelledby="hero-title">
     <div className="studio-hero-copy">
       <p className="studio-eyebrow"><span /> YOUR ONLINE PHOTO STUDIO</p>
-      <h1 id="hero-title">Passport &amp; visa photos online.<br /><span>The right frame.</span><br /><em>Your next move.</em></h1>
+      <h1 id="hero-title">Passport &amp; visa photo maker.<br /><span>The right frame.</span><br /><em>Your next move.</em></h1>
       <p className="studio-lead">Create a passport or visa photo from a recent portrait. Choose your country and document, review the crop and dimensions, then preview your digital photo and print sheet before purchasing.</p>
       <div className="studio-actions">
         <Link prefetch={false} href="/passport-photo-online" className="studio-button">Upload your photo <ArrowUpRight size={20} /></Link>

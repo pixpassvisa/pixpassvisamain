@@ -58,7 +58,7 @@ export default function HomeProofSections() {
         </div>
         <div className="studio-proof-cta">
           <p><Check size={17} /> Review your photo, then purchase your digital download and print sheet.</p>
-          <Link href="/passport-photo-online" className="studio-text-link">Create my photo →</Link>
+          <Link prefetch={false} href="/passport-photo-online" className="studio-text-link">Create my photo →</Link>
         </div>
       </section>
 
@@ -67,7 +67,7 @@ export default function HomeProofSections() {
           <p className="studio-eyebrow">PUBLISHED REQUIREMENTS</p>
           <h2 id="source-title">Rules you can trace.</h2>
           <p>PixPassVisa is an independent photo preparation service. Our country pages point to official authorities so you can confirm the final submission rules for your application.</p>
-          <Link href="/editorial-methodology" className="studio-text-link">Read our verification methodology <span aria-hidden="true">↗</span></Link>
+          <Link prefetch={false} href="/editorial-methodology" className="studio-text-link">Read our verification methodology <span aria-hidden="true">↗</span></Link>
         </div>
         <div className="studio-source-links">
           <a href="https://travel.state.gov/content/travel/en/passports/how-apply/photos.html" target="_blank" rel="noopener noreferrer"><span>U.S. Department of State</span><strong>Passport photo requirements ↗</strong></a>
