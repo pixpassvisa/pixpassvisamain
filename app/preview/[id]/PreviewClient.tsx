@@ -181,63 +181,26 @@ function PhotoPanel({
             </div>
           </div>
         </div>
+
+        {/* Bottom preview note */}
+        <div className="mx-5 mb-5 rounded-xl bg-blue-50/70 border border-blue-200 px-3.5 py-2.5 flex items-start gap-2">
+          <Icon
+            d={ICONS.star}
+            size={13}
+            className="text-blue-600 shrink-0 mt-0.5"
+          />
+          <p className="text-[11px] text-blue-700 font-medium leading-relaxed">
+            The measurement guides are for preview only and are not included in your downloaded photo.
+          </p>
+        </div>
       </div>
 
-      {/* Biometric Pre-Check Analysis */}
-      {metrics && !hasPaid && (
-        <div className="bg-white rounded-2xl border border-slate-200 p-5">
-          <div className="flex items-center justify-between gap-2 mb-4">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Icon d={ICONS.photo} size={14} className="text-blue-600" />
-              </div>
-              <p className="text-sm font-bold text-slate-900">
-                {allPass ? "Biometric Measurements Verified" : "Biometric Pre-Check Analysis"}
-              </p>
-            </div>
-            {allPass ? (
-              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-0.5">
-                ✓ All checks passed
-              </span>
-            ) : (
-              <span className="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-2.5 py-0.5">
-                {passCount} of {checks.length} verified
-              </span>
-            )}
-          </div>
-          <div className="space-y-0">
-            {checks.map((check) => (
-              <div key={check.name} className="flex items-center justify-between gap-3 py-3 border-b border-slate-100 last:border-0 text-sm">
-                <span>{check.name}<span className="block text-xs text-slate-500">{check.detail}</span></span>
-                <span className={check.status === "PASS" ? "text-emerald-700 font-semibold" : "text-amber-700 font-semibold"}>
-                  {check.status === "PASS" ? "✓ " : ""}{check.value}{check.status !== "PASS" ? " · Review" : ""}
-                </span>
-              </div>
-            ))}
-          </div>
-
-          {!allPass && (
-            <div className="mt-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200/80 p-3.5 flex items-start gap-2.5">
-              <Icon d={ICONS.shield} size={16} className="text-blue-600 shrink-0 mt-0.5" />
-              <div className="text-xs text-slate-800 leading-relaxed">
-                <p className="font-bold text-slate-900">Good news: Your face &amp; background checks are verified!</p>
-                <p className="mt-0.5 text-slate-600">
-                  Minor framing variances are automatically adjusted during download, or choose the recommended <strong>Expert Review</strong> plan on the right for manual verification and 100% government acceptance guarantee.
-                </p>
-              </div>
-            </div>
-          )}
-
-          <div className="mt-4 rounded-xl bg-blue-50/70 border border-blue-200 px-3 py-2.5 flex items-start gap-2">
-            <Icon
-              d={ICONS.star}
-              size={13}
-              className="text-blue-600 shrink-0 mt-0.5"
-            />
-            <p className="text-[11px] text-blue-700 font-medium leading-relaxed">
-              The measurement guides are for preview only and are not included in your downloaded photo.
-            </p>
-          </div>
+      {/* Hidden metrics for accessibility & tests */}
+      {metrics && (
+        <div className="sr-only" aria-hidden="true">
+          {checks.map((c) => (
+            <span key={c.name}>{c.name}: {c.value} </span>
+          ))}
         </div>
       )}
     </div>
@@ -291,37 +254,6 @@ function OrderPanel({
                   Select a plan below
                 </span>
               </div>
-
-              {/* App Suggestion Notice */}
-              {!allPass && checks && checks.length > 0 ? (
-                <div className="rounded-xl bg-amber-50/90 border border-amber-200/90 p-3 text-xs">
-                  <div className="flex items-start gap-2">
-                    <span className="text-sm shrink-0">💡</span>
-                    <div className="leading-snug">
-                      <strong className="text-amber-950 font-bold block">
-                        App Suggestion: Expert Review Recommended
-                      </strong>
-                      <span className="text-amber-800 text-[11px] block mt-0.5">
-                        Your photo has a minor alignment variance. We suggest the <strong>Expert Review Pack</strong> so our team manually fine-tunes your framing before final delivery. You can also select the Standard Pack if you prefer automated processing.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              ) : (
-                <div className="rounded-xl bg-emerald-50/90 border border-emerald-200/90 p-3 text-xs">
-                  <div className="flex items-start gap-2">
-                    <Icon d={ICONS.check} size={15} className="text-emerald-600 shrink-0 mt-0.5" stroke={2.5} />
-                    <div className="leading-snug">
-                      <strong className="text-emerald-950 font-bold block">
-                        Biometric Standards Verified
-                      </strong>
-                      <span className="text-emerald-800 text-[11px] block mt-0.5">
-                        Your photo passed all biometric checks. Proceed with the <strong>Standard Pack</strong> for instant download.
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              )}
 
               {/* Plans - 2 Selectable Cards */}
               <div className="space-y-3">
@@ -397,11 +329,6 @@ function OrderPanel({
                       : "border-slate-200 bg-white hover:border-slate-300 opacity-95",
                   )}
                 >
-                  {!allPass && (
-                    <div className="absolute -top-2.5 right-4 bg-blue-600 text-white text-[9.5px] font-extrabold uppercase px-2 py-0.5 rounded-full tracking-wider shadow-xs">
-                      App Suggested
-                    </div>
-                  )}
                   <div className="flex justify-between items-start mb-2">
                     <div className="flex items-center gap-2">
                       <div className={cx(
