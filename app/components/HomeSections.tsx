@@ -31,8 +31,8 @@ export default function HomeSections({ basePrice = 4.99 }: { basePrice?: number;
     <section className="studio-wrap studio-section studio-tools"><div><p className="studio-eyebrow">A LITTLE HELP GOES A LONG WAY</p><h2>Start with the<br />right tool.</h2><p className="studio-muted">Check an existing photo, compare formats, or prepare a print sheet. Pick the task you need today.</p></div><div className="studio-tool-list">{[
       ["01", "Passport photo checker", "Review common photo issues before you submit.", "/passport-photo-checker"],
       ["02", "DV lottery photo checker", "Check the photo for your diversity visa entry.", "/diversity-visa-lottery-photo-checker"],
-      ["03", "Passport photo print template", "Arrange photo copies on a printable sheet.", "/passport-photo-print-template-generator"],
-      ["04", "Watch the photo preparation video", "See how to preview and purchase your photo package.", "/passport-photo-video"],
+      ["03", "2×2 picture editor", "Crop and resize official 2×2 inch photos for US passport, visa, and green card.", "/2x2-picture-editor"],
+      ["04", "Passport photo print template", "Arrange photo copies on a 4×6 or A4 printable sheet.", "/passport-photo-print-template-generator"],
       ["05", "Passport & visa photo guides", "Understand the requirements for your application.", "/blog"],
     ].map(([n, title, desc, href]) => <Link prefetch={false} href={href} key={href}><span>{n}</span><div><h3>{title}</h3><p>{desc}</p></div><ArrowUpRight size={22} /></Link>)}</div></section>
     <HomeOutputGuide />
