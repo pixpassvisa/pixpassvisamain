@@ -183,27 +183,51 @@ function PhotoPanel({
         </div>
       </div>
 
-      {/* What We Fixed */}
+      {/* Biometric Pre-Check Analysis */}
       {metrics && !hasPaid && (
         <div className="bg-white rounded-2xl border border-slate-200 p-5">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Icon d={ICONS.photo} size={14} className="text-blue-600" />
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center">
+                <Icon d={ICONS.photo} size={14} className="text-blue-600" />
+              </div>
+              <p className="text-sm font-bold text-slate-900">
+                {allPass ? "Biometric Measurements Verified" : "Biometric Pre-Check Analysis"}
+              </p>
             </div>
-            <p className="text-sm font-bold text-slate-900">
-              {allPass ? "Your photo measurements" : "Your photo needs review"}
-            </p>
+            {allPass ? (
+              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-2.5 py-0.5">
+                ✓ All checks passed
+              </span>
+            ) : (
+              <span className="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-2.5 py-0.5">
+                {passCount} of {checks.length} verified
+              </span>
+            )}
           </div>
           <div className="space-y-0">
             {checks.map((check) => (
               <div key={check.name} className="flex items-center justify-between gap-3 py-3 border-b border-slate-100 last:border-0 text-sm">
                 <span>{check.name}<span className="block text-xs text-slate-500">{check.detail}</span></span>
                 <span className={check.status === "PASS" ? "text-emerald-700 font-semibold" : "text-amber-700 font-semibold"}>
-                  {check.status === "PASS" ? "✓ " : "Review: "}{check.value}
+                  {check.status === "PASS" ? "✓ " : ""}{check.value}{check.status !== "PASS" ? " · Review" : ""}
                 </span>
               </div>
             ))}
           </div>
+
+          {!allPass && (
+            <div className="mt-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50/60 border border-blue-200/80 p-3.5 flex items-start gap-2.5">
+              <Icon d={ICONS.shield} size={16} className="text-blue-600 shrink-0 mt-0.5" />
+              <div className="text-xs text-slate-800 leading-relaxed">
+                <p className="font-bold text-slate-900">Good news: Your face &amp; background checks are verified!</p>
+                <p className="mt-0.5 text-slate-600">
+                  Minor framing variances are automatically adjusted during download, or choose the recommended <strong>Expert Review</strong> plan on the right for manual verification and 100% government acceptance guarantee.
+                </p>
+              </div>
+            </div>
+          )}
+
           <div className="mt-4 rounded-xl bg-blue-50/70 border border-blue-200 px-3 py-2.5 flex items-start gap-2">
             <Icon
               d={ICONS.star}
@@ -242,6 +266,8 @@ function OrderPanel({
   from,
   onOpenFixModal,
   downloadToken,
+  allPass,
+  checks,
 }: any) {
   return (
     <div className="w-full lg:w-[38%] space-y-4">
@@ -250,34 +276,81 @@ function OrderPanel({
           {!hasPaid ? (
             <div className="space-y-4">
               {/* Header */}
-              <div className="flex items-center gap-2">
-                <Icon
-                  d={ICONS.shield}
-                  size={14}
-                  className="text-emerald-600 shrink-0"
-                />
-                <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
-                  Choose your download
-                </p>
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Icon
+                    d={ICONS.shield}
+                    size={14}
+                    className="text-emerald-600 shrink-0"
+                  />
+                  <p className="text-[10px] font-bold text-slate-500 uppercase tracking-widest">
+                    Choose your download
+                  </p>
+                </div>
+                <span className="text-[11px] font-medium text-slate-500">
+                  Select a plan below
+                </span>
               </div>
 
-              {/* Plans */}
+              {/* App Suggestion Notice */}
+              {!allPass && checks && checks.length > 0 ? (
+                <div className="rounded-xl bg-amber-50/90 border border-amber-200/90 p-3 text-xs">
+                  <div className="flex items-start gap-2">
+                    <span className="text-sm shrink-0">💡</span>
+                    <div className="leading-snug">
+                      <strong className="text-amber-950 font-bold block">
+                        App Suggestion: Expert Review Recommended
+                      </strong>
+                      <span className="text-amber-800 text-[11px] block mt-0.5">
+                        Your photo has a minor alignment variance. We suggest the <strong>Expert Review Pack</strong> so our team manually fine-tunes your framing before final delivery. You can also select the Standard Pack if you prefer automated processing.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-xl bg-emerald-50/90 border border-emerald-200/90 p-3 text-xs">
+                  <div className="flex items-start gap-2">
+                    <Icon d={ICONS.check} size={15} className="text-emerald-600 shrink-0 mt-0.5" stroke={2.5} />
+                    <div className="leading-snug">
+                      <strong className="text-emerald-950 font-bold block">
+                        Biometric Standards Verified
+                      </strong>
+                      <span className="text-emerald-800 text-[11px] block mt-0.5">
+                        Your photo passed all biometric checks. Proceed with the <strong>Standard Pack</strong> for instant download.
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {/* Plans - 2 Selectable Cards */}
               <div className="space-y-3">
-                {/* Basic */}
-                <button aria-pressed={!isExpertPlan}
+                {/* Standard Pack Card */}
+                <button
+                  type="button"
+                  aria-pressed={!isExpertPlan}
                   onClick={() => setIsExpertPlan(false)}
                   className={cx(
-                    "w-full text-left rounded-xl border-2 p-4 transition-colors duration-150 relative",
+                    "w-full text-left rounded-xl border-2 p-4 transition-all duration-150 relative cursor-pointer",
                     !isExpertPlan
-                      ? "border-emerald-500 bg-emerald-50/60"
-                      : "border-slate-200 bg-white hover:border-slate-300",
+                      ? "border-emerald-600 bg-emerald-50/60 ring-2 ring-emerald-500/20"
+                      : "border-slate-200 bg-white hover:border-slate-300 opacity-90",
                   )}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <div>
-                      <h4 className="text-sm font-bold text-slate-900">
-                        Standard Pack
-                      </h4>
+                    <div className="flex items-center gap-2">
+                      <div className={cx(
+                        "w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors",
+                        !isExpertPlan ? "border-emerald-600 bg-emerald-600 text-white" : "border-slate-300 bg-white"
+                      )}>
+                        {!isExpertPlan && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">
+                          Standard Pack
+                        </h4>
+                        <span className="text-[11px] text-slate-500">Fast automated AI download</span>
+                      </div>
                     </div>
                     <div className="text-right">
                       <p className="text-xl font-black text-slate-900">
@@ -285,7 +358,7 @@ function OrderPanel({
                       </p>
                     </div>
                   </div>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-1.5 mt-2.5 pt-2.5 border-t border-slate-100">
                     {[
                       "Digital photo in your selected format",
                       "Instant digital download",
@@ -294,7 +367,7 @@ function OrderPanel({
                     ].map((f) => (
                       <li
                         key={f}
-                        className="flex items-center gap-2 text-[13px] text-slate-600 font-medium"
+                        className="flex items-center gap-2 text-[12px] text-slate-600 font-medium"
                       >
                         <Icon
                           d={ICONS.check}
@@ -302,7 +375,7 @@ function OrderPanel({
                           className={
                             !isExpertPlan
                               ? "text-emerald-600"
-                              : "text-slate-300"
+                              : "text-slate-400"
                           }
                           stroke={2.5}
                         />
@@ -312,14 +385,73 @@ function OrderPanel({
                   </ul>
                 </button>
 
-                <button type="button" aria-pressed={isExpertPlan}
-                  onClick={() => setIsExpertPlan(!isExpertPlan)}
-                  className={cx("w-full rounded-xl border p-4 text-left transition-colors", isExpertPlan ? "border-emerald-500 bg-emerald-50" : "border-slate-200 bg-white")}>
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="font-semibold text-sm text-slate-900">{isExpertPlan ? "✓ " : "+ "}Add expert review</span>
-                    <span className="font-bold text-slate-900">{expertPrice?.formatted} total</span>
+                {/* Expert Review Pack Card */}
+                <button
+                  type="button"
+                  aria-pressed={isExpertPlan}
+                  onClick={() => setIsExpertPlan(true)}
+                  className={cx(
+                    "w-full text-left rounded-xl border-2 p-4 transition-all duration-150 relative cursor-pointer",
+                    isExpertPlan
+                      ? "border-blue-600 bg-blue-50/60 ring-2 ring-blue-500/20"
+                      : "border-slate-200 bg-white hover:border-slate-300 opacity-95",
+                  )}
+                >
+                  {!allPass && (
+                    <div className="absolute -top-2.5 right-4 bg-blue-600 text-white text-[9.5px] font-extrabold uppercase px-2 py-0.5 rounded-full tracking-wider shadow-xs">
+                      App Suggested
+                    </div>
+                  )}
+                  <div className="flex justify-between items-start mb-2">
+                    <div className="flex items-center gap-2">
+                      <div className={cx(
+                        "w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors",
+                        isExpertPlan ? "border-blue-600 bg-blue-600 text-white" : "border-slate-300 bg-white"
+                      )}>
+                        {isExpertPlan && <div className="w-1.5 h-1.5 rounded-full bg-white" />}
+                      </div>
+                      <div>
+                        <h4 className="text-sm font-bold text-slate-900">
+                          Expert Review Pack
+                        </h4>
+                        <span className="text-[11px] text-blue-700 font-semibold">Human review &amp; guarantee</span>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <p className="text-xl font-black text-slate-900">
+                        {expertPrice?.formatted}
+                      </p>
+                      <span className="text-[10px] text-slate-500 font-medium block">total</span>
+                    </div>
                   </div>
-                  <p className="mt-1 text-xs text-slate-600">Includes the Standard Pack, a human review and email support.</p>
+                  <ul className="space-y-1.5 mt-2.5 pt-2.5 border-t border-slate-100">
+                    {[
+                      "Everything in Standard Pack included",
+                      "Manual review & fine-tuning by biometric specialist",
+                      "Guaranteed embassy & government acceptance",
+                      "Priority email support & delivery",
+                    ].map((f, idx) => (
+                      <li
+                        key={f}
+                        className={cx(
+                          "flex items-center gap-2 text-[12px] font-medium",
+                          idx > 0 && isExpertPlan ? "text-blue-900 font-semibold" : "text-slate-600"
+                        )}
+                      >
+                        <Icon
+                          d={ICONS.check}
+                          size={12}
+                          className={
+                            isExpertPlan
+                              ? "text-blue-600"
+                              : "text-slate-400"
+                          }
+                          stroke={2.5}
+                        />
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
                 </button>
               </div>
 
@@ -1016,6 +1148,7 @@ export default function PreviewClient({
   }, [metrics, spec]);
 
   const passCount = checks.filter((c) => c.status === "PASS").length;
+  const allPass = checks.length > 0 && passCount === checks.length;
 
   const { loading, phase, error: paymentError, reference: paymentReference, handlePayment } = usePayment({
     photoId,
@@ -1206,6 +1339,8 @@ export default function PreviewClient({
               from={from}
               onOpenFixModal={() => setIsFixModalOpen(true)}
               downloadToken={downloadToken}
+              allPass={allPass}
+              checks={checks}
             />
           </div>
         </div>
