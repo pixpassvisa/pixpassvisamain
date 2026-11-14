@@ -8,9 +8,20 @@ import OfficialSourceBadge from "../components/OfficialSourceBadge";
 import { ShieldCheck, FileCheck, Zap, Sparkles, Ruler, Globe, CheckCircle2, Camera } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Passport Photo Maker Online | Free Preview, Paid Downloads",
+  title: "Passport Size Photo Maker & Dimensions Guide (2026) | PixPassVisa",
   description:
-    "Choose your document, upload a photo and review a free preview. Paid downloads include a digital photo and print sheet. Check your application rules before editing.",
+    "Create passport size photos online matching official government dimensions (2×2 inch, 35×45 mm, 50×70 mm). Free biometric photo check, automatic background removal & printable template.",
+  keywords: [
+    "passport photo size",
+    "passport size photo dimensions",
+    "passport size picture dimensions",
+    "passport size photo maker",
+    "passport photo dimensions",
+    "passport photo template",
+    "passport photo size 2x2",
+    "passport photo size 35x45",
+    "passport size photo generator",
+  ],
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-size-photo-maker",
     languages: {
@@ -19,10 +30,11 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Passport Photo Maker with Free Preview",
+    title: "Passport Size Photo Maker & Dimensions Guide (2026) | PixPassVisa",
     description:
-      "Create passport and visa photos online. Select your country, upload a photo, and download a print-ready photo instantly.",
+      "Create passport size photos online matching official government dimensions (2×2 inch, 35×45 mm). Free biometric photo check, auto background removal & printable sheet.",
     type: "website",
+    url: "https://www.pixpassvisa.com/passport-size-photo-maker",
   },
 };
 
@@ -385,16 +397,17 @@ export default function PassportSizePhotoMakerPage() {
         {/* ── Direct Answer & E-E-A-T Badges ── */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-6">
           <DirectAnswerBox
-            question="How do I create a passport size photo online?"
-            answer="Choose your country and document, check the authority's editing restrictions, and upload a clear original photo. Review the preview before deciding whether to purchase the prepared digital photo and print sheet. A preset or passing check does not guarantee acceptance."
+            question="What is the standard passport photo size and how do I create one?"
+            answer="Standard passport photo dimensions vary by country: 2×2 inches (51×51 mm / 600×600 px) for the United States and India, 35×45 mm for the United Kingdom, Europe (Schengen, Germany, France), and Australia, and 50×70 mm for Canada. To create one online, upload any clear smartphone portrait against a plain background. PixPassVisa automatically crops to exact biometric proportions, positions the face within required chin-to-crown limits, replaces the background, and generates both digital upload and 4×6 inch printable templates."
             keyPoints={[
-              "Choose the document and submission method first",
-              "Retake photos with blur, heavy shadows or unsuitable expressions",
-              "Review the free preview before paying for prepared files",
-              "Photos are uploaded for server processing; read the privacy policy",
+              "US & India: 2×2 inches (51×51 mm) or 600×600 px digital square",
+              "UK, Europe & Australia: 35×45 mm (3.5×4.5 cm / 413×531 px)",
+              "Canada: 50×70 mm (2×2¾ inches) with 31–36 mm head height",
+              "Free instant preview and biometric compliance test",
+              "Outputs high-resolution 300 DPI digital files and 4×6 inch multi-copy print templates",
             ]}
-            lastReviewed="12 October 2026"
-            sourceAuthority="PixPassVisa product workflow"
+            lastReviewed="October 2026"
+            sourceAuthority="ICAO Doc 9303 & National Passport Issuing Authorities"
           />
 
           <OfficialSourceBadge

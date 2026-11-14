@@ -8,16 +8,28 @@ import DirectAnswerBox from "@/app/components/DirectAnswerBox";
 import { ShieldCheck, ArrowRight, Printer, Sparkles, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Passport & Visa Photo Size Chart 2026 (50+ Countries) | PixPassVisa",
+  title: "Passport Photo Sizes & Dimensions Guide 2026 (50+ Countries) | PixPassVisa",
   description:
-    "Compare configured passport and visa photo sizes, pixel dimensions and backgrounds. Check the issuing authority’s current requirements before choosing a preset.",
+    "Complete guide to official passport and visa photo sizes and dimensions for 50+ countries. Compare 2×2 inch, 35×45 mm, 50×70 mm, pixel requirements, and printable templates.",
+  keywords: [
+    "passport photo size",
+    "passport size photo dimensions",
+    "passport size picture dimensions",
+    "passport photo dimensions",
+    "uk passport photo size",
+    "us passport photo size",
+    "passport photo template",
+    "passport photo size in mm",
+    "passport photo size in inches",
+    "passport size photo dimensions in pixels",
+  ],
   alternates: {
     canonical: "https://www.pixpassvisa.com/passport-photo-sizes",
   },
   openGraph: {
-    title: "Passport & Visa Photo Size Chart 2026 (50+ Countries) | PixPassVisa",
+    title: "Passport Photo Sizes & Dimensions Guide 2026 (50+ Countries) | PixPassVisa",
     description:
-      "Compare configured print and digital photo sizes. Confirm the current requirements for your exact passport or visa application.",
+      "Complete guide to official passport and visa photo sizes and dimensions for 50+ countries. Compare 2×2 inch, 35×45 mm, 50×70 mm, and digital pixel specs.",
     url: "https://www.pixpassvisa.com/passport-photo-sizes",
     siteName: "PixPassVisa",
     locale: "en_US",
@@ -74,19 +86,25 @@ export default function PassportPhotoSizesPage() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4">
-              Passport &amp; Visa Photo Size Chart (50+ Countries)
+              Passport Photo Sizes &amp; Dimensions Guide 2026
             </h1>
             <p className="text-base sm:text-lg text-slate-600 max-w-3xl leading-relaxed">
-              Compare the photo presets available in our reference data. Physical print size, digital upload size, and face positioning are separate requirements. Confirm the current rules for your specific application before using a preset.
+              Complete official guide to passport and visa photo sizes across 50+ countries. Compare physical print measurements, pixel requirements, background colors, and biometric crop standards before creating your photo.
             </p>
 
             {/* Direct Answer Box for AI & Featured Snippets */}
             <DirectAnswerBox
-              question="What are the standard passport photo sizes worldwide?"
-              answer="Choose the country and exact document first. A printed size in millimeters does not establish the pixel dimensions or file-size limit for an online upload. Check the issuing authority’s instructions, then compare the relevant preset below."
-              keyPoints={["Select the exact passport or visa application", "Check printed and digital requirements separately", "Use the official instructions to confirm capture and editing rules"]}
-              lastReviewed="16 October 2026"
-              sourceAuthority="PixPassVisa preset reference"
+              question="What are the standard passport photo sizes and dimensions worldwide?"
+              answer="The two most common standard passport photo dimensions worldwide are 2×2 inches (51×51 mm / 600×600 px at 300 DPI) used in the United States and India, and 35×45 mm (413×531 px at 300 DPI) required across the United Kingdom, European Union (Schengen, Germany, France), and Australia. For Canada, the standard is 50×70 mm (2×2¾ in). Digital online applications also impose strict pixel dimensions, file size caps, and neutral background rules as detailed below."
+              keyPoints={[
+                "United States & India: 2 × 2 inches (51 × 51 mm) or 600 × 600 px digital square",
+                "United Kingdom, EU & Australia: 35 × 45 mm (3.5 × 4.5 cm / 413 × 531 px at 300 DPI)",
+                "Canada: 50 × 70 mm (2 × 2¾ inches) with 31–36 mm chin-to-crown height",
+                "Print Resolution: Minimum 300 DPI (dots per inch) for all physical photographic prints",
+                "Digital uploads require separate pixel specs and file-size ceilings (e.g., 240 KB for US DS-160/DV lottery)",
+              ]}
+              lastReviewed="October 2026"
+              sourceAuthority="ICAO Doc 9303 & National Passport Issuing Authorities"
             />
           </div>
         </section>

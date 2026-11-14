@@ -21,11 +21,20 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "DV Lottery Photo Checker – Free Green Card Photo Validator 2026/2027",
+  title: "DV Lottery Photo Checker (2026/2027) – Free Green Card Photo Validator | PixPassVisa",
   description:
     "Free DV Lottery photo checker for the 2026/2027 Diversity Visa program. Instantly verify the 600×600px square size, 50–69% head height, 240KB file limit, and every US Department of State requirement before you submit.",
   keywords: [
-  
+    "dv photo checker",
+    "dv lottery photo checker",
+    "dv lottery photo checker free",
+    "dv lottery photo size",
+    "green card photo check",
+    "green card photo checker",
+    "diversity visa photo requirements",
+    "600x600 photo checker",
+    "dv program photo tool",
+    "green card lottery photo validator",
   ],
   alternates: {
     canonical: "https://www.pixpassvisa.com/diversity-visa-lottery-photo-checker",

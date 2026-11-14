@@ -6,8 +6,18 @@ import DirectAnswerBox from "../components/DirectAnswerBox";
 import OfficialSourceBadge from "../components/OfficialSourceBadge";
 
 export const metadata: Metadata = {
-  "title": "Passport Photo Print Template – Print at Home",
-  "description": "Create a passport photo print sheet online. Generate multiple copies on A4, 4×6, or custom paper sizes with an easy print-at-home template.",
+  title: "Passport Photo Template (2026) – Free Printable 4×6 & A4 Photo Sheet | PixPassVisa",
+  description:
+    "Free passport photo template generator. Arrange 2×2 inch or 35×45 mm passport photos on standard 4×6 inch (10×15 cm) or A4 photo sheets with cut lines at 300 DPI for instant home or kiosk printing.",
+  keywords: [
+    "passport photo template",
+    "passport photo print template",
+    "passport photo template 4x6",
+    "passport photo template printable",
+    "2x2 passport photo template",
+    "passport size photo print template free",
+    "print passport photo at home 4x6",
+  ],
   alternates: {
     canonical:
       "https://www.pixpassvisa.com/passport-photo-print-template-generator",
@@ -17,8 +27,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    "title": "Passport Photo Print Template – Print at Home",
-  "description": "Create a passport photo print sheet online. Generate multiple copies on A4, 4×6, or custom paper sizes with an easy print-at-home template.",
+    title: "Passport Photo Template (2026) – Free Printable 4×6 & A4 Photo Sheet",
+    description:
+      "Free passport photo template generator. Arrange 2×2 inch or 35×45 mm passport photos on standard 4×6 or A4 sheets with cutting guidelines.",
     type: "website",
     url: "https://www.pixpassvisa.com/passport-photo-print-template-generator",
   },
