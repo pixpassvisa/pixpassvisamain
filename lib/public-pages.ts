@@ -58,6 +58,19 @@ export const getPublicPages = cache(async () => {
   for (const pathname of ['/', '/us-passport-photo-editor', '/uk-passport-photo-editor', '/uk-passport-size-photo-maker', '/australian-passport-photo-checker']) dated.set(pathname, '2026-10-23');
   for (const pathname of ["/passport-photo-country-guide", "/visa-photo", "/us-passport-photo-editor"]) dated.set(pathname, "2026-10-24");
   for (const pathname of ["/", "/passport-photo-online", "/2x2-picture-editor", "/passport-photo-app", "/passport-photo-editor", "/digital-visa-photo-specs-2026"]) dated.set(pathname, "2026-10-24");
+  for (const pathname of [
+    "/",
+    "/diversity-visa-lottery-photo-checker",
+    "/passport-photo-sizes",
+    "/passport-size-photo-maker",
+    "/passport-photo-print-template-generator",
+    "/uk-passport-size-photo-maker",
+    "/2x2-picture-editor",
+    "/digital-visa-photo-specs-2026",
+    "/australian-passport-photo-checker",
+    "/us-passport-photo-editor",
+    "/us-visa-photo-editor",
+  ]) dated.set(pathname, "2026-11-14");
   return [...paths].filter(p => !isPrivatePath(p) && !retired.has(p)).sort().map(path => ({
     path,
     title: pageLabel(path, titles.get(path)),
