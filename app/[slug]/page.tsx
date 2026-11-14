@@ -111,10 +111,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         return createMetadata({ title: spec.id === 'icao-passport' ? 'ICAO Photo Standards: Choose Your Document' : spec.country + ' ' + intentLabel + ' Photo Guidance', description: 'Check the application workflow and available presets. Confirm photo requirements with the issuing authority before editing or purchasing a photo.', canonical: baseUrl });
       }
       const title = isVisaUrl
-        ? `${spec.country} Visa Photo Online (2026) | ${spec.width_mm}x${spec.height_mm}mm`
-        : `${spec.country} Passport Photo Maker (2026) | Size & Photo Guide`;
+        ? `${spec.country} Visa Photo Online (2026) | ${spec.width_mm}x${spec.height_mm}mm | PixPassVisa`
+        : `${spec.country} Passport Photo Maker (2026) | ${spec.width_mm}x${spec.height_mm}mm | PixPassVisa`;
 
-      const description = `Create your ${spec.country} ${intentLabel.toLowerCase()} photo with the configured preset. ${spec.width_mm}x${spec.height_mm}mm with automatic cropping and background checks.`;
+      const description = `Create your ${spec.country} ${intentLabel.toLowerCase()} photo online in 2026. Official ${spec.width_mm}x${spec.height_mm}mm biometric sizing, automatic background removal, and print-ready sheets.`;
 
       return createMetadata({
         title,

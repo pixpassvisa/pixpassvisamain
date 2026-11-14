@@ -12,9 +12,9 @@ export const COUNTRY_GUIDE_DATE = '2026-10-17';
 export const COUNTRY_DEMO_IMAGE = '/images/country-guides/portrait-retake-demo.webp';
 export const priorityCountryGuides: Record<string, CountryPhotoGuide> = {
   'us-passport-photo-editor': {
-    country: 'United States', code: 'US', title: 'US Passport Photo: 2×2 Size, Examples & Online Rules | PixPassVisa',
-    description: 'Check US passport photo size, head alignment, background and editing rules. Compare printed photos with online renewal and see an illustrated before-and-after retake.',
-    heading: 'US passport photos. Get the size and the original right.',
+    country: 'United States', code: 'US', title: 'US Passport Photo Maker Online (2026) – 2×2 Size & Rules | PixPassVisa',
+    description: 'Create and check US passport photos online. 2×2 inch (51×51 mm) biometric sizing, head height alignment, white background, and print templates for 2026.',
+    heading: 'US Passport Photo Maker: 2×2 Sizing & Official Biometric Guidelines',
     intro: 'A square crop is only one part of a US passport photo. Start with an unaltered portrait, choose paper or online renewal, and check the requirements before preparing a file.',
     answer: 'For a paper US passport application, use a 2 × 2 inch (51 × 51 mm) colour photo taken within six months, with a white or off-white background. The head should measure about 25–35 mm from chin to top of head. Online renewal uses a separate original digital-photo workflow.',
     width: '2 in / 51 mm', height: '2 in / 51 mm', head: '25–35 mm', ratio: 1, background: 'White or off-white', checker: '/passport-photo-checker',
@@ -35,9 +35,9 @@ export const priorityCountryGuides: Record<string, CountryPhotoGuide> = {
     sources:[{label:'US Department of State: passport photos and examples',url:'https://travel.state.gov/en/passports/apply/help/photos.html'},{label:'US Department of State: online renewal digital photo',url:'https://travel.state.gov/en/passports/renew-replace/online/upload-digital-photo.html'}],
   },
   'uk-passport-photo-editor': {
-    country:'United Kingdom',code:'UK',title:'UK Passport Photo: 35×45 mm, Digital Size & Examples | PixPassVisa',
-    description:'Compare UK printed and digital passport photo rules, head size, photo codes and editing limits. See a retake example and a clearly labelled size diagram.',
-    heading:'UK passport photos. Choose digital or print first.',
+    country:'United Kingdom',code:'UK',title:'UK Passport Photo Maker & Size Guide (2026): 35×45 mm & Digital | PixPassVisa',
+    description:'Create UK passport photos online. Compare 35×45 mm print and 600×750 px digital upload requirements, head size, cream/grey background, and photo guidelines.',
+    heading:'UK Passport Photo Maker: 35×45 mm & Digital Upload Specs',
     intro:'A 35 × 45 mm print and an online passport upload are different outputs. Find the right route before cropping, paying for a file or booking a photo provider.',
     answer:'UK paper applications need two identical 35 × 45 mm photos, with a crown-to-chin height of 29–34 mm. Digital photos must be at least 600 × 750 pixels and 50 KB–10 MB. Both routes require a recent, unaltered photograph; GOV.UK asks for a photo taken in the last month.',
     width:'35 mm',height:'45 mm',head:'29–34 mm',ratio:35/45,background:'Plain cream or light grey (print)',checker:'/uk-passport-photo-checker-online-free',
@@ -53,9 +53,9 @@ export const priorityCountryGuides: Record<string, CountryPhotoGuide> = {
     sources:[{label:'GOV.UK: digital passport photos',url:'https://www.gov.uk/photos-for-passports'},{label:'GOV.UK: printed passport photos',url:'https://www.gov.uk/photos-for-passports/photo-requirements'}],
   },
   'germany-passport-photo-editor': {
-    country:'Germany',code:'DE',title:'German Passport Photo: Digital Capture, Size & Guide | PixPassVisa',
-    description:'Understand Germany’s digital passport photo workflow, 35×45 mm biometric framing and consular differences. See a retake illustration and official source links.',
-    heading:'German passport photos. The capture route matters.',
+    country:'Germany',code:'DE',title:'German Passport Photo Guide & Biometric Maker (2026) | PixPassVisa',
+    description:'Biometrisches Passbild guidelines for Germany (2026). 35×45 mm format, 32–36 mm face height, light background, and official German biometric specifications.',
+    heading:'German Passport Photos: 35×45 mm Biometrisches Passbild Guidelines',
     intro:'Biometric framing is important, but a correctly sized file is not enough for a domestic German passport application. Check how the authority receives the photo before using an online editor.',
     answer:'For domestic German passport and ID applications, use the official digital capture and submission process through the authority or a participating provider. A home print or ordinary JPEG download does not replace that process. The biometric photo template illustrates a 35 × 45 mm format with an optimum adult face height of 32–36 mm.',
     width:'35 mm',height:'45 mm',head:'32–36 mm optimum',ratio:35/45,background:'Plain, light and even',checker:'/passport-photo-checker',
@@ -72,9 +72,9 @@ export const priorityCountryGuides: Record<string, CountryPhotoGuide> = {
     local:{href:'/de/guides',label:'Ratgeber auf Deutsch'},
   },
   'france-passport-photo-editor': {
-    country:'France',code:'FR',title:'French Passport Photo: 35×45 mm & Approved Capture | PixPassVisa',
-    description:'Check French passport photo dimensions, face alignment, background colour and approved capture requirements. View a retake illustration and practical photo checklist.',
-    heading:'French passport photos. Start with approved capture.',
+    country:'France',code:'FR',title:'French Passport Photo Size & Biometric Guide (2026) | PixPassVisa',
+    description:'Official 35×45 mm French passport and identity photo requirements (2026). 32–36 mm face height, light grey/blue background rules, and official capture guidelines.',
+    heading:'French Passport Photos: 35×45 mm Photo d\'Identité Guidelines',
     intro:'For a French passport or identity card, the provider matters as well as the picture. Use this guide to understand the frame and prepare for an authorised photographer or approved booth.',
     answer:'French passport and identity-card photos must be taken by an authorised professional or an approved booth. The photo is 35 × 45 mm, with a face height of 32–36 mm from chin to top of skull, excluding hair. Use a plain light background; white is not permitted. The photo must be less than six months old.',
     width:'35 mm',height:'45 mm',head:'32–36 mm, excluding hair',ratio:35/45,background:'Light grey or light blue; not white',checker:'/passport-photo-checker',

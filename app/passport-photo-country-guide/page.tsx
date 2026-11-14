@@ -4,10 +4,10 @@ import PriceDisplay from "../components/PriceDisplay";
 
 const url = "https://www.pixpassvisa.com/passport-photo-country-guide";
 export const metadata: Metadata = {
-  title: "US, UK, Australia, Germany & France Photo Guide | PixPassVisa",
-  description: "Compare passport photo requirements for the US, UK, Australia, Germany and France. Choose the right capture route, free check or paid photo preparation.",
+  title: "Passport Photo Requirements: US, UK, Australia, Germany & France (2026) | PixPassVisa",
+  description: "Official 2026 passport and visa photo size requirements for US (2x2 in), UK (35x45mm), Australia (35x45mm), Germany, and France. Compare guidelines & create compliant photos.",
   alternates: { canonical: url },
-  openGraph: { title: "Choose the right passport photo for your country", description: "Five countries, different application routes. Check the requirements before you buy.", url },
+  openGraph: { title: "Passport Photo Requirements: US, UK, Australia, Germany & France (2026) | PixPassVisa", description: "Official 2026 photo specifications for US, UK, Australia, Germany, and France. Free biometric checks & online maker.", url },
 };
 
 const countries = [

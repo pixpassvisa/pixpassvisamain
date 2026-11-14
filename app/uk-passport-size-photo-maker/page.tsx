@@ -6,11 +6,11 @@ import { ukPassportFaqs } from "@/lib/uk-passport-content";
 
 const pageUrl = "https://www.pixpassvisa.com/uk-passport-size-photo-maker";
 export const metadata: Metadata = {
-  title: { absolute: "UK Passport Photo Size: 35 × 45 mm & Digital Rules | PixPassVisa" },
-  description: "UK passport photo size explained: 35 × 45 mm (3.5 × 4.5 cm) for prints, digital dimensions and file limits, plus GOV.UK guidance on cropping and editing.",
+  title: { absolute: "UK Passport Size Photo Maker (2026) – 35×45 mm & Digital Specs | PixPassVisa" },
+  description: "Create UK passport photos online: 35×45 mm (3.5×4.5 cm) prints and 600×750 px digital upload requirements. Free biometric compliance check, auto-crop & print templates for 2026.",
   alternates: { canonical: pageUrl, languages: { en: pageUrl, "x-default": pageUrl } },
-  openGraph: { title: "UK Passport Photo Size & Requirements | PixPassVisa", description: "Compare printed passport dimensions and digital photo requirements with official GOV.UK sources.", url: pageUrl, siteName: "PixPassVisa", locale: "en_GB", type: "website", images: [{ url: "/images/uk-passport-photo-size-guide.png", width: 1200, height: 1000, alt: "PixPassVisa UK printed and digital passport photo size guide" }] },
-  twitter: { card: "summary_large_image", title: "UK Passport Photo Size & Requirements | PixPassVisa", description: "Printed and digital UK passport photo rules, explained separately.", images: ["/images/uk-passport-photo-size-guide.png"] },
+  openGraph: { title: "UK Passport Size Photo Maker & Requirements (2026) | PixPassVisa", description: "Create compliant UK passport photos: 35×45 mm print and 600×750 px digital photo requirements.", url: pageUrl, siteName: "PixPassVisa", locale: "en_GB", type: "website", images: [{ url: "/images/uk-passport-photo-size-guide.png", width: 1200, height: 1000, alt: "PixPassVisa UK printed and digital passport photo size guide" }] },
+  twitter: { card: "summary_large_image", title: "UK Passport Size Photo Maker (2026) | PixPassVisa", description: "Printed and digital UK passport photo rules and online maker.", images: ["/images/uk-passport-photo-size-guide.png"] },
 };
 
 export default function UKPage() {

@@ -21,7 +21,15 @@ export default function PriorityCountryGuide({guide,slug}:{guide:CountryPhotoGui
       <nav aria-label="Breadcrumb" className={styles.breadcrumb}><Link href="/">Home</Link><span>/</span><Link href="/passport-photos">Passport photos</Link><span>/</span><span>{guide.country}</span></nav>
       <header className={styles.hero}>
         <div><p className={styles.eyebrow}>{guide.code} / PASSPORT PHOTO FIELD GUIDE</p><h1>{guide.heading}</h1><p className={styles.intro}>{guide.intro}</p>
-          <div className={styles.actions}><Link href={guide.checker} className={styles.primary}>Check a photo for free ↗</Link><a href="#photo-size">See sizes & alignment ↓</a></div>
+          <div className={styles.actions}>
+            <Link href={`/passport-photo-online?type=${guide.code.toLowerCase() === 'us' ? 'us-passport' : guide.code.toLowerCase() === 'uk' ? 'uk-passport' : guide.code.toLowerCase() === 'de' ? 'germany-passport' : guide.code.toLowerCase() === 'fr' ? 'france-passport' : 'australia-passport'}`} className={styles.primary}>
+              Make {guide.country} Photo Online →
+            </Link>
+            <Link href={guide.checker} className="inline-flex items-center rounded-xl border border-slate-300 px-5 py-3 text-sm font-semibold hover:bg-slate-50">
+              Free Photo Checker ↗
+            </Link>
+            <a href="#photo-size">See sizes ↓</a>
+          </div>
           <p className={styles.reviewed}>Reviewed <time dateTime={COUNTRY_GUIDE_DATE}>17 October 2026</time> · <Link href="/editorial-methodology">Editorial methodology</Link></p>
           {guide.local && <Link className={styles.local} href={guide.local.href}>{guide.local.label} ↗</Link>}
         </div>
