@@ -24,6 +24,9 @@ export const metadata: Metadata = {
   description,
   keywords: [
     'australian passport photo checker',
+    'passport size photo australia',
+    'australia passport size photo',
+    'australian passport size photo maker free',
     'australia passport photo requirements',
     'apo passport photo size',
     'dfat photo checker',

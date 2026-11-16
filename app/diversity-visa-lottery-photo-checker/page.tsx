@@ -25,12 +25,17 @@ export const metadata: Metadata = {
   description:
     "Free DV Lottery photo checker for the 2026/2027 Diversity Visa program. Instantly verify the 600×600px square size, 50–69% head height, 240KB file limit, and every US Department of State requirement before you submit.",
   keywords: [
+    "dv lottery photo checker 2027",
     "dv photo checker",
     "dv lottery photo checker",
     "dv lottery photo checker free",
     "dv lottery photo size",
     "green card photo check",
     "green card photo checker",
+    "dv photo tester",
+    "check dv photo",
+    "dv photo tool",
+    "green card lottery photo checker",
     "diversity visa photo requirements",
     "600x600 photo checker",
     "dv program photo tool",

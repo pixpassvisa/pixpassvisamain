@@ -4,9 +4,9 @@ import Link from "next/link";
 
 /* ─── Metadata ─── */
 export const metadata: Metadata = {
-  title: "Foto für Gesundheitskarte (eGK) Online Erstellen | PixPassVisa",
+  title: "Foto für Gesundheitskarte (eGK) 2026: Kostenlos Prüfen & Erstellen | PixPassVisa",
   description:
-    "Foto für die elektronische Gesundheitskarte (eGK) online erstellen. 35×45 mm, frontal, für TK, AOK, Barmer, DAK & alle gesetzlichen Krankenkassen. Direkt hochladen – fertig in 30 Sekunden.",
+    "Foto für die elektronische Gesundheitskarte (eGK) online kostenlos prüfen & erstellen: 35×45 mm für TK, AOK, Barmer, DAK & alle Krankenkassen. 100% Annahmegarantie – fertig in 30 Sekunden.",
   keywords: [
     "gesundheitskarte foto",
     "egk foto",

@@ -13,6 +13,14 @@ export const metadata: Metadata = {
     "uk passport size photo maker",
     "uk passport photo dimensions",
     "uk passport photo 35x45",
+    "passport photo size uk",
+    "british passport photo dimensions",
+    "uk passport size dimensions",
+    "passport size photo uk",
+    "size of uk passport photo",
+    "passport photo checker uk",
+    "british passport size photo",
+    "uk passport dimensions",
     "uk passport photo size in mm",
     "uk passport photo digital size",
     "hmpo passport photo requirements",
@@ -24,7 +32,8 @@ export const metadata: Metadata = {
 
 export default function UKPage() {
   const schemas = [
-    { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: "UK passport photo size: printed and digital requirements", inLanguage: "en-GB", description: metadata.description, publisher: { "@type": "Organization", name: "PixPassVisa", url: "https://www.pixpassvisa.com/" }, image: "https://www.pixpassvisa.com/images/uk-passport-photo-size-guide.png" },
+    { "@context": "https://schema.org", "@type": "WebApplication", name: "UK Passport Size Photo Maker", applicationCategory: "PhotographyApplication", operatingSystem: "All", url: pageUrl, description: typeof metadata.description === 'string' ? metadata.description : undefined, offers: { "@type": "Offer", price: "4.99", priceCurrency: "USD", availability: "https://schema.org/InStock" }, featureList: ["UK HMPO 35x45 mm print format", "600x750 px digital upload specs", "Cream and light grey background adjustment", "4x6 inch print sheet generation"] },
+    { "@context": "https://schema.org", "@type": "WebPage", "@id": `${pageUrl}#webpage`, url: pageUrl, name: "UK passport photo size: printed and digital requirements", inLanguage: "en-GB", description: typeof metadata.description === 'string' ? metadata.description : undefined, publisher: { "@type": "Organization", name: "PixPassVisa", url: "https://www.pixpassvisa.com/" }, image: "https://www.pixpassvisa.com/images/uk-passport-photo-size-guide.png" },
     { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: ukPassportFaqs.map(({q,a}) => ({ "@type": "Question", name: q, acceptedAnswer: { "@type": "Answer", text: a } })) },
     { "@context": "https://schema.org", "@type": "BreadcrumbList", itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: "https://www.pixpassvisa.com/" }, { "@type": "ListItem", position: 2, name: "Passport photo guides", item: "https://www.pixpassvisa.com/passport-photos" }, { "@type": "ListItem", position: 3, name: "UK passport photo size", item: pageUrl }] },
   ];

@@ -5,16 +5,19 @@ import { Lock, Zap, ShieldCheck, CheckCircle2, Check, ArrowRight, X, Star } from
 
 /* ─── Metadata ─── */
 export const metadata: Metadata = {
-  title: "Biometrisches Passbild online erstellen 2026 – ICAO-konform | PixPassVisa",
+  title: "Passbild Größe (35×45 mm), Vorgaben & Passfoto Online 2026 | PixPassVisa",
   description:
-    "Biometrisches Passbild für Reisepass, Personalausweis und ePass in 30 Sekunden erstellen. KI prüft Größe, Gesichtshöhe, Hintergrund und Belichtung nach den Vorgaben der Bundesdruckerei. Sofort als Foto oder Druckbogen.",
+    "Offizielle Passbild Größe 35×45 mm für Reisepass, Personalausweis und ePass in 30 Sekunden online prüfen & erstellen. Biometrisch konform nach Bundesdruckerei-Vorgaben. Jetzt kostenlos testen!",
   keywords: [
+    "passbild größe",
     "biometrisches Passbild",
     "Passbild online erstellen",
     "biometrisches Passbild Anforderungen",
     "Passbild Reisepass",
     "Passbild Personalausweis 2026",
     "Passbild Größe 35x45",
+    "passbild format",
+    "passbild check online",
   ],
   alternates: {
     canonical: "https://www.pixpassvisa.com/de/biometrisches-passbild",
