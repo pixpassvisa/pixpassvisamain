@@ -162,8 +162,63 @@ export default async function Page({ params }: PageProps) {
         else defaultDoc = "uk-passport";
       }
 
+      const baseUrl = `https://www.pixpassvisa.com/${slug}`;
+      const toolName = toolPage.title.split(/[–|]/)[0].trim();
+      const toolSchema = {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebApplication",
+            "name": toolName,
+            "applicationCategory": "PhotographyApplication",
+            "operatingSystem": "All",
+            "url": baseUrl,
+            "description": toolPage.metaDescription,
+            "offers": {
+              "@type": "Offer",
+              "price": "4.99",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+            },
+            "featureList": [
+              "Biometric crop and alignment",
+              "Official passport & visa dimensions",
+              "High-resolution digital download",
+              "Printable photo sheet layout",
+            ],
+          },
+          {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.pixpassvisa.com/",
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Tools",
+                "item": "https://www.pixpassvisa.com/site-map",
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": toolName,
+                "item": baseUrl,
+              },
+            ],
+          },
+        ],
+      };
+
       return (
         <div className="bg-slate-50 min-h-screen">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(toolSchema).replace(/</g, "\\u003c") }}
+          />
           <Breadcrumbs />
 
           {/* Tool */}
