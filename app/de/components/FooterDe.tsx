@@ -36,7 +36,7 @@ export default function FooterDe() {
         { label: de.footer.privacyPolicy, href: "/privacy-policy" },
         { label: de.footer.terms, href: "/terms" },
         { label: de.footer.refundPolicy, href: "/refund-policy" },
-        { label: de.footer.imprint, href: "/imprint" },
+        { label: de.footer.imprint, href: "/about" },
       ],
     },
   ];
