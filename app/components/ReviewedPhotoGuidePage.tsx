@@ -14,6 +14,20 @@ export default function ReviewedPhotoGuidePage({ guide, slug }: { guide: Reviewe
   const schema = { '@context':'https://schema.org', '@graph': [
     {'@type':'Article','@id':`${url}#guide`,headline:guide.heading,description:guide.description,inLanguage:'en',dateModified:reviewedAt,mainEntityOfPage:url,image:`https://www.pixpassvisa.com${guide.image}`,author:{'@type':'Organization',name:'PixPassVisa',url:'https://www.pixpassvisa.com/editorial-methodology'},publisher:{'@type':'Organization',name:'PixPassVisa',url:'https://www.pixpassvisa.com'},citation:guide.sources.map(s=>s.url)},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:'https://www.pixpassvisa.com'},{'@type':'ListItem',position:2,name:guide.document==='visa'?'Visa photos':'Passport photos',item:`https://www.pixpassvisa.com${directory}`},{'@type':'ListItem',position:3,name:guide.country,item:url}]},
+    ...(guide.primaryAction ? [{
+      '@type': 'WebApplication',
+      name: guide.heading,
+      applicationCategory: 'PhotographyApplication',
+      operatingSystem: 'All',
+      url,
+      description: guide.description,
+      offers: {
+        '@type': 'Offer',
+        price: '4.99',
+        priceCurrency: 'USD',
+        availability: 'https://schema.org/InStock',
+      },
+    }] : []),
   ]};
   return <article className={styles.page}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,'\\u003c')}} />
