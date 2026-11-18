@@ -13,7 +13,12 @@ export const metadata: Metadata = {
     "Complete guide to official passport and visa photo sizes and dimensions for 50+ countries. Compare 2×2 inch, 35×45 mm, 50×70 mm, pixel requirements, and printable templates.",
   keywords: [
     "passport photo size",
+    "what size is a passport photo",
+    "what are passport photo dimensions",
+    "dimensions of passport photo",
     "passport size photo dimensions",
+    "what size photo for passport",
+    "what dimensions are passport photos",
     "passport size picture dimensions",
     "passport photo dimensions",
     "uk passport photo size",
